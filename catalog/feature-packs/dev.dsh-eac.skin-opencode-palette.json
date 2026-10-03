@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-opencode-palette",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "82a22a226b6ca2d84b66b6232da63f9e054c572d2bc739deb2980fc28c886ef6",
+  "appearance": {
+    "kind": "theme",
+    "previews": [
+      "https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/a0dbc4d4fbc7edfa5df1584894c8c36fa3af1fa6/showcase/overview-opencode-zh.png"
+    ],
+    "notes": "采用上游主题注册与独立插件入口，不声明 EAC loader 依赖。主题名与 ID 由上游插件维护，本记录未推断 ID。与其他更改相同主题 token 的插件同时激活未验证。"
+  }
+}

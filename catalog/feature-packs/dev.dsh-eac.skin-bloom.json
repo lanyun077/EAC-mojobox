@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-bloom",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "d927ce73d6d8c3252e4b7edb94eaefbfb558939ff8475e11ca53066a6e5ab126",
+  "appearance": {
+    "kind": "theme",
+    "previews": [
+      "https://img.webkubor.online/projects/dsh-bloom-theme/ui-sage-light.png"
+    ],
+    "notes": "采用上游独立插件入口，不声明 EAC loader 依赖。预览地址由上游 README 提供，外部图片可能更新，不作为固定产物。主题令牌与其他主题插件的组合未验证。"
+  }
+}

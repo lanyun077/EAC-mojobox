@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.prompt-memory",
+  "name": "DSH 人设与常驻记忆包",
+  "version": "0.1.0",
+  "description": "Soul MD 人设卡、常驻文件记忆与上下文观测、快照恢复。独立于 Project Memory 的项目索引方向，不叠加多个提示词覆盖器。人设与记忆内容由用户和插件管理，本薄包不携带预写人设。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "requires": {
+    "dsh": "0.2.0-rc.2"
+  },
+  "plugins": [
+    {
+      "ref": "dsh-soul-md",
+      "version": "0.9.1"
+    },
+    {
+      "ref": "dsh-context",
+      "version": "0.62.3"
+    },
+    {
+      "ref": "dsh-undo-savepoint",
+      "version": "0.4.10"
+    }
+  ],
+  "conflicts": [
+    "@yolk_vat-y/dsh-project-memory"
+  ],
+  "overrides": [],
+  "changelog": "首版；基于 EAC/AIO 0.1.7 的逐项筛选和公开新版来源。已核验选中 npm 归档的身份/摘要和官方 RC2 peer 规则；未安装运行。conflicts 同时包含本作者的组合互斥策略，不代表所有条目都已有运行故障证据。来源、条件及去留理由见 authoring/suite-curation.json、authoring/curation-sources.json 和 docs/suite-curation.md。MIT 仅覆盖自编清单。"
+}

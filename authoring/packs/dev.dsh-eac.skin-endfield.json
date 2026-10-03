@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.skin-endfield",
+  "name": "终末地工业编辑风主题",
+  "version": "0.1.0",
+  "description": "纸底、信号色与工业编辑风的独立 DSH 插件。使用上游 GitHub 根插件引用；版本是来源声明，不锁定 Git 提交。原创代码许可不覆盖游戏素材。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "plugins": [
+    {
+      "ref": "github:ymh0000123/dsh-theme-endfield",
+      "version": "1.1.5"
+    }
+  ],
+  "conflicts": [],
+  "overrides": [],
+  "changelog": "首版：由 DSH-EAC 编写薄包清单，上游插件独立发布；来源快照与选型依据见 authoring/ 和 docs/ecosystem-curation.md。"
+}

@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-catppuccin",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "62a3d6d0d9a1b156bc9ff5487d77e3595a44f7f667845af771a9678e243f8b24",
+  "appearance": {
+    "kind": "theme",
+    "previews": [
+      "https://raw.githubusercontent.com/NoNameLeGo/dsh-catppuccin-theme/8a030735ae092d75d4349a72dca3aed462f77f12/assets/previews/combined.png"
+    ],
+    "notes": "采用上游主题注册与独立插件入口，不声明 EAC loader 依赖。npm 稳定版与仓库 beta 分开记录；预览来自固定仓库提交。Mojobox 未复现作者兼容声明；主题 token 与玻璃样式叠加未验证。"
+  }
+}

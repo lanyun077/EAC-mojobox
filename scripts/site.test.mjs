@@ -26,7 +26,7 @@ const catalog = {
 function loadSite(base = '/', data = catalog) {
   const app = { innerHTML: '', className: '' }
   const context = vm.createContext({
-    URL, basePath: base, inputCatalog: structuredClone(data),
+    URL, basePath: base, inputCatalog: structuredClone(data), location: { hash: '' },
     createIcons() {},
     document: {
       querySelector: selector => selector === '#app' ? app : null,
@@ -113,19 +113,79 @@ const skinPackage = {
   manifestUrl: 'generated/skin-packages/maid-atelier/manifest.json', promptUrl: 'generated/skin-packages/maid-atelier/prompt.md', readmeUrl: 'generated/skin-packages/maid-atelier/README.md', runtime: 'not-applicable', installable: false
 }
 
-test('appearance intake details show declared loader facts without runtime claims', () => {
-  const pack = { ...intakePack, metadata: { ...intakePack.metadata, category: 'appearance' }, appearance: {
+const skinArchive = { ...intakePack, metadata: { ...intakePack.metadata, id: 'dev.example.skin', name: 'Example Skin', category: 'appearance' },
+  archiveUrl: 'generated/downloads/example-skin.dshpack', packUrl: 'generated/packs/example-skin.pack.json', reportUrl: 'generated/reports/example-skin.json', appearance: {
     kind: 'skin', loader: { id: '@dsh-eac/ui-skin-loader', version: '1.1.0', source: 'https://github.com/DSH-EAC/dsh-ui-skin-loader' },
     skinIds: ['maid-atelier'], conflicts: ['bodyAttr:theme'], previews: ['https://example.org/preview.png']
   } }
-  const site = loadSite('/', { mode: 'intake', demo: false, plugins: [], packs: [pack] })
-  site.run('state.selected = catalog.packs[0].metadata.id; render()')
-  assert.match(site.app.innerHTML, /外观包声明/)
-  assert.match(site.app.innerHTML, /ui-skin-loader/)
-  assert.match(site.app.innerHTML, /maid-atelier/)
-  assert.match(site.app.innerHTML, /宿主未测试/)
-  assert.match(site.app.innerHTML, /由下游 loader 或宿主负责/)
-  assert.match(site.app.innerHTML, /option value="appearance"/)
+const mixedIntake = { mode: 'intake', demo: false, plugins: [], packs: [intakePack, skinArchive], skinPackages: [skinPackage] }
+
+test('intake groups appearance archives and prompt material under skins and counts each once', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run('state.tab = "home"; render()')
+  assert.match(site.app.innerHTML, /<strong>3<\/strong><span>正式收录<\/span>/)
+  assert.match(site.app.innerHTML, /<strong>1<\/strong><span>功能包<\/span>/)
+  assert.match(site.app.innerHTML, /<strong>2<\/strong><span>皮肤包<\/span>/)
+  assert.match(site.app.innerHTML, /entry-count">1<small>项/)
+  assert.match(site.app.innerHTML, /entry-count">2<small>项/)
+  site.run('state.tab = "packs"; render()')
+  assert.match(site.app.innerHTML, /data-select="dev.aio.function"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.example.skin"|data-select="maid-atelier"|option value="appearance"/)
+  site.run('state.tab = "skins"; render()')
+  assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
+  assert.match(site.app.innerHTML, /data-select="maid-atelier"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.aio.function"|外观包/)
+  assert.ok(site.app.innerHTML.includes(`href="/${skinArchive.archiveUrl}" download`))
+  assert.ok(site.app.innerHTML.includes(`href="/${skinPackage.promptUrl}" download`))
+  assert.match(site.app.innerHTML, /下载皮肤包/)
+  assert.match(site.app.innerHTML, /不可直接安装/)
+})
+
+test('skin search covers both formats without inheriting functional category filters', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run('state.tab = "skins"; state.category = "function"; render()')
+  for (const query of ['Example Skin', 'dev.example.skin', 'ui-skin-loader', 'bodyAttr:theme']) {
+    site.run(`state.query = ${JSON.stringify(query)}; render()`)
+    assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
+    assert.doesNotMatch(site.app.innerHTML, /data-select="maid-atelier"/)
+  }
+  for (const query of ['Abyssal Maid Atelier', 'Prompt 资料', 'maid']) {
+    site.run(`state.query = ${JSON.stringify(query)}; render()`)
+    assert.match(site.app.innerHTML, /data-select="maid-atelier"/)
+  }
+  site.run('state.query = "does-not-exist"; render()')
+  assert.match(site.app.innerHTML, /没有匹配项/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select=/)
+})
+
+for (const base of ['/', '/dsh-mojobox/']) {
+  test(`skin archive routes retain downloads and loader declarations at ${base}`, () => {
+    const site = loadSite(base, mixedIntake)
+    for (const tab of ['skins', 'packs']) {
+      site.run(`location.hash = "#/${tab}/dev.example.skin"; applyHash(); render()`)
+      assert.equal(site.run('state.tab'), 'skins')
+      assert.match(site.app.innerHTML, /返回皮肤包列表/)
+      assert.match(site.app.innerHTML, /皮肤包声明/)
+      assert.match(site.app.innerHTML, /ui-skin-loader/)
+      assert.match(site.app.innerHTML, /maid-atelier/)
+      assert.match(site.app.innerHTML, /宿主未测试/)
+      assert.match(site.app.innerHTML, /由下游 loader 或宿主负责/)
+      assert.match(site.app.innerHTML, /下载皮肤包/)
+      assert.doesNotMatch(site.app.innerHTML, /option value="appearance"|SKIN PROMPT PACKAGE/)
+      for (const path of [skinArchive.archiveUrl, skinArchive.packUrl, skinArchive.reportUrl]) assert.ok(site.app.innerHTML.includes(`href="${base}${path}" download`))
+      assert.ok(site.app.innerHTML.includes(skinArchive.archiveDigest))
+    }
+  })
+}
+
+test('empty intake messages reflect the current collection rather than the source arrays', () => {
+  const site = loadSite('/', { ...mixedIntake, packs: [skinArchive], skinPackages: [] })
+  site.run('state.tab = "packs"; render()')
+  assert.match(site.app.innerHTML, /暂无正式收录内容/)
+  assert.doesNotMatch(site.app.innerHTML, /没有匹配项/)
+  site.run('state.tab = "skins"; state.query = "does-not-exist"; render()')
+  assert.match(site.app.innerHTML, /没有匹配项/)
+  assert.doesNotMatch(site.app.innerHTML, /暂无正式收录内容/)
 })
 
 test('skin prompt packages render as source material and retain deployment base', () => {

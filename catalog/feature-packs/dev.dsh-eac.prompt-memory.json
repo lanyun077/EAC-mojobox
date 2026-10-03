@@ -1,0 +1,10 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.prompt-memory",
+  "version": "0.1.0",
+  "category": "function",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "b81038f0f7113e05f3d6eabe55cd37cc1ecf75d976f02cd39b05483fa7c12cb9"
+}

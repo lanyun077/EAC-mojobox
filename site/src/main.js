@@ -50,7 +50,7 @@ let catalog
 
 const categoryLabels = {
   function: '功能包',
-  appearance: '外观包',
+  appearance: '皮肤包',
   workflow: '工作流包'
 }
 
@@ -114,6 +114,13 @@ function statusBadge(plugin) {
   return `<span class="badge badge-${level.toLowerCase()}">${escapeHtml(level)}</span>`
 }
 
+function intakeCollections() {
+  return {
+    packs: catalog.packs.filter(pack => pack.metadata.category !== 'appearance'),
+    skins: [...catalog.packs.filter(pack => pack.metadata.category === 'appearance'), ...(catalog.skinPackages || [])]
+  }
+}
+
 function filteredItems() {
   const query = state.query.trim().toLowerCase()
   if (state.tab === 'plugins') {
@@ -126,11 +133,13 @@ function filteredItems() {
       return matchesQuery && matchesAvailability && matchesEvidence && matchesHost
     })
   }
-  if (state.tab === 'skins') return (catalog.skinPackages || []).filter(pack => {
-    const matchesQuery = !query || `${pack.metadata.name} ${pack.metadata.nameEn} ${pack.metadata.id} ${pack.metadata.description} ${pack.metadata.tags.join(' ')}`.toLowerCase().includes(query)
+  const { packs, skins } = catalog.mode === 'intake' ? intakeCollections() : { packs: catalog.packs, skins: catalog.skinPackages || [] }
+  if (state.tab === 'skins') return skins.filter(pack => {
+    const appearanceText = pack.appearance ? JSON.stringify(pack.appearance) : ''
+    const matchesQuery = !query || `${pack.metadata.name} ${pack.metadata.nameEn || ''} ${pack.metadata.id} ${pack.metadata.description} ${(pack.metadata.tags || []).join(' ')} ${appearanceText}`.toLowerCase().includes(query)
     return matchesQuery
   })
-  return catalog.packs.filter(pack => {
+  return packs.filter(pack => {
     const appearanceText = pack.appearance ? JSON.stringify(pack.appearance) : ''
     const matchesQuery = !query || `${pack.metadata.name} ${pack.metadata.id} ${pack.metadata.description} ${appearanceText}`.toLowerCase().includes(query)
     const matchesCategory = state.category === 'all' || pack.metadata.category === state.category
@@ -161,7 +170,7 @@ function packRow(pack) {
         <span class="card-status"><span class="badge badge-lock">${escapeHtml(categoryLabels[pack.metadata.category] || '未分类')}</span><span class="badge badge-parsed">结构已检验</span><span class="badge badge-warning">宿主未测试</span></span>
         <span class="card-inspect">查看详情 <i data-lucide="arrow-up-right"></i></span>
       </button>
-      <div class="card-actions"><a href="${assetUrl(pack.archiveUrl)}" download><i data-lucide="download"></i>下载整合包</a>${catalog.demo ? '<span>测试样本</span>' : `<a href="${escapeHtml(safeExternalUrl(pack.source))}" target="_blank" rel="noreferrer">来源 <i data-lucide="external-link"></i></a>`}</div>
+      <div class="card-actions"><a href="${assetUrl(pack.archiveUrl)}" download><i data-lucide="download"></i>${pack.metadata.category === 'appearance' ? '下载皮肤包' : '下载整合包'}</a>${catalog.demo ? '<span>测试样本</span>' : `<a href="${escapeHtml(safeExternalUrl(pack.source))}" target="_blank" rel="noreferrer">来源 <i data-lucide="external-link"></i></a>`}</div>
     </article>`
   return `
     <button class="item-row ${state.selected === pack.metadata.id ? 'is-selected' : ''}" data-select="${escapeHtml(pack.metadata.id)}" type="button">
@@ -175,6 +184,7 @@ function packRow(pack) {
 }
 
 function skinRow(pack) {
+  if (pack.format === 'eac-feature-pack-v1') return packRow(pack)
   return `
     <article class="pack-card ${state.selected === pack.metadata.id ? 'is-selected' : ''}">
       <button class="pack-select" data-select="${escapeHtml(pack.metadata.id)}" aria-pressed="${state.selected === pack.metadata.id}" type="button">
@@ -297,7 +307,7 @@ function intakeDetail(pack) {
     ...(Array.isArray(pack.links) ? pack.links : [])
   ].filter(Boolean)
   const appearanceSection = appearance ? `
-    <section class="detail-section"><h3>外观包声明</h3><dl class="facts">
+    <section class="detail-section"><h3>皮肤包声明</h3><dl class="facts">
       <div><dt>外观类型</dt><dd>${escapeHtml(appearance.kind || '未声明')}</dd></div>
       <div><dt>皮肤 ID</dt><dd>${escapeHtml(appearance.skinIds?.join('、') || '未声明')}</dd></div>
       <div><dt>加载器依赖</dt><dd>${loader ? `${escapeHtml(loader.id)}${loader.version ? ` @ ${escapeHtml(loader.version)}` : ''}` : '未声明'}</dd></div>
@@ -315,11 +325,11 @@ function intakeDetail(pack) {
       <span class="trust-item trust-warning"><i data-lucide="triangle-alert"></i><span>宿主未测试</span></span>
     </div>
     <div class="detail-actions action-grid">
-      <a class="command primary" href="${assetUrl(pack.archiveUrl)}" download><i data-lucide="archive"></i>下载整合包</a>
+      <a class="command primary" href="${assetUrl(pack.archiveUrl)}" download><i data-lucide="archive"></i>${appearance ? '下载皮肤包' : '下载整合包'}</a>
       <a class="command" href="${assetUrl(pack.packUrl)}" download><i data-lucide="file-json"></i>清单</a>
       <a class="command" href="${assetUrl(pack.reportUrl)}" download><i data-lucide="package-check"></i>检验报告</a>
     </div>
-    <section class="detail-section detail-introduction"><h3>整合包介绍</h3><p class="detail-copy">${escapeHtml(metadata.introduction || metadata.description || '开发者未提供更详细的整合包介绍。')}</p></section>
+    <section class="detail-section detail-introduction"><h3>${appearance ? '皮肤包介绍' : '整合包介绍'}</h3><p class="detail-copy">${escapeHtml(metadata.introduction || metadata.description || '开发者未提供更详细的整合包介绍。')}</p></section>
     <section class="detail-section"><div class="section-title"><h3>包含内容</h3><span class="section-count">${components.length} 项</span></div>
       <div class="included-list">${components.length ? components.map(component => `<div class="included-item"><span><strong>${escapeHtml(component.ref || component.id || '未命名组件')}</strong><small>${escapeHtml(component.version || '未指定版本')}${component.required === false ? ' · 可选' : ' · 必需'}</small></span></div>`).join('') : '<p class="empty-inline">开发者未声明包含内容</p>'}</div>
     </section>
@@ -357,6 +367,7 @@ function intakeDetail(pack) {
 }
 
 function skinDetail(pack) {
+  if (pack.format === 'eac-feature-pack-v1') return intakeDetail(pack)
   const sourceUrl = safeExternalUrl(pack.source?.repository)
   const packageUrl = sourcePackageUrl(pack)
   const tags = Array.isArray(pack.metadata.tags) ? pack.metadata.tags : []
@@ -417,19 +428,21 @@ function skinDetail(pack) {
 
 function renderIntake() {
   const focusedId = document.activeElement?.dataset?.select
+  const { packs, skins } = intakeCollections()
+  if (state.tab === 'packs' && skins.some(pack => pack.metadata.id === state.selected)) state.tab = 'skins'
   if (!['home', 'packs', 'skins'].includes(state.tab)) {
-    state.tab = state.selected && (catalog.skinPackages || []).some(pack => pack.metadata.id === state.selected) ? 'skins' : state.selected ? 'packs' : 'home'
+    state.tab = state.selected && skins.some(pack => pack.metadata.id === state.selected) ? 'skins' : state.selected ? 'packs' : 'home'
   }
   const items = state.tab === 'home' ? [] : filteredItems()
   const selected = state.tab === 'skins'
-    ? (catalog.skinPackages || []).find(pack => pack.metadata.id === state.selected)
-    : catalog.packs.find(pack => pack.metadata.id === state.selected)
-  const totalItems = catalog.packs.length + (catalog.skinPackages || []).length
+    ? skins.find(pack => pack.metadata.id === state.selected)
+    : packs.find(pack => pack.metadata.id === state.selected)
+  const totalItems = packs.length + skins.length
   const isDetail = Boolean(selected) && !state.query.trim()
   const isMissingDetail = Boolean(state.selected) && !selected && !state.query.trim()
   const currentLabel = state.tab === 'skins' ? '皮肤包' : '功能包'
   const categoryOptions = Object.entries(categoryLabels)
-    .filter(([value]) => catalog.packs.some(pack => pack.metadata.category === value))
+    .filter(([value]) => packs.some(pack => pack.metadata.category === value))
     .map(([value, label]) => `<option value="${value}" ${state.category === value ? 'selected' : ''}>${label}</option>`).join('')
   const emptyState = (hasCatalog, title) => hasCatalog
     ? '<i data-lucide="search"></i><strong>没有匹配项</strong><span>调整搜索条件，或清空搜索后查看全部目录。</span>'
@@ -451,14 +464,14 @@ function renderIntake() {
     ${state.tab === 'home' ? `
       <main class="home-page">
         <section class="hero home-hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow">DSH · 开发者生态目录</span><h1 id="hero-title">把好用的工具，<br>装进一个盒子。</h1><p>发现、检验并下载 DSH 的功能包与皮肤包。Mojobox 负责收纳、核对来源和提供原始下载，内容由上游开发者维护。</p><div class="hero-actions"><a class="hero-link" href="#/packs" data-tab="packs">浏览功能包 <i data-lucide="arrow-up-right"></i></a><a class="hero-link" href="#/skins" data-tab="skins">浏览皮肤包 <i data-lucide="arrow-up-right"></i></a><span class="hero-note"><i data-lucide="package-check"></i>原始文件，每一份都有摘要</span></div></div><div class="hero-art" aria-hidden="true"><span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span><span class="hero-cube"><i data-lucide="boxes"></i></span></div></section>
-        <section class="home-summary"><div class="metric"><strong>${totalItems}</strong><span>${catalog.demo ? '演示样本' : '正式收录'}</span></div><div class="metric"><strong>${catalog.packs.length}</strong><span>功能包</span></div><div class="metric"><strong>${(catalog.skinPackages || []).length}</strong><span>皮肤包</span></div><span class="summary-note">收纳 · 检验 · 下载</span></section>
-        <section class="home-content"><div class="section-heading"><div><span class="eyebrow">EXPLORE</span><h2>从这里开始</h2></div><p>按资源类型浏览，打开卡片查看来源、检查范围和下载文件。</p></div><div class="entry-grid">${entryCard('packs', 'boxes', '功能包', '开发者提交的可收纳功能组合与 Feature Pack。', catalog.packs.length, 'entry-pack')}${entryCard('skins', 'file-json', '皮肤包', '收纳皮肤资料、设计 Prompt 与可追溯来源。', (catalog.skinPackages || []).length, 'entry-skin')}</div></section>
+        <section class="home-summary"><div class="metric"><strong>${totalItems}</strong><span>${catalog.demo ? '演示样本' : '正式收录'}</span></div><div class="metric"><strong>${packs.length}</strong><span>功能包</span></div><div class="metric"><strong>${skins.length}</strong><span>皮肤包</span></div><span class="summary-note">收纳 · 检验 · 下载</span></section>
+        <section class="home-content"><div class="section-heading"><div><span class="eyebrow">EXPLORE</span><h2>从这里开始</h2></div><p>按资源类型浏览，打开卡片查看来源、检查范围和下载文件。</p></div><div class="entry-grid">${entryCard('packs', 'boxes', '功能包', '开发者提交的可收纳功能组合与 Feature Pack。', packs.length, 'entry-pack')}${entryCard('skins', 'file-json', '皮肤包', '皮肤归档、设计 Prompt 与可追溯来源。', skins.length, 'entry-skin')}</div></section>
         <section class="principles"><div><span class="eyebrow">MOJOBOX ROLE</span><h2>让上游内容更容易被找到</h2></div><div class="principle-list"><div><i data-lucide="archive"></i><span><strong>收纳</strong><small>保存开发者提供的原始归档和资料。</small></span></div><div><i data-lucide="shield-check"></i><span><strong>检验</strong><small>检查结构、摘要和来源记录，不替作者维护内容。</small></span></div><div><i data-lucide="download"></i><span><strong>供给</strong><small>为宿主、加载器和下游工具提供可靠下载来源。</small></span></div></div></section>
       </main>` : `
       <main class="catalog-page" aria-label="${currentLabel}目录">
-        ${isDetail || isMissingDetail ? `<section class="catalog-toolbar detail-toolbar" aria-label="详情页搜索和筛选"><label class="search-field"><i data-lucide="search"></i><input type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、ID 或包说明" aria-label="搜索${currentLabel}" /></label>${state.tab === 'packs' ? `<label class="catalog-filter"><span>分类</span><select id="category-filter"><option value="all">全部功能包</option>${categoryOptions}</select></label>` : '<span class="catalog-hint"><i data-lucide="info"></i>皮肤包按来源、主题和目标界面整理</span>'}</section><section class="detail-page"><a class="back-link" href="#/${state.tab}" data-tab="${state.tab}"><i data-lucide="arrow-up-right"></i>返回${currentLabel}列表</a><div class="detail-page-body" id="detail">${isDetail ? (state.tab === 'skins' ? skinDetail(selected) : intakeDetail(selected)) : `<div class="detail-empty"><i data-lucide="box"></i><h2>未找到此${currentLabel}</h2><p>未找到此整合包。当前暂无正式收录内容，链接对应的内容不在当前目录中，请返回列表选择其他项目。</p></div>`}</div></section>` : `<section class="catalog-intro"><div><span class="eyebrow">${state.tab === 'skins' ? 'APPEARANCE COLLECTION' : 'FEATURE COLLECTION'}</span><h1>${currentLabel}</h1><p>${state.tab === 'skins' ? '收纳可追溯的皮肤资料、设计 Prompt 和来源信息，供下游开发者继续适配。' : '收纳经过结构检查的功能整合包，为宿主和下游工具提供明确的原始来源。'}</p></div><div class="catalog-count"><strong>${items.length}</strong><span>当前显示</span></div></section>
+        ${isDetail || isMissingDetail ? `<section class="catalog-toolbar detail-toolbar" aria-label="详情页搜索和筛选"><label class="search-field"><i data-lucide="search"></i><input type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、ID 或包说明" aria-label="搜索${currentLabel}" /></label>${state.tab === 'packs' ? `<label class="catalog-filter"><span>分类</span><select id="category-filter"><option value="all">全部功能包</option>${categoryOptions}</select></label>` : '<span class="catalog-hint"><i data-lucide="info"></i>皮肤包按来源、主题和目标界面整理</span>'}</section><section class="detail-page"><a class="back-link" href="#/${state.tab}" data-tab="${state.tab}"><i data-lucide="arrow-up-right"></i>返回${currentLabel}列表</a><div class="detail-page-body" id="detail">${isDetail ? (state.tab === 'skins' ? skinDetail(selected) : intakeDetail(selected)) : `<div class="detail-empty"><i data-lucide="box"></i><h2>未找到此${currentLabel}</h2><p>未找到此整合包。当前暂无正式收录内容，链接对应的内容不在当前目录中，请返回列表选择其他项目。</p></div>`}</div></section>` : `<section class="catalog-intro"><div><span class="eyebrow">${state.tab === 'skins' ? 'APPEARANCE COLLECTION' : 'FEATURE COLLECTION'}</span><h1>${currentLabel}</h1><p>${state.tab === 'skins' ? '收纳皮肤归档、设计 Prompt 和来源信息，保留各自的下载文件与检查范围。' : '收纳经过结构检查的功能整合包，为宿主和下游工具提供明确的原始来源。'}</p></div><div class="catalog-count"><strong>${items.length}</strong><span>当前显示</span></div></section>
         <section class="catalog-toolbar" aria-label="目录搜索和筛选"><label class="search-field"><i data-lucide="search"></i><input type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、ID 或包说明" aria-label="搜索${currentLabel}" /></label>${state.tab === 'packs' ? `<label class="catalog-filter"><span>分类</span><select id="category-filter"><option value="all">全部功能包</option>${categoryOptions}</select></label>` : '<span class="catalog-hint"><i data-lucide="info"></i>皮肤包按来源、主题和目标界面整理</span>'}</section>
-        <div class="catalog-grid ${items.length ? '' : 'is-empty'}">${items.length ? items.map(item => state.tab === 'skins' ? skinRow(item) : packRow(item)).join('') : `<div class="no-results">${emptyState(state.tab === 'skins' ? catalog.skinPackages?.length : catalog.packs.length, currentLabel)}</div>`}</div>`}
+        <div class="catalog-grid ${items.length ? '' : 'is-empty'}">${items.length ? items.map(item => state.tab === 'skins' ? skinRow(item) : packRow(item)).join('') : `<div class="no-results">${emptyState(state.tab === 'skins' ? skins.length : packs.length, currentLabel)}</div>`}</div>`}
       </main>`}
     <footer class="site-footer"><span>Mojobox · 为 DSH 生态收纳好工具</span><span>由开发者维护内容 · 安装与运行交给宿主</span></footer>`
   bindEvents()

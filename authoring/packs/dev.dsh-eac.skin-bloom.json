@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.skin-bloom",
+  "name": "Bloom 中国风主题",
+  "version": "0.1.0",
+  "description": "10 套中国风命名配色、OKLCH 调色和明暗主题。轻量配色型外观基底；不把上游的对比度测试声明当成本仓库的验证结果。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "plugins": [
+    {
+      "ref": "dsh-bloom-theme",
+      "version": "0.16.0"
+    }
+  ],
+  "conflicts": [],
+  "overrides": [],
+  "changelog": "首版：由 DSH-EAC 编写薄包清单，上游插件独立发布；来源快照与选型依据见 authoring/ 和 docs/ecosystem-curation.md。"
+}

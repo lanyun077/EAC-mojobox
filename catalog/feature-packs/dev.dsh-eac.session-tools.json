@@ -1,0 +1,10 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.session-tools",
+  "version": "0.1.0",
+  "category": "function",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "53040de4999fba6e74459d87d09b57622b112a87834de2d817fee7fe516f0168"
+}

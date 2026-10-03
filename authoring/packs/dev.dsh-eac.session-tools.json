@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.session-tools",
+  "name": "DSH 会话效率包",
+  "version": "0.1.0",
+  "description": "会话整理、节点导航、上下文观测与快照恢复。支持会话标签、备注、移动和迁移等上游能力；会话写入与恢复属于主动操作，不增加压缩插件。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "requires": {
+    "dsh": "0.2.0-rc.2"
+  },
+  "plugins": [
+    {
+      "ref": "dsh-context",
+      "version": "0.62.3"
+    },
+    {
+      "ref": "dsh-session-manager",
+      "version": "0.6.2"
+    },
+    {
+      "ref": "@vlln/dsh-navbar",
+      "version": "0.4.0"
+    },
+    {
+      "ref": "dsh-undo-savepoint",
+      "version": "0.4.10"
+    }
+  ],
+  "conflicts": [],
+  "overrides": [],
+  "changelog": "首版；基于 EAC/AIO 0.1.7 的逐项筛选和公开新版来源。已核验选中 npm 归档的身份/摘要和官方 RC2 peer 规则；未安装运行。conflicts 同时包含本作者的组合互斥策略，不代表所有条目都已有运行故障证据。来源、条件及去留理由见 authoring/suite-curation.json、authoring/curation-sources.json 和 docs/suite-curation.md。MIT 仅覆盖自编清单。"
+}

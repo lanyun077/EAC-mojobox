@@ -1,0 +1,30 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.skin-whale-girl",
+  "name": "鲸鱼娘皮肤系列",
+  "version": "0.1.0",
+  "description": "鲸鱼娘系列管理器、深海女仆工坊和虎鲸链路的原版插件组合。由原版管理器选择皮肤；不与 EAC 公约化同名皮肤混装。代码与美术许可分开。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "plugins": [
+    {
+      "ref": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
+      "version": "0.1.6"
+    },
+    {
+      "ref": "@smalltailqwq/dsh-client-ui-skin-maid-atelier",
+      "version": "0.1.7"
+    },
+    {
+      "ref": "@smalltailqwq/dsh-client-ui-skin-orca-link",
+      "version": "0.1.7"
+    }
+  ],
+  "conflicts": [
+    "@dsh-eac/skin-maid-atelier",
+    "@dsh-eac/skin-deep-whale-day-night",
+    "@dsh-external/dsh-client-ui-skin-deep-whale-day-night"
+  ],
+  "overrides": [],
+  "changelog": "首版：由 DSH-EAC 编写薄包清单，上游插件独立发布；来源快照与选型依据见 authoring/ 和 docs/ecosystem-curation.md。"
+}

@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.skin-open-sea",
+  "name": "Open Sea 海洋皮肤",
+  "version": "0.1.0",
+  "description": "实时海洋背景、波浪、昼夜光照与透明玻璃界面。引用已发布 npm 1.2.3；仓库开发版为 1.2.4。需要浏览器 GPU 能力，未完成宿主运行验证。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "plugins": [
+    {
+      "ref": "open-sea-skin",
+      "version": "1.2.3"
+    }
+  ],
+  "conflicts": [],
+  "overrides": [],
+  "changelog": "首版：由 DSH-EAC 编写薄包清单，上游插件独立发布；来源快照与选型依据见 authoring/ 和 docs/ecosystem-curation.md。"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "dsh-plugin-suite",
+  "version": "0.1.7",
+  "status": "source-only",
+  "repository": "https://github.com/zouyuxuan122/EAC-Plugin-Integration-Pack",
+  "tag": "v0.1.7",
+  "revision": "58d020813bb565f7888b6f0b539ec0711733a519",
+  "release": "https://github.com/zouyuxuan122/EAC-Plugin-Integration-Pack/releases/tag/v0.1.7",
+  "reviewedAt": "2026-10-01",
+  "artifact": {
+    "format": "npm-tarball",
+    "filename": "dsh-plugin-suite-0.1.7.tgz",
+    "url": "https://github.com/zouyuxuan122/EAC-Plugin-Integration-Pack/releases/download/v0.1.7/dsh-plugin-suite-0.1.7.tgz",
+    "size": 125909484,
+    "sha256": "0799789791b02b2ee319c4e599789cf0b61a9c35f26bfa1dea6112cf53baebfc",
+    "verification": "downloaded-and-hashed",
+    "redistributed": false
+  },
+  "counts": {
+    "eac": 48,
+    "aio": 19,
+    "skins": 10,
+    "sharedEacAio": 8,
+    "uniqueComponents": 69,
+    "bundledTarballs": 69,
+    "verifiedTarballs": 69
+  },
+  "target": {
+    "host": "official-dsh-desktop",
+    "dsh": "0.2.0-rc.2",
+    "basis": "upstream-declared"
+  },
+  "checks": {
+    "releaseSha256": "matched",
+    "componentSha256AndSize": "matched",
+    "componentIdentity": "matched",
+    "catalogCoverage": "complete",
+    "packageAndCatalogSourceBytes": "matched",
+    "runtime": "not-tested",
+    "dependencyClosure": "not-verified",
+    "redistributionLicense": "unresolved"
+  },
+  "snapshots": {
+    "package.json": "d4785661a88afce0a8ebc0231e00e998ca194f97b305a56213e6aa04cb85bf18",
+    "eac.json": "5c63e8b2b5237c3c5d90338b19f25c5d85ba10e0f9dc127e4097e74d0932cff3",
+    "aio.json": "df36238644a531e36d8b2ae5253ea278c0e06ba85c523434a73a35f6e0733f6d",
+    "skins.json": "5420ad403402d448ec58a8ce8963ecc62c72f7ad488fe842266092db283fee26",
+    "retired.json": "41a263d3d249fba168421aa15805e922203182c26f42fa3678cc10023c634f61",
+    "bundled-index.json": "a0aa451bc6b96c12068f2592ba558e5a70809e69a854da9ffd1d52467d19e175",
+    "component-facts.json": "58292361f774c090e44fb7cd4f7eaa52bfdc6fb33a2d7063e63f43f5fc862661"
+  },
+  "license": {
+    "suiteCodeDeclaration": "MIT",
+    "componentDeclarations": "component-facts.json",
+    "unresolved": [
+      "@local/dsh-webui-statem-bridge@1.2.2 has no license field or recognized attribution file in the inspected tarball; upstream documentation describes the source as private/UNLICENSED.",
+      "dsh-dafeiyu@0.1.0-alpha.6 declares SEE LICENSE IN ASSET_LICENSE.md; its notice excludes bundled character frames from MIT and grants no additional artwork license."
+    ],
+    "restricted": [
+      "@dsh-external/dsh-client-ui-skin-maid-atelier@0.0.1 declares CC-BY-NC-SA-4.0 and ships LICENSE/NOTICE."
+    ]
+  },
+  "admission": {
+    "candidateMetadata": "collected",
+    "officialCatalog": "not-admitted",
+    "reasons": [
+      "The current intake accepts thin ZIP Feature Pack v1 archives, not executable npm tarball suites with embedded plugins.",
+      "The 125909484-byte release exceeds the current 2 MiB intake limit and GitHub's 100 MiB ordinary Git file limit.",
+      "Complete redistribution permission is unresolved."
+    ],
+    "nextStep": "Support upstream release references as a separate intake type; preserve original bytes, metadata and license limitations without translating or repacking the suite."
+  },
+  "upstreamRuntimeReport": {
+    "url": "https://github.com/zouyuxuan122/EAC-Plugin-Integration-Pack/blob/58d020813bb565f7888b6f0b539ec0711733a519/reports/D9-final-test-report.md",
+    "suiteVersion": "0.1.6",
+    "dsh": "0.2.0-rc.2",
+    "basis": "upstream-report-only"
+  }
+}

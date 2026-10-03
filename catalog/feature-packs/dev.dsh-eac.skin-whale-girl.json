@@ -1,0 +1,32 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-whale-girl",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "906285cdab5ae522fcd7873b01f4ca4d69ac9ea81d8751d65c3835b478b7e579",
+  "appearance": {
+    "kind": "ui-skin",
+    "loader": {
+      "id": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
+      "version": "0.1.6",
+      "source": "https://github.com/Small-tailqwq/dsh-deep-whale"
+    },
+    "skinIds": [
+      "maid-atelier",
+      "orca-link"
+    ],
+    "conflicts": [
+      "@dsh-eac/skin-maid-atelier",
+      "@dsh-eac/skin-deep-whale-day-night",
+      "@dsh-external/dsh-client-ui-skin-deep-whale-day-night"
+    ],
+    "previews": [
+      "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/42ecc2a587c4276e6b65a01933505a42d7f31584/maid-atelier/preview/light.webp",
+      "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/42ecc2a587c4276e6b65a01933505a42d7f31584/orca-link/preview/dark.png"
+    ],
+    "notes": "DSH-EAC 编写的引用清单，上游插件与美术归 Small-tailqwq 及相应权利人。代码 MIT；皮肤美术 CC BY-NC-SA 4.0、禁止商用，署名见上游 NOTICE。原版管理器路线，不额外依赖 EAC loader。与公约化女仆、昼夜工坊存在同名标记风险；同类全局样式的运行冲突由宿主核验。"
+  }
+}

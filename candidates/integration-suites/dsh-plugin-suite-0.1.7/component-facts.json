@@ -1,0 +1,1844 @@
+[
+  {
+    "name": "@deepseek-ai/dsh-balance",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-balance-0.1.0.tgz",
+    "sha256": "4468aedfe3e0cc94218d9864a2bbc34800d9c54726673582594fd56104368951",
+    "size": 7425,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "react": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-client-file-changes",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-client-file-changes-0.1.0.tgz",
+    "sha256": "a8a47277fc7bc4187093764c860e7a510fd8fd08df4eee740c9462d5a5491545",
+    "size": 11528,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "react": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-conversation-tweaks",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-conversation-tweaks-0.1.0.tgz",
+    "sha256": "58606e78dc2abed5bf83a83a3aaa754de75521e386678ec965415988291543cc",
+    "size": 4782,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-easy-setup",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-easy-setup-0.1.0.tgz",
+    "sha256": "ad4156eeb56d2e10ca4b611cdd1ed9d79daa9fe88d8b6bb23c91df1ba253aaa3",
+    "size": 17392,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-file-changes",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-file-changes-0.1.0.tgz",
+    "sha256": "601b23fcec3d39f8d726dbe09fca9720361bf3d4f402ceaff655cbcdf52ecb4d",
+    "size": 6979,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "zod": "^3.0.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-float-window",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-float-window-0.1.0.tgz",
+    "sha256": "48679db7c9193718cf33c07c8970ecfd639fa2468a61d49baa1664a49ea9e90c",
+    "size": 6376,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-openclaw-bridge",
+    "version": "0.7.0",
+    "filename": "@deepseek-ai_dsh-openclaw-bridge-0.7.0.tgz",
+    "sha256": "e27ffe1f64a4c1b4d5638b581bb552a8c101b826c533997e3f0be8fd9c495aef",
+    "size": 43561,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "bb2ca5713d09c465f49884f5f5070531d781f80eb0c3a4e337afaee60f75ad77"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-agent": "*",
+      "@deepseek-ai/dsh-client-ui-primitives": "*",
+      "@deepseek-ai/dsh-client-ui-renderer": ">=0.0.1-rc <2",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-llm": "*",
+      "@deepseek-ai/dsh-session": "*",
+      "@deepseek-ai/dsh-settings": "*",
+      "@deepseek-ai/schemastery": "*",
+      "react": ">=18"
+    },
+    "engines": {
+      "node": ">=20"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-plugin-manager",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-plugin-manager-0.1.0.tgz",
+    "sha256": "14633a255203411f220f31dd21f30844247b5cf08618f86a57bac5657160d8ff",
+    "size": 8048,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-primitives": "*",
+      "react": ">=18"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-prompt-custom",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-prompt-custom-0.1.0.tgz",
+    "sha256": "f6de797b9d12456668f487760da5342bfcb681fc3a8d401d279879e50670dffd",
+    "size": 6423,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/schemastery": "*",
+      "@deepseek-ai/dsh-settings": "*",
+      "@deepseek-ai/dsh-system-prompt": "*",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-primitives": "*",
+      "react": ">=18",
+      "@deepseek-ai/dsh-client-ui-renderer": ">=0.0.1-rc <2"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-skin-switch",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-skin-switch-0.1.0.tgz",
+    "sha256": "d0a6755ba5803ab19e8117af6dd8a8a5ca6a61a33a0113e09254543653471178",
+    "size": 12757,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@deepseek-ai/dsh-terminal",
+    "version": "0.1.0",
+    "filename": "@deepseek-ai_dsh-terminal-0.1.0.tgz",
+    "sha256": "5a4c01b1d9861d28a1dfd47d2ccd7aaafc62ca9ba890c38de43d7850604052d8",
+    "size": 12020,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@dsh-external/dsh-client-ui-skin-maid-atelier",
+    "version": "0.0.1",
+    "filename": "@dsh-external_dsh-client-ui-skin-maid-atelier-0.0.1.tgz",
+    "sha256": "3cd5fbd782e36996289b2bbc8979580cc72803dfa149e9efa8d13be174c48334",
+    "size": 2511618,
+    "declaredLicense": "CC-BY-NC-SA-4.0",
+    "private": true,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "616cfe2a42f376776d08de3c361320e0e10d27388495d331d586540d05a59f8e"
+      },
+      {
+        "path": "package/NOTICE",
+        "sha256": "d9b0d1b71355f9a03415f415c04e505e4aa9a33e59a859e82dfb2c29b677b011"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@dsh-external/dsh-side-session",
+    "version": "0.2.8",
+    "filename": "@dsh-external_dsh-side-session-0.2.8.tgz",
+    "sha256": "686b61c7f332e3d9ef140f533917c369c9b1bfbd28ae05396a421810e40f8840",
+    "size": 37444,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {
+      "schemastery": "^3.18.0"
+    },
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@dsh-external/dsh-webui",
+    "version": "0.5.1",
+    "filename": "@dsh-external_dsh-webui-0.5.1.tgz",
+    "sha256": "a67b2e993fe2a02e1806553aaecff0a617b3131dda384a939d6afaba2e35974a",
+    "size": 3036793,
+    "declaredLicense": "BSD-3-Clause",
+    "private": true,
+    "attributionFiles": [
+      {
+        "path": "package/lib/aio-usage-host/LICENSE",
+        "sha256": "b9457f2f249de40b9248a7b0721bf21428aa98fb94e78e67f9f89db3d8e71f9a"
+      }
+    ],
+    "dependencies": {
+      "@shikijs/langs": "4.4.3",
+      "@shikijs/themes": "4.4.3",
+      "dompurify": "^3.4.14",
+      "katex": "^0.18.4",
+      "markdown-it": "^15.0.0",
+      "markdown-it-emoji": "^3.1.0",
+      "markdown-it-task-lists": "^2.1.1",
+      "markstream-react": "0.0.55",
+      "shiki": "4.4.3",
+      "stream-markdown": "0.0.16"
+    },
+    "peerDependencies": {
+      "@deepseek-ai/dsh-agent": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-api-remotes": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-connection": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-attachment": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-conversation": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-input-trigger": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-model-selection": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-settings": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-theme": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-tool": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-credentials": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-launch-environment": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-llm": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-settings": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-tools": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-web": ">=0.1.3-alpha.2",
+      "@deepseek-ai/schemastery": ">=3",
+      "react": ">=18",
+      "react-dom": ">=18",
+      "dsh-aio-ui-compat": "1.0.0",
+      "@deepseek-ai/dsh-client-locale": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-renderer": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-api-session-controller": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-api-workspace-controller": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-layout": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-store": ">=0.1.3-alpha.2"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@ha-na-bi/dsh-client-ui-custom",
+    "version": "0.1.0-rc.6",
+    "filename": "@ha-na-bi_dsh-client-ui-custom-0.1.0-rc.6.tgz",
+    "sha256": "cd4881340acfd8f5ce506e29f57d0e9605478c488be55c4f6fb2ebfb5b891e1c",
+    "size": 95915,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "c2e6727ca0a6e404dc53513f4cc6c404feaf735a8fb94291291493ee34d8bd5a"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-api-remotes": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-locale": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-settings": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-invariants": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-settings": ">=0.1.3-alpha.2",
+      "@deepseek-ai/schemastery": ">=0.1.0-rc.5",
+      "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-attachment": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-conversation": ">=0.1.3-alpha.2",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "dsh-aio-ui-compat": "1.0.0",
+      "@deepseek-ai/dsh-client-ui-renderer": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-connection": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-api-session-controller": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-api-workspace-controller": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-layout": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-store": ">=0.1.3-alpha.2",
+      "@deepseek-ai/dsh-client-ui-chat": ">=0.1.3-alpha.2"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-blue-fantasy",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-blue-fantasy-0.1.11.tgz",
+    "sha256": "1940a6833ec00cdb741cfc517fa532c5afcf3dce9c02d4f7d35dc10ef896de5e",
+    "size": 5312931,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-dragon-heir",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-dragon-heir-0.1.11.tgz",
+    "sha256": "ee49a187c52351a86d82ce75fc4f3c5d53c231aa6ee7bedc621d84a66ed52dac",
+    "size": 7720153,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-miku",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-miku-0.1.11.tgz",
+    "sha256": "1ce6fa1da905d4892fa73aeadc9154c3543886bd0d2791389acb6ce14c584b89",
+    "size": 1792335,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "9641212d792bc6ae2b0a9c0770f8ad01b31d89682ccfcf2c622124345b908c1c"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-minecraft",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-minecraft-0.1.11.tgz",
+    "sha256": "bda8eb0544ad0999af75080f4daf88b5559d496fd2a1e2abc780181639c8f47c",
+    "size": 644158,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-qq98",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-qq98-0.1.11.tgz",
+    "sha256": "0cf05a5cdd431908bb8ef3ffc3db7523edf673662f90612181164a63bae1dce0",
+    "size": 861171,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-ths",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-ths-0.1.11.tgz",
+    "sha256": "830b50188c7321e4bf468e209a9df8db720f7ba680760c8108c1aef1f14ba680",
+    "size": 710780,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-trading",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-trading-0.1.11.tgz",
+    "sha256": "83e7825d9da164cf6c0bf08997db14eec9dfcb573a7a522bc803bd872ed2f0a0",
+    "size": 715434,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-whale-song",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-whale-song-0.1.11.tgz",
+    "sha256": "78ebde375f50f19ed480d96d83f883a69e435c265792a066811dd128b5eaba2f",
+    "size": 5060856,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@linxin666/dsh-client-ui-skin-xp",
+    "version": "0.1.11",
+    "filename": "@linxin666_dsh-client-ui-skin-xp-0.1.11.tgz",
+    "sha256": "71a4c2b013802b587022b9b2b6297e6f2078ac592cf7b1a5cbaaee96f464127b",
+    "size": 598346,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "02e1e3ebf73df5c1840c842a8e93b40942bf6e53a66acbe6c5643fc8664ff97d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@local/dsh-webui-statem-bridge",
+    "version": "1.2.2",
+    "filename": "@local_dsh-webui-statem-bridge-1.2.2.tgz",
+    "sha256": "fd67d30d05b3a887a7d3508ffd18daf3e25662ec84ca5cee18f9f843798bff65",
+    "size": 1396,
+    "declaredLicense": null,
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@nagi-ovo/dsh-visualize",
+    "version": "0.1.4",
+    "filename": "@nagi-ovo_dsh-visualize-0.1.4.tgz",
+    "sha256": "3d5b8cf5b1bf198111a1e69ace6ad249a324d8a64e8ed574cbbe8bbf132983e4",
+    "size": 964128,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "835b92cbc12a8f27b2222b4c816853d8132abcfbc79de2527398125b100d6313"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-fs": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-llm": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-sandbox-policy": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-session": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-skill": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6",
+      "@deepseek-ai/schemastery": ">=3.18.1",
+      "react": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@nanmicoder/dsh-agent-teams",
+    "version": "0.1.13-eac.3",
+    "filename": "@nanmicoder_dsh-agent-teams-0.1.13-eac.3.tgz",
+    "sha256": "76631f392e8d335aa99293576dcb3a13f62b3c7737ab834676bafd2ca65fabc5",
+    "size": 1809882,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "bcd7353a7add70a19797e5ed3e00d08bc995532d9e5843fe0431af9c207bc413"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1-rc.1",
+      "@deepseek-ai/dsh-agent": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-conversation": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-layout": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-commands": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-llm": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-session": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-subagent": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-system-prompt": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6",
+      "@deepseek-ai/schemastery": ">=3.18.1-rc.1",
+      "react": "^18.2.0"
+    },
+    "engines": {
+      "node": "^22.19.0 || >=24"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "@vlln/dsh-navbar",
+    "version": "0.3.0",
+    "filename": "@vlln_dsh-navbar-0.3.0.tgz",
+    "sha256": "d431cfd151fc9931b7366bb0668face06fc5a6dd19509486c22a952b10a2dfc9",
+    "size": 10930,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "c54724c121bf852962c289ad21462be8148e16d47ded3e39051dcb21c268598d"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1"
+    },
+    "engines": {
+      "node": ">=22.19.0",
+      "dsh": ">=0.1.0-rc.5"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "computer-user",
+    "version": "0.3.6",
+    "filename": "computer-user-0.3.6.tgz",
+    "sha256": "5d5ef7e332dfdf54361811e603f7d8f7af818aae0b720b0982edcc99a08bb955",
+    "size": 40528,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "f91f162426443baf5505d96d9ef54449336b4f60df5bccac55fc08f8d096ca6f"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6",
+      "@deepseek-ai/schemastery": ">=3.18.1"
+    },
+    "engines": {
+      "node": "^22.19 || >=24"
+    },
+    "platforms": {
+      "os": [
+        "win32"
+      ],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-aio-ui-compat",
+    "version": "1.0.0",
+    "filename": "dsh-aio-ui-compat-1.0.0.tgz",
+    "sha256": "9df4247b06bf70f9cce2f36625ae7e91f0ec77123d60203b11178e0ac2f59e94",
+    "size": 6451,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "e5b182b2fccc24c632788ed1e86a45e7a927d801bdf11c1b6b2a831854678826"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-auto-compact",
+    "version": "0.1.0",
+    "filename": "dsh-auto-compact-0.1.0.tgz",
+    "sha256": "4d42dbaa229cde82e0ef2fe5e320a721baac8f8e30e926e71c1ce12c9952c748",
+    "size": 6002,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-better-sidebar",
+    "version": "0.15.3-eac.1",
+    "filename": "dsh-better-sidebar-0.15.3-eac.1.tgz",
+    "sha256": "95e5fc933189765088dca83bd6589e22eaa494a9c9d25277ca43355856197fad",
+    "size": 2473554,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "a9b922b8d247b78e8d64f791807124e044a56d37bde0c61fa8568701f8fcc73d"
+      }
+    ],
+    "dependencies": {
+      "@codemirror/commands": "^6.10.4",
+      "@codemirror/lang-cpp": "^6.0.3",
+      "@codemirror/lang-css": "^6.3.1",
+      "@codemirror/lang-go": "^6.0.1",
+      "@codemirror/lang-html": "^6.4.12",
+      "@codemirror/lang-java": "^6.0.2",
+      "@codemirror/lang-javascript": "^6.2.5",
+      "@codemirror/lang-json": "^6.0.2",
+      "@codemirror/lang-markdown": "^6.5.2",
+      "@codemirror/lang-php": "^6.0.2",
+      "@codemirror/lang-python": "^6.2.1",
+      "@codemirror/lang-rust": "^6.0.2",
+      "@codemirror/lang-sql": "^6.10.0",
+      "@codemirror/lang-xml": "^6.1.0",
+      "@codemirror/lang-yaml": "^6.1.3",
+      "@codemirror/language": "^6.12.4",
+      "@codemirror/legacy-modes": "^6.5.3",
+      "@codemirror/search": "^6.7.1",
+      "@codemirror/state": "^6.7.1",
+      "@codemirror/view": "^6.43.8",
+      "@lezer/highlight": "^1.2.3",
+      "clsx": "^2.1.1",
+      "mermaid": "^11.16.1",
+      "node-pty": "^1.1.0",
+      "react-icons": "5.7.0",
+      "rxjs": "^7.8.2",
+      "schemastery": "^3.18.0",
+      "ws": "^8.18.0"
+    },
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-agent": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-ui-conversation": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-host-webserver": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-invariants": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-llm": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-session": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-subagent": ">=0.1.0-rc.8",
+      "@deepseek-ai/dsh-tools": ">=0.1.0-rc.8",
+      "cordis": "^4.0.0-rc.8",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    },
+    "engines": {
+      "node": ">=20"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-change-review",
+    "version": "0.1.0",
+    "filename": "dsh-change-review-0.1.0.tgz",
+    "sha256": "e8614a40c491b144eac9427d500d0871b43b35f476af7c3c421a9e8d3693f39e",
+    "size": 6618,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-compact",
+    "version": "1.0.0",
+    "filename": "dsh-compact-1.0.0.tgz",
+    "sha256": "5b686127ec36e2c8754162656973a52483516c6daf91573f6ef20429b9fddb86",
+    "size": 14638,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "cde9d9d297fbd7b2f3bfbe01fe088eb9c90577f43792ac2fd492b8a6b3e2e8d9"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-agent": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-agent-presets": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-command-compact": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-compaction-basic": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-compaction-tool-result-pruner": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-llm": ">=0.1.0-rc.7",
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.7",
+      "@deepseek-ai/schemastery": ">=3.18.1"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "cordis.patch.yml"
+  },
+  {
+    "name": "dsh-composer-dynamic-island",
+    "version": "2.1.0",
+    "filename": "dsh-composer-dynamic-island-2.1.0.tgz",
+    "sha256": "7095e75b4e297d74772deae3ec526592373607c3a50a3db5732438335d9b1a3c",
+    "size": 18512,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "e043ca5049709dbe70b1ce135db87832f918e0f8419709d7ec01d4ccfe4cef51"
+      }
+    ],
+    "dependencies": {
+      "@deepseek-ai/schemastery": "^3.18.1"
+    },
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1"
+    },
+    "engines": {
+      "node": "^22.19 || >=24"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-dafeiyu",
+    "version": "0.1.0-alpha.6",
+    "filename": "dsh-dafeiyu-0.1.0-alpha.6.tgz",
+    "sha256": "677afafac330ed9020828053b1a9b01afa6f75be9ba284359a2627ffa55ee129",
+    "size": 55452482,
+    "declaredLicense": "SEE LICENSE IN ASSET_LICENSE.md",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "bce499edad1632a9e98076e31da193dc6062f33c16ff81e32198972a5bcdb492"
+      },
+      {
+        "path": "package/ASSET_LICENSE.md",
+        "sha256": "f2af3bc85cc1a365efd004a44396d69c1d3988e2de3a1cacc0874446cb6ee8ec"
+      }
+    ],
+    "dependencies": {
+      "@deepseek-ai/schemastery": "^3.18.1"
+    },
+    "peerDependencies": {},
+    "engines": {
+      "node": ">=22.19"
+    },
+    "platforms": {
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "x64"
+      ]
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-dock-settings",
+    "version": "0.1.0",
+    "filename": "dsh-dock-settings-0.1.0.tgz",
+    "sha256": "e3059cea7737a18b52cb66f465aae247ac6988df5e1c682dd2a79ea378085147",
+    "size": 13645,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "581d7339404b2bf349d1bd3598f6e19be7c94c07e8f48bd698e429c0768fb9b7"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": "*",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-slots": "*",
+      "react": "^18.2.0"
+    },
+    "engines": {
+      "node": "^22.19.0 || >=24.0.0"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-drag-and-drop",
+    "version": "0.1.6",
+    "filename": "dsh-drag-and-drop-0.1.6.tgz",
+    "sha256": "860969dd04153227e17f8154efe545c10391481c173f31057f28e6b1eec77e52",
+    "size": 54052,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "5ca375f6965ef05dd889fe0bb5414e139a63478c83267633690f45f801395f7f"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {
+      "node": "^20.0.0 || >=22.0.0"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-eac-core-bridge",
+    "version": "1.0.0",
+    "filename": "dsh-eac-core-bridge-1.0.0.tgz",
+    "sha256": "abdd2bf93a5f19da8c2837ece38fb89f29c25fc7d6024b869c346b7c8dcf974d",
+    "size": 4608,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6"
+    },
+    "engines": {
+      "node": ">=22.18"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-eac-locale-compat",
+    "version": "1.0.0",
+    "filename": "dsh-eac-locale-compat-1.0.0.tgz",
+    "sha256": "83b0202784b5b1cd775f63d110d690a49d7dc37572b766a6a47c216a113f07a3",
+    "size": 16720,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-feature-toggles",
+    "version": "0.1.1",
+    "filename": "dsh-feature-toggles-0.1.1.tgz",
+    "sha256": "a79d3d1329ca8f635c978a2384762a7447f4975ff9b4c1ec866d794fc59d541a",
+    "size": 4126,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-file-drop-eac",
+    "version": "0.1.0",
+    "filename": "dsh-file-drop-eac-0.1.0.tgz",
+    "sha256": "2131d2adc3a150c78934904b4ccc4825c7d5d5d5e1fc4f913fee9788797bb188",
+    "size": 8267,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "0d6a53551dda847e90557dd288ea0451fbf68c0bf2c7169a340964e04b8359c7"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-find-plugin",
+    "version": "0.3.7",
+    "filename": "dsh-find-plugin-0.3.7.tgz",
+    "sha256": "d993c3bafdbb22343dae711f1c314abd4f7b4b253d11aac75240943b1fb3bb70",
+    "size": 32001,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "74bbf6c4b07619a09a7522ae3ce66cafd1a525f5477470b75889db8b5d3911a7"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-font-custom",
+    "version": "0.1.0",
+    "filename": "dsh-font-custom-0.1.0.tgz",
+    "sha256": "b81f785f829adea4f438eaaa1331602279531f2c08c15a753aaaee7603d1286c",
+    "size": 8957,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-image-paste",
+    "version": "0.1.0",
+    "filename": "dsh-image-paste-0.1.0.tgz",
+    "sha256": "c9c13cf10fed1b318144fe36ff37ebfc8a6c5b3a99821aa292f519655b06e559",
+    "size": 4621,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-meme",
+    "version": "0.1.39",
+    "filename": "dsh-meme-0.1.39.tgz",
+    "sha256": "f8949e66d7704775b3e1af8273aefb3922ed1a36039c4a26e1c4fea60ad64b63",
+    "size": 7587297,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "92874fedb7d6ec2784011888ee55e00aa4d653a31b855d10c6f3e5987ca12c9b"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-tools": "*"
+    },
+    "engines": {
+      "node": ">=20"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-message-rewind",
+    "version": "0.1.0",
+    "filename": "dsh-message-rewind-0.1.0.tgz",
+    "sha256": "f2a5a5d968a1a8500840fde9453b2e1d85b969648811a3935cad199bd1b65468",
+    "size": 8558,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "581d7339404b2bf349d1bd3598f6e19be7c94c07e8f48bd698e429c0768fb9b7"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": "*",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-slots": "*",
+      "react": "^18.2.0"
+    },
+    "engines": {
+      "node": "^22.19.0 || >=24.0.0"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-offpeak",
+    "version": "9.9.9",
+    "filename": "dsh-offpeak-9.9.9.tgz",
+    "sha256": "f8e4b495d6679ad32b93402d76ac60d439d0a2260fc33efc6b2342ddc7c064ed",
+    "size": 22825,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "8c5de7ef1bee6bb60147e55573a86943f24bd839208f58e52152e621a8c0d996"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-pet",
+    "version": "0.1.3",
+    "filename": "dsh-pet-0.1.3.tgz",
+    "sha256": "95a152ae41444298402a73dffdad70008a4d6e57a97150ba3e8b11d63b8b1ea3",
+    "size": 15550416,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "22757dc9c895b2729a2fc684d227cadfb54d5af3dd300029926839e8c4e269ce"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-home-paths": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-host-webserver": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.0-rc.6",
+      "react": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-pet-settings",
+    "version": "0.1.0",
+    "filename": "dsh-pet-settings-0.1.0.tgz",
+    "sha256": "d556c6300489e98e1ed6870262cbabe1bbb56dc3a136e86c0d882764bb2301c9",
+    "size": 4344,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-phone",
+    "version": "0.1.0",
+    "filename": "dsh-phone-0.1.0.tgz",
+    "sha256": "592c84bb8b934b10da9841be40821e2e57caccb907528c316f5e0959bc85e4e3",
+    "size": 19239,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-plugin-shield",
+    "version": "0.1.0",
+    "filename": "dsh-plugin-shield-0.1.0.tgz",
+    "sha256": "8172c09d72aaa069db49bd9f8522630575e3be969b5d10c2f63881ad9bd534f9",
+    "size": 5929,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-plugin-wallpaper-engine",
+    "version": "0.6.7",
+    "filename": "dsh-plugin-wallpaper-engine-0.6.7.tgz",
+    "sha256": "e7050458718567f941400448df8a264a85ec9ccdac5c13696aa1e7c5518a3a66",
+    "size": 794049,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {
+      "jpeg-js": "^0.4.4",
+      "@shaderfrog/glsl-parser": "^7.0.1"
+    },
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-host-webserver": ">=0.1.0-rc.6",
+      "react": "^18.2.0"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-plugin-wizard",
+    "version": "0.1.0",
+    "filename": "dsh-plugin-wizard-0.1.0.tgz",
+    "sha256": "a3640c8798c425d865616bc6a365707ec587081e2a026501add2a6b775705747",
+    "size": 2896,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-raw-html",
+    "version": "0.6.2",
+    "filename": "dsh-raw-html-0.6.2.tgz",
+    "sha256": "a320245871e4b471da2c0397e1051518ab57100c5c75b841a83c682bc3d36e19",
+    "size": 9104769,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "eafd999b8beb2ef3c97a33cc007265e3bd650a32e0ae52254379df019536181f"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.1",
+      "react": "^18.3.1"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-session-manager",
+    "version": "0.1.0",
+    "filename": "dsh-session-manager-0.1.0.tgz",
+    "sha256": "f9b588bca237f56f5e8989d6da7e3fd598724fad18a12c9c2f8c8707768a458c",
+    "size": 12462,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "8c3a473a0f9266c25f9a4297b7c88fee7e6444e88afe257998e253c6f266bf3e"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "cordis": ">=4.0.0-rc <5"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-settings-groups",
+    "version": "0.1.0",
+    "filename": "dsh-settings-groups-0.1.0.tgz",
+    "sha256": "38ed5c1154a92bd8d97f51a6180498ee94605ebb10ff41d35015a23cf9efd143",
+    "size": 5205,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-settings-scroll-fix",
+    "version": "2.0.2",
+    "filename": "dsh-settings-scroll-fix-2.0.2.tgz",
+    "sha256": "39711cadbe8143803ac4b18d6e248793ead1bae06463e8279fe1cb66a759b847",
+    "size": 9772,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "5ca2920d4f56954100c8f365461aba7b6c6154da49734f7b2703d9275ad49d11"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-soul-md",
+    "version": "0.2.8",
+    "filename": "dsh-soul-md-0.2.8.tgz",
+    "sha256": "c79645c494317b64a0cdedb7081dbedb018db5045fec9f230f68164c4dc1ea5c",
+    "size": 11680,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "3144a5b7dd8fc1edcc49e809abbf4d09eb6449b18bd9cf69a805c01b68769637"
+      }
+    ],
+    "dependencies": {
+      "@deepseek-ai/schemastery": "^3.18.1"
+    },
+    "peerDependencies": {
+      "react": "^18.2.0",
+      "@deepseek-ai/dsh-home-paths": ">=0.1.0-rc.6",
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6"
+    },
+    "engines": {
+      "node": ">=20.18"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-status-rotator",
+    "version": "0.9.1",
+    "filename": "dsh-status-rotator-0.9.1.tgz",
+    "sha256": "632723d46aae2d34fda28e588f21c628993c6f34afb4b354319661e3b13165a7",
+    "size": 67943,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "a2b2b10db4b81006a3e7ee7bbed43087063be92cd4fa61bd7b71db9ccaf140d7"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-think-zh-expand-eac",
+    "version": "1.0.1",
+    "filename": "dsh-think-zh-expand-eac-1.0.1.tgz",
+    "sha256": "9fe8c329fe2714d1d744b0b8e278e5d5c29cfe874a3af3aa77fb57bf60a89b66",
+    "size": 13626,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "ae38c65a2a4f2b71a58e1fe2d2c0664ccdeee8a77d51478249c14689f8409bc3"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "cordis": "^4.0.0-rc.8",
+      "@deepseek-ai/dsh-system-prompt": ">=0.1.1-rc.1"
+    },
+    "engines": {
+      "node": ">=22"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-undo-savepoint",
+    "version": "0.3.4",
+    "filename": "dsh-undo-savepoint-0.3.4.tgz",
+    "sha256": "798b1ef39e8fc04e50ca0d3da335246d471aab59977ac60c2315ccc56e250d5a",
+    "size": 42722,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "31f62137ae798777cfa6b1a6b663fc0eeada4469c36159e90e2f8b5752040b35"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {
+      "dsh": ">=0.0.1",
+      "node": ">=20.0.0"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-unified-market",
+    "version": "0.3.1",
+    "filename": "dsh-unified-market-0.3.1.tgz",
+    "sha256": "6a1f63fbe839cb6a3e68aa6ed1355ee652c0112551c88b3f233e415a807a8d37",
+    "size": 96457,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "8ffb4d253eabe51a1b486c00cc022ca2a8e444c103d34476f9df5fb85066ba3b"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {
+      "node": ">=18.18"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-viewport-lock",
+    "version": "1.0.1",
+    "filename": "dsh-viewport-lock-1.0.1.tgz",
+    "sha256": "b523935cd0fb85444441a8995743b2e9fa3fe52e9fc8c287637817fcc3638a05",
+    "size": 5001,
+    "declaredLicense": "MIT",
+    "private": true,
+    "attributionFiles": [],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-web-mobile-fix",
+    "version": "1.0.1",
+    "filename": "dsh-web-mobile-fix-1.0.1.tgz",
+    "sha256": "8b5810c55c18edf5641f247db3eca3e1d7d0a57d8984d53870ec0c6b6fb9191a",
+    "size": 5575,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "21d33e67ce00d655c287222fd4080668d23a2196acab0c5f2864eba285e2fdcc"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-webui-prompt-optimizer",
+    "version": "0.1.0",
+    "filename": "dsh-webui-prompt-optimizer-0.1.0.tgz",
+    "sha256": "ffbeaffe931964b04f0881a08ccd7cd01c34679197e01760fbcaed90d444a1b3",
+    "size": 36625,
+    "declaredLicense": "BSD-3-Clause",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "d1829f28f3c6dce9fce2fdf6813e8abf6c26fee63f8d720bd4d37da49c6b0bcc"
+      },
+      {
+        "path": "package/NOTICE.md",
+        "sha256": "ae0d385a004fe9a7a3f45b1e274eb964230abd4377c99ec3d56947b5388f6d12"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+      "@deepseek-ai/cordis": ">=4.0.0-rc <5",
+      "@deepseek-ai/dsh-client-ui-conversation": ">=0.0.1-rc <2",
+      "@deepseek-ai/dsh-client-ui-model-selection": ">=0.0.1-rc <2",
+      "@deepseek-ai/dsh-client-ui-primitives": ">=0.0.1-rc <2",
+      "@deepseek-ai/dsh-client-ui-settings": "*",
+      "@deepseek-ai/dsh-client-ui-slots": ">=0.0.1-rc <2",
+      "@deepseek-ai/dsh-llm": ">=0.0.1-rc <2",
+      "react": ">=18",
+      "react-dom": ">=18"
+    },
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "dsh-whale-widget",
+    "version": "0.2.10",
+    "filename": "dsh-whale-widget-0.2.10.tgz",
+    "sha256": "8de4a9a01d2edcccb7ecf67dea87df677e634db532d8526f78f6ef9ec7067160",
+    "size": 1950412,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "a1e46acc1349f63e9d1e26a8a600823e010fedcaff20fc1eceb6564432bf829b"
+      }
+    ],
+    "dependencies": {},
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "meow-smooth",
+    "version": "0.5.0",
+    "filename": "meow-smooth-0.5.0.tgz",
+    "sha256": "e91b76c02bab1dc72219de6ac540a6804fee3eb5f41edd612db77ca0f7fda0f4",
+    "size": 150514,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "dde77e2e89c736c8d87ae55b75972ea38c459f5f7af24266264644c1335897b0"
+      }
+    ],
+    "dependencies": {
+      "web-push": "^3.6.7"
+    },
+    "peerDependencies": {},
+    "engines": {},
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  },
+  {
+    "name": "picturereader",
+    "version": "3.3.1",
+    "filename": "picturereader-3.3.1.tgz",
+    "sha256": "6db6246aba1cdaa5a426df6353c6bbc983549d531b99ae012897dfdc5bcf0157",
+    "size": 133657,
+    "declaredLicense": "MIT",
+    "private": false,
+    "attributionFiles": [
+      {
+        "path": "package/LICENSE",
+        "sha256": "ea60db35eeb7f0c6d9ddae43136ba7b2eb80a145eb1909a9c84bfc6bbfc79ff7"
+      }
+    ],
+    "dependencies": {
+      "jpeg-js": "^0.4.4",
+      "omggif": "^1.0.10",
+      "pngjs": "^7.0.0"
+    },
+    "peerDependencies": {
+      "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6",
+      "@deepseek-ai/schemastery": ">=3.18.1",
+      "@deepseek-ai/dsh-llm": ">=0.1.0-rc.6"
+    },
+    "engines": {
+      "node": "^22.19 || >=24"
+    },
+    "platforms": {
+      "os": [],
+      "cpu": []
+    },
+    "bundledNodeModules": false,
+    "bundlePatch": "./cordis.patch.yml"
+  }
+]

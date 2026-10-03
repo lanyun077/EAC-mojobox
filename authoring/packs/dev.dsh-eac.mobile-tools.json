@@ -1,0 +1,32 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.mobile-tools",
+  "name": "DSH 移动会话包",
+  "version": "0.1.0",
+  "description": "Meow Smooth 移动布局、输入与通知，配合会话整理和快照恢复。只选一种移动覆盖；远程通道、HTTPS 和通知订阅需由用户配置，包不创建连接。作者移动实测基线为旧内核，本 RC2 组合未实测。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "requires": {
+    "dsh": "0.2.0-rc.2"
+  },
+  "plugins": [
+    {
+      "ref": "meow-smooth",
+      "version": "0.8.1"
+    },
+    {
+      "ref": "dsh-session-manager",
+      "version": "0.6.2"
+    },
+    {
+      "ref": "dsh-undo-savepoint",
+      "version": "0.4.10"
+    }
+  ],
+  "conflicts": [
+    "dsh-web-mobile-fix",
+    "dsh-viewport-lock"
+  ],
+  "overrides": [],
+  "changelog": "首版；基于 EAC/AIO 0.1.7 的逐项筛选和公开新版来源。已核验选中 npm 归档的身份/摘要和官方 RC2 peer 规则；未安装运行。conflicts 同时包含本作者的组合互斥策略，不代表所有条目都已有运行故障证据。来源、条件及去留理由见 authoring/suite-curation.json、authoring/curation-sources.json 和 docs/suite-curation.md。MIT 仅覆盖自编清单。"
+}

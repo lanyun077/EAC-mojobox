@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-dream-skin",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "15aa08f54437e24ab58e392a844015933292c7414d5ac87e60c7a960392d51bc",
+  "appearance": {
+    "kind": "theme",
+    "previews": [
+      "https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/d8fbc836373bf373953b9e720f085f5920356c5f/docs/screenshots/preview.png"
+    ],
+    "notes": "采用上游官方主题 API 与独立插件入口，不声明 EAC loader 依赖。用户导入壁纸和主题的素材许可各自保留；全局 token、强调色及背景与其他外观插件的组合未验证。"
+  }
+}

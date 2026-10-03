@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.skin-opencode-palette",
+  "name": "OpenCode 护眼调色板",
+  "version": "0.1.0",
+  "description": "将上游维护的 38 款 OpenCode 配色提供给 DSH 主题系统，适合作为长时间编程的配色基底。具体主题数、支持范围和更新以所引用插件版本为准。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "plugins": [
+    {
+      "ref": "dsh-opencode-palette",
+      "version": "2.0.10"
+    }
+  ],
+  "conflicts": [],
+  "overrides": [],
+  "changelog": "首版：由 DSH-EAC 编写薄包清单，上游插件独立发布；来源快照与选型依据见 authoring/ 和 docs/ecosystem-curation.md。"
+}

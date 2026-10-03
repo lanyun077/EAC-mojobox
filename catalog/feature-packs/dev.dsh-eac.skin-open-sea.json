@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-open-sea",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "4713f8264b56554418dc49fefadeaefd259e254628bf1ec1af3e65ce8d47fcd6",
+  "appearance": {
+    "kind": "ui-skin",
+    "previews": [
+      "https://raw.githubusercontent.com/d-dev0101/open-sea-skin/6a7d93ecd33a159cdf6c72c4c4282403f6d0c17b/docs/marketplace/open-sea-harness-cover.png"
+    ],
+    "notes": "采用上游独立 DSH 插件入口，不依赖其 Chrome/Edge 扩展，也不声明 EAC loader 依赖。预览来自固定仓库提交；不是 npm 产物实测。WebGPU/GPU 支持与回退由上游及宿主负责。全局背景与玻璃样式的叠加未验证。"
+  }
+}

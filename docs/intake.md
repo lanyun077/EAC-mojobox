@@ -93,7 +93,8 @@ npm run check:skin-prompts
 
 `fixtures/intake/` 中的样本使用不存在的测试插件，只用于正反测试。测试会在临时目录创建 ZIP 和收录记录，检查下载字节、摘要、失败保留已有输出和删除收录后的清理。
 
-正式 `catalog/feature-packs/` 当前为空，这是有效状态。候选目录不自动公开；测试通过不自动把样本提升为正式内容。
+正式 `catalog/feature-packs/` 允许为空，这是有效状态。当前已收录 DSH-EAC 自制的功能与皮肤薄包，
+其作者清单见 [`authoring/`](../authoring/README.md)。候选目录不自动公开；测试通过不自动把样本提升为正式内容。
 
 ## 皮肤资料包来源
 

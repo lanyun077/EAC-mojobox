@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.office-base",
+  "name": "DSH 文档办公包",
+  "version": "0.2.0",
+  "description": "市场、Univer Office、GenUI、文件工作区、上下文观测、会话整理、节点导航与恢复。Office 成品约 47 MiB 且需本机 Chromium/网关；不进入必备或减重版，不和 Visualize 同包。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "requires": {
+    "dsh": "0.2.0-rc.2"
+  },
+  "plugins": [
+    {
+      "ref": "dshmarket",
+      "version": "1.66.8"
+    },
+    {
+      "ref": "dsh-context",
+      "version": "0.62.3"
+    },
+    {
+      "ref": "dsh-session-manager",
+      "version": "0.6.2"
+    },
+    {
+      "ref": "dsh-undo-savepoint",
+      "version": "0.4.10"
+    },
+    {
+      "ref": "dsh-better-sidebar",
+      "version": "0.24.1"
+    },
+    {
+      "ref": "@vlln/dsh-navbar",
+      "version": "0.4.0"
+    },
+    {
+      "ref": "dsh-univer-office",
+      "version": "0.3.6"
+    },
+    {
+      "ref": "@changfenhuang/dsh-genui",
+      "version": "0.11.3"
+    }
+  ],
+  "conflicts": [
+    "dsh-unified-market",
+    "dsh-find-plugin",
+    "@nagi-ovo/dsh-visualize",
+    "dsh-drag-and-drop",
+    "dsh-file-drop-eac"
+  ],
+  "overrides": [],
+  "changelog": "0.2.0：扩充已有基底；基于 EAC/AIO 0.1.7 的逐项筛选和公开新版来源。已核验选中 npm 归档的身份/摘要和官方 RC2 peer 规则；未安装运行。conflicts 同时包含本作者的组合互斥策略，不代表所有条目都已有运行故障证据。来源、条件及去留理由见 authoring/suite-curation.json、authoring/curation-sources.json 和 docs/suite-curation.md。MIT 仅覆盖自编清单。"
+}

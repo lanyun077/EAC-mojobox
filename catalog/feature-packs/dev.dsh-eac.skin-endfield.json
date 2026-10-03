@@ -1,0 +1,17 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.skin-endfield",
+  "version": "0.1.0",
+  "category": "appearance",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "93bda44e79d64b097d99f571fc1ab54fa226b8a5880e5ad8714e4b527b8dd95c",
+  "appearance": {
+    "kind": "theme",
+    "previews": [
+      "https://raw.githubusercontent.com/ymh0000123/dsh-theme-endfield/a9f79fd197b7c2530a59ab0c4133169db5318784/assets/screenshots1.webp"
+    ],
+    "notes": "采用上游独立插件入口，不声明 EAC loader 依赖。原创代码 MIT；终末地相关素材、字标和官网参考内容不在 MIT 范围，权利归原权利人，用于学习、展示与非商业用途。可选音频通知会调用系统播放器；全局样式与其他皮肤组合未验证。"
+  }
+}

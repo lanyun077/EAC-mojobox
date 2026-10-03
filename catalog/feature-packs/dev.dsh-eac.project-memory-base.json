@@ -1,0 +1,10 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.project-memory-base",
+  "version": "0.2.0",
+  "category": "function",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "b75eae394663c64d9a58ecb30b283e47d6f5792aa15d18084935f520689fa5da"
+}

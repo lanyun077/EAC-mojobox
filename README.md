@@ -12,8 +12,12 @@ Mojobox 把分散在 npm、GitHub Release 和开发者仓库中的插件、功�
 - 当前输入格式是官方 EAC Feature Pack v1 的薄 `.dshpack`。
 - `function`、`appearance` 和 `workflow` 可以进入收录校验；公开分发范围由 [`distribution.json`](distribution.json) 控制。
 - 皮肤与外观包只收录来源、组件、依赖、冲突和归档信息，不开发桌面端加载器。
-- 正式 `catalog/feature-packs/` 当前为空，演示样本与正式内容完全分离。
+- 正式目录现有 14 个功能包和 8 个独立皮肤包，演示样本与正式内容完全分离。
+- 功能包包含 4 项必备组合、7 项日常减重版和会话、开发、记忆、团队、研究、办公、视觉、移动、迁移分类；原 7 个功能基底已升级至 `0.2.0`，Power Toolbox 扩充到 12 项。
 - 已从 `dsh-skin-prompt-packages` 固定提交收录十套 `skin-prompt-package-v1` 皮肤资料；它们用于 AI 设计和复刻，不是可安装插件。
+- 外观包与皮肤包是同一分类：网站皮肤包页统一展示 8 个皮肤归档和 10 套 Prompt 资料，并保留各自的下载方式；功能包页只展示功能组合。
+- 自制包清单与重复打包命令位于 [`authoring/`](authoring/README.md)；选型参考[首批收录说明](docs/ecosystem-curation.md)与[插件常客记录](docs/plugin-shortlist.md)。
+- 已只读解析 EAC/AIO 完整整合包 `dsh-plugin-suite@0.1.7`，核验 69 个内嵌组件并保存[来源候选与搭配分析](docs/eac-plugin-suite-analysis.md)；已完成[逐项筛选、减重与分类组合](docs/suite-curation.md)，上游原始 `.tgz` 尚未进入正式下载。
 
 “结构已检验”不等于“宿主已安装”或“运行兼容”。运行证据必须绑定具体宿主、加载器、版本和测试环境。
 

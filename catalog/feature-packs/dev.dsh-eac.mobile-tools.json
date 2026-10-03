@@ -1,0 +1,10 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.dsh-eac.mobile-tools",
+  "version": "0.1.0",
+  "category": "function",
+  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "sha256": "65f128f25449a908ec15720c17f6041f19a3568f1ed05b0c7f76f9bc18700e95"
+}

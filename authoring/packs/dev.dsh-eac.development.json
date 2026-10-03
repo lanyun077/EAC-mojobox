@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "id": "dev.dsh-eac.development",
+  "name": "DSH 开发工作台包",
+  "version": "0.1.0",
+  "description": "市场、可编辑文件工作区、Git/AI 改动视图、上下文观测、会话整理、节点导航与恢复组合。用新版侧栏与 Undo 取代 EAC 私有投影/审核依赖；不复制桌面壳或承诺消息历史回退。",
+  "author": "DSH-EAC",
+  "license": "MIT",
+  "requires": {
+    "dsh": "0.2.0-rc.2"
+  },
+  "plugins": [
+    {
+      "ref": "dshmarket",
+      "version": "1.66.8"
+    },
+    {
+      "ref": "dsh-context",
+      "version": "0.62.3"
+    },
+    {
+      "ref": "dsh-session-manager",
+      "version": "0.6.2"
+    },
+    {
+      "ref": "dsh-undo-savepoint",
+      "version": "0.4.10"
+    },
+    {
+      "ref": "dsh-better-sidebar",
+      "version": "0.24.1"
+    },
+    {
+      "ref": "@vlln/dsh-navbar",
+      "version": "0.4.0"
+    }
+  ],
+  "conflicts": [
+    "dsh-unified-market",
+    "dsh-find-plugin",
+    "dsh-drag-and-drop",
+    "dsh-file-drop-eac"
+  ],
+  "overrides": [],
+  "changelog": "首版；基于 EAC/AIO 0.1.7 的逐项筛选和公开新版来源。已核验选中 npm 归档的身份/摘要和官方 RC2 peer 规则；未安装运行。conflicts 同时包含本作者的组合互斥策略，不代表所有条目都已有运行故障证据。来源、条件及去留理由见 authoring/suite-curation.json、authoring/curation-sources.json 和 docs/suite-curation.md。MIT 仅覆盖自编清单。"
+}

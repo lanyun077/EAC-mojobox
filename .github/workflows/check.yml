@@ -18,6 +18,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: 复核自制包清单与归档字节
+        run: node authoring/build.mjs --check
       - run: npm test
       - run: npm run build
         env:
