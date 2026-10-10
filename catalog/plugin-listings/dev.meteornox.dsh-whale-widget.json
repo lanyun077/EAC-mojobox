@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.meteornox.dsh-whale-widget",
+  "packageName": "dsh-whale-widget",
+  "name": "余额小鲸鱼挂件",
+  "version": "0.3.18",
+  "summary": "为 Web 界面提供余额、消耗、峰谷价格和可定制媒体挂件。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-whale-widget/0.3.18",
+    "repository": "https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "余额读取与外部服务访问由宿主决定；包内媒体许可需下游在使用时独立核对。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-whale-widget/-/dsh-whale-widget-0.3.18.tgz",
+    "sha256": "81045aa394d3dadd5100d52159697e8381f82f63d65f4d2c57029b558dcc0efd",
+    "size": 4900866
+  }
+}

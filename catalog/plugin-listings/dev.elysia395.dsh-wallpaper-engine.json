@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.elysia395.dsh-wallpaper-engine",
+  "packageName": "dsh-plugin-wallpaper-engine",
+  "name": "Wallpaper Engine 背景",
+  "version": "1.2.0",
+  "summary": "在 DSH Web 界面渲染本地 Wallpaper Engine 场景、网页与视频背景。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.2.0",
+    "repository": "https://github.com/elysia395/dsh-wallpaper-engine"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "作者描述要求桌面版 >=0.2.0-rc.1 与 dsh-better-sidebar >=0.19.0；未转换为包内不存在的 dsh.compatibility 声明，壁纸素材另有许可。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.2.0.tgz",
+    "sha256": "5562b2f99702a0b54cd8c683b2a3996d99dcdbf2a0571a2c7e9bd3839ef2c49e",
+    "size": 1585336
+  }
+}

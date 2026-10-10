@@ -1,0 +1,8 @@
+{
+  "formatVersion": 1,
+  "id": "dev.mojobox.intake-test",
+  "name": "Plugin version is not pinned",
+  "version": "1.0.0",
+  "requires": { "dsh": "0.2.0-rc.2" },
+  "plugins": [{ "ref": "github:example/skins", "version": "^1.0.0" }]
+}

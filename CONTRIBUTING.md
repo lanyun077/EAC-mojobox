@@ -4,10 +4,15 @@
 Host Adapter 时再读[架构说明](docs/architecture.md)。使用 coding agent 时先让它读取
 [AGENTS.md](AGENTS.md)。
 
+外部作者首次收录请直接阅读[作者提交与审核指南](docs/community-submissions.md)，其中包含
+各类提交材料、标签/介绍/预览图规范、独立上游来源、PR 验证与维护者合并要求。
+不会自动合并外部内容；截图既可随 PR 上传，也可引用固定 HTTPS 原图。
+
 当前主线为收纳、检验、展示和下载。新收录按[收录规范](docs/intake.md)提交
 `catalog/feature-packs/<id>.json` 与 `artifacts/<id>-<version>.dshpack`，运行 `npm test`、
 `npm run build` 和 `npm run verify:downloads`。不要求先完成宿主安装；运行证据只能来自真实测试。
-以下插件与 Pack/Lock 流程为历史维护参考，不会进入默认网站。不要新增格式桥接或安装逻辑。
+新增独立插件按[轻量收录规范](docs/plugin-intake.md)进入网站；以下旧 Manifest 与 Pack/Lock
+流程仅用于历史维护。Skill 暂只预留分类，不收录或安装。不要新增格式桥接或安装逻辑。
 
 ## 1. 开发环境
 
@@ -30,6 +35,13 @@ docs: 完善 Host Adapter 接入说明
 
 ### 插件记录
 
+新增收录使用 `catalog/plugin-listings/<id>.json`；需要下载时附
+`artifacts/plugins/<id>-<version>.tgz`。只交轻量信息卡也可以先展示来源，未知兼容和冲突
+必须明确标记。完成后运行 `npm test`、`npm run build`、`npm run verify:downloads`。
+字段与最小示例见[插件轻量收录](docs/plugin-intake.md)，不要求作者生成额外运行时 Manifest。
+
+以下步骤仅用于维护已有 legacy 记录：
+
 1. 在 `catalog/plugins/<stable-id>.json` 添加或更新记录。
 2. 优先采用作者 Manifest；目录代维护记录使用 `registry-maintained`。
 3. 只填写可从源码、包元数据或上游文档核验的事实。
@@ -43,8 +55,8 @@ Manifest 任意字节变化都会改变 `manifestDigest`。重新生成引用它
 
 ### Pack 与 Pack Lock
 
-> 本节描述 legacy Mojobox Pack/Lock。MVP 正式功能包应按 Feature Pack v1 准备归档，并生成
-> 宿主使用的 `packs-index.json`；具体验收见 [MVP 开发文档](docs/mvp-development.md)。
+> 本节描述 legacy Mojobox Pack/Lock。当前功能包与外观包应按 [收录规范](docs/intake.md)
+> 提交薄 Feature Pack v1 与原始归档，不要求先接通宿主索引或完成安装。
 
 作者维护 Pack，工具生成对应 Lock：
 
@@ -65,8 +77,9 @@ npm run build
 ```
 
 锁定命令不联网、不升级组件；artifact 摘要由已审阅目录提供，实际下载字节由构建校验。
-构建后可用 `npm run inspect:pack -- <下载文件.dshpack>` 独立检查归档；PR 和发布工作流也会
-检查生成的每个下载包。读取器核对格式、对象引用及摘要，不执行组件。
+构建后可用 `npm run inspect:pack -- <下载文件.dshpack>` 独立检查归档；本地验证与发布工作流
+检查生成的每个下载包。当前 PR 检查工作流已停用，请在 PR 中提供实际本地结果。
+读取器核对格式、对象引用及摘要，不执行组件。
 文件名必须与 ID 对应，组件不能重复。当前每个稳定 ID 只保存一个版本，不原地替换已经发布
 版本的内容。发布历史由版本发布保留。
 

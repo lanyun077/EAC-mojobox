@@ -1,0 +1,55 @@
+name: 提交包来源 / 收录咨询
+description: 提供独立插件、功能包、皮肤包或 Prompt 资料的来源；正式发布仍需 PR 和审核。
+title: "[收录] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        正式贡献请按 [作者提交指南](https://github.com/DSH-EAC/dsh-mojobox/blob/main/docs/community-submissions.md) 创建 PR。
+        本表用于候选来源或格式咨询，不会自动下载、安装或发布。不要填写密钥或私人资料。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 提交类型
+      options:
+        - 独立插件
+        - 功能整合包
+        - 皮肤 / 外观归档
+        - 皮肤 Prompt 资料
+        - 其他格式（先讨论）
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 上游来源
+      description: 提供仓库或发行页 HTTPS 链接，尽量包含固定提交或版本。
+    validations:
+      required: true
+  - type: input
+    id: identity
+    attributes:
+      label: 包 ID 与版本
+    validations:
+      required: true
+  - type: textarea
+    id: permission
+    attributes:
+      label: 作者与许可
+      description: 是否为作者或获得代提交授权？代码、素材和截图各自采用什么许可？
+    validations:
+      required: true
+  - type: textarea
+    id: presentation
+    attributes:
+      label: 简介、包含内容、标签与预览图
+      description: 可以附真实截图；请说明对应版本与主题并清除私人信息。
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: 兼容声明与已知限制
+      description: 声明宿主 / loader 版本、已知冲突、真实测试结果；未测试请直说。
+    validations:
+      required: true

@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.yyh-001.dsh-meme",
+  "packageName": "dsh-meme",
+  "name": "表情包工具",
+  "version": "0.1.44",
+  "summary": "提供图库管理、搜图、学习图片与 Web/QQ 发图能力。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-meme/0.1.44",
+    "repository": "https://github.com/yyh-001/dsh-meme"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "外部图库和图片的许可不由软件 MIT 许可替代；QQ 通道及外部资源需独立配置。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-meme/-/dsh-meme-0.1.44.tgz",
+    "sha256": "511ef7b213d3cc2b627bfb5d8cc1f02d7e590f1c49e91f56c733553cf9a00705",
+    "size": 4395433
+  }
+}

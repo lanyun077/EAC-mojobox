@@ -1,0 +1,12 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "org.example.tools",
+  "packageName": "@example/tools",
+  "name": "Example tools",
+  "version": "1.0.0",
+  "summary": "Test fixture only",
+  "source": { "url": "https://example.org/releases/1.0.0" },
+  "license": null,
+  "compatibility": { "dsh": "*", "basis": "unknown" },
+  "conflicts": null
+}

@@ -6,19 +6,22 @@ import { promisify } from 'node:util'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import yauzl from 'yauzl'
+import semver from 'semver'
+import { assertHttps } from './preview-images.mjs'
 
 const ajv = new Ajv({ allErrors: true })
 addFormats(ajv)
 const checkManifest = ajv.compile(JSON.parse(await readFile(new URL('../vendor/eac/feature-pack-pack.schema.json', import.meta.url))))
 const checkRecord = ajv.compile(JSON.parse(await readFile(new URL('../schemas/intake.schema.json', import.meta.url))))
+const legacyArchives = JSON.parse(await readFile(new URL('../policies/intake-legacy.json', import.meta.url)))
 export const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 
 export function validateRecord(record) {
   if (!checkRecord(record)) throw new Error(`Invalid intake record: ${ajv.errorsText(checkRecord.errors)}`)
-  const sources = [record.source, record.appearance?.loader?.source, ...(record.appearance?.previews || [])].filter(Boolean)
+  const sources = [record.source, record.appearance?.loader?.source, ...(record.links || []).map(link => link.url),
+    ...[...(record.previews || []), ...(record.appearance?.previews || [])].filter(url => !url.startsWith('previews/'))].filter(Boolean)
   for (const source of sources) {
-    const url = new URL(source)
-    if (url.username || url.password) throw new Error('Source URL must not contain credentials')
+    assertHttps(source)
   }
 }
 
@@ -66,16 +69,28 @@ export async function inspectFeaturePack(bytes, expectedDigest) {
     if (!manifest.plugins?.length) throw new Error('Function pack must declare at least one plugin')
     if (manifest['x-eac'] && (manifest['x-eac'].status !== 'publishable' || manifest['x-eac'].conflictsPending)) throw new Error('Draft or unresolved conflicts cannot be admitted')
     const refs = new Set()
-    for (const { ref } of manifest.plugins) {
+    for (const { ref, version } of manifest.plugins) {
       if (!/^(?:builtin:[A-Za-z0-9][A-Za-z0-9._-]*|github:[A-Za-z0-9][A-Za-z0-9._-]*\/[A-Za-z0-9][A-Za-z0-9._-]*|(?:@[a-z0-9-]+\/)?[a-z0-9][a-z0-9._-]*)$/.test(ref)) throw new Error(`Unsupported plugin reference: ${ref}`)
       if (refs.has(ref)) throw new Error(`Duplicate plugin reference: ${ref}`)
       refs.add(ref)
+      if (!ref.startsWith('builtin:') || version !== undefined) {
+        const parsed = semver.parse(version)
+        const exact = parsed && parsed.version + (parsed.build.length ? `+${parsed.build.join('.')}` : '')
+        if (!exact || exact !== version) throw new Error(`Plugin must declare an exact SemVer version: ${ref}`)
+      }
     }
+    const range = manifest.requires?.dsh
+    const legacy = range === undefined && legacyArchives.some(entry => entry.id === manifest.id && entry.version === manifest.version && entry.sha256 === sha256)
+    if (range === undefined && !legacy) throw new Error('Mojobox intake requires requires.dsh; unknown compatibility belongs in candidates')
+    if (range !== undefined && (!range.trim() || range.split('||').some(group => !group.trim()) || semver.validRange(range) === null)) throw new Error('requires.dsh must be a valid non-empty SemVer range')
+    const versionDeclarations = { policy: 'mojobox-intake-v1', kernel: legacy ? 'legacy-undeclared' : 'declared', plugins: 'exact-external', comparison: 'not-performed' }
+    const warnings = legacy ? ['Historical archive has no requires.dsh; compatibility is unknown. This exception applies only to these exact archive bytes.'] : []
     if (manifest.icon && manifest.icon !== 'icon.png') throw new Error('MVP icon must be root icon.png')
     if (Boolean(manifest.icon) !== files.has('icon.png')) throw new Error('Icon declaration and archive differ')
     if (contents.has('icon.png') && !contents.get('icon.png').subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) throw new Error('Invalid PNG signature')
     return { format: 'eac-feature-pack-v1', manifest, sha256, size: bytes.length,
-      checks: ['manifest-schema', 'archive-layout', 'archive-sha256'],
+      checks: ['manifest-schema', 'archive-layout', 'archive-sha256', 'manifest-plugin-versions', ...(legacy ? [] : ['manifest-requires-range'])],
+      versionDeclarations, warnings,
       runtime: 'not-tested', references: 'not-resolved' }
   } finally { zip.close() }
 }

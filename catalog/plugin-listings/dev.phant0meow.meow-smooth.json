@@ -1,0 +1,31 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.phant0meow.meow-smooth",
+  "packageName": "meow-smooth",
+  "name": "喵丝滑",
+  "version": "0.8.1",
+  "summary": "增强移动端输入、侧边栏手势和会话通知，可选 Web Push、webhook 与访问加速代理。",
+  "author": "Phant0Meow",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/meow-smooth/0.8.1",
+    "repository": "https://github.com/Phant0Meow/dsh-meow-smooth",
+    "commit": "7a32ebd8e0976172a68b4845f69926600fd89783"
+  },
+  "license": "MIT",
+  "compatibility": { "dsh": null, "basis": "unknown" },
+  "conflicts": null,
+  "limitations": [
+    "此发行 package.json 未声明精确内核兼容范围；README 提到 0.1.5，不将其扩写成通用范围。",
+    "与 dsh-web-mobile-fix 的移动端改动区域重叠，组合尚未测试；安装须保持包名 meow-smooth。",
+    "可选通知会联网，Web Push 需要 HTTPS 和授权；webhook、飞书转发、代理端口由用户另行配置，Mojobox 不启用这些服务。",
+    "包内含 prepare 脚本和 web-push 依赖；本次只读检查未执行脚本、安装依赖或验证运行。"
+  ],
+  "links": [{ "label": "EAC-Pack 发现来源", "url": "https://github.com/DSH-EAC/EAC-Pack/blob/ee159871e953f52dfe95d6259678bacf5ffe3272/catalog/eac.json" }],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/meow-smooth/-/meow-smooth-0.8.1.tgz",
+    "sha256": "42f38e0377971cbf777c7b8d211c1fc2124e43a2cbdd839c4e48fe2370204485",
+    "size": 209108
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.awesome-dsh-plugin.dsh-find-plugin",
+  "packageName": "dsh-find-plugin",
+  "name": "插件发现工具",
+  "version": "0.4.0",
+  "summary": "在会话中按 GitHub dsh-plugin 主题查找插件。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-find-plugin/0.4.0",
+    "repository": "https://github.com/awesome-dsh-plugin/dsh-find-plugin"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "搜索需要外部网络；星数排序不代表来源安全或兼容性已经验证。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-find-plugin/-/dsh-find-plugin-0.4.0.tgz",
+    "sha256": "39fc2dfd519b53bc71c9d4fb8cb7faa678d2c14ffb77c6df38daf0eedf0b56a0",
+    "size": 45308
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.qcytsn.dsh-dafeiyu",
+  "packageName": "dsh-dafeiyu",
+  "name": "原生大肥鱼桌面伴侣",
+  "version": "0.1.14",
+  "summary": "根据 DSH 会话事件驱动原生桌面伴侣。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-dafeiyu/0.1.14",
+    "repository": "https://github.com/QCYTSN/dsh-dafeiyu"
+  },
+  "license": "SEE LICENSE IN ASSET_LICENSE.md",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "原始发行超过 8 MiB；许可为 SEE LICENSE IN ASSET_LICENSE.md，素材授权未完成审核，仅收录来源。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ]
+}

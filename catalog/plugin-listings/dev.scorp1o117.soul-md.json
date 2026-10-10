@@ -1,0 +1,34 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.scorp1o117.soul-md",
+  "packageName": "dsh-soul-md",
+  "name": "Soul MD 人设与记忆",
+  "version": "0.9.0",
+  "summary": "管理人设卡和长期记忆，向提示词注入对应内容，并提供读取、更新记忆的工具。",
+  "author": "Scorp1o117",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-soul-md/0.9.0",
+    "repository": "https://github.com/Scorp1o117/dsh-soul-md"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": ">=0.2.0-rc.2 <0.3.0",
+    "basis": "author-declared",
+    "reference": "https://registry.npmjs.org/dsh-soul-md/-/dsh-soul-md-0.9.0.tgz"
+  },
+  "conflicts": null,
+  "limitations": [
+    "会写入人设、Profile 配置和记忆文件；下游需要明确用户授权及数据备份范围。",
+    "作者包声明 Web/Desktop、Node >=20.18，以及 dsh-tools、dsh-settings、dsh-home-paths 和 React peer；依赖尚未解析。",
+    "包内声明历史 0.1.x RC 不兼容；README 保留部分旧版安装和测试说明，以此发行的 package.json 声明为准。",
+    "来自 EAC-Pack 清单的 0.9.0，不覆盖我们既有薄包使用的 0.9.1；不自动追随 latest。"
+  ],
+  "links": [{ "label": "EAC-Pack 发现来源", "url": "https://github.com/DSH-EAC/EAC-Pack/blob/ee159871e953f52dfe95d6259678bacf5ffe3272/catalog/eac.json" }],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-soul-md/-/dsh-soul-md-0.9.0.tgz",
+    "sha256": "34e7b8ffb1e8111b50243ff50dc8943918da83607f343dd17fc749a7f5cd9c3b",
+    "size": 30798
+  }
+}

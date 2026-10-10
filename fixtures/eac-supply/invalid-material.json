@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "supply.eac/v1",
+  "sourceId": "dsh-eac.mojobox",
+  "sequence": 1,
+  "revision": "test-1",
+  "generatedAt": "2026-10-04T12:00:00Z",
+  "items": [
+    {
+      "type": "material",
+      "packageName": "org.example.test-only",
+      "version": "1.0.0",
+      "name": "Test fixture",
+      "summary": "Invalid installation claim.",
+      "source": { "url": "https://example.org/test-only", "commit": null },
+      "status": "active",
+      "runtime": "not-tested",
+      "installable": true
+    }
+  ]
+}

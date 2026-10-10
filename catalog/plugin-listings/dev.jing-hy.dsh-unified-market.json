@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.jing-hy.dsh-unified-market",
+  "packageName": "dsh-unified-market",
+  "name": "统一插件市场",
+  "version": "0.4.1",
+  "summary": "聚合插件目录与发行来源，提供宿主侧插件及功能包管理界面。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-unified-market/0.4.1",
+    "repository": "https://github.com/jing-hy/dsh-unified-market"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "该插件自身会安装、更新并修改宿主配置；Mojobox 只提供原始发行，未执行其安装逻辑。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-unified-market/-/dsh-unified-market-0.4.1.tgz",
+    "sha256": "21d0c6d52e37a828a6371df09f9cd1146cf8dbb8f50346136410fbfd20da7c27",
+    "size": 111762
+  }
+}

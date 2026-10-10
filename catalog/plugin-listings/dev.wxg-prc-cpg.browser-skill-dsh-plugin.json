@@ -1,0 +1,31 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.wxg-prc-cpg.browser-skill-dsh-plugin",
+  "packageName": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+  "name": "BrowserSkill 浏览器工具",
+  "version": "0.3.2",
+  "summary": "为 DSH 提供浏览网页、填写表单和截图等原生浏览器工具，并在 Web UI 展示浏览任务。",
+  "author": "Tencent BrowserSkill",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40wxg-prc-cpg%2Fbrowser-skill-dsh-plugin/0.3.2",
+    "repository": "https://github.com/Tencent/BrowserSkill"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "需要 BrowserSkill、Agent Windows、浏览器进程和宿主工具权限；Mojobox 不启动这些服务。",
+    "可能访问外部网站并写入浏览器会话，实际网络和权限策略由下游宿主决定。",
+    "宿主未安装、未运行；包名含 skill 只是插件自身内容，本轮不拆分或收录独立 Skill。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@wxg-prc-cpg/browser-skill-dsh-plugin/-/browser-skill-dsh-plugin-0.3.2.tgz",
+    "sha256": "3d466b7ad76a981930a2934a1f0d49e8c7e7317ef86c58831ca9aea45df9420d",
+    "size": 107246
+  }
+}

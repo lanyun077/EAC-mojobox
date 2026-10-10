@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.omdsh.dsh-better-sidebar",
+  "packageName": "dsh-better-sidebar",
+  "name": "增强侧边栏",
+  "version": "0.24.1",
+  "summary": "提供文件树、编辑器、变更、任务和侧边聊天，并为其他插件提供扩展接口。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-better-sidebar/0.24.1",
+    "repository": "https://github.com/omdsh-dev/DSH-better-sidebar"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "与宿主原有侧边栏或其他布局插件可能功能重叠；未做共存测试。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-better-sidebar/-/dsh-better-sidebar-0.24.1.tgz",
+    "sha256": "46f313070857dce91da74440659d070a393df1152e0f6183bdcbff855f557fd2",
+    "size": 3784101
+  }
+}

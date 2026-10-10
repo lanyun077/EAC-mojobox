@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EAC supply receipt v1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "sourceId", "sequence", "revision", "sourceCommit", "catalogUrl", "sha256", "size"],
+  "properties": {
+    "schemaVersion": { "const": "supply-receipt.eac/v1" },
+    "sourceId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,99}$" },
+    "sequence": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "revision": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$" },
+    "sourceCommit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "catalogUrl": { "type": "string", "format": "uri", "pattern": "^https://", "maxLength": 4096 },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "size": { "type": "integer", "minimum": 1, "maximum": 8388608 }
+  }
+}

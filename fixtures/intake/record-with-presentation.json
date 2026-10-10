@@ -1,0 +1,14 @@
+{
+  "format": "eac-feature-pack-v1",
+  "id": "dev.mojobox.intake-test",
+  "version": "1.0.0",
+  "category": "function",
+  "source": "https://example.org/test-only-release",
+  "author": "Mojobox test fixtures",
+  "license": "MIT",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "tags": ["development", "productivity"],
+  "introduction": "Synthetic author-provided introduction; not a production package.",
+  "links": [{ "label": "Author repository", "url": "https://github.com/example/test-only" }],
+  "previews": ["previews/dev.mojobox.intake-test/overview.png"]
+}

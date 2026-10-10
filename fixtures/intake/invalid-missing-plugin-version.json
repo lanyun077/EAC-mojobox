@@ -1,0 +1,8 @@
+{
+  "formatVersion": 1,
+  "id": "dev.mojobox.intake-test",
+  "name": "Missing plugin version",
+  "version": "1.0.0",
+  "requires": { "dsh": "0.2.0-rc.2" },
+  "plugins": [{ "ref": "@example/test-only" }]
+}

@@ -12,6 +12,25 @@
     "author": { "type": "string", "minLength": 1, "maxLength": 128 },
     "license": { "type": "string", "minLength": 1, "maxLength": 64 },
     "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "tags": {
+      "type": "array", "maxItems": 12, "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 32, "pattern": "\\S" }
+    },
+    "introduction": { "type": "string", "minLength": 1, "maxLength": 6000, "pattern": "\\S" },
+    "links": {
+      "type": "array", "maxItems": 12, "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["label", "url"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S" },
+          "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+        }
+      }
+    },
+    "previews": {
+      "type": "array", "maxItems": 16, "uniqueItems": true,
+      "items": { "$ref": "#/definitions/preview" }
+    },
     "appearance": {
       "type": "object",
       "additionalProperties": false,
@@ -41,10 +60,19 @@
         "previews": {
           "type": "array",
           "maxItems": 16,
-          "items": { "type": "string", "format": "uri", "pattern": "^https://" }
+          "items": { "$ref": "#/definitions/preview" }
         },
         "notes": { "type": "string", "maxLength": 1000 }
       }
+    }
+  },
+  "definitions": {
+    "preview": {
+      "type": "string",
+      "anyOf": [
+        { "format": "uri", "pattern": "^https://" },
+        { "pattern": "^previews/[a-z0-9][a-z0-9._-]*/[a-z0-9][a-z0-9._-]*\\.(png|jpe?g|webp)$" }
+      ]
     }
   },
   "allOf": [

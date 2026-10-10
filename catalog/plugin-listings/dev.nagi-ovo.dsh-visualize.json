@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.nagi-ovo.dsh-visualize",
+  "packageName": "@nagi-ovo/dsh-visualize",
+  "name": "交互式可视化输出",
+  "version": "0.1.4",
+  "summary": "把模型的 visualize 调用渲染为对话内的图表、模拟器、比较面板和交互式界面。",
+  "author": "Nagi-ovo",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40nagi-ovo%2Fdsh-visualize/0.1.4",
+    "repository": "https://github.com/Nagi-ovo/dsh-visualize",
+    "commit": "db54992331d98af68390796d0de4b57bc76453ca"
+  },
+  "license": "BSD-3-Clause",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "依赖 DSH 文件、LLM、会话、工具和沙箱相关 peer；依赖未解析。",
+    "交互式内容会在 Web 对话中渲染，安全边界和资源消耗由下游宿主决定。",
+    "宿主未安装、未运行；与其他对话渲染插件的组合尚未验证。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@nagi-ovo/dsh-visualize/-/dsh-visualize-0.1.4.tgz",
+    "sha256": "b489813c8774ec495c7b3707fb6e231690b180d219fb04068dd8b8f2f3540eeb",
+    "size": 963881
+  }
+}

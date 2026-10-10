@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.jing-hy.computer-user",
+  "packageName": "computer-user",
+  "name": "电脑操作工具",
+  "version": "0.3.7",
+  "summary": "为 DSH 提供读屏、鼠标和键盘操作工具。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/computer-user/0.3.7",
+    "repository": "https://github.com/jing-hy/computer-user"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "作者说明面向 Windows，需配合 picturereader；会操作真实桌面，权限与确认由宿主负责。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/computer-user/-/computer-user-0.3.7.tgz",
+    "sha256": "06c4a83366686a7c24d4b08f86adf8c374bc7c71534befdb9a9b6dc14b60f444",
+    "size": 42383
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "scope": "Fixed npm releases; original SHA-512 checked against registry, downloaded software licenses reviewed for redistributed archives. No installation or dependency resolution.",
+  "items": [
+    {
+      "id": "dev.jing-hy.picturereader",
+      "packageName": "picturereader",
+      "version": "3.3.3",
+      "source": "https://registry.npmjs.org/picturereader/3.3.3",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/picturereader/-/picturereader-3.3.3.tgz",
+        "integrity": "sha512-DG8e+nYwdh4d3YaH55wf8pAgXtAaRBkrT3+1t6M7AdZmi+DGkBY4upm/v+YiuVzhyyabJAg5nlwAJjP1eTb1nw==",
+        "size": 137069
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.jing-hy.computer-user",
+      "packageName": "computer-user",
+      "version": "0.3.7",
+      "source": "https://registry.npmjs.org/computer-user/0.3.7",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/computer-user/-/computer-user-0.3.7.tgz",
+        "integrity": "sha512-5cQupmoRfQbtkfWU+5/+VPHyh4L4o8S2m6bEd+PzWhbAXWLR/IJoUqwapps0BsNzJklFcOOsoR/WJEoZ15DegQ==",
+        "size": 42383
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.omdsh.dsh-better-sidebar",
+      "packageName": "dsh-better-sidebar",
+      "version": "0.24.1",
+      "source": "https://registry.npmjs.org/dsh-better-sidebar/0.24.1",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-better-sidebar/-/dsh-better-sidebar-0.24.1.tgz",
+        "integrity": "sha512-X5tdu07Ub0isxruG559o46891F7MjxM+CzR6QoGpHZtN5J8gz6FA8Dq632lLI77c4IjL2GP+N6PuWaDnoKPuPQ==",
+        "size": 3784101
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.pc2005-cloud.dsh-pet",
+      "packageName": "dsh-pet",
+      "version": "0.3.1",
+      "source": "https://registry.npmjs.org/dsh-pet/0.3.1",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-pet/-/dsh-pet-0.3.1.tgz",
+        "integrity": "sha512-7K8jDdoIT9nCX6HN0xhdcdOVAtSygSArE+zAWSBUfivC+gs6k9Szl7T8ozHfPs/QzOg45YRLLWvZVNZZfewcyQ==",
+        "size": 62222739
+      },
+      "redistribution": "source-only",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.meteornox.dsh-whale-widget",
+      "packageName": "dsh-whale-widget",
+      "version": "0.3.18",
+      "source": "https://registry.npmjs.org/dsh-whale-widget/0.3.18",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-whale-widget/-/dsh-whale-widget-0.3.18.tgz",
+        "integrity": "sha512-2RMevYiKTa2P+FzLutXlpTmQ9coWRbRQ7eG1b07MbkxB1HXXWbN/lqn0MZgDu49AILeJqmGivwB0S0H09pc9xQ==",
+        "size": 4900866
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.qcytsn.dsh-dafeiyu",
+      "packageName": "dsh-dafeiyu",
+      "version": "0.1.14",
+      "source": "https://registry.npmjs.org/dsh-dafeiyu/0.1.14",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-dafeiyu/-/dsh-dafeiyu-0.1.14.tgz",
+        "integrity": "sha512-OUqstNNKVVy+Oz/fZv4x5Dm7TVuMfEFii0DKtC3/S9bkej7MDve7R6bJVBIX6FKdXNwn+c6P46z1IGNLAR6nGg==",
+        "size": 167871834
+      },
+      "redistribution": "source-only",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.jing-hy.dsh-unified-market",
+      "packageName": "dsh-unified-market",
+      "version": "0.4.1",
+      "source": "https://registry.npmjs.org/dsh-unified-market/0.4.1",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-unified-market/-/dsh-unified-market-0.4.1.tgz",
+        "integrity": "sha512-j2CULnGwYV9/89e6SgcE+gVTuCzKvdyN4qwHoC0JRfTwQd7gsOcMjR1pgbAK9b8ON7TJ3878pdgEFZ2+HQB2EA==",
+        "size": 111762
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.omdsh.dsh-drag-and-drop",
+      "packageName": "dsh-drag-and-drop",
+      "version": "0.1.6",
+      "source": "https://registry.npmjs.org/dsh-drag-and-drop/0.1.6",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-drag-and-drop/-/dsh-drag-and-drop-0.1.6.tgz",
+        "integrity": "sha512-4R9JlB4SbEag0hjk98bM7F/vCH0R2lbEp//syHCzsCa8O9tX6TmZz2zt3jWXwft1zMuNDq5Yf+R7+VwIC8Lm+w==",
+        "size": 66118
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.awesome-dsh-plugin.dsh-find-plugin",
+      "packageName": "dsh-find-plugin",
+      "version": "0.4.0",
+      "source": "https://registry.npmjs.org/dsh-find-plugin/0.4.0",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-find-plugin/-/dsh-find-plugin-0.4.0.tgz",
+        "integrity": "sha512-XO0zQb3iHxK7IGGygfiGDxI3t4HUEBNLK4knqYmh8KuT2cbCWzmH+4PViaIgVPsiytC7mXN5p94u5fJc3VNsBw==",
+        "size": 45308
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.yyh-001.dsh-meme",
+      "packageName": "dsh-meme",
+      "version": "0.1.44",
+      "source": "https://registry.npmjs.org/dsh-meme/0.1.44",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-meme/-/dsh-meme-0.1.44.tgz",
+        "integrity": "sha512-sC2Tm2uouG7/3iV7o6CaakUQ4Ek+cgPzeiiMCwl/dMai9AFCw+S/zshILUmNXRzfJiC/50sglBfJEE7KODnW5g==",
+        "size": 4395433
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.elysia395.dsh-wallpaper-engine",
+      "packageName": "dsh-plugin-wallpaper-engine",
+      "version": "1.2.0",
+      "source": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.2.0",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.2.0.tgz",
+        "integrity": "sha512-WgY1pLh2zbGyLSPJP1aSKq42hntF8PnrAlSeQWqpZwPoLdMByL/9Abth9ELlhw+t0odXNs4Fbiyljju0MF0tfA==",
+        "size": 1585336
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.01virex.dsh-status-rotator",
+      "packageName": "dsh-status-rotator",
+      "version": "0.34.1",
+      "source": "https://registry.npmjs.org/dsh-status-rotator/0.34.1",
+      "originalArchive": {
+        "url": "https://registry.npmjs.org/dsh-status-rotator/-/dsh-status-rotator-0.34.1.tgz",
+        "integrity": "sha512-mZi6mg2rupN8L0JeLsWcZbkbZM1K8UpwF+G6eY4ePjP9XSazhU0veXpHk7jy17dEb96zeJFbg4kDD1uVviLVVA==",
+        "size": 337930
+      },
+      "redistribution": "software-license-reviewed",
+      "checkedOn": "2026-10-10",
+      "runtime": "not-tested"
+    }
+  ]
+}
