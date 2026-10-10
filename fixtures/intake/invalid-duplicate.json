@@ -3,5 +3,6 @@
   "id": "dev.mojobox.intake-test",
   "name": "重复引用反例",
   "version": "1.0.0",
-  "plugins": [{ "ref": "@example/test-only" }, { "ref": "@example/test-only" }]
+  "requires": { "dsh": "0.2.0-rc.2" },
+  "plugins": [{ "ref": "@example/test-only", "version": "1.0.0" }, { "ref": "@example/test-only", "version": "1.0.0" }]
 }

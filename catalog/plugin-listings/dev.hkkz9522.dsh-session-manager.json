@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.hkkz9522.dsh-session-manager",
+  "packageName": "dsh-session-manager",
+  "name": "会话管理工作流",
+  "version": "0.6.2",
+  "summary": "管理会话归档、删除、跨工作区移动、收藏、标签与备注，并支持筛选和批量操作。",
+  "author": "hkkz9522",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-session-manager/0.6.2",
+    "repository": "https://github.com/hkkz9522/dsh-session-manager",
+    "commit": "c0ab907cfbd1b696afe893b6d6bcfb66bb43a157"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "会删除或改写会话数据、迁移工作区和 preset，并保存标签与备注；下游需要明确授权和备份范围。",
+    "包只声明 Cordis peer，未给出当前信息卡协议所需的精确 DSH 范围。",
+    "宿主未安装、未运行；会话管理区域与其他插件的组合尚未验证。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-session-manager/-/dsh-session-manager-0.6.2.tgz",
+    "sha256": "2ccaa0938cdea0876962981ec76d846f3dbee8cadc01ae3f4d23183f5ea83c1c",
+    "size": 111812
+  }
+}

@@ -1,0 +1,10 @@
+[
+  { "id": "dev.dsh-eac.skin-bloom", "version": "0.1.0", "sha256": "d927ce73d6d8c3252e4b7edb94eaefbfb558939ff8475e11ca53066a6e5ab126" },
+  { "id": "dev.dsh-eac.skin-catppuccin", "version": "0.1.0", "sha256": "62a3d6d0d9a1b156bc9ff5487d77e3595a44f7f667845af771a9678e243f8b24" },
+  { "id": "dev.dsh-eac.skin-dream-skin", "version": "0.1.0", "sha256": "15aa08f54437e24ab58e392a844015933292c7414d5ac87e60c7a960392d51bc" },
+  { "id": "dev.dsh-eac.skin-endfield", "version": "0.1.0", "sha256": "93bda44e79d64b097d99f571fc1ab54fa226b8a5880e5ad8714e4b527b8dd95c" },
+  { "id": "dev.dsh-eac.skin-open-sea", "version": "0.1.0", "sha256": "4713f8264b56554418dc49fefadeaefd259e254628bf1ec1af3e65ce8d47fcd6" },
+  { "id": "dev.dsh-eac.skin-opencode-palette", "version": "0.1.0", "sha256": "82a22a226b6ca2d84b66b6232da63f9e054c572d2bc739deb2980fc28c886ef6" },
+  { "id": "dev.dsh-eac.skin-wallpaper-engine", "version": "0.1.0", "sha256": "aff9f6ef1cdc1231db3bd29d81a4cf686b843e8027ac38136080e9c983941c8f" },
+  { "id": "dev.dsh-eac.skin-whale-girl", "version": "0.1.0", "sha256": "906285cdab5ae522fcd7873b01f4ca4d69ac9ea81d8751d65c3835b478b7e579" }
+]

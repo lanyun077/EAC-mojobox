@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mojobox plugin source index v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "sourceId", "revision", "demo", "plugins"],
+  "properties": {
+    "schemaVersion": { "const": "plugins.mojobox.dev/v1" },
+    "sourceId": { "const": "dsh-eac.mojobox" },
+    "revision": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "demo": { "type": "boolean" },
+    "plugins": { "type": "array", "maxItems": 10000, "items": { "$ref": "#/definitions/plugin" } }
+  },
+  "definitions": {
+    "file": {
+      "type": "object", "additionalProperties": false, "required": ["url", "sha256", "size"],
+      "properties": {
+        "url": { "type": "string", "pattern": "^\\.\\./\\.\\./(?:downloads|reports)/[a-z0-9][a-zA-Z0-9._+-]*$", "maxLength": 512 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "size": { "type": "integer", "minimum": 1, "maximum": 8388608 }
+      }
+    },
+    "nullableFile": { "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/file" }] },
+    "plugin": {
+      "type": "object", "additionalProperties": false,
+      "required": ["listing", "checks", "runtime", "dependencies", "download", "report"],
+      "properties": {
+        "listing": { "$ref": "plugin-listing.schema.json" },
+        "checks": { "enum": ["metadata-only", "artifact-checked"] },
+        "runtime": { "const": "not-tested" },
+        "dependencies": { "const": "not-resolved" },
+        "download": { "$ref": "#/definitions/nullableFile" },
+        "report": { "$ref": "#/definitions/nullableFile" }
+      }
+    }
+  }
+}

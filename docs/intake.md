@@ -13,6 +13,10 @@
 
 - 至少一个插件引用；接受 npm 名、`github:owner/repo` 和 `builtin:目录名`。
 - 不解析或下载引用，也不运行插件。
+- 新收录与更新版本必须声明合法非空的 `requires.dsh`；npm/GitHub 插件引用必须声明精确 SemVer
+  版本。`builtin:` 只声明宿主内置组件，可以不写版本；如填写则同样检查精确版本语法。
+  [版本声明策略](intake-version-policy.md)规定已有 8 个皮肤归档的精确历史例外、迁移与报告字段。
+  不读取本机内核、不按构建电脑的内核拒绝面向其他版本的包。
 - 对 `appearance` 包，收录记录必须声明 `appearance` 元数据；皮肤加载器依赖、皮肤 ID、冲突、预览来源、安装结果和运行状态只作为来源声明提供给下游，
   不作为 Mojobox 的安装或运行门禁。
 - 不接收 preset、skill、非空 overrides、内嵌插件代码或其他文件；遇到这些输入给出不支持原因，不静默转换。
@@ -21,6 +25,10 @@
 - 这些限制是首版收录策略，不改变 EAC 原始格式的定义。更大或不同格式的包后续按实际需求适配。
 
 ## 提交方式
+
+完整的外部 PR 流程、展示字段和预览图要求见[作者提交与审核指南](community-submissions.md)。
+`tags`、`introduction`、`links`、`previews` 是可选收录展示字段，旧记录无需迁移；它们不修改
+上游 Feature Pack 格式。图片可从 `catalog/previews/<id>/` 随 PR 上传，不能放进薄包归档。
 
 开发者提供现成归档和来源，不要求 Mojobox 重新组合插件。皮肤代码和素材由被引用的插件发布，
 Mojobox 只收录薄包清单及原始归档。首版采用仓库内保存并随静态站原样托管归档的方式；不自动抓取远端、不改写开发者产物。
@@ -88,6 +96,9 @@ npm run check:skin-prompts
 自动报告分别记录清单 Schema、归档布局和 SHA-256，始终标记 `runtime: not-tested` 与 `references: not-resolved`。检验通过不表示来源在线、插件可安装、无恶意代码、功能正确或任意宿主兼容。
 
 实际运行证据应在后续搭载测试完成后独立记录，不能用结构检查替代。
+新增 `manifest-plugin-versions` 和 `manifest-requires-range` 检查项。历史例外不记录范围检查通过，
+以 `versionDeclarations.kernel: legacy-undeclared` 和 `warnings` 明示兼容未知；所有报告的
+`versionDeclarations.comparison` 均为 `not-performed`。这些字段投影到目录，并由下载复核重新验证。
 
 ## 样本与正式收录
 

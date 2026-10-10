@@ -8,6 +8,9 @@ Mojobox 把分散在 npm、GitHub Release 和开发者仓库中的插件、功�
 
 ## 当前状态
 
+新收录和更新版本须通过[版本声明策略](docs/intake-version-policy.md)。8 个既有皮肤归档按精确
+字节保留历史例外，并标记兼容未知；不会为通过检查编造范围或改写旧归档。
+
 - Mojobox 收录、静态检验、目录展示和原始下载框架已完成。
 - 当前输入格式是官方 EAC Feature Pack v1 的薄 `.dshpack`。
 - `function`、`appearance` 和 `workflow` 可以进入收录校验；公开分发范围由 [`distribution.json`](distribution.json) 控制。
@@ -87,7 +90,12 @@ BASE_PATH=/EAC-mojobox/ npm run verify:downloads
 
 ### 插件记录
 
-插件记录描述一个可被宿主或加载器识别的独立插件，包括包名、版本、入口、来源、固定 revision、artifact、许可证和验证状态。
+新插件使用[轻量信息卡](docs/plugin-intake.md)：只要求身份、精确版本、用途、来源、许可、兼容声明和已知冲突状态，不要求作者改运行时格式。原始 npm 归档核验后可下载；未知允许明确写未知，收录不等于宿主已测试。
+现已收录 26 个独立插件条目，其中 24 个提供已核验的原始 npm 发行下载，2 个大体积桌面宠物只收录来源。覆盖会话、记忆、开发工具、视觉、桌面操作、布局和插件发现；全部运行未测试。完整版本与边界见[插件收录说明](docs/plugin-intake.md)。
+
+构建同时生成[插件来源接口 v1](docs/plugin-source-api-v1.md)：`generated/api/v1/plugins.json`，保留完整兼容、冲突和限制，下载与报告均绑定摘要和大小。实现与收录数据随本次开发分支提交，合并与部署状态以 GitHub 实际记录为准；既有 EAC 供货批次协议不变，新插件不自动进入旧批次。
+
+Skill 仅预留独立导航和空分类，暂不收录、下载或安装；不修改现有下游供货协议。
 
 ### 功能整合包
 
@@ -110,6 +118,10 @@ BASE_PATH=/EAC-mojobox/ npm run verify:downloads
 
 ## 开发者如何提交整合包？
 
+首次贡献请看[作者提交与审核指南](docs/community-submissions.md)：Fork 后提交 PR，自动检查
+与人工审核通过后由维护者合并。标签、介绍、来源链接和预览图可以随包一并提交；预览图独立
+保存，不改变 `.dshpack` 格式。皮肤 Prompt 资料支持作者自己的仓库与固定 commit。
+
 先阅读[整合包收录规范](docs/intake.md)和[文件结构说明](docs/author-pack-request.md)。开发者需要提供已经完成的薄 Feature Pack，Mojobox 不替作者临时拼装生产包。
 
 最小归档结构：
@@ -119,7 +131,8 @@ org.example.tools-1.0.0.dshpack
 └── pack.json
 ```
 
-`pack.json` 至少包含格式版本、稳定 ID、名称、版本和一个插件引用：
+新收录的 `pack.json` 至少包含格式版本、稳定 ID、名称、版本、内核范围和一个插件引用。
+npm/GitHub 引用必须声明精确插件版本；`builtin:` 由宿主提供，不要求虚构插件版本：
 
 ```json
 {
@@ -127,6 +140,7 @@ org.example.tools-1.0.0.dshpack
   "id": "org.example.tools",
   "name": "开发工具包",
   "version": "1.0.0",
+  "requires": { "dsh": ">=0.2.0-rc.2 <0.3.0-0" },
   "plugins": [
     { "ref": "@example/editor-tools", "version": "1.2.0" }
   ]
@@ -184,6 +198,8 @@ npm run check:skin-prompts
 | 路径 | 用途 |
 | --- | --- |
 | `catalog/plugins/` | 插件来源、版本和 artifact 事实 |
+| `catalog/plugin-listings/` | 新插件轻量信息卡；独立于旧运行时 Manifest |
+| `artifacts/plugins/` | 已核验的作者原始 npm 归档 |
 | `catalog/feature-packs/` | 当前 Feature Pack 收录记录 |
 | `catalog/skin-prompt-packages/` | 固定来源的皮肤 Prompt 资料包 |
 | `artifacts/` | 开发者提供的原始 `.dshpack` |
@@ -221,20 +237,22 @@ npm run check:skin-prompts
 - 功能包安装复用宿主已有的 Feature Pack 和安装接口；
 - 皮肤包只收录、检查、归档和供给来源；
 - 运行兼容性由宿主或皮肤加载器提供证据；
-- 下游接口等收录格式稳定后再设计；
+- 下游插件来源接口已形成版本化构建输出，按同一门槛推进中量收录；
 - 动态网站不执行插件，不修改用户桌面端。
 
 ## 相关文档
 
+- [文档索引](docs/README.md)
+- [外部作者提交与审核](docs/community-submissions.md)
 - [项目定位与发展路线](docs/project-positioning-and-roadmap.md)
 - [开发者整合包收录规范](docs/intake.md)
 - [整合包文件结构与最小示例](docs/author-pack-request.md)
-- [皮肤包分支交接](docs/skin-pack-branch-handoff.md)
 - [皮肤包来源复核](docs/skin-pack-source-review.md)
 - [架构与扩展边界](docs/architecture.md)
 - [静态构建与部署](docs/deployment.md)
 - [框架验收记录](docs/framework-acceptance.md)
 - [贡献指南](CONTRIBUTING.md)
+- [历史交接与旧计划](docs/archive/README.md)
 
 ## 参与贡献
 

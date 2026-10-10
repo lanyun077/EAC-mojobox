@@ -1,9 +1,10 @@
 import { createHash } from 'node:crypto'
-import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { lstat, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
+import { assertHttps, inspectPreviewImages, publishPreviewImages, verifyPreviewImages } from './preview-images.mjs'
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const packageFiles = ['manifest.json', 'prompt.md', 'README.md']
@@ -13,12 +14,19 @@ const checkManifest = ajv.compile(JSON.parse(await readFile(new URL('../schemas/
 
 export const digest = bytes => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
 
-function assertHttps(value, field) {
-  const url = new URL(value)
-  if (url.protocol !== 'https:' || url.username || url.password) throw new Error(`${field} must be an HTTPS URL without credentials`)
+function validatePackageSource(source) {
+  if (!source || Object.keys(source).some(key => !['repository', 'revision', 'path'].includes(key))) throw new Error('Invalid skin package source')
+  assertHttps(source.repository, 'Skin package source repository')
+  if (!/^[0-9a-f]{40}$/.test(source.revision)) throw new Error('Invalid skin package source revision')
+  if (typeof source.path !== 'string' || !/^[A-Za-z0-9._-]+(?:\/[A-Za-z0-9._-]+)*$/.test(source.path) || source.path.split('/').some(part => ['.', '..'].includes(part))) throw new Error('Invalid skin package source path')
 }
 
 export async function inspectSkinPromptPackage(directory, expectedFiles) {
+  if (!(await lstat(directory)).isDirectory()) throw new Error('Skin package must be a regular directory')
+  for (const name of packageFiles) {
+    const stat = await lstat(join(directory, name))
+    if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 1024 * 1024) throw new Error(`Skin package file must be regular and at most 1 MiB: ${name}`)
+  }
   const manifestBytes = await readFile(join(directory, 'manifest.json'))
   const promptBytes = await readFile(join(directory, 'prompt.md'))
   const readmeBytes = await readFile(join(directory, 'README.md'))
@@ -42,7 +50,13 @@ export async function collectSkinPromptPackages(root = rootDir) {
   try {
     source = JSON.parse(await readFile(join(sourceDir, 'source.json'), 'utf8'))
   } catch (error) {
-    if (error.code === 'ENOENT') return { source: null, packages: [] }
+    if (error.code === 'ENOENT') {
+      let entries = []
+      try { entries = await readdir(sourceDir, { withFileTypes: true }) }
+      catch (directoryError) { if (directoryError.code !== 'ENOENT') throw directoryError }
+      if (entries.some(entry => entry.isDirectory() || entry.isSymbolicLink())) throw new Error('Skin prompt directories require source.json')
+      return { source: null, packages: [] }
+    }
     throw error
   }
   if (source.format !== 'dsh-skin-prompt-source-v1') throw new Error('Invalid skin prompt source format')
@@ -60,16 +74,23 @@ export async function collectSkinPromptPackages(root = rootDir) {
     assertHttps(origin.repository, 'Skin origin repository')
     assertHttps(origin.projectUrl, 'Skin origin project')
     if (!Array.isArray(origin.previews) || !Array.isArray(origin.evidence) || !origin.evidence.length) throw new Error(`Missing skin origin references: ${id}`)
-    for (const url of [...origin.previews.map(preview => preview.url), ...origin.evidence]) assertHttps(url, 'Skin origin reference')
+    for (const url of origin.evidence) assertHttps(url, 'Skin origin reference')
+    for (const preview of origin.previews) {
+      if (!preview || typeof preview !== 'object' || typeof preview.label !== 'string' || !preview.label.trim() || preview.label.length > 80) throw new Error(`Invalid skin preview label: ${id}`)
+    }
   }
   const declared = new Set()
   const packages = []
   for (const entry of source.packages) {
     if (!entry || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.id) || entry.path !== `packages/${entry.id}` || declared.has(entry.id)) throw new Error(`Invalid or duplicate skin package record: ${entry?.id || 'unknown'}`)
     declared.add(entry.id)
+    if (!entry.files || !['manifest', 'prompt', 'readme'].every(key => /^sha256:[0-9a-f]{64}$/.test(entry.files[key]))) throw new Error(`Missing skin package file digests: ${entry.id}`)
+    const packageSource = entry.source ?? { repository: source.repository, revision: source.revision, path: `skin-prompts/${entry.path}` }
+    validatePackageSource(packageSource)
     const directory = join(sourceDir, entry.id)
     const inspected = await inspectSkinPromptPackage(directory, entry.files)
-    packages.push({ ...inspected, source: { repository: source.repository, revision: source.revision }, path: entry.path, origin: origins[entry.id] })
+    const previewImages = await inspectPreviewImages(root, entry.id, origins[entry.id]?.previews)
+    packages.push({ ...inspected, source: packageSource, path: entry.path, origin: origins[entry.id], previewImages })
   }
   const directories = (await readdir(sourceDir, { withFileTypes: true })).filter(entry => entry.isDirectory()).map(entry => entry.name).sort()
   if (JSON.stringify(directories) !== JSON.stringify([...declared].sort())) throw new Error('Undeclared skin prompt package directory')
@@ -84,6 +105,7 @@ export async function buildSkinPromptCatalog(root = rootDir, output = join(root,
   for (const item of packages) {
     const manifest = item.manifest
     const target = join(skinOutput, manifest.id)
+    const previews = await publishPreviewImages(item.previewImages, output)
     await mkdir(target, { recursive: true })
     for (const name of packageFiles) await writeFile(join(target, name), await readFile(join(root, 'catalog/skin-prompt-packages', manifest.id, name)))
     entries.push({
@@ -91,7 +113,8 @@ export async function buildSkinPromptCatalog(root = rootDir, output = join(root,
       metadata: { id: manifest.id, name: manifest.name, nameEn: manifest.nameEn || '', description: manifest.description || '', tags: manifest.tags || [], category: 'appearance' },
       author: manifest.author,
       source: item.source,
-      origin: item.origin,
+      origin: item.origin ? { ...item.origin, previews: previews.previews } : undefined,
+      previewFiles: previews.previewFiles,
       sources: manifest.sources,
       references: manifest.references,
       license: manifest.references.license.spdx,
@@ -122,9 +145,10 @@ export async function verifySkinPromptCatalog(directory) {
   if (catalog.format !== 'dsh-skin-prompt-catalog-v1' || !Array.isArray(catalog.packages)) throw new Error('Expected skin prompt catalog')
   for (const entry of catalog.packages) {
     const id = entry.metadata?.id
-    if (!id || entry.manifestUrl !== `generated/skin-packages/${id}/manifest.json` || entry.promptUrl !== `generated/skin-packages/${id}/prompt.md` || entry.readmeUrl !== `generated/skin-packages/${id}/README.md`) throw new Error('Skin prompt download path mismatch')
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || entry.manifestUrl !== `generated/skin-packages/${id}/manifest.json` || entry.promptUrl !== `generated/skin-packages/${id}/prompt.md` || entry.readmeUrl !== `generated/skin-packages/${id}/README.md`) throw new Error('Skin prompt download path mismatch')
     if (entry.installable !== false || entry.runtime !== 'not-applicable') throw new Error('Skin prompt runtime claim mismatch')
     await inspectSkinPromptPackage(join(directory, `generated/skin-packages/${id}`), entry.files)
+    await verifyPreviewImages(directory, id, entry.origin?.previews, entry.previewFiles)
   }
   return { verified: catalog.packages.length }
 }

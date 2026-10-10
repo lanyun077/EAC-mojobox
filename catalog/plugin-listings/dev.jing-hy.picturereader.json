@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.jing-hy.picturereader",
+  "packageName": "picturereader",
+  "name": "图像理解与 OCR",
+  "version": "3.3.3",
+  "summary": "提供图像理解、OCR、文档转图与本地图片处理工具。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/picturereader/3.3.3",
+    "repository": "https://github.com/jing-hy/picturereader"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "需要图像/OCR 后端及相关依赖；包内附带的 Skill 不单独收录。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/picturereader/-/picturereader-3.3.3.tgz",
+    "sha256": "1b3e373ca1647a693053451d546013f368ddd25faab94dc9daa2ae9ca44cd9b7",
+    "size": 137069
+  }
+}

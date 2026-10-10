@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.nwflower.dsh-chat-import",
+  "packageName": "dsh-chat-import",
+  "name": "对话记录导入",
+  "version": "0.24.0",
+  "summary": "从外部 Agent 导入会话历史，并在 DeepSeek Harness 中继续对话。",
+  "author": "Nwflower",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-chat-import/0.24.0",
+    "repository": "https://github.com/Nwflower/dsh-chat-import",
+    "commit": "f911376c3b8b117ccb0881149b181ceeec48a7f1"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "需要读取外部会话文件并写入宿主会话数据，下游应先确认文件来源和隐私边界。",
+    "依赖宿主 dsh、tools、locale、React 及压缩数据解析；依赖未解析。",
+    "宿主未安装、未运行；导入格式覆盖范围和失败回滚由下游导入器负责。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-chat-import/-/dsh-chat-import-0.24.0.tgz",
+    "sha256": "485262cea00d486c022090f565c40ccab4ed1f2835b75aef1f697ff7c56b6be0",
+    "size": 1139163
+  }
+}

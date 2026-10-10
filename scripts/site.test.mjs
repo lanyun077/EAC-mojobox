@@ -120,9 +120,68 @@ const skinArchive = { ...intakePack, metadata: { ...intakePack.metadata, id: 'de
   } }
 const mixedIntake = { mode: 'intake', demo: false, plugins: [], packs: [intakePack, skinArchive], skinPackages: [skinPackage] }
 
+const listing = { format: 'mojobox-plugin-listing-v1', id: 'org.example.tools', packageName: '@example/tools',
+  name: 'Example tools', version: '1.0.0', summary: 'Mobile layout tools', license: 'MIT', maintainedBy: 'registry-maintained',
+  source: { url: 'https://example.org/releases/1.0.0' }, compatibility: { dsh: null, basis: 'unknown' }, conflicts: null,
+  limitations: ['Network access requires consent.'], artifact: { size: 12, sha256: 'a'.repeat(64) },
+  archiveUrl: 'generated/downloads/org.example.tools-1.0.0.tgz', listingUrl: 'generated/plugins/org.example.tools.json',
+  reportUrl: 'generated/reports/org.example.tools.plugin.json' }
+
+for (const base of ['/', '/EAC-mojobox/']) {
+  test(`plugin intake keeps exact downloads, unknown conflicts and isolated skill routes at ${base}`, () => {
+    const data = { ...mixedIntake, plugins: [listing, { ...listing, id: 'org.example.source', artifact: undefined, archiveUrl: undefined, reportUrl: undefined }] }
+    const site = loadSite(base, data)
+    site.run('location.hash = "#/plugins/org.example.tools"; applyHash(); render()')
+    for (const path of [listing.archiveUrl, listing.listingUrl, listing.reportUrl]) assert.ok(site.app.innerHTML.includes(`href="${base}${path}" download`))
+    assert.match(site.app.innerHTML, /已知冲突尚未确认|宿主未测试|Mojobox 代录|内核兼容/)
+    assert.doesNotMatch(site.app.innerHTML, /运行已验证|直接安装|Manifest/)
+    site.run('state.selected = null; state.query = "Mobile layout"; render()')
+    assert.equal((site.app.innerHTML.match(/class="pack-card plugin-card"/g) || []).length, 2)
+    site.run('state.availability = "published"; render()')
+    assert.equal((site.app.innerHTML.match(/class="pack-card plugin-card"/g) || []).length, 1)
+    site.run('state.availability = "unpublished"; render()')
+    assert.doesNotMatch(site.app.innerHTML, /下载原始插件/)
+    site.run('location.hash = "#/skills"; applyHash(); render()')
+    assert.match(site.app.innerHTML, /暂无 Skill 收录/)
+    assert.doesNotMatch(site.app.innerHTML, /generated\/downloads|data-select=|<input type="search"/)
+    site.run('state.tab = "home"; render()')
+    assert.match(site.app.innerHTML, /<strong>5<\/strong><span>正式收录/)
+  })
+}
+
+test('plugin listing text is escaped, missing routes stay missing and empty conflicts do not claim safety', () => {
+  const data = { ...mixedIntake, plugins: [{ ...listing, summary: '<img src=x>', limitations: ['<script>bad</script>'], conflicts: [] }] }
+  const site = loadSite('/', data)
+  site.run('state.tab = "plugins"; state.selected = "org.example.tools"; render()')
+  assert.match(site.app.innerHTML, /&lt;img src=x&gt;|提交方未报告已知冲突/)
+  assert.doesNotMatch(site.app.innerHTML, /<script>bad|<img src=x/)
+  site.run('state.selected = "not-present"; render()')
+  assert.match(site.app.innerHTML, /未找到此插件/)
+  assert.doesNotMatch(site.app.innerHTML, /generated\/downloads/)
+})
+
+test('version declarations distinguish syntax checks from historical unknown compatibility', () => {
+  const data = structuredClone(mixedIntake)
+  data.packs[0].checks = ['manifest-requires-range', 'manifest-plugin-versions']
+  data.packs[0].versionDeclarations = { kernel: 'declared', comparison: 'not-performed' }
+  data.packs[1].requires = {}
+  data.packs[1].checks = ['manifest-plugin-versions']
+  data.packs[1].versionDeclarations = { kernel: 'legacy-undeclared', comparison: 'not-performed' }
+  const site = loadSite('/', data)
+  const declared = site.run('intakeDetail(catalog.packs[0])')
+  assert.match(declared, /内核范围语法<\/dt><dd>已检验/)
+  assert.match(declared, /精确版本（不代表来源已锁定）/)
+  assert.match(declared, /未执行，由下游宿主判断/)
+  const historical = site.run('intakeDetail(catalog.packs[1])')
+  assert.match(historical, /历史包未声明（兼容未知）/)
+  assert.match(historical, /历史包未声明，不计为通过/)
+  assert.doesNotMatch(historical, /内核范围语法<\/dt><dd>已检验/)
+})
+
 test('intake groups appearance archives and prompt material under skins and counts each once', () => {
   const site = loadSite('/', mixedIntake)
   site.run('state.tab = "home"; render()')
+  assert.match(site.app.innerHTML, /href="https:\/\/github.com\/DSH-EAC\/dsh-mojobox\/blob\/main\/docs\/community-submissions.md"/)
   assert.match(site.app.innerHTML, /<strong>3<\/strong><span>正式收录<\/span>/)
   assert.match(site.app.innerHTML, /<strong>1<\/strong><span>功能包<\/span>/)
   assert.match(site.app.innerHTML, /<strong>2<\/strong><span>皮肤包<\/span>/)
@@ -254,9 +313,33 @@ test('skin gallery uses verified covers from both formats and handles missing or
 })
 
 for (const base of ['/', '/dsh-mojobox/']) {
+  test(`author tags, introduction, local previews and independent prompt links render at ${base}`, () => {
+    const data = structuredClone(mixedIntake)
+    data.packs[0].metadata.tags = ['external-author-tag']
+    data.packs[0].metadata.introduction = '<script>author text</script>'
+    data.packs[0].links = [{ label: '作者仓库', url: 'https://github.com/example/author' }]
+    data.packs[0].previews = ['generated/previews/dev.aio.function/overview.png']
+    data.packs[1].previews = ['generated/previews/dev.example.skin/overview.webp']
+    data.skinPackages[0].source.path = 'designs/maid-atelier'
+    const site = loadSite(base, data)
+    const detail = site.run('intakeDetail(catalog.packs[0])')
+    assert.match(detail, /external-author-tag|详细介绍|功能预览/)
+    assert.ok(detail.includes(`src="${base}generated/previews/dev.aio.function/overview.png"`))
+    assert.match(detail, /&lt;script&gt;author text&lt;\/script&gt;/)
+    assert.doesNotMatch(detail, /<script>/)
+    assert.match(detail, /https:\/\/github.com\/example\/author/)
+    assert.ok(site.run('skinRow(catalog.packs[1])').includes(`src="${base}generated/previews/dev.example.skin/overview.webp"`))
+    assert.match(site.run('sourcePackageUrl(catalog.skinPackages[0])'), /designs\/maid-atelier$/)
+    site.run('state.tab = "packs"; state.query = "external-author-tag"; render()')
+    assert.match(site.app.innerHTML, /data-select="dev.aio.function"/)
+    for (const url of ['generated/previews/id/../private.png', 'generated/previews/id/file.svg', '//example.org/image.png']) assert.equal(site.run(`safePreviewUrl(${JSON.stringify(url)})`), '#')
+  })
+}
+
+for (const base of ['/', '/dsh-mojobox/']) {
   test(`intake catalog renders downloads and truthful check scope at ${base}`, () => {
     const site = loadSite(base, { mode: 'intake', demo: true, plugins: [], packs: [intakePack] })
-    site.run('state.selected = catalog.packs[0].metadata.id; render()')
+    site.run('state.tab = "packs"; state.selected = catalog.packs[0].metadata.id; render()')
     const html = site.app.innerHTML
     for (const path of [intakePack.archiveUrl, intakePack.packUrl, intakePack.reportUrl]) assert.ok(html.includes(`href="${base}${path}" download`))
     assert.match(html, /测试演示/)
@@ -271,7 +354,7 @@ for (const base of ['/', '/dsh-mojobox/']) {
 
 test('empty production intake and missing selection render without legacy specifications', () => {
   const site = loadSite('/', { mode: 'intake', demo: false, plugins: [], packs: [] })
-  site.run('state.selected = "missing"; render()')
+  site.run('state.tab = "packs"; state.selected = "missing"; render()')
   assert.match(site.app.innerHTML, /暂无正式收录/)
   assert.match(site.app.innerHTML, /未找到此整合包/)
   assert.doesNotMatch(site.app.innerHTML, /测试演示|href="\/generated\/downloads/)
@@ -280,7 +363,7 @@ test('empty production intake and missing selection render without legacy specif
 test('intake escapes developer/component fields and blocks unsafe source links', () => {
   const pack = { ...intakePack, author: '<img src=x>', source: 'javascript:alert(1)', components: [{ ref: '<script>bad</script>' }] }
   const site = loadSite('/', { mode: 'intake', plugins: [], packs: [pack] })
-  site.run('state.selected = catalog.packs[0].metadata.id; render()')
+  site.run('state.tab = "packs"; state.selected = catalog.packs[0].metadata.id; render()')
   assert.match(site.app.innerHTML, /&lt;img src=x&gt;/)
   assert.doesNotMatch(site.app.innerHTML, /javascript:|<script>bad/)
 })

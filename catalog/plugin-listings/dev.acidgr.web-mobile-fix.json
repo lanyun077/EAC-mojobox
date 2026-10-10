@@ -1,0 +1,33 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.acidgr.web-mobile-fix",
+  "packageName": "dsh-web-mobile-fix",
+  "name": "移动端布局修复",
+  "version": "1.0.6",
+  "summary": "为窄屏 Web 界面修复设置面板、侧边栏和输入区布局，采用客户端 CSS 覆盖。",
+  "author": "AcidGr",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-web-mobile-fix/1.0.6",
+    "repository": "https://github.com/AcidGr/dsh-web-mobile-fix",
+    "commit": "2085cdfdc3967443ae01977d79446f8e403d8e94"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "basis": "author-declared",
+    "reference": "https://registry.npmjs.org/dsh-web-mobile-fix/-/dsh-web-mobile-fix-1.0.6.tgz"
+  },
+  "conflicts": null,
+  "limitations": [
+    "作者包声明 Node >=20.0.0、Web 客户端；宽泛内核范围不等于 RC2 或所有宿主已经实测。",
+    "与 meow-smooth 都修改移动端侧边栏、设置面板和输入区；属于功能重叠提示，组合尚未测试，不是已证实的硬冲突。"
+  ],
+  "links": [{ "label": "EAC-Pack 发现来源", "url": "https://github.com/DSH-EAC/EAC-Pack/blob/ee159871e953f52dfe95d6259678bacf5ffe3272/catalog/eac.json" }],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-web-mobile-fix/-/dsh-web-mobile-fix-1.0.6.tgz",
+    "sha256": "1441efa3b4c814e2226ff5d947fad5e69aa36ed2bd46020b81a11513fb20c290",
+    "size": 7201
+  }
+}

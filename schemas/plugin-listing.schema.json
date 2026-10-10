@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mojobox lightweight plugin listing v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "id", "packageName", "name", "version", "summary", "source", "license", "compatibility", "conflicts"],
+  "properties": {
+    "format": { "const": "mojobox-plugin-listing-v1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$" },
+    "packageName": { "type": "string", "pattern": "^(?:@[a-z0-9._-]+/)?[a-z0-9][a-z0-9._-]*$", "maxLength": 214 },
+    "name": { "$ref": "#/definitions/text" },
+    "version": { "type": "string", "maxLength": 128 },
+    "summary": { "$ref": "#/definitions/text" },
+    "author": { "$ref": "#/definitions/text" },
+    "maintainedBy": { "enum": ["author", "registry-maintained"] },
+    "license": { "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/text" }] },
+    "source": {
+      "type": "object", "additionalProperties": false, "required": ["url"],
+      "properties": {
+        "url": { "$ref": "#/definitions/https" },
+        "repository": { "$ref": "#/definitions/https" },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+      }
+    },
+    "compatibility": {
+      "type": "object", "additionalProperties": false, "required": ["dsh", "basis"],
+      "properties": {
+        "dsh": { "anyOf": [{ "type": "null" }, { "type": "string", "minLength": 1, "maxLength": 256 }] },
+        "basis": { "enum": ["unknown", "author-declared"] },
+        "reference": { "$ref": "#/definitions/https" }
+      }
+    },
+    "conflicts": { "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/textList" }] },
+    "limitations": { "$ref": "#/definitions/textList" },
+    "links": {
+      "type": "array", "maxItems": 12,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["label", "url"],
+        "properties": { "label": { "$ref": "#/definitions/text" }, "url": { "$ref": "#/definitions/https" } }
+      }
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false, "required": ["format", "url", "sha256", "size"],
+      "properties": {
+        "format": { "const": "npm-tgz" },
+        "url": { "$ref": "#/definitions/https" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "size": { "type": "integer", "minimum": 1, "maximum": 8388608 }
+      }
+    }
+  },
+  "definitions": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" },
+    "https": { "type": "string", "format": "uri", "pattern": "^https://", "maxLength": 4096 },
+    "textList": { "type": "array", "maxItems": 32, "uniqueItems": true, "items": { "$ref": "#/definitions/text" } }
+  }
+}

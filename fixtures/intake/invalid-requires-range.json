@@ -1,0 +1,8 @@
+{
+  "formatVersion": 1,
+  "id": "dev.mojobox.intake-test",
+  "name": "Invalid kernel range",
+  "version": "1.0.0",
+  "requires": { "dsh": ">=0.1.7-rc.2 <0.1.8.0" },
+  "plugins": [{ "ref": "@example/test-only", "version": "1.0.0" }]
+}

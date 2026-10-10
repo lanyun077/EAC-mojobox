@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.yolk-vat-y.dsh-project-memory",
+  "packageName": "@yolk_vat-y/dsh-project-memory",
+  "name": "项目开发记忆",
+  "version": "0.5.14",
+  "summary": "按项目持久化任务、文件、文档和经验记录，帮助跨会话恢复开发上下文。",
+  "author": "00080000",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40yolk_vat-y%2Fdsh-project-memory/0.5.14",
+    "repository": "https://github.com/00080000/dsh-project-memory",
+    "commit": "c4c8409b16bfa5a927368bffabdabfc4f72c22af"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "会在磁盘保存项目任务、文档和经验数据，下游需要明确工作区和数据保留范围。",
+    "依赖 PDF 解析及 DSH 工具、LLM peer；依赖未解析。",
+    "宿主未安装、未运行；文件权限、旧宿主事件支持和组合行为尚未验证。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@yolk_vat-y/dsh-project-memory/-/dsh-project-memory-0.5.14.tgz",
+    "sha256": "1fcfc8a628e41719b3bee719bfb1dc308f2657fd4565f9e8efd68764c5bca558",
+    "size": 365127
+  }
+}

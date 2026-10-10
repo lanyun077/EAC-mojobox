@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.01virex.dsh-status-rotator",
+  "packageName": "dsh-status-rotator",
+  "name": "状态栏轮播",
+  "version": "0.34.1",
+  "summary": "为 Web 状态栏提供阶段文案、打字效果、弹幕与可配置主题。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-status-rotator/0.34.1",
+    "repository": "https://github.com/01Virex/dsh-status-rotator"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "会修改状态栏显示，与其他状态栏插件的共存未测试。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-status-rotator/-/dsh-status-rotator-0.34.1.tgz",
+    "sha256": "d88e96dfb1eb71547f58156ab4f74ec15797abaffcb1fbb3514db80d25de2192",
+    "size": 337930
+  }
+}

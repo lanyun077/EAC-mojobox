@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.vlln.dsh-navbar",
+  "packageName": "@vlln/dsh-navbar",
+  "name": "对话节点导航栏",
+  "version": "0.4.0",
+  "summary": "在对话右侧显示用户消息节点，支持悬停预览、点击跳转和阅读位置跟随。",
+  "author": "vlln",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40vlln%2Fdsh-navbar/0.4.0",
+    "repository": "https://github.com/vlln/dsh-navbar",
+    "commit": "502253836f49bf73d55f1d525bd191b1b1c27c38"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "仅面向 Web 客户端，依赖客户端运行时和 UI primitives。",
+    "可能与其他修改对话边缘或布局的插件产生视觉区域重叠，组合尚未验证。",
+    "宿主未安装、未运行；包内 dsh engine 声明未直接投影为本协议兼容范围。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@vlln/dsh-navbar/-/dsh-navbar-0.4.0.tgz",
+    "sha256": "72886a2376c09e202a830029beb5503ce4710a9b208bacca8759c2d41a61c908",
+    "size": 14463
+  }
+}

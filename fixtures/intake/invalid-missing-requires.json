@@ -1,0 +1,7 @@
+{
+  "formatVersion": 1,
+  "id": "dev.mojobox.intake-test",
+  "name": "Missing kernel declaration",
+  "version": "1.0.0",
+  "plugins": [{ "ref": "@example/test-only", "version": "1.0.0" }]
+}

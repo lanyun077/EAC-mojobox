@@ -1,0 +1,29 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.omdsh.dsh-drag-and-drop",
+  "packageName": "dsh-drag-and-drop",
+  "name": "文件拖拽输入",
+  "version": "0.1.6",
+  "summary": "把拖入 Web 界面的本地文件路径插入输入区。",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-drag-and-drop/0.1.6",
+    "repository": "https://github.com/omdsh-dev/dsh-drag-and-drop"
+  },
+  "license": "BSD-3-Clause",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "文件路径和桌面桥接能力依赖宿主；路径引用不等于文件已上传或复制。",
+    "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-drag-and-drop/-/dsh-drag-and-drop-0.1.6.tgz",
+    "sha256": "d50d050373555a73d43bd0ff400028b4012b7375ec5b1134f76adaa48859b8f0",
+    "size": 66118
+  }
+}

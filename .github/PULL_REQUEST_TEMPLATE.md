@@ -5,6 +5,8 @@
 ## 变更类型
 
 - [ ] 开发者整合包收录 / 原始产物
+- [ ] 独立插件信息卡 / 原始发行 / 插件来源接口
+- [ ] 皮肤 Prompt 资料收录 / 预览图 / 展示信息
 - [ ] 历史 Plugin Catalog / Pack / Pack Lock
 - [ ] Evidence / Host Profile
 - [ ] Schema / Fixture / Validator
@@ -24,14 +26,33 @@
 不涉及时写“不涉及”。
 -->
 
-## 验证结果
+<!-- 外部收录请先填写下列材料；纯代码或文档 PR 可以写“不涉及”。 -->
+
+## 外部作者收录材料
+
+- 包 ID / 版本 / 分类：
+- 上游仓库 / 固定提交或发行页：
+- 作者身份或代提交授权依据：
+- 归档 / 资料文件 SHA-256：
+- 许可证，以及第三方代码、素材与截图许可边界：
+- 简介、标签与包含内容：
+- 作者声明的宿主 / loader 版本、已知冲突和限制：
+- 预览图来源、对应包 / 宿主版本、主题（无截图请注明）：
+- 真实运行测试结果（未测试请写“未测试”，不以 CI 代替）：
+
+- [ ] 已核对来源和再分发许可，没有泄漏凭据、聊天或其他私人资料
+- [ ] 未改写旧版本归档；字节更新已递增版本，Prompt 更新已刷新来源 commit 与摘要
+- [ ] 外部收录不需要改安装器、loader、上游 Schema 或 CI 规则
+
+## 本地验证
 
 - [ ] `npm test`
 - [ ] `npm run build`
 - [ ] `npm run verify:downloads`
 - [ ] `npm run build:demo` 与 `npm run verify:downloads -- dist-demo --allow-demo`（框架或网站改动）
-- [ ] `BASE_PATH=/EAC-mojobox/ npm run build` 与相同 `BASE_PATH` 的下载检查（网站改动）
+- [ ] `BASE_PATH=/dsh-mojobox/ npm run build` 与相同 `BASE_PATH` 的下载检查（网站改动）
 - [ ] `git diff --check`
+- [ ] `npm run check:submission -- origin/main`（提交后检查已提交的 PR 增量）
 
 实际命令与结果：
 

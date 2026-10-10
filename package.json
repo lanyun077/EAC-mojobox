@@ -9,7 +9,9 @@
     "inspect:pack": "node scripts/inspect-pack.mjs",
     "inspect:feature-pack": "node scripts/feature-pack.mjs",
     "check:skin-prompts": "node scripts/skin-prompt-package.mjs",
+    "check:submission": "node scripts/check-submission.mjs",
     "build:intake": "node scripts/build-catalog.mjs",
+    "export:eac": "node scripts/export-eac-supply.mjs",
     "host:pack": "node adapters/official-cli.mjs",
     "prepare:site": "node scripts/build-catalog.mjs",
     "build:demo": "node scripts/build-demo.mjs",
@@ -23,6 +25,7 @@
     "ajv": "^8.20.0",
     "ajv-formats": "3.0.1",
     "archiver": "^8.0.0",
+    "semver": "7.8.5",
     "vite": "^8.2.2",
     "yauzl": "3.4.0",
     "tar-stream": "3.2.1"

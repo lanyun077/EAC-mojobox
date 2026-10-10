@@ -6,6 +6,7 @@
   "description": "仅用于验证收录框架，不是真实功能包，不用于安装。",
   "author": "Mojobox test fixtures",
   "license": "MIT",
+  "requires": { "dsh": ">=0.2.0-rc.2 <0.3.0-0" },
   "plugins": [{ "ref": "@example/test-only", "version": "1.0.0" }],
   "overrides": []
 }

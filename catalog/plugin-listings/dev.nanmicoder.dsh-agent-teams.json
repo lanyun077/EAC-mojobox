@@ -1,0 +1,31 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.nanmicoder.dsh-agent-teams",
+  "packageName": "@nanmicoder/dsh-agent-teams",
+  "name": "多智能体协作团队",
+  "version": "0.1.22",
+  "summary": "将一个 DeepSeek Harness 会话扩展为可协作的多智能体团队工作流。",
+  "author": "NanmiCoder",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40nanmicoder%2Fdsh-agent-teams/0.1.22",
+    "repository": "https://github.com/NanmiCoder/dsh-agent-teams"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "依赖 Agent、会话、工具、客户端布局等多项宿主 peer；依赖未解析。",
+    "多智能体执行可能消耗额外模型和会话资源，任务隔离及权限由下游宿主负责。",
+    "宿主未安装、未运行；与其他 Agent 或会话增强插件的组合尚未验证。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@nanmicoder/dsh-agent-teams/-/dsh-agent-teams-0.1.22.tgz",
+    "sha256": "bdc19f0b017955625f3ab339a73465d7beac518df36dcd7c1b6ceb45a18f099d",
+    "size": 2099312
+  }
+}

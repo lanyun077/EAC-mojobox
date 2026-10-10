@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    { "id": "dev.omdsh.dsh-better-sidebar", "type": "plugin" }
+  ],
+  "materialVersions": {
+    "blue-fantasy": "1.0.0",
+    "dragon-heir": "1.0.0",
+    "maid-atelier": "1.0.0",
+    "miku": "1.0.0",
+    "minecraft": "1.0.0",
+    "qq98": "1.0.0",
+    "ths": "1.0.0",
+    "trading": "1.0.0",
+    "whale-song": "1.0.0",
+    "xp": "1.0.0"
+  }
+}

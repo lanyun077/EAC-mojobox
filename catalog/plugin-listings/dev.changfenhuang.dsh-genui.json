@@ -1,0 +1,31 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.changfenhuang.dsh-genui",
+  "packageName": "@changfenhuang/dsh-genui",
+  "name": "生成式交互界面",
+  "version": "0.11.3",
+  "summary": "把模型回答转换为可交互的数据面板、视频、图表、测验和会话界面。",
+  "author": "changfenhuang / omdsh-dev",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/%40changfenhuang%2Fdsh-genui/0.11.3",
+    "repository": "https://github.com/omdsh-dev/dsh-genui"
+  },
+  "license": "MIT",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "依赖 React、Markdown、Agent、会话、工具等宿主 peer；依赖未解析。",
+    "发行包包含作者提供的 SKILL.md，但本轮只收录插件，不拆成独立 Skill 资源。",
+    "交互式内容的渲染和安全策略由下游宿主负责；宿主未安装、未运行。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/@changfenhuang/dsh-genui/-/dsh-genui-0.11.3.tgz",
+    "sha256": "6f7de08dc584a5097e4064296dd23bbfa79a7b1af705f6b497bd99906ab1030a",
+    "size": 2666615
+  }
+}

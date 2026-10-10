@@ -1,0 +1,32 @@
+{
+  "format": "mojobox-plugin-listing-v1",
+  "id": "dev.bowenliang123.dsh-context",
+  "packageName": "dsh-context",
+  "name": "上下文洞察与管理",
+  "version": "0.62.3",
+  "summary": "提供跨会话上下文统计、组成分析、趋势面板和右侧上下文面板。",
+  "author": "bowenliang123",
+  "maintainedBy": "registry-maintained",
+  "source": {
+    "url": "https://registry.npmjs.org/dsh-context/0.62.3",
+    "repository": "https://github.com/bowenliang123/dsh-context",
+    "commit": "be2810288299f291640d5b8fcc4c4c11541fd3b8"
+  },
+  "license": "Apache-2.0",
+  "compatibility": {
+    "dsh": null,
+    "basis": "unknown"
+  },
+  "conflicts": null,
+  "limitations": [
+    "需要宿主会话、设置和客户端 UI 相关能力；依赖未解析。",
+    "包声明过多个 DSH 版本兼容记录，但当前信息卡协议不接受无法逐字投影的声明，因此这里保留为未知。",
+    "宿主未安装、未运行；与其他侧栏或设置面板插件的组合尚未验证。"
+  ],
+  "artifact": {
+    "format": "npm-tgz",
+    "url": "https://registry.npmjs.org/dsh-context/-/dsh-context-0.62.3.tgz",
+    "sha256": "774b5ffabd05479a501df2c046384d47ee0cc6fe89ea13729802ae7d9178cb6a",
+    "size": 229916
+  }
+}
