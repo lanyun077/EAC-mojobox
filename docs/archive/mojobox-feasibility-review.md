@@ -1,7 +1,10 @@
 # Mojobox 当前状态与可行性审查包
 
+> 历史归档：保留当时的候选输入、阻塞分析和方案比较，不用于判断今天是否可收录或发布。
+> 最新方向和规范从 [文档索引](../README.md) 进入。
+
 > 历史审查材料：本文记录框架优先调整前的宿主/候选阻塞，不代表当前进度。
-> 当前状态见 [实施计划](implementation-plan.md) 和 [框架验收](framework-acceptance.md)。
+> 当时状态见 [实施计划](implementation-plan.md) 和 [框架验收](../framework-acceptance.md)。
 > Node 版本阻塞已过时；宿主安装及候选来源不再作为收录框架开发前置。
 
 更新时间：2026-09-30
@@ -68,7 +71,7 @@ Mojobox 负责：
 
 ### 2.1 Mojobox 仓库
 
-- 路径：`D:\Deepseek-Harness-EAC\dsh-mojobox`
+- 路径：`<workspace>/dsh-mojobox`（本机路径已脱敏）
 - 分支：`feat/mojobox-foundation`
 - 最近相关提交：
   - `e9e989d feat(mojobox): 收敛 MVP 边界并补齐功能包基础`
@@ -90,7 +93,7 @@ Mojobox 负责：
 
 ### 2.2 外层 EAC 仓库
 
-- 路径：`D:\Deepseek-Harness-EAC`
+- 路径：`<workspace>`（本机路径已脱敏）
 - 分支：`feat/mojobox-host-resources`
 - 相关提交：`ad4e8c31 feat(packaging): 纳入 Feature Pack 宿主资源`
 - 定向资源契约测试：`7/7 passed`
@@ -465,7 +468,7 @@ dsh-desktop/vendor/kernel/0.1.5-rc.2/deepseek-ai-schemastery-3.18.2.tgz
 ### Mojobox
 
 ```powershell
-cd D:\Deepseek-Harness-EAC\dsh-mojobox
+cd <workspace>/dsh-mojobox
 npm test
 npm run build
 git diff --check
@@ -489,7 +492,7 @@ npm run host:pack -- plan <archive.dshpack> --home <隔离DSH_HOME> --profile <�
 在使用 Node `22.19+` 或 `24+` 后：
 
 ```powershell
-cd D:\Deepseek-Harness-EAC\dsh-desktop
+cd <workspace>/dsh-desktop
 npm run fetch-kernel
 cd ..
 node tauri-shell/stage-resources.mjs --skip-npm

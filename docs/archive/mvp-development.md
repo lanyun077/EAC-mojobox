@@ -1,7 +1,10 @@
 # Mojobox MVP 开发边界与计划
 
+> 历史归档：记录一键安装优先方案，已经被收纳优先的项目路线取代。
+> 当前执行规范见 [收录规范](../intake.md) 与 [项目路线](../project-positioning-and-roadmap.md)。
+
 > 2026-09-30 用户调整：先做 Mojobox 收纳、检验、展示、下载框架，再适配整合包，最后搭载测试。
-> 当前执行以 [收录规范](intake.md) 和 [实施计划](implementation-plan.md) 为准。
+> 当时调整见 [收录规范](../intake.md) 和 [实施计划](implementation-plan.md)。
 > 下文为上一轮一键安装 MVP 基线，保留历史背景；宿主 staging、来源发布和安装验收不再阻塞框架开发。
 
 本文是当前 Mojobox MVP 的开发基线。它覆盖“目录可看、功能和外观整合包可收录、宿主可一键安装”这条最短可用链路；与旧版 Mojobox 自定义 `.dshpack` 设计冲突时，以本文为准。

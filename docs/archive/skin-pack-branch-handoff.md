@@ -1,15 +1,18 @@
 # 皮肤包开发分支交接文档
 
-> 本文供新的开发会话使用。新的会话只处理社区皮肤包的候选整理、薄 Feature Pack 交付和收录准备，不扩展 Mojobox 本体，也不修改宿主安装器。
+> 历史归档：该阶段分支已合并，本文的空目录、版本、测试数量和候选选择不代表当前状态。
+> 新的皮肤收录任务使用 [作者提交指南](../community-submissions.md) 和 [收录规范](../intake.md)。
 
-项目长期定位和五阶段路线见[项目定位与发展路线](project-positioning-and-roadmap.md)。本文件只保留皮肤包分支的执行边界和启动任务。
+> 本文保留当时交接的边界：该会话只处理社区皮肤包的候选整理、薄 Feature Pack 交付和收录准备，不扩展 Mojobox 本体，也不修改宿主安装器。
+
+项目长期定位和五阶段路线见[项目定位与发展路线](../project-positioning-and-roadmap.md)。本文件只保留皮肤包分支当时的执行边界和启动任务。
 
 ## 1. 当前基线
 
 | 项目 | 当前事实 |
 | --- | --- |
 | 仓库 | `https://github.com/DSH-EAC/dsh-mojobox` |
-| 本地目录 | `D:\Deepseek-Harness-EAC\dsh-mojobox` |
+| 本地目录 | `<workspace>/dsh-mojobox`（本机路径已脱敏） |
 | 建议分支起点 | `origin/main`，提交 `a273be4` |
 | 分支创建目的 | `feat/skin-pack-development` |
 | 上一阶段基线 | `feat/mojobox-visual-refresh`，提交 `d8ff4d0` |
@@ -24,7 +27,7 @@ git status --short --branch
 npm test
 ```
 
-保留已有修改，不覆盖其他会话的文件。不要把父仓库 `D:\Deepseek-Harness-EAC` 的无关改动混入本分支。
+保留已有修改，不覆盖其他会话的文件。不要把父仓库 `<workspace>` 的无关改动混入本分支。
 
 ## 2. 本分支唯一目标
 

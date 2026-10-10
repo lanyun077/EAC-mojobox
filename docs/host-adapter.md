@@ -1,8 +1,8 @@
 # 宿主接入与安装边界
 
-> **MVP 状态**：本文件保留早期 Mojobox 自定义格式与实验 CLI 的核对记录，不是当前主线的安装
-> 方案。当前主线复用官方桌面 Host 插件和 Feature Pack v1；不新增 EAC Adapter、格式桥接或
-> `dsh-eac://` 深链接。详见 [MVP 开发文档](mvp-development.md)。
+> **历史实现维护**：本文件保留早期自定义格式与实验 CLI 的核对记录，不是当前收录门槛。
+> 当前采用薄 Feature Pack v1 收纳与下载，安装与运行归下游；不新增 EAC Adapter、格式桥接或
+> `dsh-eac://` 深链接。当前规范见 [收录规范](intake.md)，旧安装计划见 [历史归档](archive/README.md)。
 
 ## 已确认的差异
 

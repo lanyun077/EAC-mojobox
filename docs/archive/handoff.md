@@ -1,8 +1,11 @@
 # Mojobox 本体建设交接（2026-09-23）
 
+> 历史归档：记录早期 legacy 建设和当时环境，不作为新会话的执行指令。
+> 当前规范见 [文档索引](../README.md)；本文的分支、进度和命令仅代表当时状态。
+
 > **历史交接说明**：本文记录 2026-09-23 的 legacy Mojobox 本体建设，不是当前 MVP 的安装
-> 方案。当前边界、宿主格式和开发顺序以 [MVP 开发文档](mvp-development.md) 和
-> [MVP 实施计划](implementation-plan.md) 为准。本文中的自定义 Pack/Lock、实验 CLI 和 EAC
+> 方案。当时边界、宿主格式和开发顺序参见 [MVP 开发文档](mvp-development.md) 和
+> [MVP 实施计划](implementation-plan.md)。本文中的自定义 Pack/Lock、实验 CLI 和 EAC
 > Adapter 结论保留作历史背景，不应作为新功能的默认入口。
 
 本文交接一次连续会话的全部成果，供下一个会话或维护者直接接续。事实以仓库当前工作区为准，
@@ -13,12 +16,12 @@
 | 项目 | 值 |
 | --- | --- |
 | 远端 | `https://github.com/DSH-EAC/dsh-mojobox` |
-| 本地路径 | `D:\Deepseek-Harness-EAC\dsh-mojobox` |
+| 本地路径 | `<workspace>/dsh-mojobox`（本机路径已脱敏） |
 | 分支 | `codex/mojobox-core-foundation`（本次新建，基于 `main`） |
 | 起始 revision | `d76f5ea78f36ba8c1e862574ea09de02398fffd9` |
 | 状态 | 全部改动未提交、未推送、未创建 PR、未部署 |
 
-该目录被父仓库 `D:\Deepseek-Harness-EAC` 视为未跟踪目录。父仓库停留在
+该目录被父仓库 `<workspace>` 视为未跟踪目录。父仓库停留在
 `codex/staged-windows-artifact` 分支并有与本次无关的未提交文件，不要在那里混入 Mojobox 改动。
 
 ## 2. 本次目标
@@ -182,7 +185,7 @@ git diff --check
 ## 10. 环境注意事项
 
 - 本机默认 Node 为 22.17.0，不满足官方 CLI 0.1.7-alpha.1；隔离测试使用
-  `C:\Users\81570\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe`（24.19.0）。
+  本机工具运行时提供的 `node.exe`（24.19.0，本机路径已脱敏）。
 - npm 默认缓存目录曾出现 `EPERM`，可用 `npm --cache .cache/npm` 规避；不要把缓存写进仓库。
 - `git clone` 使用 schannel 曾报 `SEC_E_NO_CREDENTIALS`，加 `-c http.sslBackend=openssl` 可成功。
 - 无凭据访问 GitHub API 会遇到限流，且 `raw.githubusercontent.com` 时常超时，可改用

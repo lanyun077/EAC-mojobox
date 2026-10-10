@@ -1,6 +1,6 @@
 # 使用 coding agent 开发 Mojobox
 
-先读根目录 `AGENTS.md`、[收录规范](intake.md)及[实施计划](implementation-plan.md)，检查分支和已有改动。当前目标为收纳、检验、展示和下载。整合包适配与宿主搭载是后续任务。
+先读根目录 `AGENTS.md`、[收录规范](intake.md)及[作者提交指南](community-submissions.md)，检查分支和已有改动。当前目标为收纳、检验、展示和下载；发展方向见[项目路线](project-positioning-and-roadmap.md)。旧计划和阶段交接已移入[历史归档](archive/README.md)，不作为当前任务入口。
 
 ## 收录任务模板
 

@@ -1,8 +1,7 @@
 # Pack、Lock 与下载格式
 
-> **MVP 边界说明**：本文描述的是当前 Mojobox 自定义 Pack/Lock/`.dshpack` 链路，现阶段冻结为
-> legacy，不作为宿主一键安装的主格式。MVP 使用官方桌面 Feature Pack v1，边界和开发顺序见
-> [MVP 开发文档](mvp-development.md)。两种格式不互转，也不共用同一个安装入口。
+> **历史格式维护**：本文描述 Mojobox 自定义 Pack/Lock/`.dshpack` 链路，已冻结为 legacy。
+> 当前收录采用薄 Feature Pack v1，见 [收录规范](intake.md)；两种格式不互转，也不共用安装入口。
 
 字段以 `schemas/pack.schema.json`、`schemas/pack-lock.schema.json` 为准。本轮未改变 wire
 版本；保留外观包和工作流分类。外观包与皮肤包统一归类为 `appearance`，当前收录策略见

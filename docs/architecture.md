@@ -4,9 +4,9 @@
 > 以 [收录规范](intake.md) 和 [框架验收](framework-acceptance.md) 为准。
 > 以下 Pack/Lock、组件组合及宿主联动图为历史设计，不是当前默认构建或框架完成条件。
 
-> **当前主线**：Mojobox MVP 维护功能与外观整合包目录、归档和市场索引；一键安装由官方桌面已有
-> Host 插件和 Feature Pack CLI 完成。本文中的 Mojobox 自定义 Pack/Lock 与 EAC Adapter
-> 设计保留作 legacy 参考，不作为当前新增功能的默认方案。详见 [MVP 开发文档](mvp-development.md)。
+> **当前主线**：Mojobox 收纳、检验、展示并提供功能与外观整合包的原始下载，安装与运行归下游。
+> 本文的自定义 Pack/Lock 与 EAC Adapter 设计保留作 legacy 参考，不作为当前新增功能的默认方案。
+> 现行方向见 [项目路线](project-positioning-and-roadmap.md)，旧计划见 [历史归档](archive/README.md)。
 
 本文面向准备扩展 Mojobox 或 EAC Adapter 的开发者。规范字段以 `schemas/`、`fixtures/` 和固定的
 上游 revision 为准。
