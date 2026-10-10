@@ -7,14 +7,29 @@ Issue 用于咨询和提交候选，不会自动发布。没有上传服务器�
 
 | 类型 | 必须提交 | 下载与职责 |
 | --- | --- | --- |
-| 独立插件 | [轻量信息卡](plugin-intake.md)，下载可选 | 不要求更改作者格式；原始 npm 归档核验后下载，宿主负责安装 |
-| 功能整合包 | 薄 `.dshpack` 与同 ID 的收录 JSON | 原样下载，宿主负责安装与运行 |
-| 可安装的皮肤/外观包 | 同上，分类为 `appearance` 并声明 `appearance.kind` | Mojobox 不加载、不切换皮肤 |
-| 皮肤 Prompt 资料 | `manifest.json`、`prompt.md`、`README.md` 与固定来源记录 | 三个资料文件，不转换成可安装包 |
+| [独立插件](#plugin) | [轻量信息卡](plugin-intake.md)，下载可选 | 不要求更改作者格式；原始 npm 归档核验后下载，宿主负责安装 |
+| [功能整合包](#pack) | 薄 `.dshpack` 与同 ID 的收录 JSON | 原样下载，宿主负责安装与运行 |
+| [皮肤/外观归档](#skin) | 同上，分类为 `appearance` 并声明 `appearance.kind` | Mojobox 不加载、不切换皮肤，不保证安装兼容 |
+| [皮肤 Prompt 资料](#prompt) | `manifest.json`、`prompt.md`、`README.md` 与固定来源记录 | 三个资料文件，不转换成可安装包 |
 
 新增独立插件按[轻量收录规范](plugin-intake.md)；旧 dsh-std Manifest 仅维护已有记录。
 Skill 暂只预留分类，不接受实际收录或安装。
 完整客户端、用户 Profile、带内嵌代码的整套环境不符合当前薄包收录范围，先开 Issue 讨论。
+
+<a id="plugin"></a>
+
+### 独立插件：一张信息卡起步
+
+1. 按 [最小示例](plugin-intake.md#最少提交什么) 创建 `catalog/plugin-listings/<id>.json`。
+   填实际包名、精确版本、用途、HTTPS 来源、许可、兼容和冲突状态；未知明确写 `null`。
+2. 只投递来源不需要归档。希望提供下载时，附作者原始
+   `artifacts/plugins/<id>-<version>.tgz`，补 `artifact` 的原始地址、SHA-256 和大小。
+   下载归档限 8 MiB，必须符合包内身份、Bundle 与许可检查；超限只收来源。
+3. 填写作者或目录代维护身份、已知服务/平台限制；不以功能相似推定硬冲突。
+4. 按[统一提交步骤](#submit) 验证并提 PR。查看[真实信息卡](../catalog/plugin-listings/dev.acidgr.web-mobile-fix.json)
+   与 [Schema](../schemas/plugin-listing.schema.json)，不要求生成新运行时 Manifest。
+
+<a id="pack"></a>
 
 ## 2. 功能包与皮肤归档
 
@@ -64,6 +79,17 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 不读取本机内核、不解析插件来源，不意味着已经兼容或保证安装可复现。
 第三方组件的许可不被整合包清单的 MIT 等许可证覆盖；PR 要说明代码、素材和截图的许可边界。
 
+<a id="skin"></a>
+
+### 皮肤归档：在薄包之上声明外观信息
+
+文件结构和验证步骤与功能包相同，收录 JSON 的 `category` 改为 `appearance`，
+增加 `appearance.kind`。有依据时再填写 loader、皮肤 ID、主题注册点、冲突和预览。
+字段见 [Schema](../schemas/intake.schema.json) 与[皮肤来源复核](skin-pack-source-review.md)。
+不要上传修改后的整个客户端或 Profile；加载与切换由下游负责。
+作者缺少新的宿主范围声明时先投递候选 Issue，不能套用 8 个旧皮肤归档的历史例外。
+若交付的只是设计和复刻说明，请走下面的 Prompt 资料路径。
+
 ## 3. 预览图由作者提供
 
 两种方式都支持：
@@ -81,6 +107,8 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 
 功能包截图在详情页展示，皮肤包首图还用于列表封面。图片缺失或加载失败仍可浏览、下载。
 外观包原有的 `appearance.previews` 保持兼容；新记录优先使用顶层 `previews`，不要两处重复填写。
+
+<a id="prompt"></a>
 
 ## 4. 外部皮肤 Prompt 资料
 
@@ -125,13 +153,15 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 
 资料摘要在记录中加 `sha256:` 前缀；归档 `sha256` 字段不加前缀。
 
+<a id="submit"></a>
+
 ## 5. 从 Fork 到发布
 
 1. Fork 仓库，从最新 `main` 建立 `feat/add-<id>` 或 `fix/update-<id>` 分支。
 2. 只提交自己包的事实源、归档和图片。一次 PR 尽量只处理一个稳定 ID。
 3. 按模板填写来源、身份/代提交授权、许可、截图说明、版本和真实测试范围。
-4. 本地运行以下命令，在 PR 中填写实际结果；当前主分支已停用 PR 检查工作流，不等待不存在的自动检查。
-5. 维护者复核测试结果并人工审核，必要时要求修改；有权限的维护者合并，不自动合并第三方内容。
+4. 本地运行以下命令，在 PR 中填写实际结果并等待 `check`；首次 Fork 的工作流可能需要维护者批准运行。
+5. CI 通过后维护者审核作者归属、许可与内容边界；必要时要求修改，获得审核批准后再合并，不自动合并第三方内容。
 6. `main` 的 Pages 工作流再次测试、构建、复核下载，成功后才部署。合并不等于已上线。
 
 ```bash
@@ -151,7 +181,7 @@ git diff --check
 
 ## 6. 自动门禁与人工审核
 
-本地检查覆盖 Schema、身份、归档结构、SHA-256、公开图片路径/大小/签名、Prompt 文件摘要、
+本地与 PR CI 检查覆盖 Schema、身份、归档结构、SHA-256、公开图片路径/大小/签名、Prompt 文件摘要、
 多来源格式、构建和最终下载字节；PR 增量检查阻止改写历史归档或提交生成目录。
 全量检查失败时所有新增内容都不能发布，不是只检查某一条 JSON。
 
@@ -162,14 +192,16 @@ git diff --check
 仓库管理员应在 GitHub 配置 `main` Ruleset/Branch protection：
 
 - 必须通过 PR 合并，至少 1 个批准；有新提交时撤销旧批准，要求最近改动获批准。
-- 解决所有审阅对话。当前没有 PR 检查 job，不配置不存在的必需状态；若将来恢复 CI，再按实际 job 配置。
-- 要求分支更新到最新 `main`；启用 Merge Queue 前须另行实现对应检查工作流。
+- 将“校验贡献与构建”的 `check` job 设为必需状态检查，解决所有审阅对话。
+- 要求分支更新到最新 `main`；工作流也支持 `merge_group`，启用 Merge Queue 仍须管理员另行设置。
 - 禁止强推和删除 `main`；按团队实际成员配置 CODEOWNERS，关键脚本/工作流要求负责人批准。
 - 数据收录推荐 Squash merge，一包一条可追踪提交；不要求外部作者强推变基。
 
-这些是管理员设置，不会因提交文档而自动生效。本轮不恢复已删除的 PR 工作流，也不修改远端保护规则或自动合并设置。
+这些是 GitHub 管理员设置，不会因提交工作流或文档而自动生效。维护者须按[维护门禁说明](maintainer-checks.md)
+核对远端实际状态；历史停用记录不代表当前要求。
 不能使用 `pull_request_target` 来检出并执行外部代码，也不向 Fork PR 提供发布凭据。
-提交增量检查在本地执行；发布仅来自 `main`，提交 PR 不部署。必要的脚本依赖安装不等于执行收录插件。
+提交增量检查在本地与 PR CI 执行；工作流使用只读权限，不保留 checkout 凭据。
+发布仅来自 `main`，提交 PR 不部署。必要的脚本依赖安装不等于执行收录插件。
 
 ## 7. 撤回与故障处理
 

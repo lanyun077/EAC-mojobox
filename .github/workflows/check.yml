@@ -1,0 +1,59 @@
+name: 校验贡献与构建
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_PATH: /${{ github.event.repository.name }}/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: 检查贡献边界与历史归档
+        if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
+        run: npm run check:submission
+        env:
+          SUBMISSION_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+      - name: 复核自制包清单与归档字节
+        run: node authoring/build.mjs --check
+      - run: npm test
+      - run: npm run build
+        id: build
+      - name: 独立复核原始下载与插件索引
+        run: npm run verify:downloads
+      - run: npm run build:demo
+      - run: npm run verify:downloads -- dist-demo --allow-demo
+      - name: 保存收录报告供审核
+        if: always() && steps.build.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: intake-review-reports
+          path: |
+            dist/generated/catalog.json
+            dist/generated/api/v1/plugins.json
+            dist/generated/api/v1/schemas/*.json
+            dist/generated/skin-catalog.json
+            dist/generated/reports/*.json
+          retention-days: 7

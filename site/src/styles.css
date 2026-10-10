@@ -267,6 +267,25 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 /* Intake 目录：顶部导航、资源网格和独立详情页 */
 .brand-link { color: var(--ink); text-decoration: none; }
+.participation { padding-bottom: 0; }
+.role-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.role-card { display: grid; gap: 12px; padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); text-decoration: none; }
+.role-card strong { display: flex; justify-content: space-between; gap: 8px; font-size: .88rem; }
+.role-card span { color: var(--muted); font-size: .76rem; line-height: 1.7; }
+.role-card:hover { border-color: var(--green); }
+.guide-page { max-width: 1040px; overflow-wrap: anywhere; }
+.guide-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+.guide-panel { min-width: 0; margin-top: 22px; padding: clamp(18px, 3vw, 30px); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-size: .86rem; line-height: 1.8; }
+.guide-panel h2 { margin: 0 0 14px; font-size: 1.25rem; letter-spacing: -.025em; }
+.guide-panel p, .guide-panel li, .guide-facts dd { color: var(--muted); }
+.guide-panel ol { padding-left: 22px; }
+.guide-panel li + li { margin-top: 9px; }
+.guide-panel pre { max-width: 100%; padding: 16px; border-radius: 8px; background: var(--green-soft); white-space: pre-wrap; overflow-wrap: anywhere; }
+.guide-facts { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 15px; }
+.guide-facts dt { font-weight: 700; }
+.guide-facts dd { margin: 0; }
+.guide-tabs .command { white-space: normal; }
+.role-card:focus-visible, .guide-page a:focus-visible, .intake a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .brand-link:hover { color: var(--green); }
 .intake-topbar { gap: 24px; }
 .intake-nav { flex: 1; justify-content: center; gap: 4px; }
@@ -411,6 +430,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 @media (max-width: 980px) {
+  .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .intake-topbar { flex-wrap: wrap; }
   .intake-nav { order: 3; flex-basis: 100%; justify-content: flex-start; }
   .topbar-tools { margin-left: auto; }
@@ -420,6 +440,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 @media (max-width: 719px) {
+  .role-grid { grid-template-columns: 1fr; }
+  .guide-facts { grid-template-columns: 1fr; gap: 5px; }
+  .guide-facts dd { margin-bottom: 12px; }
+  .intake-nav { min-width: 0; max-width: 100%; }
   .intake-topbar { gap: 13px; padding-block: 10px; }
   .intake-nav { gap: 0; overflow-x: auto; }
   .intake-nav .topbar-link { padding-inline: 11px; font-size: .72rem; }

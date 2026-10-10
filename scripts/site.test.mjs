@@ -120,6 +120,34 @@ const skinArchive = { ...intakePack, metadata: { ...intakePack.metadata, id: 'de
   } }
 const mixedIntake = { mode: 'intake', demo: false, plugins: [], packs: [intakePack, skinArchive], skinPackages: [skinPackage] }
 
+for (const base of ['/', '/EAC-mojobox/']) {
+  test(`guide routes and published API links retain deployment base ${base}`, () => {
+    const site = loadSite(base, mixedIntake)
+    site.run('location.hash = "#/home"; applyHash(); render()')
+    for (const route of ['plugins', 'contribute', 'source']) assert.ok(site.app.innerHTML.includes(`href="#/${route}"`))
+    site.run('location.hash = "#/contribute"; applyHash(); render()')
+    for (const type of ['plugin', 'pack', 'skin', 'prompt']) {
+      assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}"`))
+      site.run(`location.hash = "#/contribute/${type}"; applyHash(); render()`)
+      assert.equal(site.run('state.tab'), 'contribute')
+      assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}" aria-current="page"`))
+      assert.ok(site.app.innerHTML.includes(`href="https://github.com/DSH-EAC/EAC-mojobox/blob/main/docs/community-submissions.md#${type}"`))
+      assert.doesNotMatch(site.app.innerHTML, /data-select=|type="file"/)
+    }
+    site.run('location.hash = "#/contribute/%3Cscript%3E"; applyHash(); render()')
+    assert.doesNotMatch(site.app.innerHTML, /<script>/)
+    site.run('location.hash = "#/source"; applyHash(); render()')
+    for (const path of ['plugins.json', 'schemas/plugin-index.schema.json', 'schemas/plugin-listing.schema.json']) {
+      assert.ok(site.app.innerHTML.includes(`href="${base}generated/api/v1/${path}"`))
+    }
+    assert.ok(site.app.innerHTML.includes(`href="${base}generated/catalog.json"`))
+    for (const [route, types] of [['plugins', ['plugin']], ['packs', ['pack']], ['skins', ['skin', 'prompt']]]) {
+      site.run(`location.hash = "#/${route}"; applyHash(); render()`)
+      for (const type of types) assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}"`))
+    }
+  })
+}
+
 const listing = { format: 'mojobox-plugin-listing-v1', id: 'org.example.tools', packageName: '@example/tools',
   name: 'Example tools', version: '1.0.0', summary: 'Mobile layout tools', license: 'MIT', maintainedBy: 'registry-maintained',
   source: { url: 'https://example.org/releases/1.0.0' }, compatibility: { dsh: null, basis: 'unknown' }, conflicts: null,
@@ -181,7 +209,7 @@ test('version declarations distinguish syntax checks from historical unknown com
 test('intake groups appearance archives and prompt material under skins and counts each once', () => {
   const site = loadSite('/', mixedIntake)
   site.run('state.tab = "home"; render()')
-  assert.match(site.app.innerHTML, /href="https:\/\/github.com\/DSH-EAC\/dsh-mojobox\/blob\/main\/docs\/community-submissions.md"/)
+  assert.match(site.app.innerHTML, /href="#\/contribute"/)
   assert.match(site.app.innerHTML, /<strong>3<\/strong><span>正式收录<\/span>/)
   assert.match(site.app.innerHTML, /<strong>1<\/strong><span>功能包<\/span>/)
   assert.match(site.app.innerHTML, /<strong>2<\/strong><span>皮肤包<\/span>/)
@@ -193,7 +221,7 @@ test('intake groups appearance archives and prompt material under skins and coun
   site.run('state.tab = "skins"; render()')
   assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
   assert.match(site.app.innerHTML, /data-select="maid-atelier"/)
-  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.aio.function"|外观包/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.aio.function"/)
   assert.match(site.app.innerHTML, /skin-gallery/)
   assert.match(site.app.innerHTML, /href="#\/skins\/dev.example.skin"/)
   assert.match(site.app.innerHTML, /href="#\/skins\/maid-atelier"/)

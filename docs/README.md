@@ -5,9 +5,10 @@
 
 ## 提交与使用
 
+- [README 角色入口](../README.md#从这里开始)：先了解项目，再选择浏览、投递、消费或开发。
 - [外部作者提交与审核](community-submissions.md)：提交材料、标签、介绍、图片、PR 与审核合并。
 - [插件轻量收录](plugin-intake.md)：最小信息卡、兼容与冲突边界、原始下载、Skill 预留。
-- [插件来源接口 v1](plugin-source-api-v1.md)：26 条插件快照、固定入口、摘要核验与下游接入，尚未部署。
+- [插件来源接口 v1](plugin-source-api-v1.md)：26 条插件快照、公开入口、摘要核验与下游接入。
 - [整合包文件结构与最小示例](author-pack-request.md)：理解 `.dshpack` 和 `pack.json`。
 - [收录规范](intake.md)：支持范围、字段、检验结论与下载构建。
 - [版本声明策略](intake-version-policy.md)：新提交门禁、精确历史例外、迁移和 Issue 回复草稿。
@@ -16,6 +17,7 @@
 
 ## 维护与边界
 
+- [审核与 CI 门禁](maintainer-checks.md)：PR 检查、分支保护、人工审核与 Pages 发布的职责。
 - [项目定位与路线](project-positioning-and-roadmap.md)：长期方向和上下游职责。
 - [EAC 供货导出器](eac-supply-export.md)：本地草稿、正式批次、历史与撤回，尚未部署；用户转述两轮草稿可以通过，不再要求逐批反馈。
 - [开发代理指南](agent-guide.md)：任务模板；执行约束以 [AGENTS.md](../AGENTS.md) 为准。

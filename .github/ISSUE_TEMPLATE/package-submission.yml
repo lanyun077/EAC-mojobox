@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        正式贡献请按 [作者提交指南](https://github.com/DSH-EAC/dsh-mojobox/blob/main/docs/community-submissions.md) 创建 PR。
+        正式贡献请先 [按类型选择提交方案](https://github.com/DSH-EAC/EAC-mojobox/blob/main/docs/community-submissions.md#1-选择提交类型)，再创建 PR。
         本表用于候选来源或格式咨询，不会自动下载、安装或发布。不要填写密钥或私人资料。
   - type: dropdown
     id: kind

@@ -59,8 +59,8 @@ EAC 专属新协议/UI/bridge/事务和复杂迁移仍暂缓。`docs/archive/` �
 
 ### 外部作者提交与审核
 
-读取 `docs/community-submissions.md`、收录 Schema、PR 模板及 `.github/workflows/pages.yml`。
-当前主分支已停用 PR 检查工作流；执行本地完整验证并在 PR 中提供结果，不擅自恢复已删除的工作流。
+读取 `docs/community-submissions.md`、收录 Schema、PR 模板及 `.github/workflows/check.yml`。
+用户已要求恢复 PR CI 与审核门禁；贡献工作流负责只读验证，Pages 工作流负责主分支发布。
 展示字段属于 Mojobox 收录元数据，不改变上游归档格式。预览图不能塞进薄包；外部皮肤资料
 采用条目级固定来源，不能改写旧的统一导入基线。既有归档不修改、删除或重命名。
 提交增量门禁是 `npm run check:submission -- <base-ref>`，只检查已提交内容；仍需全量测试、
