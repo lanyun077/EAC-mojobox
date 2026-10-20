@@ -46,8 +46,8 @@ function describeErrors(validate) {
 }
 
 async function validateDocuments() {
-  // Developer archives use the independent intake checker in npm test.
-  const catalogFiles = (await jsonFiles('catalog')).filter(path => !path.startsWith('catalog/feature-packs/') && !path.startsWith('catalog/skin-prompt-packages/') && !path.startsWith('catalog/plugin-listings/'))
+  // Intake and its website tags use the independent build-catalog checker in npm test.
+  const catalogFiles = (await jsonFiles('catalog')).filter(path => !path.startsWith('catalog/feature-packs/') && !path.startsWith('catalog/skin-prompt-packages/') && !path.startsWith('catalog/plugin-listings/') && path !== 'catalog/website-tags.json')
   const validFixtures = await jsonFiles('fixtures/valid')
   const invalidFixtures = await jsonFiles('fixtures/invalid')
 

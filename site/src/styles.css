@@ -337,6 +337,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .catalog-toolbar { display: grid; gap: 14px; margin: 22px 0 10px; }
 .catalog-filter-row { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
 .catalog-filter-row .command { min-height: 46px; }
+.official-tag-group { display: grid; gap: 9px; }
+.official-tag-heading { color: var(--muted); font-size: .72rem; font-weight: 700; }
+.official-tag-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.official-tag-choice { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); font-size: .76rem; cursor: pointer; }
+.official-tag-choice:has(input:checked) { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+.official-tag-choice:focus-within { outline: 2px solid var(--blue); outline-offset: 2px; }
+.official-tag-choice input { margin: 0; accent-color: var(--green); }
+.official-tag-choice small { color: var(--muted); font-size: .68rem; }
+.card-tags { margin-top: 8px; }
+.card-tags .tag { font-size: .65rem; font-weight: 600; }
 .catalog-search-note { margin: 0 0 22px; color: var(--muted); font-size: .73rem; line-height: 1.7; }
 .catalog-toolbar .search-field { flex: 1; min-height: 46px; margin-top: 0; border-radius: 8px; }
 .catalog-filter { min-width: 160px; display: grid; gap: 5px; color: var(--muted); font-size: .68rem; font-weight: 700; }

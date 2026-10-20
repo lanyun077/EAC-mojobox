@@ -7,6 +7,7 @@
 
 - [README 角色入口](../README.md#从这里开始)：先了解项目，再选择浏览、投递、消费或开发。
 - [目录检索](catalog-search.md)：多关键词、组合筛选、相关性排序和可分享链接。
+- [官方分类与作者标签](catalog-tags.md)：整合包用途、皮肤主题、投稿标注与检索边界。
 - [外部作者提交与审核](community-submissions.md)：提交材料、标签、介绍、图片、PR 与审核合并。
 - [插件轻量收录](plugin-intake.md)：最小信息卡、兼容与冲突边界、原始下载、Skill 预留。
 - [插件来源接口 v1](plugin-source-api-v1.md)：26 条插件快照、公开入口、摘要核验与下游接入。

@@ -41,6 +41,7 @@ EAC 专属新协议/UI/bridge/事务和复杂迁移仍暂缓。`docs/archive/` �
 | 新插件轻量信息卡 | `catalog/plugin-listings/*.json` 与 `schemas/plugin-listing.schema.json` |
 | 皮肤 Prompt 资料 | `catalog/skin-prompt-packages/` 与 `schemas/skin-prompt-package.schema.json` |
 | 作者上传预览图 | `catalog/previews/<id>/`，由收录记录或皮肤 `origins.json` 引用 |
+| 网站官方分类与作者补充标签 | `catalog/website-tags.json`；官方词表 `policies/catalog-tags.json`；规范 `docs/catalog-tags.md` |
 | Pack / Lock | `catalog/packs/*.pack.json`、`*.lock.json` |
 | 生产 Evidence | `catalog/evidence/*.json` |
 | Mojobox wire format | `schemas/*.schema.json` |
@@ -130,6 +131,8 @@ Manifest，不改旧 Lock/Evidence，不把功能重叠冒称硬冲突。Skill �
 读取：`site/src/main.js`、`site/src/styles.css`、`vite.config.mjs`、生成 Catalog 结构。
 
 要求：保持静态；不读取本机环境；不直接安装；根路径和仓库子路径都可用；不手改生成数据。
+整合包／皮肤的分类和标签检索只用官方标注；作者标签只在详情展示，不能以组件名回退生成分类。
+分类是网站元数据，不改作者归档、原始 Prompt 清单或下游插件 v1 契约；不根据名字猜题材或兼容性。
 
 验证：`npm test`、`npm run build`、`BASE_PATH=/dsh-mojobox/ npm run build`，再检查桌面和窄屏。
 

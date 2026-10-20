@@ -1,0 +1,6 @@
+{
+  "entries": [
+    { "type": "pack", "id": "org.example.tools", "officialTags": ["development"], "customTags": ["作者自定义"] },
+    { "type": "skin-prompt", "id": "example-skin", "customTags": ["anime", "初音未来"] }
+  ]
+}

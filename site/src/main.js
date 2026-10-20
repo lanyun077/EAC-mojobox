@@ -57,38 +57,30 @@ const categoryLabels = {
   workflow: '工作流包'
 }
 
-const tagLabels = {
-  '2008': '2008 年风格', anime: '动漫', art: '艺术', blue: '蓝色', chinese: '中式',
-  'crystal-blue': '水晶蓝', dragon: '龙', dreamskin: '梦幻皮肤', 'dual-theme': '双主题',
-  game: '游戏', glass: '玻璃质感', goddess: '女神', 'great-wall': '长城', 'ice-blue': '冰蓝',
-  idol: '偶像', indigo: '靛蓝', 'ink-wash': '水墨', live: '动态', longbridge: '长桥',
-  loong: '中国龙', luna: '月光界面', maid: '女仆', miku: '初音未来', minecraft: '我的世界',
-  music: '音乐', navy: '海军蓝', nostalgia: '怀旧', ocean: '海洋', ornate: '华丽装饰',
-  panorama: '全景', pixel: '像素', qq: 'QQ 风格', red: '红色', retro: '复古', skybox: '天空盒',
-  'start-button': '开始按钮', stock: '股票', terminal: '终端', ticker: '行情', trading: '交易',
-  translucent: '半透明', vocaloid: '虚拟歌手', voxel: '体素', waveform: '波形',
-  whale: '鲸鱼', windows: '视窗系统', xp: '经典 XP',
-  genui: '生成式界面', modsearch: '模型搜索', visualize: '可视化', 'agent-teams': '智能体团队',
-  catppuccin: '四色主题', 'client-ui-skin-deep-whale-manager': '鲸鱼娘管理器',
-  'client-ui-skin-maid-atelier': '女仆工坊', 'client-ui-skin-orca-link': '虎鲸链路',
-  navbar: '导航栏', 'browser-skill-dsh-plugin': '浏览器工具', 'better-sidebar': '增强侧栏',
-  'bloom-theme': '花开主题', 'chat-import': '会话导入', context: '上下文观测',
-  'dream-skin': '梦幻皮肤', 'opencode-palette': '开放代码配色', 'plugin-wallpaper-engine': '动态壁纸',
-  'session-manager': '会话管理', 'soul-md': '长期记忆', 'undo-savepoint': '快照恢复',
-  'univer-office': '办公套件', 'vision-router': '视觉路由', dshmarket: '插件市场',
-  'project-memory': '项目记忆', 'theme-endfield': '终末地主题', 'meow-smooth': '平滑滚动',
-  'open-sea-skin': '开放海洋主题'
-}
-
 const kindLabels = { archive: '皮肤 / 外观归档', prompt: 'Prompt 资料' }
 
 function tagLabel(tag) {
-  const key = String(tag).toLowerCase()
-  return Object.hasOwn(tagLabels, key) ? tagLabels[key] : tag
+  return Object.values(catalog.tagGroups || {}).flat().find(item => item.id === tag)?.label || tag
 }
 
 function contentTags(pack) {
-  return Array.isArray(pack.metadata.tags) ? pack.metadata.tags : (pack.components || []).map(component => (component.ref || component.id || '').split('/').pop().replace(/^dsh-/, ''))
+  const group = pack.metadata?.category === 'appearance' ? 'skins' : 'packs'
+  const allowed = catalog.tagGroups?.[group] || []
+  return (pack.websiteTags?.officialTags || []).filter(id => allowed.some(tag => tag.id === id))
+}
+
+function selectedTags() {
+  return state.tag === 'all' ? [] : [...new Set(state.tag.split(',').filter(Boolean))]
+}
+
+function classificationDetail(pack) {
+  const custom = [...new Set([...(pack.metadata.tags || []), ...(pack.websiteTags?.customTags || [])])]
+  return `<section class="detail-section"><h3>官方分类</h3>${renderTags(contentTags(pack), '未分类')}<p class="section-note">仅描述用途或主题，不表示安全、兼容或运行认证。</p></section>${custom.length ? `<section class="detail-section"><h3>作者标签</h3>${renderTags(custom, '', value => value)}<p class="section-note">作者补充说明，不参与分类筛选或标签检索。</p></section>` : ''}`
+}
+
+function cardTags(pack) {
+  const tags = contentTags(pack)
+  return `<span class="tag-list card-tags">${tags.length ? tags.map(id => `<span class="tag">${escapeHtml(tagLabel(id))}</span>`).join('') : '<span class="tag">未分类</span>'}</span>`
 }
 
 function formatThemes(themes) {
@@ -119,8 +111,8 @@ function safeExternalUrl(value) {
   }
 }
 
-function renderTags(tags, fallback = '未声明') {
-  const values = [...new Set((Array.isArray(tags) ? tags : []).filter(Boolean).map(tagLabel))]
+function renderTags(tags, fallback = '未声明', label = tagLabel) {
+  const values = [...new Set((Array.isArray(tags) ? tags : []).filter(Boolean).map(label))]
   return values.length ? `<div class="tag-list">${values.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>` : `<p class="empty-inline">${fallback}</p>`
 }
 
@@ -189,7 +181,7 @@ function searchFields(item) {
   const tags = item.metadata ? contentTags(item) : []
   return [
     [metadata.name, metadata.nameEn, metadata.id, item.packageName].filter(Boolean).join(' '),
-    [...tags, ...tags.map(tagLabel), categoryLabels[metadata.category]].filter(Boolean).join(' '),
+    [...tags, ...tags.map(tagLabel), ...Object.values(catalog.tagGroups || {}).flat().filter(tag => tags.includes(tag.id)).flatMap(tag => tag.aliases), categoryLabels[metadata.category]].filter(Boolean).join(' '),
     [metadata.description, metadata.introduction, item.summary].filter(Boolean).join(' '),
     [item.author, typeof item.source === 'string' ? item.source : item.source?.url,
       item.source?.repository, ...(item.components || []).map(component => component.ref || component.id),
@@ -222,7 +214,7 @@ function filterIntakeItems(items) {
     return score >= 0 &&
       (state.availability === 'all' || (state.availability === 'published') === Boolean(item.archiveUrl)) &&
       (state.tab !== 'packs' || state.category === 'all' || item.metadata.category === state.category) &&
-      (state.tag === 'all' || (item.metadata && contentTags(item).includes(state.tag))) &&
+      (!selectedTags().length || selectedTags().some(tag => tag === 'unclassified' ? !contentTags(item).length : contentTags(item).includes(tag))) &&
       (state.tab !== 'skins' || state.kind === 'all' || (state.kind === 'prompt') === isPrompt)
   }).sort((a, b) => {
     if (state.sort === 'relevance' && a.score !== b.score) return b.score - a.score
@@ -245,20 +237,25 @@ function catalogHash(tab = state.tab, id = state.selected) {
 
 function renderSearchTools(items) {
   const select = (id, label, value, options) => `<label class="catalog-filter"><span>${label}</span><select id="${id}">${options.map(([key, text]) => `<option value="${escapeHtml(key)}" ${value === key ? 'selected' : ''}>${escapeHtml(text)}</option>`).join('')}</select></label>`
-  const tags = [...new Set([...items.flatMap(item => item.metadata ? contentTags(item) : []), ...(state.tag !== 'all' ? [state.tag] : [])])]
-    .sort((a, b) => tagLabel(a).localeCompare(tagLabel(b), 'zh-CN'))
+  const group = catalog.tagGroups?.[state.tab] || []
+  const chosen = selectedTags()
+  const tags = group.map(tag => ({ ...tag, count: items.filter(item => contentTags(item).includes(tag.id)).length }))
+    .filter(tag => tag.count || chosen.includes(tag.id))
+  const unclassified = items.filter(item => !contentTags(item).length).length
+  if (state.tab !== 'plugins' && (unclassified || chosen.includes('unclassified'))) tags.push({ id: 'unclassified', label: '未分类', description: '尚未标注官方分类。', count: unclassified })
   const categories = Object.entries(categoryLabels).filter(([key]) => items.some(item => item.metadata?.category === key) || state.category === key)
   return `<section class="catalog-toolbar" aria-label="目录搜索和筛选">
     <label class="search-field"><i data-lucide="search"></i><input id="catalog-search" type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、作者、用途或组件" aria-label="搜索${{ plugins: '插件', packs: '功能包', skins: '皮肤包' }[state.tab]}" /></label>
     <div class="catalog-filter-row">
-      ${state.tab === 'packs' ? select('category-filter', '分类', state.category, [['all', '全部分类'], ...categories]) : ''}
+      ${state.tab === 'packs' && categories.length > 1 ? select('category-filter', '包类型', state.category, [['all', '全部类型'], ...categories]) : ''}
       ${state.tab === 'skins' ? select('kind-filter', '资源形态', state.kind, [['all', '全部形态'], ...Object.entries(kindLabels)]) : ''}
-      ${tags.length ? select('tag-filter', state.tab === 'packs' ? '标签 / 组件' : '风格 / 标签', state.tag, [['all', '全部标签'], ...tags.map(tag => [tag, tagLabel(tag)])]) : ''}
       ${state.tab === 'plugins' ? select('availability', '下载状态', state.availability, [['all', '全部插件'], ['published', '有核验归档'], ['unpublished', '仅来源收录']]) : ''}
       ${select('sort-filter', '排序', state.sort, [['relevance', '相关性'], ['name', '名称']])}
       <button class="command" type="button" data-reset-search>清空条件</button>
     </div>
-  </section><p class="catalog-search-note">空格分隔多个关键词，所有关键词均需匹配；名称优先匹配。${state.tab === 'packs' ? '未声明标签的包可按所含组件筛选。' : state.tab === 'skins' ? '归档与 Prompt 资料分开筛选，资料不代表可安装皮肤。' : '支持中文名称、包名、作者与来源检索。'}</p>`
+    ${tags.length ? `<div class="official-tag-group" role="group" aria-label="${state.tab === 'packs' ? '官方用途' : '官方主题'}"><span class="official-tag-heading">${state.tab === 'packs' ? '官方用途' : '官方主题'} · 可多选</span><div class="official-tag-options">${tags.map(tag => `<label class="official-tag-choice" title="${escapeHtml(tag.description)}"><input id="tag-filter-${escapeHtml(tag.id)}" type="checkbox" data-tag-filter="${escapeHtml(tag.id)}" ${chosen.includes(tag.id) ? 'checked' : ''} /><span>${escapeHtml(tag.label)}</span><small>${tag.count}</small></label>`).join('')}</div></div>` : ''}
+    ${chosen.some(id => id !== 'unclassified' && !group.some(tag => tag.id === id)) ? '<p class="catalog-search-note" role="status">链接中含有不可用的分类；可清空条件后重新选择官方标签。</p>' : ''}
+  </section><p class="catalog-search-note">空格分隔多个关键词，所有关键词均需匹配；名称优先匹配。${state.tab === 'plugins' ? '支持中文名称、包名、作者与来源检索。' : '官方标签多选取并集，与关键词和其他条件取交集；作者标签仅在详情展示。'}${state.tab === 'skins' ? 'Prompt 资料不可直接安装。' : ''}</p>`
 }
 
 function filteredItems() {
@@ -325,6 +322,7 @@ function packRow(pack) {
         <strong class="card-title">${escapeHtml(pack.metadata.name)}</strong>
         <span class="card-author">${escapeHtml(pack.author)} · ${escapeHtml(categoryLabels[pack.metadata.category] || '未分类')} · ${pack.components.length} 个组件</span>
         <span class="card-description">${escapeHtml(pack.metadata.description || '开发者未提供功能简介。')}</span>
+        ${cardTags(pack)}
         <span class="card-status"><span class="badge badge-lock">${escapeHtml(categoryLabels[pack.metadata.category] || '未分类')}</span><span class="badge badge-parsed">结构已检验</span><span class="badge badge-warning">宿主未测试</span></span>
         <span class="card-inspect">查看详情 <i data-lucide="arrow-up-right"></i></span>
       </button>
@@ -359,6 +357,7 @@ function skinRow(pack) {
           <strong class="skin-card-name" title="${escapeHtml(pack.metadata.name)}">${escapeHtml(pack.metadata.name)}</strong>
           <span class="skin-card-subtitle" title="${escapeHtml(subtitle)}">${escapeHtml(subtitle)}</span>
           <span class="skin-card-scope">${escapeHtml(scope)}</span>
+          ${cardTags(pack)}
         </span>
       </a>
     </article>`
@@ -482,7 +481,6 @@ function intakeDetail(pack) {
   const appearance = pack.metadata.category === 'appearance' ? pack.appearance || {} : null
   const loader = appearance?.loader
   const components = Array.isArray(pack.components) ? pack.components : []
-  const tags = [...contentTags(pack), categoryLabels[metadata.category] || '未分类']
   const relatedLinks = [
     loader?.source ? { label: '加载器来源', url: loader.source } : null,
     pack.authorRepository ? { label: '作者仓库', url: pack.authorRepository } : null,
@@ -512,7 +510,7 @@ function intakeDetail(pack) {
       <div><dt>包含内容</dt><dd>${components.length} 个组件</dd></div>
       <div><dt>归档大小</dt><dd>${pack.archiveSize.toLocaleString('zh-CN')} 字节</dd></div>
     </dl>
-    ${renderTags(tags)}
+    ${classificationDetail(pack)}
     ${renderRelatedLinks(relatedLinks)}
     <div class="trust-strip" aria-label="整合包状态">
       <span class="trust-item trust-positive"><i data-lucide="package-check"></i><span>结构已检验</span></span>
@@ -553,7 +551,6 @@ function skinDetail(pack) {
   if (pack.format === 'eac-feature-pack-v1') return intakeDetail(pack)
   const sourceUrl = safeExternalUrl(pack.source?.repository)
   const packageUrl = sourcePackageUrl(pack)
-  const tags = Array.isArray(pack.metadata.tags) ? pack.metadata.tags : []
   const promptSections = Array.isArray(pack.requiredPromptSections) ? pack.requiredPromptSections : []
   const implementationFiles = pack.references?.implementation || []
   const relatedLinks = [
@@ -578,7 +575,7 @@ function skinDetail(pack) {
       <div><dt>主题</dt><dd>${escapeHtml(formatThemes(pack.themes))}</dd></div>
       <div><dt>作者 / 许可</dt><dd>${escapeHtml(pack.author)} · ${escapeHtml(pack.license)}</dd></div>
     </dl>
-    ${renderTags(tags)}
+    ${classificationDetail(pack)}
     ${renderRelatedLinks(relatedLinks)}
     <div class="trust-strip" aria-label="皮肤资料状态">
       <span class="trust-item trust-positive"><i data-lucide="package-check"></i><span>来源已固定</span></span>
@@ -615,6 +612,13 @@ function skinDetail(pack) {
 const repositoryUrl = 'https://github.com/DSH-EAC/EAC-mojobox'
 const submissionTypes = { plugin: '独立插件', pack: '功能整合包', skin: '皮肤 / 外观包', prompt: '皮肤 Prompt 资料' }
 
+function classificationGuide(type) {
+  const group = type === 'pack' ? 'packs' : 'skins'
+  const example = { type: type === 'prompt' ? 'skin-prompt' : 'pack', id: type === 'prompt' ? 'example-skin' : 'org.example.tools',
+    officialTags: [type === 'pack' ? 'development' : 'anime'], customTags: ['作者特色'] }
+  return `<section class="guide-panel"><h2>选择官方分类，或填写作者标签</h2><p>下面是本类官方${group === 'packs' ? '用途' : '主题'}组，通常选 1～2 个，最多 3 个。也可以只填自定义标签，由维护者审核归类；不确定时保留未分类。</p><dl class="guide-facts">${(catalog.tagGroups?.[group] || []).map(tag => `<dt>${escapeHtml(tag.label)} <code>${escapeHtml(tag.id)}</code></dt><dd>${escapeHtml(tag.description)}</dd>`).join('')}</dl><p>在 <code>catalog/website-tags.json</code> 的 entries 中追加自己资源的条目，不修改作者归档或原始 Prompt 清单：</p><pre><code>${escapeHtml(JSON.stringify(example, null, 2))}</code></pre><p>officialTags 只选对应组的 ID；customTags 可填 1～12 个自由词，每个 1～32 字符。角色名、颜色和组件名只作为作者标签，在详情展示，不参与分类和标签检索。同名自定义词不会自动获得官方归类。原记录已有的 tags 保留，无需重复填写。</p><a class="related-link" href="${repositoryUrl}/blob/main/docs/catalog-tags.md" target="_blank" rel="noreferrer">官方标签、完整示例与审核规则 <i data-lucide="external-link"></i></a></section>`
+}
+
 function contributePage() {
   const type = Object.hasOwn(submissionTypes, state.selected) ? state.selected : null
   const guides = {
@@ -626,7 +630,8 @@ function contributePage() {
   return `<main class="catalog-page guide-page"><section class="catalog-intro"><div><span class="eyebrow">CONTRIBUTE</span><h1>提交你的作品</h1><p>正式收录使用 Fork + Pull Request。先选择类型，准备原始文件和来源事实；材料不完整可先提候选 Issue。</p></div></section>
     <nav class="guide-tabs" aria-label="提交类型">${Object.entries(submissionTypes).map(([id, label]) => `<a class="command ${type === id ? 'primary' : ''}" href="#/contribute/${id}" ${type === id ? 'aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
     ${type ? `<section class="guide-panel" aria-label="${submissionTypes[type]}提交指南">${guides[type]}<a class="related-link" href="${repositoryUrl}/blob/main/docs/community-submissions.md#${type}" target="_blank" rel="noreferrer">完整${submissionTypes[type]}规范 <i data-lucide="external-link"></i></a>${type === 'plugin' ? `<a class="related-link" href="${repositoryUrl}/blob/main/docs/plugin-intake.md" target="_blank" rel="noreferrer">信息卡字段与下载规则</a>` : type !== 'prompt' ? `<a class="related-link" href="${repositoryUrl}/blob/main/docs/author-pack-request.md" target="_blank" rel="noreferrer">薄包文件结构与最小清单</a><a class="related-link" href="${repositoryUrl}/blob/main/docs/intake.md" target="_blank" rel="noreferrer">归档收录规则</a>` : ''}</section>` : `<section class="guide-panel"><h2>从哪一种开始？</h2><p>单个软件发行选“独立插件”；组合多个插件选“功能整合包”；需要 loader 加载的皮肤选“皮肤 / 外观包”；设计和复刻说明选“皮肤 Prompt 资料”。</p><p>Skill 仅预留分类，当前不接受收录。完整环境或尚未确定的格式请先提候选 Issue。</p></section>`}
-    <section class="guide-panel"><h2>从 Fork 到发布</h2><ol><li>Fork 仓库，从最新 main 建分支，只添加自己的事实源、归档和预览。</li><li>完成本地检查，在 PR 模板中写明来源、身份或代提交授权、许可及真实测试范围。</li><li>通过自动检查与维护者人工审核后合并；发布工作流成功后才会上线。</li></ol><pre><code>npm ci\nnpm test\nnpm run build\nnpm run verify:downloads\ngit diff --check</code></pre><p>提交到自己的分支后，再运行 <code>npm run check:submission -- origin/main</code> 检查已提交增量。更新归档必须新版本、新文件和新摘要，不能覆盖历史字节。静态检查通过不等于安全、兼容或宿主已测试。</p><div class="guide-tabs"><a class="command primary" href="${repositoryUrl}/fork" target="_blank" rel="noreferrer">Fork 仓库</a><a class="command" href="${repositoryUrl}/issues/new/choose" target="_blank" rel="noreferrer">提交候选 / 咨询</a><a class="command" href="${repositoryUrl}/blob/main/docs/community-submissions.md" target="_blank" rel="noreferrer">完整审核指南</a></div></section></main>`
+    ${type && type !== 'plugin' ? classificationGuide(type) : ''}
+    <section class="guide-panel"><h2>从 Fork 到发布</h2><ol><li>Fork 仓库，从最新 main 建分支，只添加自己的事实源、归档、网站标注和预览。</li><li>完成本地检查，在 PR 模板中写明来源、身份或代提交授权、许可及真实测试范围。</li><li>通过自动检查与维护者人工审核后合并；发布工作流成功后才会上线。</li></ol><pre><code>npm ci\nnpm test\nnpm run build\nnpm run verify:downloads\ngit diff --check</code></pre><p>提交到自己的分支后，再运行 <code>npm run check:submission -- origin/main</code> 检查已提交增量。更新归档必须新版本、新文件和新摘要，不能覆盖历史字节。静态检查通过不等于安全、兼容或宿主已测试。</p><div class="guide-tabs"><a class="command primary" href="${repositoryUrl}/fork" target="_blank" rel="noreferrer">Fork 仓库</a><a class="command" href="${repositoryUrl}/issues/new/choose" target="_blank" rel="noreferrer">提交候选 / 咨询</a><a class="command" href="${repositoryUrl}/blob/main/docs/community-submissions.md" target="_blank" rel="noreferrer">完整审核指南</a></div></section></main>`
 }
 
 function sourcePage() {
@@ -796,7 +801,11 @@ function bindEvents() {
   document.querySelector('#evidence-filter')?.addEventListener('change', event => { state.evidence = event.target.value; render() })
   document.querySelector('#host-filter')?.addEventListener('change', event => { state.host = event.target.value; render() })
   document.querySelector('#category-filter')?.addEventListener('change', event => changeFilter('category', event.target.value))
-  document.querySelector('#tag-filter')?.addEventListener('change', event => changeFilter('tag', event.target.value))
+  document.querySelectorAll('[data-tag-filter]').forEach(input => input.addEventListener('change', () => {
+    const tags = selectedTags().filter(id => id !== input.dataset.tagFilter)
+    if (input.checked) tags.push(input.dataset.tagFilter)
+    changeFilter('tag', tags.sort().join(',') || 'all')
+  }))
   document.querySelector('#kind-filter')?.addEventListener('change', event => changeFilter('kind', event.target.value))
   document.querySelector('#sort-filter')?.addEventListener('change', event => changeFilter('sort', event.target.value))
   document.querySelector('[data-reset-search]')?.addEventListener('click', () => {

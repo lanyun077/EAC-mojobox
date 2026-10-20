@@ -66,7 +66,8 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 | --- | --- | --- |
 | 名称、短简介、版本、包含组件 | 归档的 `pack.json` | ID、版本、至少一个插件必填；短简介强烈推荐 |
 | 分类、来源、作者、许可、摘要 | 收录 JSON | 必填；来源必须为无凭据 HTTPS URL |
-| 标签 | 收录 JSON 的 `tags` | 可选；最多 12 个不重复标签，每个 1 至 32 字符；推荐 2 至 5 个 |
+| 作者标签 | 收录 JSON 的 `tags` | 可选；最多 12 个不重复标签，每个 1 至 32 字符；只在详情展示，不参与分类或标签检索 |
+| 官方分类／补充作者标签 | `catalog/website-tags.json` 的对应条目 | 可选；从[官方标签组](catalog-tags.md)选择 1～3 个 ID，或填写自定义标签，由维护者审核 |
 | 详细介绍 | 收录 JSON 的 `introduction` | 可选纯文本，最多 6000 字符；不渲染 HTML/Markdown |
 | 作者仓库、文档、反馈入口 | 收录 JSON 的 `links` | 可选，最多 12 条，每条含 `label` 与无凭据 HTTPS `url` |
 | 截图 | 收录 JSON 的 `previews` | 可选，最多 16 张；首张为皮肤列表封面 |
@@ -75,6 +76,9 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 | loader、皮肤 ID 与已知冲突 | 收录 JSON 的 `appearance` | 外观包声明 `kind`，其余仅填写可核验信息 |
 
 旧包不强制补标签、简介或图片。没有提供时显示缺失状态，不猜测作者或兼容范围。
+官方分类与作者标签分开保存：功能包选用途组，外观归档与 Prompt 资料选主题组。
+不再把组件名当作分类。可只提交作者标签，维护者审核时再归类；暂未归类显示「未分类」。
+添加方式与 JSON 示例见[网站标签投稿步骤](catalog-tags.md#2-投稿只补一个网站标注条目)，不修改归档或上游格式。
 版本要求和已有归档迁移见[版本声明策略](intake-version-policy.md)。版本声明只检查语法，
 不读取本机内核、不解析插件来源，不意味着已经兼容或保证安装可复现。
 第三方组件的许可不被整合包清单的 MIT 等许可证覆盖；PR 要说明代码、素材和截图的许可边界。
@@ -114,6 +118,8 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 
 在 `catalog/skin-prompt-packages/<id>/` 提交三个完整文件，清单沿用现有
 `schemas/skin-prompt-package.schema.json`。标签与简介使用清单已有的 `tags`、`description`；
+清单的 `tags` 作为作者标签原样保留，不参与站内标签检索。官方主题可另在
+`catalog/website-tags.json` 添加 `type: skin-prompt` 的同 ID 条目，参照[官方标签组](catalog-tags.md)。
 来源、目标界面、主题、许可证、引用和章节要求必须符合 Schema，不伪造 EAC/AIO 来源。
 
 在 `catalog/skin-prompt-packages/source.json` 的 `packages` 中追加条目：
@@ -176,7 +182,8 @@ git diff --check
 该命令只比较 Git 提交，不覆盖未提交修改；它不能替代上面的全量检查。
 
 更新归档必须递增版本、提供新文件名和新摘要；已经发布的归档不得修改、删除或重命名。
-仅修改介绍、标签、相关链接或截图无需重打归档。Prompt 更新必须更新对应来源 commit
+仅修改收录介绍、网站标签、相关链接或截图无需重打归档。修改原始 Prompt 清单的 `tags` 仍属于资料更新。
+Prompt 更新必须更新对应来源 commit
 和文件摘要，不能用旧 commit 冒充新字节。固定来源由人工对照上游确认，CI 不联网核验。
 
 ## 6. 自动门禁与人工审核
@@ -206,6 +213,7 @@ git diff --check
 ## 7. 撤回与故障处理
 
 来源或许可证存疑时暂缓合并。发布后出现风险，可移除收录记录并重建以撤下网站入口；
+若有 `catalog/website-tags.json` 条目，同时移除该资源的标注，避免悬空引用。
 历史归档原始字节仍保留，不能把“撤下入口”说成从 Git 历史彻底删除。
 密钥或个人信息泄漏要走单独的安全处理，不受一般历史归档保留规则阻碍。
 部署失败先查看 CI/Pages 日志并修复或回退收录提交，不手工修改 `dist`。

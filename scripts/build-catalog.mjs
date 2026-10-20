@@ -6,6 +6,7 @@ import { buildSkinPromptCatalog, collectSkinPromptPackages } from './skin-prompt
 import { inspectPreviewImages, publishPreviewImages } from './preview-images.mjs'
 import { collectPluginListings, pluginFilename } from './plugin-listing.mjs'
 import { publishPluginIndex } from './plugin-index.mjs'
+import { collectWebsiteTags, tagGroups } from './catalog-tags.mjs'
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -38,6 +39,11 @@ export async function buildCatalog(root = rootDir, { checkOnly = false, demo = f
     if (record.previews && record.appearance?.previews) await inspectPreviewImages(root, record.id, record.appearance.previews)
     admitted.push({ record, report, bytes, filename, previewImages })
   }
+  const websiteTags = await collectWebsiteTags(root, [
+    ...admitted.map(({ record }) => ({ type: 'pack', id: record.id, category: record.category })),
+    ...skinSource.packages.map(({ manifest }) => ({ type: 'skin-prompt', id: manifest.id, category: 'appearance' }))
+  ])
+  const tagsFor = (type, id) => websiteTags.get(`${type}:${id}`) || { officialTags: [], customTags: [] }
   if (checkOnly) return { checked: admitted.length }
   // Validate the entire intake before replacing any generated output.
   const output = join(root, 'site/public/generated')
@@ -70,11 +76,12 @@ export async function buildCatalog(root = rootDir, { checkOnly = false, demo = f
     packs.push({ format: record.format, metadata: { id: m.id, version: m.version, name: m.name, description: m.description || '', category: record.category,
       ...(record.tags ? { tags: record.tags } : {}), ...(record.introduction ? { introduction: record.introduction } : {}) },
       author: record.author, license: record.license, source: record.source, requires: m.requires || {},
-      components: m.plugins, appearance: record.appearance, ...previews,
+      components: m.plugins, appearance: record.appearance, ...previews, websiteTags: tagsFor('pack', m.id),
       links: [...(record.links || []), ...repositories.filter(url => !record.links?.some(link => link.url === url)).map(url => ({ label: `原项目 · ${url.split('/').pop()}`, url }))], archiveUrl: `generated/downloads/${filename}`, archiveSize: report.size,
       archiveDigest: `sha256:${report.sha256}`, packUrl, reportUrl, checks: report.checks, versionDeclarations: report.versionDeclarations, warnings: report.warnings, runtime: report.runtime })
   }
-  const catalog = { apiVersion: 'catalog.mojobox.dev/v1alpha1', mode: 'intake', demo, plugins, skills: [], packs, skinPackages: skinCatalog.packages, skinSource: skinSource.source || null }
+  const skinPackages = skinCatalog.packages.map(pack => ({ ...pack, websiteTags: tagsFor('skin-prompt', pack.metadata.id) }))
+  const catalog = { apiVersion: 'catalog.mojobox.dev/v1alpha1', mode: 'intake', demo, plugins, skills: [], packs, skinPackages, tagGroups, skinSource: skinSource.source || null }
   await publishPluginIndex(output, pluginListings, { demo })
   await writeFile(join(output, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n')
   console.log(`Validated and collected ${packs.length} developer archives.`)

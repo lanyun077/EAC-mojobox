@@ -1,0 +1,21 @@
+{
+  "packs": [
+    { "id": "general", "label": "通用增强", "description": "日常综合工具、客户端体验、插件管理、恢复与维护。", "aliases": ["日常工具"] },
+    { "id": "development", "label": "开发编程", "description": "代码编辑、项目工作区、开发辅助与项目管理。", "aliases": ["编程", "开发工具"] },
+    { "id": "conversation", "label": "会话与智能体", "description": "会话管理、上下文、记忆、人设与多智能体协作。", "aliases": ["会话管理", "智能体"] },
+    { "id": "office", "label": "办公创作", "description": "文档、表格、内容制作与交互展示。", "aliases": ["办公", "创作"] },
+    { "id": "research", "label": "检索分析", "description": "联网研究、资料检索、图像理解与数据分析。", "aliases": ["研究", "检索"] },
+    { "id": "automation", "label": "自动化集成", "description": "浏览器或电脑操作、任务自动执行与外部服务连接。", "aliases": ["自动化", "服务集成"] },
+    { "id": "entertainment", "label": "娱乐互动", "description": "宠物、表情、趣味交互与陪伴。", "aliases": ["娱乐"] }
+  ],
+  "skins": [
+    { "id": "generic", "label": "通用设计", "description": "以配色、排版、基础控件或可配置外观为主，不突出特定题材。", "aliases": ["配色主题"] },
+    { "id": "anime", "label": "二次元", "description": "动漫角色、虚拟偶像与动漫风原创人物。", "aliases": ["动漫", "动画"] },
+    { "id": "game", "label": "游戏主题", "description": "围绕游戏世界、角色或视觉体系设计。", "aliases": ["游戏"] },
+    { "id": "nature", "label": "自然风景", "description": "海洋、山水、森林、天空、动植物及其艺术化表现。", "aliases": ["自然", "风景"] },
+    { "id": "traditional", "label": "国风传统", "description": "水墨、传统纹样、书法与古典建筑等文化视觉。", "aliases": ["国风", "传统文化"] },
+    { "id": "retro", "label": "复古怀旧", "description": "旧操作系统、早期软件与经典年代视觉。", "aliases": ["复古", "怀旧"] },
+    { "id": "tech", "label": "科技工业", "description": "科幻、赛博、机械与工业面板等视觉。", "aliases": ["科技", "工业"] },
+    { "id": "interface", "label": "界面仿真", "description": "模仿现实软件、设备或专业操作界面，不代表具有对应业务功能。", "aliases": ["仿真界面"] }
+  ]
+}

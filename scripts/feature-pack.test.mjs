@@ -131,6 +131,34 @@ test('invalid version submissions fail before replacing any generated output', a
   }
 })
 
+test('website classification is validated before publishing and leaves archives and plugin API bytes unchanged', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'mojobox-classification-'))
+  t.after(() => rm(root, { recursive: true, force: true }))
+  await mkdir(join(root, 'catalog/feature-packs'), { recursive: true })
+  await mkdir(join(root, 'artifacts'))
+  const bytes = await archive()
+  await writeFile(join(root, 'catalog/feature-packs', `${manifest.id}.json`), JSON.stringify({ ...recordFor(bytes), tags: ['private-author-keyword'] }))
+  await writeFile(join(root, 'artifacts', `${manifest.id}-${manifest.version}.dshpack`), bytes)
+  const before = await buildCatalog(root)
+  const output = join(root, 'site/public/generated')
+  const api = await readFile(join(output, 'api/v1/plugins.json'))
+  const report = await readFile(join(output, 'reports', `${manifest.id}.json`))
+  assert.deepEqual(before.packs[0].websiteTags, { officialTags: [], customTags: [] })
+  const tagsPath = join(root, 'catalog/website-tags.json')
+  await writeFile(tagsPath, JSON.stringify({ entries: [{ type: 'pack', id: manifest.id, officialTags: ['development'], customTags: ['作者词'] }] }))
+  const after = await buildCatalog(root)
+  assert.deepEqual(after.packs[0].websiteTags, { officialTags: ['development'], customTags: ['作者词'] })
+  assert.deepEqual(after.packs[0].metadata.tags, ['private-author-keyword'])
+  assert.deepEqual(await readFile(join(output, 'downloads', `${manifest.id}-${manifest.version}.dshpack`)), bytes)
+  assert.deepEqual(await readFile(join(output, 'api/v1/plugins.json')), api)
+  assert.deepEqual(await readFile(join(output, 'reports', `${manifest.id}.json`)), report)
+  const catalogBytes = await readFile(join(output, 'catalog.json'))
+  await writeFile(tagsPath, JSON.stringify({ entries: [{ type: 'pack', id: manifest.id, officialTags: ['anime'] }] }))
+  await assert.rejects(buildCatalog(root, { checkOnly: true }), /Unknown official tag/)
+  await assert.rejects(buildCatalog(root), /Unknown official tag/)
+  assert.deepEqual(await readFile(join(output, 'catalog.json')), catalogBytes)
+})
+
 test('invalid schema, duplicate refs, draft and unsupported payload are rejected', async () => {
   for (const [value, error] of [
     [{ ...manifest, formatVersion: 2 }, /Invalid Feature Pack/],
