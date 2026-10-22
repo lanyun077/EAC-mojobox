@@ -12,6 +12,15 @@ PR 审核是维护者判断，CI 是自动验证，Pages 是合并后的发布�
 原仓库的权限、审核和 Pages 设置不会随 Git 自动迁移；新仓库必须分别配置并回读验证，
 不能把旧记录当成新仓库保护已经生效的证据。
 
+新仓库已在 2026-10-22 使用两组 active Rulesets 配置并回读验证：
+
+- `main-ci-and-history`（`25649631`）：main 严格必需 GitHub Actions 的 `check`，禁止非快进与删除，无豁免者。
+- `main-pr-review`（`25649633`）：PR 默认需一个批准、撤销过期批准并解决审核对话；管理员仅在 PR 合并时可豁免此组，不豁免上一组必需 CI。
+
+个人仓库不支持照搬旧组织仓库的指定用户审核豁免，因此分开设置，避免把必需 CI 一同绕过。
+配置时唯一管理员为 `lanyun077`；以后新增管理员也会获得 PR 审核组的豁免，应严格控制管理员范围。
+新仓库使用 Rulesets；经典分支保护接口返回 404 不等于没有保护，应同时检查实际分支规则。
+
 ## PR 的自动检查
 
 `.github/workflows/check.yml` 在 `pull_request`、`merge_group`、推送 main 和手动触发时运行。
@@ -39,6 +48,8 @@ PR 审核是维护者判断，CI 是自动验证，Pages 是合并后的发布�
 
 ```bash
 gh api repos/lanyun077/EAC-mojobox/branches/main/protection
+gh api repos/lanyun077/EAC-mojobox/rulesets
+gh api repos/lanyun077/EAC-mojobox/rules/branches/main
 gh workflow list --repo lanyun077/EAC-mojobox
 gh pr checks <number> --repo lanyun077/EAC-mojobox
 ```
