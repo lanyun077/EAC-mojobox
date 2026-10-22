@@ -135,7 +135,7 @@ for (const base of ['/', '/EAC-mojobox/']) {
       site.run(`location.hash = "#/contribute/${type}"; applyHash(); render()`)
       assert.equal(site.run('state.tab'), 'contribute')
       assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}" aria-current="page"`))
-      assert.ok(site.app.innerHTML.includes(`href="https://github.com/DSH-EAC/EAC-mojobox/blob/main/docs/community-submissions.md#${type}"`))
+      assert.ok(site.app.innerHTML.includes(`href="https://github.com/lanyun077/EAC-mojobox/blob/main/docs/community-submissions.md#${type}"`))
       assert.doesNotMatch(site.app.innerHTML, /data-select=|type="file"/)
     }
     site.run('location.hash = "#/contribute/%3Cscript%3E"; applyHash(); render()')
@@ -151,6 +151,24 @@ for (const base of ['/', '/EAC-mojobox/']) {
     }
   })
 }
+
+test('repository links and empty-catalog submission guides use the recovered repository', () => {
+  const repository = 'https://github.com/lanyun077/EAC-mojobox'
+  for (const base of ['/', '/EAC-mojobox/']) {
+    const site = loadSite(base, { mode: 'intake', plugins: [], packs: [], skinPackages: [] })
+    for (const tab of ['plugins', 'packs', 'skins']) {
+      site.run(`location.hash = "#/${tab}"; applyHash(); render()`)
+      const guide = tab === 'plugins' ? 'plugin-intake' : 'intake'
+      assert.ok(site.app.innerHTML.includes(`href="${repository}/blob/main/docs/${guide}.md"`))
+      assert.doesNotMatch(site.app.innerHTML, /https:\/\/github\.com\/DSH-EAC\/(?:dsh|EAC)-mojobox/)
+    }
+    site.run('location.hash = "#/home"; applyHash(); render()')
+    assert.ok(site.app.innerHTML.includes(`href="${repository}"`))
+    site.run('location.hash = "#/contribute"; applyHash(); render()')
+    assert.ok(site.app.innerHTML.includes(`href="${repository}/fork"`))
+    assert.ok(site.app.innerHTML.includes(`href="${repository}/issues/new/choose"`))
+  }
+})
 
 const listing = { format: 'mojobox-plugin-listing-v1', id: 'org.example.tools', packageName: '@example/tools',
   name: 'Example tools', version: '1.0.0', summary: 'Mobile layout tools', license: 'MIT', maintainedBy: 'registry-maintained',

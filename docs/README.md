@@ -19,6 +19,7 @@
 
 ## 维护与边界
 
+- [仓库恢复与地址迁移](repository-recovery-20261022.md)：恢复范围、新仓库与网站、下游切换及历史链接边界。
 - [审核与 CI 门禁](maintainer-checks.md)：PR 检查、分支保护、人工审核与 Pages 发布的职责。
 - [项目定位与路线](project-positioning-and-roadmap.md)：长期方向和上下游职责。
 - [EAC 供货导出器](eac-supply-export.md)：本地草稿、正式批次、历史与撤回，尚未部署；用户转述两轮草稿可以通过，不再要求逐批反馈。
