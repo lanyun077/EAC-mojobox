@@ -5,12 +5,15 @@
 <p align="center">为 DSH 生态收纳插件、功能整合包与皮肤资料，连接内容作者和下游市场。</p>
 
 <p align="center">
-  <a href="https://dsh-eac.github.io/EAC-mojobox/">浏览目录</a> ·
+  <a href="https://lanyun077.github.io/EAC-mojobox/">浏览目录</a> ·
   <a href="#提交资源">提交资源</a> ·
   <a href="#下游接入">下游接入</a> ·
   <a href="#开发与验证">参与开发</a> ·
   <a href="docs/README.md">文档索引</a>
 </p>
+
+> 仓库已于 2026-10-22 恢复到 [lanyun077/EAC-mojobox](https://github.com/lanyun077/EAC-mojobox)。
+> 网站和插件来源请使用下方新地址；旧 Issue / PR 链接仅用于历史追溯，见[恢复与地址迁移说明](docs/repository-recovery-20261022.md)。
 
 Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本、有来源、有说明的目录，
 核对归档结构和文件摘要，展示使用边界，并提供作者原始文件下载。
@@ -22,9 +25,9 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 
 | 你想做什么 | 最短路径 |
 | --- | --- |
-| 找插件或整合包 | [浏览网站](https://dsh-eac.github.io/EAC-mojobox/)，看用途、来源、检查范围和原始下载 |
+| 找插件或整合包 | [浏览网站](https://lanyun077.github.io/EAC-mojobox/)，看用途、来源、检查范围和原始下载 |
 | 提交自己的资源 | [选提交类型](#提交资源) → 准备材料 → Fork + PR → CI 与维护者审核 |
-| 推荐资源或不确定格式 | [提交来源咨询](https://github.com/DSH-EAC/EAC-mojobox/issues/new?template=package-submission.yml)，无需先制作完整 PR |
+| 推荐资源或不确定格式 | [提交来源咨询](https://github.com/lanyun077/EAC-mojobox/issues/new?template=package-submission.yml)，无需先制作完整 PR |
 | 为市场或加载器取资源 | [下游接入](#下游接入)，读取静态索引并核验原始字节 |
 | 了解项目或贡献代码 | [职责与进度](#项目边界与进度)、[开发与验证](#开发与验证)、[贡献指南](CONTRIBUTING.md) |
 
@@ -47,7 +50,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 ## 提交资源
 
 先按交付物选择类型，不需要阅读所有协议。**正式收录通过 GitHub PR；Issue 是候选和咨询入口。**
-网页[提交指南](https://dsh-eac.github.io/EAC-mojobox/#/contribute)提供相同分类；新页面随本次改版部署后可用。
+网页[提交指南](https://lanyun077.github.io/EAC-mojobox/#/contribute)提供相同分类。
 
 ### 1. 选类型，找到对应材料
 
@@ -86,15 +89,15 @@ Mojobox 的插件接口是**静态 JSON 来源索引**，不需要登录或后�
 
 ### 插件市场：读取来源索引
 
-当前站点根为 `https://dsh-eac.github.io/EAC-mojobox/`，插件入口：
+当前站点根为 `https://lanyun077.github.io/EAC-mojobox/`，插件入口：
 
 ```text
-https://dsh-eac.github.io/EAC-mojobox/generated/api/v1/plugins.json
+https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json
 ```
 
 索引格式为 `plugins.mojobox.dev/v1`，同目录提供
-[索引 Schema](https://dsh-eac.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-index.schema.json)
-和 [信息卡 Schema](https://dsh-eac.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-listing.schema.json)。
+[索引 Schema](https://lanyun077.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-index.schema.json)
+和 [信息卡 Schema](https://lanyun077.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-listing.schema.json)。
 取到索引后，下游按以下顺序处理：
 
 1. 限长读取、校验 Schema 和身份，拒绝生产源里的 `demo: true`；保留完整兼容、冲突和限制。
@@ -107,7 +110,7 @@ https://dsh-eac.github.io/EAC-mojobox/generated/api/v1/plugins.json
 
 ### 整合包与皮肤工具：按契约选择入口
 
-网页[功能包](https://dsh-eac.github.io/EAC-mojobox/#/packs)与[皮肤包](https://dsh-eac.github.io/EAC-mojobox/#/skins)
+网页[功能包](https://lanyun077.github.io/EAC-mojobox/#/packs)与[皮肤包](https://lanyun077.github.io/EAC-mojobox/#/skins)
 提供原始文件和检查范围。皮肤 Prompt 资料始终不可安装。
 
 已有 EAC 消费方沿用 [`supply.eac/v1` 导出与交付说明](docs/eac-downstream-usage-guide.md)，
@@ -120,7 +123,7 @@ https://dsh-eac.github.io/EAC-mojobox/generated/api/v1/plugins.json
 要求 Node.js 22.12 或更新的受支持版本。
 
 ```bash
-git clone https://github.com/DSH-EAC/EAC-mojobox.git
+git clone https://github.com/lanyun077/EAC-mojobox.git
 cd EAC-mojobox
 npm ci
 npm test
@@ -168,4 +171,4 @@ Profile 管理、依赖解析或安装回滚。有限安装支持复用下游已
 ## 许可与反馈
 
 项目代码采用 [MIT](LICENSE)。第三方插件、皮肤和素材保留各自许可与署名，下载前请阅读对应说明。
-资源纠错、来源失效、撤回或项目建议请[开 Issue](https://github.com/DSH-EAC/EAC-mojobox/issues)。
+资源纠错、来源失效、撤回或项目建议请[开 Issue](https://github.com/lanyun077/EAC-mojobox/issues)。

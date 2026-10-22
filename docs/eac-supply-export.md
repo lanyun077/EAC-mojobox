@@ -58,7 +58,7 @@ Mojobox 现有事实源 → 原样归档检查 → supply.eac/v1 清单与发布
 以下公网地址只是规划地址，运行命令不代表它已经上线。草稿内容不可作为正式发布提交给市场。
 
 ```powershell
-npm run export:eac -- --draft --pilot --public-url https://dsh-eac.github.io/EAC-mojobox/supply/ --sequence 1 --revision draft-pilot-1 --generated-at 2026-10-04T12:00:00Z --output .cache/eac-supply-draft-pilot-1
+npm run export:eac -- --draft --pilot --public-url https://lanyun077.github.io/EAC-mojobox/supply/ --sequence 1 --revision draft-pilot-1 --generated-at 2026-10-04T12:00:00Z --output .cache/eac-supply-draft-pilot-1
 ```
 
 需要查看全部内容时去掉 `--pilot` 并使用另一个输出目录。
@@ -84,7 +84,7 @@ CLI 在收集前后都检查工作区及 HEAD，避免把未提交内容伪装�
 初次发布明确使用 `--first-release`，不能将其用于重置已有线上历史：
 
 ```powershell
-npm run export:eac -- --first-release --pilot --public-url https://dsh-eac.github.io/EAC-mojobox/supply/ --sequence 1 --revision 2026-10-04.1 --generated-at 2026-10-04T12:00:00Z --output .cache/eac-supply-release-1
+npm run export:eac -- --first-release --pilot --public-url https://lanyun077.github.io/EAC-mojobox/supply/ --sequence 1 --revision 2026-10-04.1 --generated-at 2026-10-04T12:00:00Z --output .cache/eac-supply-release-1
 ```
 
 正式输出另有：
@@ -97,7 +97,7 @@ export-state.json      维护者保存的本地发行账本；防止重新使用
 后续发布必须提供上一份完整正式输出目录：
 
 ```powershell
-npm run export:eac -- --previous .cache/eac-supply-release-1 --pilot --public-url https://dsh-eac.github.io/EAC-mojobox/supply/ --sequence 2 --revision 2026-10-04.2 --generated-at 2026-10-04T13:00:00Z --output .cache/eac-supply-release-2
+npm run export:eac -- --previous .cache/eac-supply-release-1 --pilot --public-url https://lanyun077.github.io/EAC-mojobox/supply/ --sequence 2 --revision 2026-10-04.2 --generated-at 2026-10-04T13:00:00Z --output .cache/eac-supply-release-2
 ```
 
 导出器核对上一清单原始字节与 receipt，再核对账本。序号必须为上一序号加一，编号不能复用。

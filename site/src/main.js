@@ -609,7 +609,7 @@ function skinDetail(pack) {
     </dl></details>`
 }
 
-const repositoryUrl = 'https://github.com/DSH-EAC/EAC-mojobox'
+const repositoryUrl = 'https://github.com/lanyun077/EAC-mojobox'
 const submissionTypes = { plugin: '独立插件', pack: '功能整合包', skin: '皮肤 / 外观包', prompt: '皮肤 Prompt 资料' }
 
 function classificationGuide(type) {
@@ -662,7 +662,7 @@ function renderIntake() {
   const collectionDescription = { skins: '皮肤归档、设计 Prompt 和各自的原始来源。', packs: '经过结构检查的功能组合与原始归档。', plugins: '独立插件的精确版本、发行来源、兼容声明与已知限制。', skills: '暂无收录。宿主格式与供货约定尚待确认。' }[state.tab]
   const emptyState = (hasCatalog, title) => hasCatalog
     ? '<i data-lucide="search"></i><strong>没有匹配项</strong><span>调整搜索条件，或清空搜索后查看全部目录。</span>'
-    : `<div class="empty-illustration"><i data-lucide="boxes"></i><span></span></div><strong>暂无正式收录内容</strong><span>${title}通过收录检查后会展示在这里。</span><a class="empty-cta" href="https://github.com/DSH-EAC/dsh-mojobox/blob/main/docs/${state.tab === 'plugins' ? 'plugin-intake' : 'intake'}.md" target="_blank" rel="noreferrer">查看收录规范 <i data-lucide="arrow-up-right"></i></a>`
+    : `<div class="empty-illustration"><i data-lucide="boxes"></i><span></span></div><strong>暂无正式收录内容</strong><span>${title}通过收录检查后会展示在这里。</span><a class="empty-cta" href="${repositoryUrl}/blob/main/docs/${state.tab === 'plugins' ? 'plugin-intake' : 'intake'}.md" target="_blank" rel="noreferrer">查看收录规范 <i data-lucide="arrow-up-right"></i></a>`
   const entryCard = (tab, icon, title, description, count, className) => `
     <a class="entry-card ${className}" href="#/${tab}" data-tab="${tab}">
       <span class="entry-icon"><i data-lucide="${icon}"></i></span>
@@ -719,7 +719,7 @@ function render() {
   app.innerHTML = `
     <header class="topbar">
       <div class="brand"><span class="brand-mark"><span></span><span></span><span></span></span><div><strong>Mojobox</strong><small>DSH 生态目录</small></div></div>
-      <a class="repo-link" href="https://github.com/DSH-EAC/dsh-mojobox" target="_blank" rel="noreferrer" title="打开 GitHub 仓库" aria-label="打开 GitHub 仓库"><i data-lucide="code-2"></i><span>GitHub</span></a>
+      <a class="repo-link" href="${repositoryUrl}" target="_blank" rel="noreferrer" title="打开 GitHub 仓库" aria-label="打开 GitHub 仓库"><i data-lucide="code-2"></i><span>GitHub</span></a>
     </header>
     <div class="summary-band">
       <strong>${catalog.plugins.length} <span>插件</span></strong>

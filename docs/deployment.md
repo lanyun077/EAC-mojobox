@@ -35,4 +35,8 @@ Bash 中为 `BASE_PATH=/EAC-mojobox/ npm run build`，检查时也设置相同�
 子路径演示构建同样设置 `BASE_PATH`；预览时需匹配路径，例如
 `npm run preview:demo -- --base /EAC-mojobox/`。旧 `.cache/artifacts/` 是 legacy 组件缓存，不属于当前构建输入。
 
-正式站点为 https://dsh-eac.github.io/EAC-mojobox/ 。静态构建成功不表示宿主导入通过验证。
+恢复后的站点地址为 https://lanyun077.github.io/EAC-mojobox/ ，仓库为
+[lanyun077/EAC-mojobox](https://github.com/lanyun077/EAC-mojobox)。Pages 来源选择 GitHub Actions；
+工作流成功后仍须检查实际 HTTP 响应、下载摘要和插件索引，不能只凭构建结果宣称上线。
+仓库迁移不改变子路径 `/EAC-mojobox/`，但下游必须更新域名，旧地址不会自动跳转。
+静态构建成功不表示宿主导入通过验证，历史来源和原始归档不因迁移而改写。
