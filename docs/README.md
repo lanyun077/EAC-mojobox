@@ -32,6 +32,7 @@
 
 ## 来源与选型
 
+- [上游更新核对（2026-11-03）](upstream-update-review-20261103.md)：官方 RC5、现有组件候选版本、版本阻断与更新条件；尚未实施资源升级。
 - [首批收录](ecosystem-curation.md)、[插件常客与候选](plugin-shortlist.md)。
 - [EAC/AIO 候选解析](eac-plugin-suite-analysis.md)、[减重与分类](suite-curation.md)。
 - [皮肤来源历史复核](skin-pack-source-review.md)、[Power Toolbox 首版审查](power-toolbox-review.md)。
