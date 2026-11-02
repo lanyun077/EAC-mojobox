@@ -27,25 +27,11 @@ test('submission gate permits new archives and display-only changes but rejects 
   await checkSubmissionChanges(change('site/public/generated/old.json', 'D'))
 })
 
-test('changed prompt bytes require a fresh source commit, including per-author repositories', async () => {
-  const before = { repository: 'https://github.com/example/skins', revision: 'a'.repeat(40), packages: [
-    { id: 'test-skin', files: { manifest: 'old', prompt: 'old', readme: 'old' } }
-  ] }
-  const after = structuredClone(before)
-  after.packages[0].files.prompt = 'new'
-  const path = 'catalog/skin-prompt-packages/source.json'
-  await assert.rejects(checkSubmissionChanges(change(path), versions(before, after)), /updated source commit/)
-  after.packages[0].source = { repository: before.repository, revision: 'b'.repeat(40), path: 'packages/test-skin' }
-  await checkSubmissionChanges(change(path), versions(before, after))
-  const externalBefore = structuredClone(after)
-  const externalAfter = structuredClone(after)
-  externalAfter.packages[0].files.readme = 'new'
-  await assert.rejects(checkSubmissionChanges(change(path), versions(externalBefore, externalAfter)), /updated source commit/)
-  externalAfter.packages[0].source.revision = 'c'.repeat(40)
-  await checkSubmissionChanges(change(path), versions(externalBefore, externalAfter))
-  const reordered = structuredClone(before)
-  reordered.packages[0].files = { readme: 'old', prompt: 'old', manifest: 'old' }
-  await checkSubmissionChanges(change(path), versions(before, reordered))
+test('retired prompt intake rejects additions and updates while permitting removal', async () => {
+  for (const path of ['catalog/skin-prompt-packages/source.json', 'catalog/skin-prompt-packages/example/prompt.md']) {
+    for (const status of ['A', 'M']) await assert.rejects(checkSubmissionChanges(change(path, status)), /prompt intake is retired/)
+    await checkSubmissionChanges(change(path, 'D'))
+  }
 })
 
 test('plugin submission preserves published bytes and stable package identity', async () => {

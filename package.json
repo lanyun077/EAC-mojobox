@@ -8,7 +8,6 @@
     "lock:pack": "node scripts/lock-pack.mjs",
     "inspect:pack": "node scripts/inspect-pack.mjs",
     "inspect:feature-pack": "node scripts/feature-pack.mjs",
-    "check:skin-prompts": "node scripts/skin-prompt-package.mjs",
     "check:submission": "node scripts/check-submission.mjs",
     "build:intake": "node scripts/build-catalog.mjs",
     "export:eac": "node scripts/export-eac-supply.mjs",

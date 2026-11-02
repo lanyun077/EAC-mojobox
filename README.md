@@ -2,7 +2,7 @@
   <img src="docs/assets/EAC-mojobox.svg" alt="DSH Mojobox" width="808" />
 </h1>
 
-<p align="center">为 DSH 生态收纳插件、功能整合包与皮肤资料，连接内容作者和下游市场。</p>
+<p align="center">为 DSH 生态收纳插件与整合包，连接内容作者和下游市场。</p>
 
 <p align="center">
   <a href="https://lanyun077.github.io/EAC-mojobox/">浏览目录</a> ·
@@ -31,7 +31,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 | 为市场或加载器取资源 | [下游接入](#下游接入)，读取静态索引并核验原始字节 |
 | 了解项目或贡献代码 | [职责与进度](#项目边界与进度)、[开发与验证](#开发与验证)、[贡献指南](CONTRIBUTING.md) |
 
-目录支持多关键词、相关性排序、官方用途／主题多选和皮肤资源形态筛选；搜索链接可以分享。
+目录支持多关键词、相关性排序、整合包类型筛选和官方用途／主题多选；搜索链接可以分享。
 作者标签仅在详情补充说明，不参与分类与标签检索。见[检索说明](docs/catalog-search.md)和[官方标签组](docs/catalog-tags.md)。
 
 ## 收纳什么
@@ -39,10 +39,10 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 | 资源 | 它是什么 | 当前规模 | 收录后提供什么 |
 | --- | --- | --- | --- |
 | 独立插件 | 作者发布的一个软件包；信息卡只描述它，不改变运行时格式 | 26 条：24 个原始下载、2 个仅来源 | 精确版本、兼容/冲突/限制、来源；有许可与合格归档时提供下载 |
-| 功能整合包 | 一组插件引用组成的薄 Feature Pack；`.dshpack` 中以根 `pack.json` 声明组合 | 14 个 | 组合说明、原始归档、清单与静态检验报告 |
-| 皮肤/外观归档 | `appearance` 类薄 Feature Pack，额外描述皮肤和 loader 信息 | 8 个 | 来源、组件、loader 声明、预览与原始归档 |
-| 皮肤 Prompt 资料 | 用于设计和复刻的 `manifest.json`、`prompt.md`、`README.md` | 10 套 | 固定来源、资料文件、许可与预览；不可直接安装 |
+| 整合包 | 功能与外观插件引用组成的薄 Feature Pack；`.dshpack` 以根 `pack.json` 声明组合 | 22 个：14 个功能、8 个外观 | 组合说明、原始归档、清单、静态检验报告；外观包保留加载声明与预览 |
 | Skill | 预留分类 | 暂不收录 | 当前没有独立 Skill 协议、下载或安装入口 |
+
+皮肤插件按普通插件收录，外观组合统一进入整合包目录。设计 Prompt 和设计思路不再独立收录；原有 10 套仅保留历史记录。
 
 数量为当前仓库快照，网站以实际部署版本为准。插件附带的 Skill 保留在作者发行里，不拆成独立资源。
 整合包的来源、选型和作者清单见 [authoring/](authoring/README.md)；历史检查结果见[验收记录](docs/plugin-catalog-acceptance-20261010.md)。
@@ -57,9 +57,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 | 类型与提交方案 | 必须交什么 | 放在哪里 | 格式与例子 |
 | --- | --- | --- | --- |
 | [独立插件](docs/community-submissions.md#plugin) | 一张轻量 JSON 信息卡；原始 npm `.tgz` 可选 | `catalog/plugin-listings/<id>.json`；下载放 `artifacts/plugins/<id>-<version>.tgz` | [最小信息卡](docs/plugin-intake.md#最少提交什么)、[Schema](schemas/plugin-listing.schema.json) |
-| [功能整合包](docs/community-submissions.md#pack) | 薄 `.dshpack` + 同 ID 收录 JSON | `artifacts/<id>-<version>.dshpack`、`catalog/feature-packs/<id>.json` | [文件组成与最小清单](docs/author-pack-request.md)、[收录规范](docs/intake.md) |
-| [皮肤/外观归档](docs/community-submissions.md#skin) | 同上；分类 `appearance`，增加外观声明 | 同功能包；可选截图放 `catalog/previews/<id>/` | [皮肤提交规则](docs/community-submissions.md#skin)、[Schema](schemas/intake.schema.json) |
-| [皮肤 Prompt 资料](docs/community-submissions.md#prompt) | 三个资料文件 + 固定 commit、路径和文件摘要记录 | `catalog/skin-prompt-packages/<id>/`；在 `source.json` 追加条目 | [资料提交示例](docs/community-submissions.md#prompt)、[Schema](schemas/skin-prompt-package.schema.json) |
+| [整合包（功能／外观）](docs/community-submissions.md#pack) | 薄 `.dshpack` + 同 ID 收录 JSON | `artifacts/<id>-<version>.dshpack`、`catalog/feature-packs/<id>.json` | [文件组成与最小清单](docs/author-pack-request.md)、[收录规范](docs/intake.md) |
 
 完整客户端、Profile、带内嵌代码的整套环境和其他格式先开 Issue 讨论，不转成薄包冒充已支持。
 许可不明确或下载超限的独立插件可以先收来源；新的整合包不能编造必填的宿主范围，应先作为候选讨论。
@@ -69,7 +67,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 - **身份与来源可追溯**：稳定 ID、精确版本、正式 HTTPS 来源；作者提交与目录代录分别标明。
 - **许可单独核对**：代码、图片、音频和截图各自说明；Mojobox 的 MIT 许可不覆盖上游资源。
 - **未知就写未知**：兼容、冲突和运行结果不能猜。新薄包须声明合法 `requires.dsh`，外部组件须精确版本；详见[版本策略](docs/intake-version-policy.md)。
-- **保留原始字节**：不重打包作者插件，不修改、删除或重命名旧归档；更新软件提交新版本、新文件和新摘要。Prompt 内容更新须更新来源 commit 与摘要。
+- **保留原始字节**：不重打包作者插件，不修改、删除或重命名旧归档；更新软件提交新版本、新文件和新摘要。
 - **只投递公开材料**：不提交凭据、聊天、Profile、私人路径或构建目录。标签、介绍和预览要求见[展示规范](docs/community-submissions.md#3-预览图由作者提供)。
 
 ### 3. 完成一次投递
@@ -108,10 +106,10 @@ https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json
 字段、正反例、更新语义和本地联调见[插件来源接口 v1](docs/plugin-source-api-v1.md)。`revision` 是内容指纹，
 不是发布序号或签名；当前静态站不保证旧版本下载 URL 永久存在。
 
-### 整合包与皮肤工具：按契约选择入口
+### 整合包：按契约选择入口
 
-网页[功能包](https://lanyun077.github.io/EAC-mojobox/#/packs)与[皮肤包](https://lanyun077.github.io/EAC-mojobox/#/skins)
-提供原始文件和检查范围。皮肤 Prompt 资料始终不可安装。
+网页[整合包目录](https://lanyun077.github.io/EAC-mojobox/#/packs)统一展示功能与外观包，
+提供原始文件、加载声明和检查范围。设计资料不再进入网站与新供货导出。
 
 已有 EAC 消费方沿用 [`supply.eac/v1` 导出与交付说明](docs/eac-downstream-usage-guide.md)，
 导出范围受 [`distribution.json`](distribution.json) 与供货选择政策约束。
@@ -147,7 +145,7 @@ git diff --check
 
 | 目录 | 用途 |
 | --- | --- |
-| `catalog/`、`artifacts/` | 收录事实源、作者原始归档与资料 |
+| `catalog/`、`artifacts/` | 收录事实源、作者原始归档与历史资料 |
 | `schemas/`、`fixtures/`、`policies/` | 契约、正反例与收录/供货政策 |
 | `scripts/` | 静态核验、目录构建、供货导出与测试 |
 | `site/` | 网站源码 |

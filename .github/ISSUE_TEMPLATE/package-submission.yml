@@ -1,5 +1,5 @@
 name: 提交包来源 / 收录咨询
-description: 提供独立插件、功能包、皮肤包或 Prompt 资料的来源；正式发布仍需 PR 和审核。
+description: 提供独立插件（含皮肤插件）或整合包的来源；正式发布仍需 PR 和审核。
 title: "[收录] "
 body:
   - type: markdown
@@ -13,9 +13,7 @@ body:
       label: 提交类型
       options:
         - 独立插件
-        - 功能整合包
-        - 皮肤 / 外观归档
-        - 皮肤 Prompt 资料
+        - 整合包（功能 / 外观）
         - 其他格式（先讨论）
     validations:
       required: true

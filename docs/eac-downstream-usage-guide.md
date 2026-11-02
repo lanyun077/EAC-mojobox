@@ -2,6 +2,9 @@
 
 初稿：2026-10-04；状态更新：2026-10-10。
 
+2026-11-02 范围更新：本文批次示例用于历史联调。新导出不再包含皮肤 Prompt `material`，
+当前 pilot 仅选择插件；现行导出范围见[供货导出说明](eac-supply-export.md)。历史批次示例保留追溯。
+
 首轮附件与第二轮完整草稿已交付，用户转述两轮可通过，不再要求逐批反馈。
 交付记录见[首轮](eac-issue-20-delivery.md)与[第二轮](eac-second-batch-delivery.md)。
 本文继续说明既有 `supply.eac/v1` 草稿；新收录插件使用独立的[插件来源接口 v1](plugin-source-api-v1.md)，

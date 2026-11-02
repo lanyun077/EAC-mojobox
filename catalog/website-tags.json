@@ -21,16 +21,6 @@
     { "type": "pack", "id": "dev.dsh-eac.suite-lite", "officialTags": ["general", "development"] },
     { "type": "pack", "id": "dev.dsh-eac.vision-base", "officialTags": ["research", "automation"] },
     { "type": "pack", "id": "dev.dsh-eac.web-research-base", "officialTags": ["research", "automation"] },
-    { "type": "pack", "id": "dev.dsh-eac.workbench-lite", "officialTags": ["development"] },
-    { "type": "skin-prompt", "id": "blue-fantasy", "officialTags": ["nature"] },
-    { "type": "skin-prompt", "id": "dragon-heir", "officialTags": ["traditional"] },
-    { "type": "skin-prompt", "id": "maid-atelier", "officialTags": ["anime"] },
-    { "type": "skin-prompt", "id": "miku", "officialTags": ["anime"] },
-    { "type": "skin-prompt", "id": "minecraft", "officialTags": ["game"] },
-    { "type": "skin-prompt", "id": "qq98", "officialTags": ["retro", "interface"] },
-    { "type": "skin-prompt", "id": "ths", "officialTags": ["interface"] },
-    { "type": "skin-prompt", "id": "trading", "officialTags": ["interface"] },
-    { "type": "skin-prompt", "id": "whale-song", "officialTags": ["nature"] },
-    { "type": "skin-prompt", "id": "xp", "officialTags": ["retro", "interface"] }
+    { "type": "pack", "id": "dev.dsh-eac.workbench-lite", "officialTags": ["development"] }
   ]
 }

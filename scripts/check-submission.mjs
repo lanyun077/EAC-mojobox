@@ -23,17 +23,7 @@ export async function checkSubmissionChanges(changes, readAtRevision) {
       if (before.id !== after.id) throw new Error(`Stable pack id must not change: ${path}`)
       if (before.version === after.version && before.sha256 !== after.sha256) throw new Error(`Changed archive bytes require a new version: ${path}`)
     }
-    if (path === 'catalog/skin-prompt-packages/source.json' && status === 'M') {
-      const before = JSON.parse(await readAtRevision('base', path))
-      const after = JSON.parse(await readAtRevision('head', path))
-      for (const entry of after.packages) {
-        const old = before.packages.find(item => item.id === entry.id)
-        if (!old || ['manifest', 'prompt', 'readme'].every(key => old.files?.[key] === entry.files?.[key])) continue
-        const oldSource = old.source ?? before
-        const newSource = entry.source ?? after
-        if (oldSource.repository === newSource.repository && oldSource.revision === newSource.revision) throw new Error(`Changed skin prompt files require an updated source commit: ${entry.id}`)
-      }
-    }
+    if (path.startsWith('catalog/skin-prompt-packages/') && status !== 'D') throw new Error(`Skin prompt intake is retired; submit a plugin or feature pack instead: ${path}`)
   }
 }
 
