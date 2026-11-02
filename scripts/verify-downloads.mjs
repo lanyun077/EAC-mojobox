@@ -2,7 +2,6 @@ import { readFile, readdir } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { inspectFeaturePack } from './feature-pack.mjs'
-import { verifySkinPromptCatalog } from './skin-prompt-package.mjs'
 import { verifyPreviewImages } from './preview-images.mjs'
 import { inspectPluginArtifact, pluginFilename, validatePluginListing } from './plugin-listing.mjs'
 import { verifyPluginIndex } from './plugin-index.mjs'
@@ -65,8 +64,7 @@ export async function verifyDownloads(directory, { allowDemo = false, basePath }
   }
   if (JSON.stringify((await readdir(join(directory, 'generated/downloads'))).sort()) !== JSON.stringify(files.sort())) throw new Error('Unexpected or duplicate download entries')
   await verifyPluginIndex(directory, catalog, { allowDemo })
-  const skinVerification = await verifySkinPromptCatalog(directory)
-  return { verified: files.length, skinPackages: skinVerification.verified }
+  return { verified: files.length }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

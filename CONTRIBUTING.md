@@ -8,7 +8,8 @@ Host Adapter 时再读[架构说明](docs/architecture.md)。使用 coding agent
 各类提交材料、标签/介绍/预览图规范、独立上游来源、PR 验证与维护者合并要求。
 不会自动合并外部内容；截图既可随 PR 上传，也可引用固定 HTTPS 原图。
 
-当前主线为收纳、检验、展示和下载。新收录按[收录规范](docs/intake.md)提交
+当前主线为插件与整合包的收纳、检验、展示和下载。皮肤插件按普通插件提交，外观组合按整合包提交；
+不再接收独立设计 Prompt 或设计思路，历史资料不参与网站与新供货导出。新收录按[收录规范](docs/intake.md)提交
 `catalog/feature-packs/<id>.json` 与 `artifacts/<id>-<version>.dshpack`，运行 `npm test`、
 `npm run build` 和 `npm run verify:downloads`。不要求先完成宿主安装；运行证据只能来自真实测试。
 新增独立插件按[轻量收录规范](docs/plugin-intake.md)进入网站；以下旧 Manifest 与 Pack/Lock

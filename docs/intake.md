@@ -2,8 +2,8 @@
 
 本文件是当前收录主线。Mojobox 负责收纳、静态检验、展示和下载；整合包内容、依赖、更新和功能正确性由开发者维护。宿主安装与运行测试是后续独立阶段，不阻塞收录框架开发。
 
-除可供宿主读取的 Feature Pack 外，Mojobox 也收纳独立的 `skin-prompt-package-v1` 皮肤资料包。
-这类资料包用于 AI 阅读、复刻和继续设计，不是可安装插件，不进入宿主安装索引。
+皮肤插件按普通插件收录；功能与外观组合统一进入整合包目录。
+设计 Prompt 和设计思路不再独立收录，相关内容由作者仓库维护。
 
 ## 当前支持范围
 
@@ -80,7 +80,6 @@ npm run inspect:feature-pack -- artifacts/<id>-<version>.dshpack <预期sha256>
 node scripts/build-catalog.mjs --check
 npm test
 npm run build:intake
-npm run check:skin-prompts
 ```
 
 独立检查命令只读指定归档；不提供预期摘要时仅计算摘要，不声称与开发者发布字节一致。`--check` 检查收录记录和归档，不生成文件；`npm test` 包含该门禁。
@@ -107,12 +106,8 @@ npm run check:skin-prompts
 正式 `catalog/feature-packs/` 允许为空，这是有效状态。当前已收录 DSH-EAC 自制的功能与皮肤薄包，
 其作者清单见 [`authoring/`](../authoring/README.md)。候选目录不自动公开；测试通过不自动把样本提升为正式内容。
 
-## 皮肤资料包来源
+## 历史设计资料
 
-当前已从 [dsh-skin-prompt-packages](https://github.com/DSH-EAC/dsh-skin-prompt-packages)
-固定提交 `bcb2ecaf318f60df2ff86e5214d646a785ccabc9` 收录十套资料包。事实源位于
-`catalog/skin-prompt-packages/`，每套包含 `manifest.json`、`prompt.md` 和 `README.md`，
-并由 `source.json` 固定上游提交与每个文件的 SHA-256。
-
-这类资料包在生成目录中以 `skinPackages` 提供，网站展示来源、许可证、目标界面、主题、Prompt
-章节和文件摘要。Mojobox 不执行 Prompt，不把它们伪装成 `.dshpack`，也不替 loader 或宿主判断安装和运行兼容。
+`catalog/skin-prompt-packages/` 原有十套资料及固定来源保留用于追溯，不参与正式目录构建。
+网站不再生成 `skinPackages`、`skinSource`、`skin-catalog.json` 或 `skin-packages/` 下载。
+历史校验工具与 Schema 仅用于核对旧资料，不作为新投稿入口。

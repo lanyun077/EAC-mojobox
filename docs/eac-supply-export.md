@@ -5,7 +5,7 @@
 没有据此声称插件已安装或供货已公网部署。记录见[首轮](eac-issue-20-delivery.md)与[第二轮](eac-second-batch-delivery.md)。
 
 新增 26 条轻量插件信息卡由独立的[插件来源接口 v1](plugin-source-api-v1.md)提供，
-不自动加入本导出器；旧批次契约与政策选择保持不变。
+不自动加入本导出器；既有批次契约保留。2026-11-02 起新导出不再收集皮肤 Prompt 资料；历史批次及其撤回规则不变。
 
 依据：[供货格式优化建议](eac-supply-format-proposal-v1.md)及
 [下游回复](https://github.com/DSH-EAC/EAC-mojobox/blob/8697f96b9f9274e516021699edf8953cdf0211fc/docs/eac-supply-consensus-v1.md)。
@@ -30,10 +30,10 @@ Mojobox 现有事实源 → 原样归档检查 → supply.eac/v1 清单与发布
 | --- | --- | --- |
 | `policies/eac-supply-selection.json` 指定的独立插件 | `plugin` 或 `skin` 来源展示记录 | 初始选择 `dsh-better-sidebar@0.12.2`；不自动猜测其安装产物和授权 |
 | `catalog/feature-packs/` 与 `artifacts/` | 功能及外观组合，原始归档地址、SHA-256 和大小 | 遵守 `distribution.json.packCategories`；`workflow` 未映射，跳过并报告 |
-| `catalog/skin-prompt-packages/` 与其固定来源 | `material` | 不可安装，不提供安装型 artifact |
 
-`--pilot` 只导出所选独立插件及 `blue-fantasy` 资料，不导出整合包。
-无该选项时导出全部允许分发的整合包和资料，独立插件仍按显式选择收录。
+`--pilot` 只导出所选独立插件，不导出整合包或设计资料。
+无该选项时导出全部允许分发的整合包，独立插件仍按显式选择收录。
+`policies/eac-supply-selection.json` 只维护插件选择，不再维护 `materialVersions`。
 
 ### 为什么首个插件暂时只有来源
 
@@ -50,8 +50,7 @@ Mojobox 现有事实源 → 原样归档检查 → supply.eac/v1 清单与发布
 - 不推断 `required`、`resolved` 或执行图，组合固定 `coverage: unknown`。
 - 没有 loader 声明时加载方式为 `unknown`，不擅自推断为独立插件。
 - 已有皮肤 ID 保留，冲突未经出处核对时 `conflictsKnown: false`；预览不是安装证据。
-- 资料的供货记录版本由 `policies/eac-supply-selection.json.materialVersions` 明确维护，
-  初始为 `1.0.0`，不是上游软件版本。来源变化时必须升资料记录版本，不能悄悄覆盖同版本来源。
+- 历史 `material` 记录仍按原协议核验与追溯；若以上一份含资料的批次继续发布，必须按撤回规则显式处理，不能静默删除。
 
 ## 本地生成草稿
 

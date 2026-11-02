@@ -12,7 +12,9 @@
 
 ## 当前 MVP 边界
 
-最新用户决策：优先交付收纳、检验、展示与下载框架，然后适配开发者整合包，最后进行宿主搭载测试。
+最新用户决策（2026-11-02）：资源入口统一为插件与整合包；皮肤插件按普通插件收录，外观组合并入整合包。
+取消皮肤独立分类，停止独立收录设计 Prompt 与设计思路；原有资料只保留历史记录。
+继续优先交付收纳、检验、展示与下载框架，宿主搭载测试独立安排。
 整合包内容由开发者维护。当前执行规范见 `docs/intake.md`、`docs/community-submissions.md` 与
 `docs/project-positioning-and-roadmap.md`；文档入口为 `docs/README.md`。
 新收录事实源为 `catalog/feature-packs/` 和 `artifacts/`，
@@ -39,8 +41,8 @@ EAC 专属新协议/UI/bridge/事务和复杂迁移仍暂缓。`docs/archive/` �
 | --- | --- |
 | 插件记录 | `catalog/plugins/*.json` |
 | 新插件轻量信息卡 | `catalog/plugin-listings/*.json` 与 `schemas/plugin-listing.schema.json` |
-| 皮肤 Prompt 资料 | `catalog/skin-prompt-packages/` 与 `schemas/skin-prompt-package.schema.json` |
-| 作者上传预览图 | `catalog/previews/<id>/`，由收录记录或皮肤 `origins.json` 引用 |
+| 历史皮肤 Prompt 资料（停止收录与发布） | `catalog/skin-prompt-packages/` 与 `schemas/skin-prompt-package.schema.json`，仅用于历史核对 |
+| 作者上传预览图 | `catalog/previews/<id>/`，由现行收录记录引用 |
 | 网站官方分类与作者补充标签 | `catalog/website-tags.json`；官方词表 `policies/catalog-tags.json`；规范 `docs/catalog-tags.md` |
 | Pack / Lock | `catalog/packs/*.pack.json`、`*.lock.json` |
 | 生产 Evidence | `catalog/evidence/*.json` |
@@ -62,8 +64,7 @@ EAC 专属新协议/UI/bridge/事务和复杂迁移仍暂缓。`docs/archive/` �
 
 读取 `docs/community-submissions.md`、收录 Schema、PR 模板及 `.github/workflows/check.yml`。
 用户已要求恢复 PR CI 与审核门禁；贡献工作流负责只读验证，Pages 工作流负责主分支发布。
-展示字段属于 Mojobox 收录元数据，不改变上游归档格式。预览图不能塞进薄包；外部皮肤资料
-采用条目级固定来源，不能改写旧的统一导入基线。既有归档不修改、删除或重命名。
+展示字段属于 Mojobox 收录元数据，不改变上游归档格式。预览图不能塞进薄包；历史皮肤设计资料不再作为新投稿输入，不参与网站和新供货导出。既有归档不修改、删除或重命名。
 提交增量门禁是 `npm run check:submission -- <base-ref>`，只检查已提交内容；仍需全量测试、
 构建与下载复核。CI 不替代作者归属、许可与真实运行审核；远端保护规则需管理员独立配置。
 
@@ -131,8 +132,8 @@ Manifest，不改旧 Lock/Evidence，不把功能重叠冒称硬冲突。Skill �
 读取：`site/src/main.js`、`site/src/styles.css`、`vite.config.mjs`、生成 Catalog 结构。
 
 要求：保持静态；不读取本机环境；不直接安装；根路径和仓库子路径都可用；不手改生成数据。
-整合包／皮肤的分类和标签检索只用官方标注；作者标签只在详情展示，不能以组件名回退生成分类。
-分类是网站元数据，不改作者归档、原始 Prompt 清单或下游插件 v1 契约；不根据名字猜题材或兼容性。
+整合包的分类和标签检索只用官方标注；作者标签只在详情展示，不能以组件名回退生成分类。
+分类是网站元数据，不改作者归档或下游插件 v1 契约；不根据名字猜题材或兼容性。
 
 验证：`npm test`、`npm run build`、`BASE_PATH=/dsh-mojobox/ npm run build`，再检查桌面和窄屏。
 

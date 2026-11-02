@@ -169,23 +169,20 @@ test('material updates require a new record version and withdrawn components rem
   assert.ok(withdrawn.items.find(item => item.components).components[0].resolved)
 })
 
-test('real pilot exports two records offline and draft has no publication receipt', async t => {
+test('real pilot exports only plugins offline and draft has no publication receipt', async t => {
   t.mock.method(globalThis, 'fetch', () => { throw new Error('Network forbidden') })
   const siteBefore = await readFile(join(root, 'site/public/generated/catalog.json')).catch(error => {
     if (error.code !== 'ENOENT') throw error
     return null
   })
   const result = await prepareSupply(root, { ...options, draft: true })
-  assert.deepEqual(result.report.counts, { plugin: 1, material: 1 })
+  assert.deepEqual(result.report.counts, { plugin: 1 })
   assert.equal(result.files.has('supply-receipt.json'), false)
   const plugin = result.document.items.find(item => item.type === 'plugin')
   assert.equal(plugin.packageName, 'dsh-better-sidebar')
   assert.equal(plugin.version, '0.12.2')
   assert.equal(plugin.artifact, undefined)
-  const material = result.document.items.find(item => item.type === 'material')
-  assert.match(material.source.url, /bcb2ecaf318f60df2ff86e5214d646a785ccabc9\/skin-prompts\/packages\/blue-fantasy$/)
-  assert.equal(material.installable, false)
-  assert.equal(material.artifact, undefined)
+  assert.ok(result.document.items.every(item => item.type !== 'material'))
   const siteAfter = await readFile(join(root, 'site/public/generated/catalog.json')).catch(error => {
     if (error.code !== 'ENOENT') throw error
     return null
@@ -204,7 +201,7 @@ test('appearance export copies local previews and preserves unknown compatibilit
   const image = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])
   await writeFile(join(directory, `catalog/previews/${record.id}/cover.png`), image)
   await writeFile(join(directory, 'distribution.json'), jsonBytes({ packCategories: ['appearance'] }))
-  await writeFile(join(directory, 'policies/eac-supply-selection.json'), jsonBytes({ plugins: [], materialVersions: {} }))
+  await writeFile(join(directory, 'policies/eac-supply-selection.json'), jsonBytes({ plugins: [] }))
   await writeFile(join(directory, `catalog/feature-packs/${record.id}.json`), jsonBytes(record))
   const filename = `${record.id}-${record.version}.dshpack`
   await writeFile(join(directory, 'artifacts', filename), await readFile(join(root, 'artifacts', filename)))

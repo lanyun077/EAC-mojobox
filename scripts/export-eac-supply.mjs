@@ -4,7 +4,6 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 import { buildCatalog } from './build-catalog.mjs'
-import { collectSkinPromptPackages } from './skin-prompt-package.mjs'
 import { digest, inspectFeaturePack, validateRecord } from './feature-pack.mjs'
 import { assertHttps, inspectPreviewImages } from './preview-images.mjs'
 import { jsonBytes, mergeSupplyHistory, validateReceipt } from './eac-supply.mjs'
@@ -39,8 +38,7 @@ export async function collectSupply(root, { publicUrl, sequence, pilot = false }
   const policy = await load(join(root, 'distribution.json'))
   if (!Array.isArray(policy.packCategories)) throw new Error('Invalid public distribution policy')
   const selection = await load(join(root, 'policies/eac-supply-selection.json'))
-  if (!selection || Object.keys(selection).sort().join(',') !== 'materialVersions,plugins' || !Array.isArray(selection.plugins) ||
-      !selection.materialVersions || typeof selection.materialVersions !== 'object' || Array.isArray(selection.materialVersions)) throw new Error('Invalid EAC supply selection')
+  if (!selection || Object.keys(selection).join(',') !== 'plugins' || !Array.isArray(selection.plugins)) throw new Error('Invalid EAC supply selection')
   const selected = new Set()
   for (const entry of selection.plugins) {
     if (!entry || Object.keys(entry).sort().join(',') !== 'id,type' || !/^[a-z0-9][a-z0-9._-]{2,63}$/.test(entry.id) ||
@@ -54,17 +52,6 @@ export async function collectSupply(root, { publicUrl, sequence, pilot = false }
       ...(record.license ? { license: record.license } : {}),
       ...(entry.type === 'skin' ? { appearance: { loadingMode: 'unknown', skinIds: [], skinIdsKnown: false, conflicts: [], conflictsKnown: false, previews: [] } } : {}) })
     warnings.push({ packageName: record.name, reason: 'Source listing only: artifact size, package bytes, compatibility and authorization have not been checked by this exporter.' })
-  }
-  const skins = await collectSkinPromptPackages(root)
-  for (const id of Object.keys(selection.materialVersions)) {
-    if (!skins.packages.some(item => item.manifest.id === id)) throw new Error(`Material version references unknown package: ${id}`)
-  }
-  for (const { manifest, source: origin } of skins.packages) {
-    if (pilot && manifest.id !== 'blue-fantasy') continue
-    items.push({ type: 'material', packageName: `dev.dsh-eac.skin-prompt.${manifest.id}`,
-      version: selection.materialVersions[manifest.id], name: manifest.name, summary: manifest.description || manifest.name,
-      source: source(`${origin.repository}/tree/${origin.revision}/${origin.path}`, origin.revision),
-      status: 'active', runtime: 'not-tested', installable: false })
   }
   if (!pilot) {
     for (const name of (await readdir(join(root, 'catalog/feature-packs'))).filter(name => name.endsWith('.json')).sort()) {

@@ -130,7 +130,7 @@ for (const base of ['/', '/EAC-mojobox/']) {
     site.run('location.hash = "#/home"; applyHash(); render()')
     for (const route of ['plugins', 'contribute', 'source']) assert.ok(site.app.innerHTML.includes(`href="#/${route}"`))
     site.run('location.hash = "#/contribute"; applyHash(); render()')
-    for (const type of ['plugin', 'pack', 'skin', 'prompt']) {
+    for (const type of ['plugin', 'pack']) {
       assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}"`))
       site.run(`location.hash = "#/contribute/${type}"; applyHash(); render()`)
       assert.equal(site.run('state.tab'), 'contribute')
@@ -145,7 +145,7 @@ for (const base of ['/', '/EAC-mojobox/']) {
       assert.ok(site.app.innerHTML.includes(`href="${base}generated/api/v1/${path}"`))
     }
     assert.ok(site.app.innerHTML.includes(`href="${base}generated/catalog.json"`))
-    for (const [route, types] of [['plugins', ['plugin']], ['packs', ['pack']], ['skins', ['skin', 'prompt']]]) {
+    for (const [route, types] of [['plugins', ['plugin']], ['packs', ['pack']]]) {
       site.run(`location.hash = "#/${route}"; applyHash(); render()`)
       for (const type of types) assert.ok(site.app.innerHTML.includes(`href="#/contribute/${type}"`))
     }
@@ -156,7 +156,7 @@ test('repository links and empty-catalog submission guides use the recovered rep
   const repository = 'https://github.com/lanyun077/EAC-mojobox'
   for (const base of ['/', '/EAC-mojobox/']) {
     const site = loadSite(base, { mode: 'intake', plugins: [], packs: [], skinPackages: [] })
-    for (const tab of ['plugins', 'packs', 'skins']) {
+    for (const tab of ['plugins', 'packs']) {
       site.run(`location.hash = "#/${tab}"; applyHash(); render()`)
       const guide = tab === 'plugins' ? 'plugin-intake' : 'intake'
       assert.ok(site.app.innerHTML.includes(`href="${repository}/blob/main/docs/${guide}.md"`))
@@ -195,7 +195,7 @@ for (const base of ['/', '/EAC-mojobox/']) {
     assert.match(site.app.innerHTML, /暂无 Skill 收录/)
     assert.doesNotMatch(site.app.innerHTML, /generated\/downloads|data-select=|<input type="search"/)
     site.run('state.tab = "home"; render()')
-    assert.match(site.app.innerHTML, /<strong>5<\/strong><span>正式收录/)
+    assert.match(site.app.innerHTML, /<strong>4<\/strong><span>正式收录/)
   })
 }
 
@@ -228,85 +228,25 @@ test('version declarations distinguish syntax checks from historical unknown com
   assert.doesNotMatch(historical, /内核范围语法<\/dt><dd>已检验/)
 })
 
-test('intake groups appearance archives and prompt material under skins and counts each once', () => {
-  const site = loadSite('/', mixedIntake)
-  site.run('state.tab = "home"; render()')
-  assert.match(site.app.innerHTML, /href="#\/contribute"/)
-  assert.match(site.app.innerHTML, /<strong>3<\/strong><span>正式收录<\/span>/)
-  assert.match(site.app.innerHTML, /<strong>1<\/strong><span>功能包<\/span>/)
-  assert.match(site.app.innerHTML, /<strong>2<\/strong><span>皮肤包<\/span>/)
-  assert.match(site.app.innerHTML, /entry-count">1<small>项/)
-  assert.match(site.app.innerHTML, /entry-count">2<small>项/)
-  site.run('state.tab = "packs"; render()')
-  assert.match(site.app.innerHTML, /data-select="dev.aio.function"/)
-  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.example.skin"|data-select="maid-atelier"|option value="appearance"/)
-  site.run('state.tab = "skins"; render()')
-  assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
-  assert.match(site.app.innerHTML, /data-select="maid-atelier"/)
-  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.aio.function"/)
-  assert.match(site.app.innerHTML, /skin-gallery/)
-  assert.match(site.app.innerHTML, /href="#\/skins\/dev.example.skin"/)
-  assert.match(site.app.innerHTML, /href="#\/skins\/maid-atelier"/)
-  assert.match(site.app.innerHTML, /皮肤归档 · 宿主未测试/)
-  assert.match(site.app.innerHTML, /设计资料 · 浅色、深色主题/)
-})
-
-test('skin search covers both formats without inheriting functional category filters', () => {
-  const site = loadSite('/', mixedIntake)
-  site.run('state.tab = "skins"; state.category = "function"; render()')
-  for (const query of ['Example Skin', 'dev.example.skin', 'ui-skin-loader', 'bodyAttr:theme']) {
-    site.run(`state.query = ${JSON.stringify(query)}; render()`)
-    assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
-    if (query !== 'Example Skin') assert.doesNotMatch(site.app.innerHTML, /data-select="maid-atelier"/)
-  }
-  for (const query of ['Abyssal Maid Atelier', 'Prompt 资料', 'maid', '女仆', '浅色', '深色']) {
-    site.run(`state.query = ${JSON.stringify(query)}; render()`)
-    assert.match(site.app.innerHTML, /data-select="maid-atelier"/)
-  }
-  site.run('state.query = "does-not-exist"; render()')
-  assert.match(site.app.innerHTML, /没有匹配项/)
-  assert.doesNotMatch(site.app.innerHTML, /data-select=/)
-})
-
 for (const base of ['/', '/dsh-mojobox/']) {
   test(`skin archive routes retain downloads and loader declarations at ${base}`, () => {
     const site = loadSite(base, mixedIntake)
     for (const tab of ['skins', 'packs']) {
       site.run(`location.hash = "#/${tab}/dev.example.skin"; applyHash(); render()`)
-      assert.equal(site.run('state.tab'), 'skins')
-      assert.match(site.app.innerHTML, /返回皮肤包列表/)
-      assert.match(site.app.innerHTML, /皮肤包声明/)
+      assert.equal(site.run('state.tab'), 'packs')
+      assert.match(site.app.innerHTML, /返回整合包列表/)
+      assert.match(site.app.innerHTML, /外观加载声明/)
       assert.match(site.app.innerHTML, /ui-skin-loader/)
       assert.match(site.app.innerHTML, /maid-atelier/)
       assert.match(site.app.innerHTML, /宿主未测试/)
       assert.match(site.app.innerHTML, /由下游 loader 或宿主负责/)
-      assert.match(site.app.innerHTML, /下载皮肤包/)
+      assert.match(site.app.innerHTML, /下载整合包/)
       assert.doesNotMatch(site.app.innerHTML, /option value="appearance"|SKIN PROMPT PACKAGE/)
       for (const path of [skinArchive.archiveUrl, skinArchive.packUrl, skinArchive.reportUrl]) assert.ok(site.app.innerHTML.includes(`href="${base}${path}" download`))
       assert.ok(site.app.innerHTML.includes(skinArchive.archiveDigest))
     }
   })
 }
-
-test('empty intake messages reflect the current collection rather than the source arrays', () => {
-  const site = loadSite('/', { ...mixedIntake, packs: [skinArchive], skinPackages: [] })
-  site.run('state.tab = "packs"; render()')
-  assert.match(site.app.innerHTML, /暂无正式收录内容/)
-  assert.doesNotMatch(site.app.innerHTML, /没有匹配项/)
-  site.run('state.tab = "skins"; state.query = "does-not-exist"; render()')
-  assert.match(site.app.innerHTML, /没有匹配项/)
-  assert.doesNotMatch(site.app.innerHTML, /暂无正式收录内容/)
-})
-
-test('skin prompt packages render as source material and retain deployment base', () => {
-  const site = loadSite('/dsh-mojobox/', { mode: 'intake', demo: false, plugins: [], packs: [], skinPackages: [skinPackage] })
-  site.run('state.tab = "skins"; state.selected = "maid-atelier"; render()')
-  for (const path of [skinPackage.manifestUrl, skinPackage.promptUrl, skinPackage.readmeUrl]) assert.ok(site.app.innerHTML.includes(`href="/dsh-mojobox/${path}" download`))
-  assert.match(site.app.innerHTML, /不可直接安装/)
-  assert.match(site.app.innerHTML, /SKIN PROMPT PACKAGE/)
-  assert.match(site.app.innerHTML, /来源已固定/)
-  assert.match(site.app.innerHTML, /目标宿主或 loader/)
-})
 
 test('detail summaries place downloads, declared support, tags and original sources before contents', () => {
   const site = loadSite('/EAC-mojobox/', mixedIntake)
@@ -320,58 +260,14 @@ test('detail summaries place downloads, declared support, tags and original sour
   assert.match(skin, /宿主未测试/)
 })
 
-test('prompt details distinguish original projects from fixed prompt provenance and reject unsafe previews', () => {
-  const data = structuredClone(mixedIntake)
-  data.skinPackages[0].origin = {
-    repository: 'https://github.com/Small-tailqwq/dsh-deep-whale', projectUrl: 'https://github.com/Small-tailqwq/dsh-deep-whale',
-    previews: [{ url: 'https://example.org/light.webp', label: '浅色' }, { url: 'javascript:alert(1)', label: 'unsafe' }], notes: '上游预览'
-  }
-  const site = loadSite('/EAC-mojobox/', data)
-  const html = site.run('skinDetail(catalog.skinPackages[0])')
-  assert.match(html, /Small-tailqwq\/dsh-deep-whale/)
-  assert.match(html, /skin-prompts\/packages\/maid-atelier/)
-  assert.match(html, /Prompt 资料来源/)
-  assert.ok(html.indexOf('原项目') < html.indexOf('资料溯源'))
-  assert.ok(html.indexOf('<img') < html.indexOf('class="detail-columns"'))
-  assert.doesNotMatch(html, /javascript:|src="\/EAC-mojobox\/\.\.\//)
-  assert.match(html, /不可直接安装/)
-  assert.match(html, /<h3>官方分类<\/h3>[\s\S]*?<span class="tag">二次元<\/span>/)
-  assert.match(html, /<h3>作者标签<\/h3>[\s\S]*?<span class="tag">maid<\/span>/)
-  assert.match(html, /<dd>浅色、深色<\/dd>/)
-  assert.doesNotMatch(html, /<dd>light、dark<\/dd>/)
-  assert.match(site.run('skinRow(catalog.skinPackages[0])'), /浅色、深色主题/)
-})
-
-test('skin gallery uses verified covers from both formats and handles missing or unsafe URLs', () => {
-  const data = structuredClone(mixedIntake)
-  data.skinPackages[0].origin = { previews: [
-    { url: 'javascript:alert(1)' }, { url: 'https://example.org/light.webp' }
-  ] }
-  const site = loadSite('/', data)
-  const archive = site.run('skinRow(catalog.packs[1])')
-  assert.match(archive, /src="https:\/\/example.org\/preview.png"/)
-  const prompt = site.run('skinRow(catalog.skinPackages[0])')
-  assert.match(prompt, /src="https:\/\/example.org\/light.webp"/)
-  assert.match(prompt, /Abyssal Maid Atelier/)
-  assert.ok(prompt.indexOf('<img') < prompt.indexOf('skin-card-name'))
-  assert.doesNotMatch(prompt, /javascript:|generated\/downloads|download/)
-  site.run('catalog.skinPackages[0].origin.previews = [{ url: "data:text/html,unsafe" }]; catalog.skinPackages[0].metadata.name = "<script>unsafe</script>"')
-  const missing = site.run('skinRow(catalog.skinPackages[0])')
-  assert.match(missing, /skin-cover preview-unavailable/)
-  assert.match(missing, /暂无预览/)
-  assert.match(missing, /&lt;script&gt;unsafe&lt;\/script&gt;/)
-  assert.doesNotMatch(missing, /<img|data:text|<script>/)
-})
-
 for (const base of ['/', '/dsh-mojobox/']) {
-  test(`author tags, introduction, local previews and independent prompt links render at ${base}`, () => {
+  test(`author tags, introduction and local previews render at ${base}`, () => {
     const data = structuredClone(mixedIntake)
     data.packs[0].metadata.tags = ['external-author-tag']
     data.packs[0].metadata.introduction = '<script>author text</script>'
     data.packs[0].links = [{ label: '作者仓库', url: 'https://github.com/example/author' }]
     data.packs[0].previews = ['generated/previews/dev.aio.function/overview.png']
     data.packs[1].previews = ['generated/previews/dev.example.skin/overview.webp']
-    data.skinPackages[0].source.path = 'designs/maid-atelier'
     const site = loadSite(base, data)
     const detail = site.run('intakeDetail(catalog.packs[0])')
     assert.match(detail, /external-author-tag|详细介绍|功能预览/)
@@ -379,8 +275,7 @@ for (const base of ['/', '/dsh-mojobox/']) {
     assert.match(detail, /&lt;script&gt;author text&lt;\/script&gt;/)
     assert.doesNotMatch(detail, /<script>/)
     assert.match(detail, /https:\/\/github.com\/example\/author/)
-    assert.ok(site.run('skinRow(catalog.packs[1])').includes(`src="${base}generated/previews/dev.example.skin/overview.webp"`))
-    assert.match(site.run('sourcePackageUrl(catalog.skinPackages[0])'), /designs\/maid-atelier$/)
+    assert.ok(site.run('intakeDetail(catalog.packs[1])').includes(`src="${base}generated/previews/dev.example.skin/overview.webp"`))
     site.run('state.tab = "packs"; state.query = "external-author-tag"; render()')
     assert.match(site.app.innerHTML, /没有匹配项/)
     for (const url of ['generated/previews/id/../private.png', 'generated/previews/id/file.svg', '//example.org/image.png']) assert.equal(site.run(`safePreviewUrl(${JSON.stringify(url)})`), '#')
@@ -465,7 +360,7 @@ test('clipboard denial offers a manual digest instead of an unhandled rejection'
 })
 
 test('intake search matches multiple words across authors, components and introductions', () => {
-  const data = structuredClone(mixedIntake)
+  const data = structuredClone({ ...mixedIntake, packs: [intakePack] })
   data.packs[0].metadata.introduction = '适合代码审查与协同开发'
   const site = loadSite('/', data)
   site.run('state.tab = "packs"')
@@ -489,41 +384,9 @@ test('relevance puts name matches before description and source matches with sta
   assert.equal(site.run('filteredItems()[0].id'), 'org.example.description')
 })
 
-test('tags, skin format and keyword filters intersect without treating prompt material as an archive', () => {
-  const site = loadSite('/', mixedIntake)
-  site.run('state.tab = "skins"; state.tag = "anime"; state.kind = "prompt"; state.query = "女仆"')
-  assert.equal(site.run('filteredItems()[0].metadata.id'), 'maid-atelier')
-  assert.equal(site.run('filteredItems().length'), 1)
-  site.run('state.kind = "archive"')
-  assert.equal(site.run('filteredItems().length'), 0)
-  site.run('Object.assign(state, searchDefaults); state.tab = "packs"; state.tag = "development"')
-  assert.equal(site.run('filteredItems().length'), 1)
-  site.run('state.tag = "test-only"')
-  assert.equal(site.run('filteredItems().length'), 0)
-})
-
-test('shareable search routes restore conditions, retain detail back links and isolate resource types', () => {
-  const site = loadSite('/EAC-mojobox/', mixedIntake)
-  site.run('location.hash = "#/skins?kind=prompt&tag=anime&q=女仆&sort=name"; applyHash(); render()')
-  assert.equal(site.run('filteredItems().length'), 1)
-  assert.match(site.app.innerHTML, /value="prompt" selected/)
-  assert.match(site.app.innerHTML, /data-tag-filter="anime" checked/)
-  const listHash = site.run('catalogHash()')
-  site.run('location.hash = catalogHash("skins", "maid-atelier"); applyHash(); render()')
-  assert.match(site.app.innerHTML, /class="catalog-page is-detail"/)
-  assert.ok(site.app.innerHTML.includes(listHash.replaceAll('&', '&amp;')))
-  site.run('location.hash = catalogHash("skins", null); applyHash(); render()')
-  assert.equal(site.run('filteredItems().length'), 1)
-  site.run('location.hash = "#/plugins?kind=prompt&tag=maid&sort=invalid&availability=invalid"; applyHash()')
-  assert.equal(site.run('state.tag'), 'all')
-  assert.equal(site.run('state.kind'), 'all')
-  assert.equal(site.run('state.sort'), 'relevance')
-  assert.equal(site.run('state.availability'), 'all')
-})
-
 test('unknown and malicious search tags cannot create official options and remain resettable', () => {
   const site = loadSite('/', mixedIntake)
-  site.run('location.hash = "#/skins?tag=%3Cscript%3E&q=%22%3E%3Cimg%20src=x%3E"; applyHash(); render()')
+  site.run('location.hash = "#/packs?tag=%3Cscript%3E&q=%22%3E%3Cimg%20src=x%3E"; applyHash(); render()')
   assert.match(site.app.innerHTML, /没有匹配项/)
   assert.match(site.app.innerHTML, /链接中含有不可用的分类/)
   assert.match(site.app.innerHTML, /data-reset-search/)
@@ -544,63 +407,104 @@ test('only approved tags and aliases enter search and official options, never au
   }
   site.run('state.query = "开发编程"')
   assert.equal(site.run('filteredItems().length'), 1)
-  site.run('state.tab = "skins"; state.query = "动漫"')
+  site.run('catalog.packs[1].websiteTags.officialTags = ["anime"]; state.query = "动漫"')
   assert.equal(site.run('filteredItems().length'), 1)
-  assert.equal(site.run('filteredItems()[0].metadata.id'), 'maid-atelier')
-  site.run('state.query = ""; catalog.skinPackages[0].websiteTags.officialTags = []; render()')
+  assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
+  site.run('state.query = ""; catalog.packs[1].websiteTags.officialTags = []; render()')
   assert.doesNotMatch(site.app.innerHTML, /data-tag-filter="anime"/)
   assert.match(site.app.innerHTML, /data-tag-filter="unclassified"/)
   site.run('state.query = "动漫"')
   assert.equal(site.run('filteredItems().length'), 0)
   site.run('state.query = ""; state.tag = "unclassified"')
-  assert.equal(site.run('filteredItems()[0].metadata.id'), 'maid-atelier')
+  assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
 })
 
-test('official multi-select uses OR, intersects other filters and restores shareable route state', () => {
+test('merged catalog counts appearance packs once and excludes retired prompt material and entry points', () => {
   const site = loadSite('/', mixedIntake)
-  site.run('location.hash = "#/skins?tag=anime,generic"; applyHash(); render()')
+  site.run('state.tab = "home"; render()')
+  assert.match(site.app.innerHTML, /<strong>2<\/strong><span>正式收录<\/span>/)
+  assert.match(site.app.innerHTML, /<strong>2<\/strong><span>整合包<\/span>/)
+  assert.doesNotMatch(site.app.innerHTML, /href="#\/skins|皮肤包|Prompt/)
+  site.run('state.tab = "packs"; render()')
+  for (const id of ['dev.aio.function', 'dev.example.skin']) assert.ok(site.app.innerHTML.includes(`data-select="${id}"`))
+  assert.doesNotMatch(site.app.innerHTML, /maid-atelier|kind-filter|skin-gallery/)
+  assert.match(site.app.innerHTML, /option value="appearance"/)
+  assert.match(site.app.innerHTML, /data-tag-filter="development"/)
+  assert.match(site.app.innerHTML, /data-tag-filter="generic"/)
+})
+
+test('appearance packs support merged search, category and official tag filters', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run('state.tab = "packs"')
+  for (const query of ['Example Skin', 'dev.example.skin', 'ui-skin-loader', 'bodyAttr:theme']) {
+    site.run(`state.query = ${JSON.stringify(query)}`)
+    assert.equal(site.run('filteredItems().length'), 1)
+    assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
+  }
+  site.run('state.query = ""; state.category = "appearance"; state.tag = "generic"')
+  assert.equal(site.run('filteredItems().length'), 1)
+  site.run('state.tag = "development"')
+  assert.equal(site.run('filteredItems().length'), 0)
+  site.run('state.category = "all"; state.tag = "development,generic"')
   assert.equal(site.run('filteredItems().length'), 2)
-  for (const id of ['anime', 'generic']) assert.match(site.app.innerHTML, new RegExp(`data-tag-filter="${id}" checked`))
-  site.run('state.kind = "prompt"')
+  site.run('state.query = "Example Skin"')
   assert.equal(site.run('filteredItems().length'), 1)
-  site.run('state.query = "女仆"; location.hash = catalogHash("skins", "maid-atelier"); applyHash(); render()')
-  assert.match(site.app.innerHTML, /返回皮肤包列表/)
-  site.run('location.hash = catalogHash("skins", null); applyHash(); render()')
-  assert.equal(site.run('state.tag'), 'anime,generic')
+})
+
+test('shared pack searches retain detail back links and ignore retired kind filters', () => {
+  const site = loadSite('/EAC-mojobox/', mixedIntake)
+  site.run('location.hash = "#/packs?tag=development,generic&category=appearance&q=Skin&sort=name&kind=prompt"; applyHash(); render()')
   assert.equal(site.run('filteredItems().length'), 1)
+  assert.match(site.app.innerHTML, /data-tag-filter="generic" checked/)
+  const hash = site.run('catalogHash()')
+  assert.doesNotMatch(hash, /kind=/)
+  site.run('location.hash = catalogHash("packs", "dev.example.skin"); applyHash(); render()')
+  assert.match(site.app.innerHTML, /返回整合包列表/)
+  assert.ok(site.app.innerHTML.includes(hash.replaceAll('&', '&amp;')))
+  site.run('location.hash = catalogHash("packs", null); applyHash(); render()')
+  assert.equal(site.run('filteredItems().length'), 1)
+})
+
+test('retired prompt links cannot expose materials and old appearance links open merged pack details', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run('location.hash = "#/skins/dev.example.skin"; applyHash(); render()')
+  assert.equal(site.run('state.tab'), 'packs')
+  assert.match(site.app.innerHTML, /外观加载声明/)
+  site.run('location.hash = "#/skins/maid-atelier"; applyHash(); render()')
+  assert.match(site.app.innerHTML, /未找到此整合包/)
+  assert.doesNotMatch(site.app.innerHTML, /下载 Prompt|skin-packages/)
+  for (const type of ['skin', 'prompt']) {
+    site.run(`location.hash = "#/contribute/${type}"; applyHash(); render()`)
+    assert.doesNotMatch(site.app.innerHTML, /href="#\/contribute\/(?:skin|prompt)"|下载 Prompt|catalog\/skin-prompt-packages/)
+    assert.match(site.app.innerHTML, /不再独立收录设计 Prompt/)
+  }
+})
+
+test('merged submission guide retains appearance declarations and approved vocabulary', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run('state.selected = "pack"')
+  const html = site.run('contributePage()')
+  assert.match(html, /appearance|加载器|已知冲突/)
+  for (const tag of Object.values(tagGroups).flat()) assert.ok(html.includes(`<code>${tag.id}</code>`))
+  site.run('catalog.packs[1].websiteTags.customTags = ["<img src=x>"]')
+  const detail = site.run('intakeDetail(catalog.packs[1])')
+  assert.match(detail, /&lt;img src=x&gt;/)
+  assert.doesNotMatch(detail, /<img src=x>/)
 })
 
 test('checkbox changes add and remove official tags without losing other search conditions', () => {
   const site = loadSite('/', mixedIntake)
   site.run(`
-    state.tab = 'skins'; state.kind = 'prompt'; state.query = '女仆';
+    state.tab = 'packs'; state.category = 'appearance'; state.query = 'Skin';
     globalThis.handler = null;
-    globalThis.checkbox = {dataset:{tagFilter:'anime'}, checked:true, addEventListener(name,fn){handler=fn}};
+    globalThis.checkbox = {dataset:{tagFilter:'generic'}, checked:true, addEventListener(name,fn){handler=fn}};
     document.querySelectorAll = selector => selector === '[data-tag-filter]' ? [checkbox] : [];
     render = () => {}; bindEvents(); handler();
   `)
-  assert.equal(site.run('state.tag'), 'anime')
-  assert.match(site.run('location.hash'), /tag=anime.*kind=prompt/)
+  assert.equal(site.run('state.tag'), 'generic')
+  assert.match(site.run('location.hash'), /category=appearance.*tag=generic/)
   site.run('checkbox.checked = false; handler()')
   assert.equal(site.run('state.tag'), 'all')
-  assert.equal(site.run('state.query'), '女仆')
-  assert.equal(site.run('state.kind'), 'prompt')
-})
-
-test('classification guides use the shared official vocabulary without changing plugin submission requirements', () => {
-  const site = loadSite('/', mixedIntake)
-  for (const [type, group] of [['pack', 'packs'], ['skin', 'skins'], ['prompt', 'skins']]) {
-    site.run(`state.selected = '${type}'`)
-    const html = site.run('contributePage()')
-    for (const tag of tagGroups[group]) assert.ok(html.includes(`<code>${tag.id}</code>`))
-    assert.match(html, /catalog\/website-tags.json/)
-    assert.match(html, /作者标签|不参与分类和标签检索/)
-    if (type === 'prompt') assert.match(html, /&quot;type&quot;: &quot;skin-prompt&quot;/)
-  }
-  site.run('state.selected = "plugin"')
-  assert.doesNotMatch(site.run('contributePage()'), /catalog\/website-tags.json/)
-  site.run('catalog.skinPackages[0].websiteTags.customTags = ["<img src=x>"]')
-  const html = site.run('skinDetail(catalog.skinPackages[0])')
-  assert.match(html, /&lt;img src=x&gt;/)
-  assert.doesNotMatch(html, /<img src=x>/)
+  assert.equal(site.run('state.query'), 'Skin')
+  assert.equal(site.run('state.category'), 'appearance')
 })

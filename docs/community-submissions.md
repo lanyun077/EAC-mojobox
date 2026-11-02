@@ -8,9 +8,9 @@ Issue 用于咨询和提交候选，不会自动发布。没有上传服务器�
 | 类型 | 必须提交 | 下载与职责 |
 | --- | --- | --- |
 | [独立插件](#plugin) | [轻量信息卡](plugin-intake.md)，下载可选 | 不要求更改作者格式；原始 npm 归档核验后下载，宿主负责安装 |
-| [功能整合包](#pack) | 薄 `.dshpack` 与同 ID 的收录 JSON | 原样下载，宿主负责安装与运行 |
-| [皮肤/外观归档](#skin) | 同上，分类为 `appearance` 并声明 `appearance.kind` | Mojobox 不加载、不切换皮肤，不保证安装兼容 |
-| [皮肤 Prompt 资料](#prompt) | `manifest.json`、`prompt.md`、`README.md` 与固定来源记录 | 三个资料文件，不转换成可安装包 |
+| [整合包（功能／外观）](#pack) | 薄 `.dshpack` 与同 ID 的收录 JSON；外观组合增加加载声明 | 原样下载，宿主负责安装与运行 |
+
+皮肤插件按普通插件收录，功能与外观组合统一走整合包投稿；不再独立接收设计 Prompt 或设计思路。
 
 新增独立插件按[轻量收录规范](plugin-intake.md)；旧 dsh-std Manifest 仅维护已有记录。
 Skill 暂只预留分类，不接受实际收录或安装。
@@ -31,7 +31,7 @@ Skill 暂只预留分类，不接受实际收录或安装。
 
 <a id="pack"></a>
 
-## 2. 功能包与皮肤归档
+## 2. 整合包（功能与外观）
 
 ```text
 artifacts/org.example.tools-1.0.0.dshpack
@@ -70,13 +70,13 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 | 官方分类／补充作者标签 | `catalog/website-tags.json` 的对应条目 | 可选；从[官方标签组](catalog-tags.md)选择 1～3 个 ID，或填写自定义标签，由维护者审核 |
 | 详细介绍 | 收录 JSON 的 `introduction` | 可选纯文本，最多 6000 字符；不渲染 HTML/Markdown |
 | 作者仓库、文档、反馈入口 | 收录 JSON 的 `links` | 可选，最多 12 条，每条含 `label` 与无凭据 HTTPS `url` |
-| 截图 | 收录 JSON 的 `previews` | 可选，最多 16 张；首张为皮肤列表封面 |
+| 截图 | 收录 JSON 的 `previews` | 可选，最多 16 张；用于详情预览 |
 | 内核版本要求 | `pack.json.requires.dsh` | 新收录和更新版本必填合法范围；未知先提交候选，不能编造或用标签冒充兼容证明 |
 | 外部插件版本 | `pack.json.plugins[].version` | npm/GitHub 引用必填精确 SemVer；`builtin:` 由宿主提供，不强制版本 |
 | loader、皮肤 ID 与已知冲突 | 收录 JSON 的 `appearance` | 外观包声明 `kind`，其余仅填写可核验信息 |
 
 旧包不强制补标签、简介或图片。没有提供时显示缺失状态，不猜测作者或兼容范围。
-官方分类与作者标签分开保存：功能包选用途组，外观归档与 Prompt 资料选主题组。
+官方分类与作者标签分开保存：功能包选用途组，外观整合包选主题组。
 不再把组件名当作分类。可只提交作者标签，维护者审核时再归类；暂未归类显示「未分类」。
 添加方式与 JSON 示例见[网站标签投稿步骤](catalog-tags.md#2-投稿只补一个网站标注条目)，不修改归档或上游格式。
 版本要求和已有归档迁移见[版本声明策略](intake-version-policy.md)。版本声明只检查语法，
@@ -85,14 +85,14 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 
 <a id="skin"></a>
 
-### 皮肤归档：在薄包之上声明外观信息
+### 外观整合包：在薄包之上声明加载信息
 
 文件结构和验证步骤与功能包相同，收录 JSON 的 `category` 改为 `appearance`，
 增加 `appearance.kind`。有依据时再填写 loader、皮肤 ID、主题注册点、冲突和预览。
 字段见 [Schema](../schemas/intake.schema.json) 与[皮肤来源复核](skin-pack-source-review.md)。
 不要上传修改后的整个客户端或 Profile；加载与切换由下游负责。
 作者缺少新的宿主范围声明时先投递候选 Issue，不能套用 8 个旧皮肤归档的历史例外。
-若交付的只是设计和复刻说明，请走下面的 Prompt 资料路径。
+单个皮肤插件走[独立插件](#plugin)；设计和复刻说明放作者仓库，不作为独立资源投递。
 
 ## 3. 预览图由作者提供
 
@@ -109,55 +109,16 @@ catalog/previews/org.example.tools/overview.png   # 可选截图
 包版本、宿主/loader 版本、明暗主题、素材来源和使用许可。旧版截图或设计稿要明确注明，
 不能冒充本版本运行实测。远端图片不在 CI 中下载，其在线状态、真实性和许可由维护者人工确认。
 
-功能包截图在详情页展示，皮肤包首图还用于列表封面。图片缺失或加载失败仍可浏览、下载。
+整合包截图统一在详情页展示。图片缺失或加载失败仍可浏览、下载。
 外观包原有的 `appearance.previews` 保持兼容；新记录优先使用顶层 `previews`，不要两处重复填写。
 
 <a id="prompt"></a>
 
-## 4. 外部皮肤 Prompt 资料
+## 4. 历史设计资料
 
-在 `catalog/skin-prompt-packages/<id>/` 提交三个完整文件，清单沿用现有
-`schemas/skin-prompt-package.schema.json`。标签与简介使用清单已有的 `tags`、`description`；
-清单的 `tags` 作为作者标签原样保留，不参与站内标签检索。官方主题可另在
-`catalog/website-tags.json` 添加 `type: skin-prompt` 的同 ID 条目，参照[官方标签组](catalog-tags.md)。
-来源、目标界面、主题、许可证、引用和章节要求必须符合 Schema，不伪造 EAC/AIO 来源。
-
-在 `catalog/skin-prompt-packages/source.json` 的 `packages` 中追加条目：
-
-```json
-{
-  "id": "example-skin",
-  "path": "packages/example-skin",
-  "source": {
-    "repository": "https://github.com/example/skin-prompts",
-    "revision": "替换为作者仓库的40位完整commit",
-    "path": "packages/example-skin"
-  },
-  "files": {
-    "manifest": "sha256:替换为manifest.json原始字节摘要",
-    "prompt": "sha256:替换为prompt.md原始字节摘要",
-    "readme": "sha256:替换为README.md原始字节摘要"
-  }
-}
-```
-
-条目级 `source` 允许来自其他作者仓库；省略时沿用旧的统一来源。
-顶层 `repository`、`revision`、`schemaPath` 和 `schemaDigest` 是现有导入基线，新增外部资料时
-不要修改它们。条目的 `source.path` 是作者仓库中的目录，`path` 保留本地记录约定。
-
-需要展示原作者和截图时，在 `origins.json` 增加同 ID 对象，字段沿用现有记录：
-`repository`、`projectUrl`、`previews: [{label, url}]`、`notes`、`evidence: [HTTPS URL]`。
-截图 URL 也可写 `previews/<id>/<filename>` 并上传到 `catalog/previews/<id>/`。
-`evidence` 是归属说明的参考链接，不是宿主运行证据。没有可核验原项目时不填 `origins`。
-
-计算摘要只针对最终文件原始字节，不复制其他包的值：
-
-```powershell
-(Get-FileHash artifacts/org.example.tools-1.0.0.dshpack -Algorithm SHA256).Hash.ToLower()
-(Get-FileHash catalog/skin-prompt-packages/example-skin/manifest.json -Algorithm SHA256).Hash.ToLower()
-```
-
-资料摘要在记录中加 `sha256:` 前缀；归档 `sha256` 字段不加前缀。
+自 2026-11-02 起停止皮肤 Prompt 资料独立收录。原有十套资料及来源记录仅用于历史追溯，
+不进入网站构建、下载或新供货导出。投稿增量检查拒绝向该历史目录新增或修改资料。
+设计说明由作者仓库维护；形成插件发行后按插件或整合包规则投稿。
 
 <a id="submit"></a>
 
@@ -182,14 +143,12 @@ git diff --check
 该命令只比较 Git 提交，不覆盖未提交修改；它不能替代上面的全量检查。
 
 更新归档必须递增版本、提供新文件名和新摘要；已经发布的归档不得修改、删除或重命名。
-仅修改收录介绍、网站标签、相关链接或截图无需重打归档。修改原始 Prompt 清单的 `tags` 仍属于资料更新。
-Prompt 更新必须更新对应来源 commit
-和文件摘要，不能用旧 commit 冒充新字节。固定来源由人工对照上游确认，CI 不联网核验。
+仅修改收录介绍、网站标签、相关链接或截图无需重打归档。固定来源由人工对照上游确认，CI 不联网核验。
 
 ## 6. 自动门禁与人工审核
 
-本地与 PR CI 检查覆盖 Schema、身份、归档结构、SHA-256、公开图片路径/大小/签名、Prompt 文件摘要、
-多来源格式、构建和最终下载字节；PR 增量检查阻止改写历史归档或提交生成目录。
+本地与 PR CI 检查覆盖 Schema、身份、归档结构、SHA-256、公开图片路径/大小/签名、
+构建和最终下载字节；PR 增量检查阻止改写历史归档或提交生成目录。
 全量检查失败时所有新增内容都不能发布，不是只检查某一条 JSON。
 
 维护者必须核对：作者身份/代提交授权、可追溯来源、再分发许可、内容范围、截图隐私和版本、

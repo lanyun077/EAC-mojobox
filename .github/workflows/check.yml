@@ -54,6 +54,5 @@ jobs:
             dist/generated/catalog.json
             dist/generated/api/v1/plugins.json
             dist/generated/api/v1/schemas/*.json
-            dist/generated/skin-catalog.json
             dist/generated/reports/*.json
           retention-days: 7
