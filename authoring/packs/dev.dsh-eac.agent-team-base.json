@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.agent-team-base",
   "name": "DSH 团队协作包",
-  "version": "0.3.0",
-  "description": "Agent Teams 协作，配合市场、工作区、上下文观测、项目记忆、会话整理、节点导航与产出恢复。多 Agent 增加调用和上下文开销；使用公开 RC2 版本，不混用旧 EAC 特制版。",
+  "version": "0.3.1",
+  "description": "Agent Teams 协作，配合市场、工作区、上下文观测、项目记忆、会话整理、节点导航与产出恢复。多 Agent 增加调用和上下文开销；使用面向官版 0.2.2-rc.1 的公开发行，不混用旧 EAC 特制版。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {

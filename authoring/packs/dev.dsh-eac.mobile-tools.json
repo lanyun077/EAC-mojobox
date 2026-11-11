@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.mobile-tools",
   "name": "DSH 移动会话包",
-  "version": "0.2.0",
-  "description": "Meow Smooth 移动布局、输入与通知，配合会话整理和快照恢复。只选一种移动覆盖；远程通道、HTTPS 和通知订阅需由用户配置，包不创建连接。作者移动实测基线为旧内核，本 RC2 组合未实测。",
+  "version": "0.2.1",
+  "description": "Meow Smooth 移动布局、输入与通知，配合会话整理和快照恢复。只选一种移动覆盖；远程通道、HTTPS 和通知订阅需由用户配置，包不创建连接。作者移动实测基线为旧内核，本官版 0.2.2-rc.1 组合未实测。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
