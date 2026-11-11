@@ -1,10 +1,10 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.mobile-tools",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "57983565bb6707dffc1135e25825cb73ee2a4a32915edc1a6f0efccc86d6cd58"
+  "sha256": "3c55b6356fee4f9546e747f7219461d5c02f90931f3c22853a9b180d8cf5537f"
 }
