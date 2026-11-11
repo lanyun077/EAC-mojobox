@@ -3,12 +3,13 @@
   "id": "dev.pc2005-cloud.dsh-pet",
   "packageName": "dsh-pet",
   "name": "桌面宠物",
-  "version": "0.3.1",
+  "version": "0.4.7",
   "summary": "提供伴随会话状态变化的宠物与余额相关界面。",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-pet/0.3.1",
-    "repository": "https://github.com/PC2005-cloud/dsh-pet"
+    "url": "https://registry.npmjs.org/dsh-pet/0.4.7",
+    "repository": "https://github.com/PC2005-cloud/dsh-pet",
+    "commit": "c1580077fdcdd6a0b63d97e794474ec98e22a1b3"
   },
   "license": "MIT",
   "compatibility": {
@@ -17,7 +18,7 @@
   },
   "conflicts": null,
   "limitations": [
-    "原始发行超过 8 MiB 收录上限，本轮只提供来源，不复制其媒体资源。",
+    "保留仅来源收录：历史发行包含超限媒体，新版仅核对 registry 元数据，未核验归档，不提供 Mojobox 下载。",
     "未安装、未运行；依赖未解析，兼容性与冲突未知不代表宿主可用。"
   ]
 }

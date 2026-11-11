@@ -1,0 +1,2530 @@
+{
+  "reviewedOn": "2026-11-11",
+  "targetDsh": "0.2.2-rc.1",
+  "scope": "Static metadata/artifact review; no plugin installation, execution, dependency closure or runtime evidence.",
+  "officialSourceRef": "curation-sources.json#official",
+  "plugins": [
+    {
+      "id": "dev.01virex.dsh-status-rotator",
+      "name": "dsh-status-rotator",
+      "previous": "0.34.1",
+      "version": "0.38.0",
+      "download": true,
+      "source": {
+        "name": "dsh-status-rotator",
+        "version": "0.38.0",
+        "checkedAt": "2026-11-11T06:54:09.270Z",
+        "repository": {
+          "url": "git+https://github.com/01Virex/dsh-status-rotator.git",
+          "type": "git"
+        },
+        "gitHead": "7edcf03771341ed60b0681d9723dc71001193ba5",
+        "metadataUrl": "https://registry.npmjs.org/dsh-status-rotator/0.38.0",
+        "metadataSha256": "85c6f87c44172c97acdb92925403a7e2c4739bd8d5ab4d3129eb358a8fcc318a",
+        "packageJsonSha256": "d11ec4022275e1e8cf2a2b08cd5d8144521239ebd08fa936238ab948f9c6ec1f",
+        "package": {
+          "name": "dsh-status-rotator",
+          "version": "0.38.0",
+          "license": "MIT",
+          "main": "lib/index.js",
+          "exports": {
+            ".": {
+              "types": "./lib/index.d.ts",
+              "default": "./lib/index.js"
+            },
+            "./client": "./lib/client.js",
+            "./package.json": "./package.json"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/cordis": "*"
+          },
+          "peerDependenciesMeta": {
+            "@deepseek-ai/cordis": {
+              "optional": true
+            }
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web",
+              "inject": [],
+              "immediately": true
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-status-rotator/-/dsh-status-rotator-0.38.0.tgz",
+          "integrity": "sha512-vLa1XyRsZUsYm1E+CTlT/lH8V74jVBcyFiZ3T4k5PUQV7MfYubC8ojtc1OevsXPRqV4eQ1nLFMVeAIl/umT/ew==",
+          "sha256": "83e4388bdfdf6b583a4efb03064bdd00b823c4feb8dc3358a2dde2f6907c75c1",
+          "size": 390624,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1064,
+            "sha256": "a2b2b10db4b81006a3e7ee7bbed43087063be92cd4fa61bd7b71db9ccaf140d7"
+          },
+          {
+            "path": "package/README_ZH.md",
+            "size": 74594,
+            "sha256": "95ec6cf1f7d2059367a4430125ee13ab58e4bb337f33c10b8a1abfaf22e911d3"
+          },
+          {
+            "path": "package/README.md",
+            "size": 81903,
+            "sha256": "324bb950e6e948538ef3aeb1cbb0a1ca68b7c37daf90037fab10e67f549fe01b"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 297,
+            "sha256": "115ca261a6259352cfec1188e2f4585cc1d2c0af17b69466bf22abd7e3d7676c"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {},
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.acidgr.web-mobile-fix",
+      "name": "dsh-web-mobile-fix",
+      "previous": "1.0.6",
+      "version": "1.0.6",
+      "download": true,
+      "source": {
+        "name": "dsh-web-mobile-fix",
+        "version": "1.0.6",
+        "checkedAt": "2026-11-11T06:54:23.737Z",
+        "repository": {
+          "url": "git+https://github.com/AcidGr/dsh-web-mobile-fix.git",
+          "type": "git"
+        },
+        "gitHead": "2085cdfdc3967443ae01977d79446f8e403d8e94",
+        "metadataUrl": "https://registry.npmjs.org/dsh-web-mobile-fix/1.0.6",
+        "metadataSha256": "8d083b8103768d280a3aac28fb0b42fca02cd485d8e9fc1fe403c833671b2325",
+        "packageJsonSha256": "0e575a80d051975e15a5d49194749e78c9816f14bf88cf757074c4f58dd6d905",
+        "package": {
+          "name": "dsh-web-mobile-fix",
+          "version": "1.0.6",
+          "license": "MIT",
+          "main": "lib/index.js",
+          "exports": {
+            ".": "./lib/index.js",
+            "./client": "./lib/client.js",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": ">=20.0.0"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web"
+            },
+            "compatibility": {
+              "dsh": ">=0.1.0",
+              "dshReleases": {
+                "0.1.2-alpha.2": "compatible",
+                "0.1.2-alpha.3": "compatible",
+                "0.1.2-alpha.4": "compatible",
+                "0.1.2-alpha.5": "compatible",
+                "0.1.2-rc.1": "compatible",
+                "0.1.3-alpha.1": "compatible",
+                "0.1.3-alpha.2": "compatible",
+                "0.1.5-alpha.1": "compatible",
+                "0.1.5-alpha.2": "compatible",
+                "0.1.5-rc.1": "compatible"
+              }
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-web-mobile-fix/-/dsh-web-mobile-fix-1.0.6.tgz",
+          "integrity": "sha512-Q+OAYAe268FhPe/915RDEWdVmln1H6QzJiJ+NN86/S4cC1q+7sAhFWblZUhhKVMbQEmSJDI+GQC0dQoMpXFJ2Q==",
+          "sha256": "1441efa3b4c814e2226ff5d947fad5e69aa36ed2bd46020b81a11513fb20c290",
+          "size": 7201,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1063,
+            "sha256": "21d33e67ce00d655c287222fd4080668d23a2196acab0c5f2864eba285e2fdcc"
+          },
+          {
+            "path": "package/README.md",
+            "size": 3076,
+            "sha256": "8518197571578429ad207d0dee53d1bebc1823121e81f2085d9e231d3b1eb764"
+          },
+          {
+            "path": "package/README.zh.md",
+            "size": 2929,
+            "sha256": "d6b240d924285f670d4f6026935bdea01981af2d26501ce71e4c804962abaf7a"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 252,
+            "sha256": "46c1ee88e8dcacbb3827a27c0d95fdaac65b4e0684f36c2c40017046a77bab30"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {},
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.awesome-dsh-plugin.dsh-find-plugin",
+      "name": "dsh-find-plugin",
+      "previous": "0.4.0",
+      "version": "0.4.0",
+      "download": true,
+      "source": {
+        "name": "dsh-find-plugin",
+        "version": "0.4.0",
+        "checkedAt": "2026-11-11T06:54:20.057Z",
+        "repository": {
+          "url": "git+https://github.com/awesome-dsh-plugin/dsh-find-plugin.git",
+          "type": "git"
+        },
+        "gitHead": "afce1cd43f98b8a8b02e4a35cd6a65d6444de412",
+        "metadataUrl": "https://registry.npmjs.org/dsh-find-plugin/0.4.0",
+        "metadataSha256": "16133af73fffac3681636915b1d73bbe8acbd1366f1df57a34f0246b90677093",
+        "packageJsonSha256": "86c79f318c928bbc35dbb3e2e360a1b22ae2e7c62dff20d873914eda84ba6697",
+        "package": {
+          "name": "dsh-find-plugin",
+          "version": "0.4.0",
+          "license": "MIT",
+          "main": "lib/index.js",
+          "exports": {
+            ".": {
+              "types": "./lib/types/index.d.ts",
+              "default": "./lib/index.js"
+            },
+            "./cordis.patch.yml": "./cordis.patch.yml",
+            "./package.json": "./package.json"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/cordis": "^4.0.1",
+            "@deepseek-ai/dsh-tools": "^0.1.0-rc.6 || ^0.1.1-rc.1 || ^0.1.2-alpha.2 || ^0.1.3-alpha.2 || ^0.1.5-alpha.1 || ^0.1.6-alpha.1 || ^0.1.7-alpha.1"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-find-plugin/-/dsh-find-plugin-0.4.0.tgz",
+          "integrity": "sha512-XO0zQb3iHxK7IGGygfiGDxI3t4HUEBNLK4knqYmh8KuT2cbCWzmH+4PViaIgVPsiytC7mXN5p94u5fJc3VNsBw==",
+          "sha256": "39fc2dfd519b53bc71c9d4fb8cb7faa678d2c14ffb77c6df38daf0eedf0b56a0",
+          "size": 45308,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1075,
+            "sha256": "74bbf6c4b07619a09a7522ae3ce66cafd1a525f5477470b75889db8b5d3911a7"
+          },
+          {
+            "path": "package/README.md",
+            "size": 4113,
+            "sha256": "857cc287bc750c6a32b944a8d62db6e78a8f03a8fcfc59fafc0fdd5d8594fe91"
+          },
+          {
+            "path": "package/README.zh.md",
+            "size": 4073,
+            "sha256": "63edd711ce0fe22e33593f846f184b1fdd8f2454483744bf0d06f0b34aa3f4f6"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 136,
+            "sha256": "37d977ba706948ca4da431776e0e8f82598ad707b15bf23b27ff0ab2197b6f68"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {
+            "@deepseek-ai/dsh-tools": "^0.1.0-rc.6 || ^0.1.1-rc.1 || ^0.1.2-alpha.2 || ^0.1.3-alpha.2 || ^0.1.5-alpha.1 || ^0.1.6-alpha.1 || ^0.1.7-alpha.1"
+          },
+          "mismatches": {
+            "@deepseek-ai/dsh-tools": "^0.1.0-rc.6 || ^0.1.1-rc.1 || ^0.1.2-alpha.2 || ^0.1.3-alpha.2 || ^0.1.5-alpha.1 || ^0.1.6-alpha.1 || ^0.1.7-alpha.1"
+          }
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.bowenliang123.dsh-context",
+      "name": "dsh-context",
+      "previous": "0.62.3",
+      "version": "0.83.1",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-context"
+    },
+    {
+      "id": "dev.changfenhuang.dsh-genui",
+      "name": "@changfenhuang/dsh-genui",
+      "previous": "0.11.3",
+      "version": "0.16.0",
+      "download": true,
+      "sourceRef": "curation-sources.json#@changfenhuang/dsh-genui"
+    },
+    {
+      "id": "dev.elysia395.dsh-wallpaper-engine",
+      "name": "dsh-plugin-wallpaper-engine",
+      "previous": "1.2.0",
+      "version": "1.4.2",
+      "download": true,
+      "source": {
+        "name": "dsh-plugin-wallpaper-engine",
+        "version": "1.4.2",
+        "checkedAt": "2026-11-11T06:54:41.631Z",
+        "repository": {
+          "url": "git+https://github.com/elysia395/dsh-wallpaper-engine.git",
+          "type": "git"
+        },
+        "metadataUrl": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.4.2",
+        "metadataSha256": "ec302f858c46f4e96effcb206917d44d78c1ac21eff23d439f9e56221933bfdf",
+        "packageJsonSha256": "4b534c3553ce62eeb5b4421543a9aaa33ad0b39fc8d4805ca4a65c41e3ebbc29",
+        "package": {
+          "name": "dsh-plugin-wallpaper-engine",
+          "version": "1.4.2",
+          "license": "MIT",
+          "main": "lib/index.js",
+          "exports": {
+            ".": {
+              "types": "./lib/types/index.d.ts",
+              "default": "./lib/index.js"
+            },
+            "./client": {
+              "types": "./lib/types/client.d.ts",
+              "default": "./lib/client.js"
+            },
+            "./subpackage-boot.js": "./lib/subpackage-boot.js",
+            "./cordis.patch.yml": "./cordis.patch.yml",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": ">=22.12.0",
+            "dsh": "^0.2.0-rc.1"
+          },
+          "dependencies": {
+            "webwallgl": "^3.0.0",
+            "x11": "^4.3.1",
+            "dsh-plugin-wallpaper-engine-about-notice": "1.4.2",
+            "dsh-plugin-wallpaper-engine-fonts": "1.4.2",
+            "dsh-plugin-wallpaper-engine-fx": "1.4.2",
+            "dsh-plugin-wallpaper-engine-glass": "1.4.2",
+            "dsh-plugin-wallpaper-engine-mascot-avatar": "1.4.2",
+            "dsh-plugin-wallpaper-engine-media-bridge": "1.4.2",
+            "dsh-plugin-wallpaper-engine-parallax": "1.4.2",
+            "dsh-plugin-wallpaper-engine-pet-link": "1.4.2"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/cordis": "^4.0.4",
+            "@deepseek-ai/dsh-client-runtime": ">=0.1.5-rc.1",
+            "@deepseek-ai/dsh-client-ui-slots": ">=0.1.5-rc.1",
+            "@deepseek-ai/dsh-host-webserver": ">=0.1.5-rc.1",
+            "react": "^18.2.0"
+          },
+          "peerDependenciesMeta": {
+            "@deepseek-ai/dsh-client-runtime": {
+              "optional": true
+            },
+            "@deepseek-ai/dsh-client-ui-slots": {
+              "optional": true
+            },
+            "@deepseek-ai/dsh-host-webserver": {
+              "optional": true
+            }
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "inject": [
+                "@deepseek-ai/dsh-client-runtime"
+              ],
+              "platform": "web",
+              "immediately": true
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.4.2.tgz",
+          "integrity": "sha512-0IE/jGXiAMMEDM3fXP5p4r+DF3EcCJOPXaiX94lanz5ZBBSY6hjoELqB10u1X3B1zs8B7jyjzZ3aiJF562Pb7g==",
+          "sha256": "dde0b02039dc84dbb9b333ae07f3580ec3d00580a2aba7bbaf297456fc1fcd02",
+          "size": 4499719,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1066,
+            "sha256": "a116f28b94e928c3b22acc3346cbd29b3cb2fddd68f73be5c9b93d7626f20cf6"
+          },
+          {
+            "path": "package/README.beginner.md",
+            "size": 13470,
+            "sha256": "4c73f13dd95c73290a3b5239ed5a71214b2db91dce674897b41a24ea05847daa"
+          },
+          {
+            "path": "package/README.en.md",
+            "size": 11474,
+            "sha256": "c7a5c6abe0d268915edaad1af582809e286c1e9e60c2767ec3fb7654878574ac"
+          },
+          {
+            "path": "package/assets/rope/README.md",
+            "size": 4224,
+            "sha256": "801e26b9b3f2a95eedbd8cc99e8a336303592ebc2012e99049a02b34dd9d77dc"
+          },
+          {
+            "path": "package/lib/about/README.md",
+            "size": 2293,
+            "sha256": "5d8ee9b52a5c8017295629a397ff9f61163d6ee4f544280ef5b993526186dfaf"
+          },
+          {
+            "path": "package/README.md",
+            "size": 13269,
+            "sha256": "6e1660b0561e74df2e1f81d032986a6eccf0128faff8e8fd3b8fca045289a780"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 8113,
+            "sha256": "599ebb4f2ca7269bfdd52d366a6a0284dc4d08f9d42fa72e2bda5e69a41d99d3"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {
+            "engines.dsh": "^0.2.0-rc.1"
+          },
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.hkkz9522.dsh-session-manager",
+      "name": "dsh-session-manager",
+      "previous": "0.6.2",
+      "version": "0.7.5",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-session-manager"
+    },
+    {
+      "id": "dev.jing-hy.computer-user",
+      "name": "computer-user",
+      "previous": "0.3.7",
+      "version": "0.5.9",
+      "download": true,
+      "source": {
+        "name": "computer-user",
+        "version": "0.5.9",
+        "checkedAt": "2026-11-11T06:54:44.080Z",
+        "repository": {
+          "url": "git+https://github.com/jing-hy/computer-user.git",
+          "type": "git"
+        },
+        "gitHead": "848dbc6296ebdfb87d643584140be543927b7763",
+        "metadataUrl": "https://registry.npmjs.org/computer-user/0.5.9",
+        "metadataSha256": "e9c7c3bd707c5639c7d47cc0a88d0606f1e0d5e050ffc2bd6068b23847c45031",
+        "packageJsonSha256": "dc37108dbf6717c09b10a368ccb4b3dc272a3fe468864b1fcfebc02d73c7d80f",
+        "package": {
+          "name": "computer-user",
+          "version": "0.5.9",
+          "license": "MIT",
+          "main": "src/index.js",
+          "exports": {
+            ".": "./src/index.js",
+            "./client": "./client.js",
+            "./cordis.patch.yml": "./cordis.patch.yml",
+            "./locale/*": "./locale/*",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": "^22.19 || >=24"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6 <0.3.0-0",
+            "@deepseek-ai/schemastery": ">=3.18.1 <4"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/computer-user/-/computer-user-0.5.9.tgz",
+          "integrity": "sha512-tg/a6JELD5arMUEk23EJU/WZ/OWpSSpB/zWo2rjI7xAX/byrWi5Nah55XFzI/3zgCHwNH11TASEcF7DmAdb8Aw==",
+          "sha256": "1ed3f115fbaa19489fdaf9ec3026457e4bbd75bd7520d7fbb1c9a58ebed563ce",
+          "size": 89421,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1085,
+            "sha256": "f91f162426443baf5505d96d9ef54449336b4f60df5bccac55fc08f8d096ca6f"
+          },
+          {
+            "path": "package/README.md",
+            "size": 8077,
+            "sha256": "f0d144e210aa665bc083f415b8e7426e7fa1555b55987c22c39b87d3c0f1a41b"
+          },
+          {
+            "path": "package/README.zh.md",
+            "size": 8052,
+            "sha256": "739d51001f0899db00f36ecb6958f65222ea5d9033a13645daaa54a673e89350"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 138,
+            "sha256": "46a901606eb5cadb82e24b1c6a0a7aeb5396714c8461c4a384f9b24c9786942a"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {
+            "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6 <0.3.0-0"
+          },
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.jing-hy.dsh-unified-market",
+      "name": "dsh-unified-market",
+      "previous": "0.4.1",
+      "version": "0.4.1",
+      "download": true,
+      "source": {
+        "name": "dsh-unified-market",
+        "version": "0.4.1",
+        "checkedAt": "2026-11-11T06:54:43.192Z",
+        "repository": {
+          "url": "git+https://github.com/jing-hy/dsh-unified-market.git",
+          "type": "git"
+        },
+        "gitHead": "40783b58bb13f253902a4a6124b33b4959997078",
+        "metadataUrl": "https://registry.npmjs.org/dsh-unified-market/0.4.1",
+        "metadataSha256": "5a466d30745b6a1d474bc21b8529e22567ebd45c15a97ac6b3893289cc735f87",
+        "packageJsonSha256": "84828dbbc72dc2806577545a52922d48794902598970ca37383d61358d6839a2",
+        "package": {
+          "name": "dsh-unified-market",
+          "version": "0.4.1",
+          "license": "MIT",
+          "main": "lib/host.js",
+          "exports": {
+            ".": "./lib/host.js",
+            "./client": "./lib/client.js",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": ">=18.18"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-unified-market/-/dsh-unified-market-0.4.1.tgz",
+          "integrity": "sha512-j2CULnGwYV9/89e6SgcE+gVTuCzKvdyN4qwHoC0JRfTwQd7gsOcMjR1pgbAK9b8ON7TJ3878pdgEFZ2+HQB2EA==",
+          "sha256": "21d0c6d52e37a828a6371df09f9cd1146cf8dbb8f50346136410fbfd20da7c27",
+          "size": 111762,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1090,
+            "sha256": "8ffb4d253eabe51a1b486c00cc022ca2a8e444c103d34476f9df5fb85066ba3b"
+          },
+          {
+            "path": "package/README.md",
+            "size": 16006,
+            "sha256": "73c9a7f22e419a48c006b27a8429e2de9555133dc9be046dc43134443c80f8f0"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 451,
+            "sha256": "1f7c42717c1a6ec54fab5178e57aa9d7b2713cd5af206c3d480d9c2d74cdfda7"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {},
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.jing-hy.picturereader",
+      "name": "picturereader",
+      "previous": "3.3.3",
+      "version": "3.3.3",
+      "download": true,
+      "source": {
+        "name": "picturereader",
+        "version": "3.3.3",
+        "checkedAt": "2026-11-11T06:54:45.384Z",
+        "repository": {
+          "url": "git+https://github.com/jing-hy/picturereader.git",
+          "type": "git"
+        },
+        "metadataUrl": "https://registry.npmjs.org/picturereader/3.3.3",
+        "metadataSha256": "4c6aa23e5e540be77eb9c996000da1c2733070f8ab81e25968dd27c44764a8d8",
+        "packageJsonSha256": "4e0010bc80496b69120921efd53508b6743f3d86bc5d2b3724cd466841e219b2",
+        "package": {
+          "name": "picturereader",
+          "version": "3.3.3",
+          "license": "MIT",
+          "main": "src/index.js",
+          "exports": {
+            ".": "./src/index.js",
+            "./client": "./client.js",
+            "./cordis.patch.yml": "./cordis.patch.yml",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": "^22.19 || >=24"
+          },
+          "dependencies": {
+            "jpeg-js": "^0.4.4",
+            "omggif": "^1.0.10",
+            "pngjs": "^7.0.0",
+            "webp-wasm": "^1.0.6"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/dsh-settings": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1",
+            "@deepseek-ai/schemastery": "^3.18.1",
+            "@deepseek-ai/dsh-llm": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/picturereader/-/picturereader-3.3.3.tgz",
+          "integrity": "sha512-DG8e+nYwdh4d3YaH55wf8pAgXtAaRBkrT3+1t6M7AdZmi+DGkBY4upm/v+YiuVzhyyabJAg5nlwAJjP1eTb1nw==",
+          "sha256": "1b3e373ca1647a693053451d546013f368ddd25faab94dc9daa2ae9ca44cd9b7",
+          "size": 137069,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1091,
+            "sha256": "ea60db35eeb7f0c6d9ddae43136ba7b2eb80a145eb1909a9c84bfc6bbfc79ff7"
+          },
+          {
+            "path": "package/README.md",
+            "size": 38950,
+            "sha256": "7c39178d7905071a00ed8facb342bddfe0cd7bfa87549b0f6691c000c2b94467"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 135,
+            "sha256": "69e01603c151d6530d69d0424521e9b283f1a4c8dd06a340611d6f9c936bdda4"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {
+            "@deepseek-ai/dsh-settings": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1",
+            "@deepseek-ai/dsh-llm": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1"
+          },
+          "mismatches": {
+            "@deepseek-ai/dsh-settings": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1",
+            "@deepseek-ai/dsh-llm": "^0.1.0-rc.6 || ^0.1.1-rc.2 || ^0.1.2-rc.1 || ^0.1.3-alpha.1"
+          }
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.lire1131.dsh-undo-savepoint",
+      "name": "dsh-undo-savepoint",
+      "previous": "0.4.10",
+      "version": "0.5.1",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-undo-savepoint"
+    },
+    {
+      "id": "dev.meteornox.dsh-whale-widget",
+      "name": "dsh-whale-widget",
+      "previous": "0.3.18",
+      "version": "0.4.2",
+      "download": true,
+      "source": {
+        "name": "dsh-whale-widget",
+        "version": "0.4.2",
+        "checkedAt": "2026-11-11T06:54:52.416Z",
+        "repository": {
+          "url": "git+https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget.git",
+          "type": "git"
+        },
+        "gitHead": "5247dd6813d6e4430728f39ccc63d43cda046022",
+        "metadataUrl": "https://registry.npmjs.org/dsh-whale-widget/0.4.2",
+        "metadataSha256": "accb5515d73783efb80e3e2a8cab32537453dde237fcdd626f93341d3b5f2410",
+        "packageJsonSha256": "2505b68ad34f659f0db66879616a9cdaa3ab422dc45db559db4383c02dd9f3ac",
+        "package": {
+          "name": "dsh-whale-widget",
+          "version": "0.4.2",
+          "license": "MIT",
+          "main": "lib/index.js",
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-whale-widget/-/dsh-whale-widget-0.4.2.tgz",
+          "integrity": "sha512-aGDUfd3b2Abv4PoUn1KtnlasOIkoqgvIOR2+rAIEPDOt1qlHB7emlTq+4zdyoV5ZiicS+tkugPk86GyVUoDggQ==",
+          "sha256": "2368de8192c4ba28682a6344f78ace11cb41bac397c13981e36dfca49c0ebc78",
+          "size": 5706702,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1066,
+            "sha256": "a1e46acc1349f63e9d1e26a8a600823e010fedcaff20fc1eceb6564432bf829b"
+          },
+          {
+            "path": "package/README.md",
+            "size": 58601,
+            "sha256": "62d6be14ed7a4d0310817fa9e38e7ac9f56cd6f96244dd699871697056b9504d"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 719,
+            "sha256": "86dd2bdb919d8e98a63fb7b9ad44b5ea38ef0a86994b87060b0b6ca3c38e6ef1"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {},
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.nagi-ovo.dsh-visualize",
+      "name": "@nagi-ovo/dsh-visualize",
+      "previous": "0.1.4",
+      "version": "0.1.9",
+      "download": true,
+      "sourceRef": "curation-sources.json#@nagi-ovo/dsh-visualize"
+    },
+    {
+      "id": "dev.nanmicoder.dsh-agent-teams",
+      "name": "@nanmicoder/dsh-agent-teams",
+      "previous": "0.1.22",
+      "version": "0.1.29",
+      "download": true,
+      "sourceRef": "curation-sources.json#@nanmicoder/dsh-agent-teams"
+    },
+    {
+      "id": "dev.nwflower.dsh-chat-import",
+      "name": "dsh-chat-import",
+      "previous": "0.24.0",
+      "version": "0.26.5",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-chat-import"
+    },
+    {
+      "id": "dev.omdsh.dsh-better-sidebar",
+      "name": "dsh-better-sidebar",
+      "previous": "0.24.1",
+      "version": "0.30.1",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-better-sidebar"
+    },
+    {
+      "id": "dev.omdsh.dsh-drag-and-drop",
+      "name": "dsh-drag-and-drop",
+      "previous": "0.1.6",
+      "version": "0.1.6",
+      "download": true,
+      "source": {
+        "name": "dsh-drag-and-drop",
+        "version": "0.1.6",
+        "checkedAt": "2026-11-11T06:54:47.721Z",
+        "repository": {
+          "url": "git+https://github.com/omdsh-dev/dsh-drag-and-drop.git",
+          "type": "git"
+        },
+        "gitHead": "84fd296306d3d8f1ef812db3d217e67773698890",
+        "metadataUrl": "https://registry.npmjs.org/dsh-drag-and-drop/0.1.6",
+        "metadataSha256": "1772e79dad1bb98a73580bd35d69d12984439541edd882853f1288f7e568e7a2",
+        "packageJsonSha256": "2ec3b76600d4d91b869896c7b684ecec0cf3622edadbdb445751f533bd863ebe",
+        "package": {
+          "name": "dsh-drag-and-drop",
+          "version": "0.1.6",
+          "license": "BSD-3-Clause",
+          "main": "./lib/index.js",
+          "exports": {
+            ".": {
+              "types": "./lib/types/index.d.ts",
+              "default": "./lib/index.js"
+            },
+            "./invariant": {
+              "types": "./lib/types/invariant.d.ts",
+              "default": "./lib/invariant.js"
+            },
+            "./client": "./lib/client.js",
+            "./cordis.patch.yml": "./cordis.patch.yml",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": "^20.0.0 || >=22.0.0"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "platform": "web",
+              "inject": [
+                "@deepseek-ai/dsh-client-runtime",
+                "@deepseek-ai/dsh-client-ui-conversation"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-drag-and-drop/-/dsh-drag-and-drop-0.1.6.tgz",
+          "integrity": "sha512-4R9JlB4SbEag0hjk98bM7F/vCH0R2lbEp//syHCzsCa8O9tX6TmZz2zt3jWXwft1zMuNDq5Yf+R7+VwIC8Lm+w==",
+          "sha256": "d50d050373555a73d43bd0ff400028b4012b7375ec5b1134f76adaa48859b8f0",
+          "size": 66118,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1499,
+            "sha256": "9d9a838ebad09d4a986e0cb962c064c4d1ff308eb728169e040a0295917e2cba"
+          },
+          {
+            "path": "package/README.md",
+            "size": 11323,
+            "sha256": "b8b42b29811bdc888b6ea2f8cf1d04954eb0c4eb6c57b6d0f2f61f34b5415912"
+          },
+          {
+            "path": "package/README.zh.md",
+            "size": 9828,
+            "sha256": "25bbc1c037678347cd76cd85ede6d3e31dc768f45a43b73382d8f0e61fb7c809"
+          },
+          {
+            "path": "package/README.i18n.yaml",
+            "size": 370,
+            "sha256": "03ac6d082e7ea0c603e3ec62bffebc7f3d0e76ff22ac5169b84202ec35511d7b"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 411,
+            "sha256": "690dbb3dab8ee9229f9bcc6b82a0142b0e66c02bc98d16aa71a8b9a8f14fba14"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {},
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    },
+    {
+      "id": "dev.pc2005-cloud.dsh-pet",
+      "name": "dsh-pet",
+      "previous": "0.3.1",
+      "version": "0.4.7",
+      "download": false,
+      "metadataUrl": "https://registry.npmjs.org/dsh-pet/0.4.7",
+      "artifact": "not-inspected",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.phant0meow.meow-smooth",
+      "name": "meow-smooth",
+      "previous": "0.8.1",
+      "version": "0.8.1",
+      "download": true,
+      "sourceRef": "curation-sources.json#meow-smooth"
+    },
+    {
+      "id": "dev.qcytsn.dsh-dafeiyu",
+      "name": "dsh-dafeiyu",
+      "previous": "0.1.14",
+      "version": "0.1.23",
+      "download": false,
+      "metadataUrl": "https://registry.npmjs.org/dsh-dafeiyu/0.1.23",
+      "artifact": "not-inspected",
+      "runtime": "not-tested"
+    },
+    {
+      "id": "dev.scorp1o117.soul-md",
+      "name": "dsh-soul-md",
+      "previous": "0.9.0",
+      "version": "0.12.2",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-soul-md"
+    },
+    {
+      "id": "dev.vlln.dsh-navbar",
+      "name": "@vlln/dsh-navbar",
+      "previous": "0.4.0",
+      "version": "0.4.0",
+      "download": true,
+      "sourceRef": "curation-sources.json#@vlln/dsh-navbar"
+    },
+    {
+      "id": "dev.wxg-prc-cpg.browser-skill-dsh-plugin",
+      "name": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+      "previous": "0.3.2",
+      "version": "0.4.2",
+      "download": true,
+      "sourceRef": "curation-sources.json#@wxg-prc-cpg/browser-skill-dsh-plugin"
+    },
+    {
+      "id": "dev.yolk-vat-y.dsh-project-memory",
+      "name": "@yolk_vat-y/dsh-project-memory",
+      "previous": "0.5.14",
+      "version": "0.6.12",
+      "download": true,
+      "sourceRef": "curation-sources.json#github:00080000/dsh-project-memory"
+    },
+    {
+      "id": "dev.ysr666.dsh-vision-router",
+      "name": "dsh-vision-router",
+      "previous": "3.0.1",
+      "version": "3.2.0",
+      "download": true,
+      "sourceRef": "curation-sources.json#dsh-vision-router"
+    },
+    {
+      "id": "dev.yyh-001.dsh-meme",
+      "name": "dsh-meme",
+      "previous": "0.1.44",
+      "version": "0.1.80",
+      "download": true,
+      "source": {
+        "name": "dsh-meme",
+        "version": "0.1.80",
+        "checkedAt": "2026-11-11T06:54:56.229Z",
+        "repository": {
+          "url": "git+https://github.com/yyh-001/dsh-meme.git",
+          "type": "git"
+        },
+        "gitHead": "48e10fedf1951d84c9eca4247f5c5bbc2ae38871",
+        "metadataUrl": "https://registry.npmjs.org/dsh-meme/0.1.80",
+        "metadataSha256": "1d8d44b8a55022dd9d964f0e7e4561f49751ea9d3b08787facd25ff2fbab1eb2",
+        "packageJsonSha256": "c030f940b1b5a2f56d5ece5fd2ce67293b9aa0b64e1d2463386e4e958e6d3f8b",
+        "package": {
+          "name": "dsh-meme",
+          "version": "0.1.80",
+          "license": "MIT",
+          "main": "index.js",
+          "exports": {
+            ".": "./index.js",
+            "./client": "./client.js",
+            "./locale/*.json": "./locale/*.json",
+            "./package.json": "./package.json"
+          },
+          "engines": {
+            "node": ">=22.13.0"
+          },
+          "peerDependencies": {
+            "@deepseek-ai/dsh-tools": "*"
+          },
+          "dsh": {
+            "bundle": {
+              "patch": "./cordis.patch.yml"
+            },
+            "client": {
+              "inject": [
+                "@deepseek-ai/dsh-client-runtime",
+                "@deepseek-ai/dsh-client-connection",
+                "@deepseek-ai/dsh-client-ui-settings"
+              ],
+              "platform": "web"
+            }
+          }
+        },
+        "artifact": {
+          "url": "https://registry.npmjs.org/dsh-meme/-/dsh-meme-0.1.80.tgz",
+          "integrity": "sha512-T75xc2gsJvGVYZXg246bSKZbtyk+vXKYwO3pPgwcOz78dzfflQDrup4UUXv7/QSCpUYYso/CuLSIP6J642L4vg==",
+          "sha256": "931327ade1631d848cae807e280d117733b8b10a0e7b7f15ab08d16c76eee119",
+          "size": 3967916,
+          "identityVerified": true,
+          "integrityVerified": true
+        },
+        "inspectedFiles": [
+          {
+            "path": "package/LICENSE",
+            "size": 1099,
+            "sha256": "b690cbe7074efafeacfd12ac75a32686a5912dce598d9b00f6ce91826e7a0377"
+          },
+          {
+            "path": "package/README.en.md",
+            "size": 14594,
+            "sha256": "081a0e6cc9c50a03886a077c52ebbfce768b56b87d8cd6ea33d4798800fb5ed4"
+          },
+          {
+            "path": "package/README.md",
+            "size": 13879,
+            "sha256": "9fcd4dcca475e2107b456ad22998ecf82f7c842e1618cb736c70077d017f7123"
+          },
+          {
+            "path": "package/cordis.patch.yml",
+            "size": 769,
+            "sha256": "822384c09fbeb3febcf9d26d63664095c92f0d939efad0d48b737dd170d3d040"
+          }
+        ],
+        "dshPeerCheck": {
+          "runtimeVersion": "0.2.2-rc.1",
+          "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+          "requirements": {
+            "@deepseek-ai/dsh-tools": "*"
+          },
+          "mismatches": {}
+        },
+        "runtime": "not-tested"
+      }
+    }
+  ],
+  "appearanceComponents": [
+    {
+      "name": "dsh-bloom-theme",
+      "version": "0.27.0",
+      "checkedAt": "2026-11-11T06:54:56.823Z",
+      "repository": {
+        "url": "git+https://github.com/webkubor/dsh-bloom-theme.git",
+        "type": "git"
+      },
+      "gitHead": "3e482de0417a689addb18b7afef1ded41b4b0fa4",
+      "metadataUrl": "https://registry.npmjs.org/dsh-bloom-theme/0.27.0",
+      "metadataSha256": "2ef67de6ad0b2047dd41450496227dd2ba71d047dfd728a484bde467bf09b244",
+      "packageJsonSha256": "7df52414fb6c6f6f1cda41fd713d70c19728d228fdf68f0fea261f386044d7b7",
+      "package": {
+        "name": "dsh-bloom-theme",
+        "version": "0.27.0",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+          },
+          "./client": {
+            "default": "./lib/client.js"
+          },
+          "./package.json": "./package.json",
+          "./locale/*.json": "./locale/*.json",
+          "./icon": "./icon.svg"
+        },
+        "engines": {
+          "dsh": ">=0.2.2-rc.1"
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-conversation",
+              "@deepseek-ai/dsh-client-locale"
+            ],
+            "platform": "web",
+            "immediately": true
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/dsh-bloom-theme/-/dsh-bloom-theme-0.27.0.tgz",
+        "integrity": "sha512-3OltYZpXKEqewFZVAe7DlM6CWQP3phU/nPptZJbRYd3FkNWcP179Lc8Yd6zvxXK8njcTsDPZCjIeEgsXxN1iHg==",
+        "sha256": "082f60f61a1b9c5e789f5ab2dfa944aa4fc24ec47b9d79324a30ec6098780095",
+        "size": 288633,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1065,
+          "sha256": "9d319c367eb6246b2755a2ce8f34ad926d9749e619ba28b20d3f0a1d3987fc56"
+        },
+        {
+          "path": "package/README.en.md",
+          "size": 4106,
+          "sha256": "037e4c8ca33d565fb4f8c2fcef0bc8df83679514e8a6717779bde7ff8b8af2cc"
+        },
+        {
+          "path": "package/README.md",
+          "size": 4091,
+          "sha256": "385fb854e6ce3e63099c36ea5f5da96b4e2c2ec3d37a71fc7cc766073c5ca930"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 485,
+          "sha256": "dcd5ca706898b579fc74fc4fe86edf585a5221692d5a0f27906fb2c25ae3e17b"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "engines.dsh": ">=0.2.2-rc.1"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "@nonamelego/dsh-catppuccin",
+      "version": "0.7.3",
+      "checkedAt": "2026-11-11T06:54:58.354Z",
+      "repository": {
+        "url": "git+https://github.com/NoNameLeGo/dsh-catppuccin-theme.git",
+        "type": "git"
+      },
+      "gitHead": "f39cddba3adefa9575a474725d057b8beb7e68e3",
+      "metadataUrl": "https://registry.npmjs.org/%40nonamelego%2Fdsh-catppuccin/0.7.3",
+      "metadataSha256": "2fbf35542273ae4b083bf4ea242f1b850348165df989ff24ba006010a98bc3c4",
+      "packageJsonSha256": "267226578b88864872dd978b1baef8b8773ff662b253519f965f54f898b3012e",
+      "package": {
+        "name": "@nonamelego/dsh-catppuccin",
+        "version": "0.7.3",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": "./lib/index.js",
+          "./client": "./lib/client.js",
+          "./tui-themes": "./lib/tui-themes.js",
+          "./package.json": "./package.json"
+        },
+        "engines": {
+          "node": ">=20",
+          "dsh": ">=0.1.7-rc.1"
+        },
+        "peerDependencies": {
+          "react": "^18.2.0"
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-renderer",
+              "@deepseek-ai/dsh-client-locale",
+              "@deepseek-ai/dsh-client-ui-theme",
+              "@deepseek-ai/dsh-client-ui-settings",
+              "@deepseek-ai/dsh-client-connection",
+              "@deepseek-ai/dsh-api-remotes"
+            ],
+            "platform": "web"
+          },
+          "compatibility": {
+            "dsh": ">=0.1.7-rc.1",
+            "dshReleases": {
+              "0.1.7-rc.1": "compatible",
+              "0.2.0-rc.2": "compatible",
+              "0.2.1-rc.2": "compatible",
+              "0.2.1-rc.3": "compatible",
+              "0.2.1-rc.5": "compatible"
+            },
+            "dshOperations": {
+              "0.1.7-rc.1": {
+                "install": "passed",
+                "start": "passed",
+                "uninstall": "unknown",
+                "rollback": "unknown"
+              },
+              "0.2.0-rc.2": {
+                "install": "passed",
+                "start": "passed",
+                "uninstall": "unknown",
+                "rollback": "unknown"
+              },
+              "0.2.1-rc.2": {
+                "install": "passed",
+                "start": "passed",
+                "uninstall": "unknown",
+                "rollback": "unknown"
+              },
+              "0.2.1-rc.3": {
+                "install": "passed",
+                "start": "passed",
+                "uninstall": "unknown",
+                "rollback": "unknown"
+              },
+              "0.2.1-rc.5": {
+                "install": "passed",
+                "start": "passed",
+                "uninstall": "unknown",
+                "rollback": "unknown"
+              }
+            },
+            "profiles": [
+              "web",
+              "desktop"
+            ]
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/@nonamelego/dsh-catppuccin/-/dsh-catppuccin-0.7.3.tgz",
+        "integrity": "sha512-t8qUoUWAih9qMPov3hoo+2btWPxle9vmTonrM6tIXcijxRcP1lDqsD6YZdDy2McCpF5q7+E9Sb+bG82Kl+ekhA==",
+        "sha256": "8d980eb665fc93f0a1cdf6e45bcf6e8194d4146d206c6f923cce4b3ea65dab52",
+        "size": 393033,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1067,
+          "sha256": "814096d2c34cc216c624738a49356f32b7237733b4f7edb0685f4e50ef5074ba"
+        },
+        {
+          "path": "package/README.en.md",
+          "size": 31957,
+          "sha256": "1ad130dbc22d21026747a6b42215a9c9bd8eadd0cbbbd44d15f858ffbe40df8c"
+        },
+        {
+          "path": "package/README.md",
+          "size": 32130,
+          "sha256": "720a3a1d6b6933350ceae53d76af0f240e187e06fef9e5de72d68aba172aacee"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 945,
+          "sha256": "f04edb21785c4cd82d93e871a084e1ed7a8de81bea3daa6d0bd29b61f09f30ef"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "engines.dsh": ">=0.1.7-rc.1"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "dsh-opencode-palette",
+      "version": "2.1.12",
+      "checkedAt": "2026-11-11T06:55:02.105Z",
+      "repository": {
+        "url": "git+https://github.com/FeatherHunter/dsh-opencode-palette.git",
+        "type": "git"
+      },
+      "gitHead": "e8e51b309012cfd32cf984e0c451843612adcacd",
+      "metadataUrl": "https://registry.npmjs.org/dsh-opencode-palette/2.1.12",
+      "metadataSha256": "5893d565ee0e43286ba042700f0642fdd8c673c5f4fec8e4aa84aa47a1a6265c",
+      "packageJsonSha256": "c0d1f296c4eed9029f2670f2dd7baf5d2970f3b2b0bf4f494d358019924e3a00",
+      "package": {
+        "name": "dsh-opencode-palette",
+        "version": "2.1.12",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": "./lib/index.js",
+          "./client": "./lib/client.js",
+          "./cordis.patch.yml": "./cordis.patch.yml",
+          "./package.json": "./package.json"
+        },
+        "engines": {
+          "node": ">=22.18.0",
+          "dsh": ">=0.2.0-rc.1"
+        },
+        "dependencies": {
+          "dsh-log": "0.3.4",
+          "dsh-plugin-update": "0.18.39"
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "platform": "web",
+            "immediately": true,
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-theme"
+            ]
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/dsh-opencode-palette/-/dsh-opencode-palette-2.1.12.tgz",
+        "integrity": "sha512-5Bi1DkFixXg0EtWUUMJBwSSudHRREa4yrjLHc6pPe3+5/ar+fdyu9nTzUVXa//PrSJO3RUlhshlQeaKSdL60rA==",
+        "sha256": "538168ea842fbd7869983ef6cccd936799bb147d1e36aa59613ca38d443dc539",
+        "size": 715025,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/README.md",
+          "size": 10032,
+          "sha256": "1b73655b205fc2732cdfff892557c440ae1c9d83f43b575818fd270a58f893ad"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 317,
+          "sha256": "cd06a8874f6791a8ce4fea13f723424574961e15e65b39d5cd662569445bf18d"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "engines.dsh": ">=0.2.0-rc.1"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "dsh-plugin-wallpaper-engine",
+      "version": "1.4.2",
+      "checkedAt": "2026-11-11T06:54:41.631Z",
+      "repository": {
+        "url": "git+https://github.com/elysia395/dsh-wallpaper-engine.git",
+        "type": "git"
+      },
+      "metadataUrl": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.4.2",
+      "metadataSha256": "ec302f858c46f4e96effcb206917d44d78c1ac21eff23d439f9e56221933bfdf",
+      "packageJsonSha256": "4b534c3553ce62eeb5b4421543a9aaa33ad0b39fc8d4805ca4a65c41e3ebbc29",
+      "package": {
+        "name": "dsh-plugin-wallpaper-engine",
+        "version": "1.4.2",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": {
+            "types": "./lib/types/index.d.ts",
+            "default": "./lib/index.js"
+          },
+          "./client": {
+            "types": "./lib/types/client.d.ts",
+            "default": "./lib/client.js"
+          },
+          "./subpackage-boot.js": "./lib/subpackage-boot.js",
+          "./cordis.patch.yml": "./cordis.patch.yml",
+          "./package.json": "./package.json"
+        },
+        "engines": {
+          "node": ">=22.12.0",
+          "dsh": "^0.2.0-rc.1"
+        },
+        "dependencies": {
+          "webwallgl": "^3.0.0",
+          "x11": "^4.3.1",
+          "dsh-plugin-wallpaper-engine-about-notice": "1.4.2",
+          "dsh-plugin-wallpaper-engine-fonts": "1.4.2",
+          "dsh-plugin-wallpaper-engine-fx": "1.4.2",
+          "dsh-plugin-wallpaper-engine-glass": "1.4.2",
+          "dsh-plugin-wallpaper-engine-mascot-avatar": "1.4.2",
+          "dsh-plugin-wallpaper-engine-media-bridge": "1.4.2",
+          "dsh-plugin-wallpaper-engine-parallax": "1.4.2",
+          "dsh-plugin-wallpaper-engine-pet-link": "1.4.2"
+        },
+        "peerDependencies": {
+          "@deepseek-ai/cordis": "^4.0.4",
+          "@deepseek-ai/dsh-client-runtime": ">=0.1.5-rc.1",
+          "@deepseek-ai/dsh-client-ui-slots": ">=0.1.5-rc.1",
+          "@deepseek-ai/dsh-host-webserver": ">=0.1.5-rc.1",
+          "react": "^18.2.0"
+        },
+        "peerDependenciesMeta": {
+          "@deepseek-ai/dsh-client-runtime": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-ui-slots": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-host-webserver": {
+            "optional": true
+          }
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-runtime"
+            ],
+            "platform": "web",
+            "immediately": true
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.4.2.tgz",
+        "integrity": "sha512-0IE/jGXiAMMEDM3fXP5p4r+DF3EcCJOPXaiX94lanz5ZBBSY6hjoELqB10u1X3B1zs8B7jyjzZ3aiJF562Pb7g==",
+        "sha256": "dde0b02039dc84dbb9b333ae07f3580ec3d00580a2aba7bbaf297456fc1fcd02",
+        "size": 4499719,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1066,
+          "sha256": "a116f28b94e928c3b22acc3346cbd29b3cb2fddd68f73be5c9b93d7626f20cf6"
+        },
+        {
+          "path": "package/README.beginner.md",
+          "size": 13470,
+          "sha256": "4c73f13dd95c73290a3b5239ed5a71214b2db91dce674897b41a24ea05847daa"
+        },
+        {
+          "path": "package/README.en.md",
+          "size": 11474,
+          "sha256": "c7a5c6abe0d268915edaad1af582809e286c1e9e60c2767ec3fb7654878574ac"
+        },
+        {
+          "path": "package/assets/rope/README.md",
+          "size": 4224,
+          "sha256": "801e26b9b3f2a95eedbd8cc99e8a336303592ebc2012e99049a02b34dd9d77dc"
+        },
+        {
+          "path": "package/lib/about/README.md",
+          "size": 2293,
+          "sha256": "5d8ee9b52a5c8017295629a397ff9f61163d6ee4f544280ef5b993526186dfaf"
+        },
+        {
+          "path": "package/README.md",
+          "size": 13269,
+          "sha256": "6e1660b0561e74df2e1f81d032986a6eccf0128faff8e8fd3b8fca045289a780"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 8113,
+          "sha256": "599ebb4f2ca7269bfdd52d366a6a0284dc4d08f9d42fa72e2bda5e69a41d99d3"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "engines.dsh": "^0.2.0-rc.1"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
+      "version": "0.1.9",
+      "checkedAt": "2026-11-11T06:55:02.934Z",
+      "repository": {
+        "url": "git+https://github.com/Small-tailqwq/dsh-deep-whale.git",
+        "type": "git",
+        "directory": "skin-manager"
+      },
+      "metadataUrl": "https://registry.npmjs.org/%40smalltailqwq%2Fdsh-client-ui-skin-deep-whale-manager/0.1.9",
+      "metadataSha256": "c2f350e9b986f1715dd86906fb1e45b8ed55238c25c52b12e101c2d0d93a3768",
+      "packageJsonSha256": "1d1762774cbe6ec73a49f8a692fb5d0a92193654f6c46fdf0b0a3438d00c0458",
+      "package": {
+        "name": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
+        "version": "0.1.9",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": "./lib/index.js",
+          "./client": "./lib/client.js",
+          "./protocol": {
+            "types": "./src/protocol.ts",
+            "import": "./lib/protocol.js",
+            "default": "./lib/protocol.js"
+          },
+          "./locale/*.json": "./locale/*.json",
+          "./package.json": "./package.json"
+        },
+        "peerDependencies": {
+          "@deepseek-ai/cordis": "^4.0.1",
+          "react": ">=18",
+          "@deepseek-ai/dsh": ">=0.1.7-rc.1"
+        },
+        "peerDependenciesMeta": {
+          "@deepseek-ai/dsh": {
+            "optional": true
+          }
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-settings"
+            ],
+            "platform": "web"
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/@smalltailqwq/dsh-client-ui-skin-deep-whale-manager/-/dsh-client-ui-skin-deep-whale-manager-0.1.9.tgz",
+        "integrity": "sha512-HVgq69Ch6n/nu0s4LNQ7hZNWHUxw18uQOir9U3uNO20fter3Zka1pT2NmVucdfWWGipsBkn/DUgO25Yv7buuZQ==",
+        "sha256": "d6a1eaf547eb8a83d12aaebdb1148aa66dc1b3960a4bd4f04b1aa0c57ac3dbda",
+        "size": 98220,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1091,
+          "sha256": "bd67a11fbae035a0d46c099e7d196d6b4c21dfe73a6473c40e17854acc5f4022"
+        },
+        {
+          "path": "package/README.md",
+          "size": 7540,
+          "sha256": "5c522d247a50842f352bd0442c74fd11a17d56ab38939953cdebad16a12d1076"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 194,
+          "sha256": "4649ac2301b11bf5f8cca56a982befd206179700e99fd415f8bfdb0ce7bf00ff"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "@deepseek-ai/dsh": ">=0.1.7-rc.1"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "@smalltailqwq/dsh-client-ui-skin-maid-atelier",
+      "version": "0.1.10",
+      "checkedAt": "2026-11-11T06:55:04.872Z",
+      "repository": {
+        "url": "git+https://github.com/Small-tailqwq/dsh-deep-whale.git",
+        "type": "git",
+        "directory": "maid-atelier"
+      },
+      "metadataUrl": "https://registry.npmjs.org/%40smalltailqwq%2Fdsh-client-ui-skin-maid-atelier/0.1.10",
+      "metadataSha256": "76ecb3dd105bc32d3e036b21b2425296e6d1e1c73a25f31f29b3dc36cb5a16b8",
+      "packageJsonSha256": "4e73ddb4bea39c7af3e3ebd5bea669b143051c784cb15acdbdd5b0bf740f8829",
+      "package": {
+        "name": "@smalltailqwq/dsh-client-ui-skin-maid-atelier",
+        "version": "0.1.10",
+        "license": "SEE LICENSE IN LICENSE",
+        "main": "lib/index.js",
+        "exports": {
+          ".": "./lib/index.js",
+          "./client": "./lib/client.js",
+          "./skin.json": "./skin.json",
+          "./locale/*.json": "./locale/*.json",
+          "./package.json": "./package.json"
+        },
+        "peerDependencies": {
+          "@deepseek-ai/cordis": "^4.0.1",
+          "@deepseek-ai/dsh": ">=0.2.2-0 <0.2.3-0"
+        },
+        "peerDependenciesMeta": {
+          "@deepseek-ai/dsh": {
+            "optional": true
+          }
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-layout"
+            ],
+            "platform": "web"
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/@smalltailqwq/dsh-client-ui-skin-maid-atelier/-/dsh-client-ui-skin-maid-atelier-0.1.10.tgz",
+        "integrity": "sha512-eQFyZqzmTJmHveYwIESa8brF2w9rN4Cge+tw88T0SIEMkdN1FSCoQ+HZioK+Y4vr5qyNUaUBmjpmoBfSSufBgA==",
+        "sha256": "bf0ff863d74729b4318ef31ba02d1704d634c53852c16b69ada0cafb893f3b03",
+        "size": 7037305,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 2154,
+          "sha256": "a4acab736872074ac4921ca4557bc23fd8d35a2155fa16c96283f381f3cf0d80"
+        },
+        {
+          "path": "package/LICENSE-ARTWORK",
+          "size": 21344,
+          "sha256": "414eb2c25352377f5ab2f9fb98bc140a79572e13f878a4ac6aecb77a367c6b28"
+        },
+        {
+          "path": "package/assets/icons/README.md",
+          "size": 841,
+          "sha256": "ba0d54c19779fce286d0ed61ead797b41d449b532addae5ab6db4b924536f08a"
+        },
+        {
+          "path": "package/README.md",
+          "size": 5271,
+          "sha256": "8e87d93c40b1022d9926600c780aa6c18fa8bb0e617cdbe6cf9cbbf83c5a9c9f"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 419,
+          "sha256": "140f45ebc39c05849aaed0ad67c93915ed6d3a58306e9e36f4e5468f2d574110"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "@deepseek-ai/dsh": ">=0.2.2-0 <0.2.3-0"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "@smalltailqwq/dsh-client-ui-skin-orca-link",
+      "version": "0.1.10",
+      "checkedAt": "2026-11-11T06:55:10.702Z",
+      "repository": {
+        "url": "git+https://github.com/Small-tailqwq/dsh-deep-whale.git",
+        "type": "git",
+        "directory": "orca-link"
+      },
+      "metadataUrl": "https://registry.npmjs.org/%40smalltailqwq%2Fdsh-client-ui-skin-orca-link/0.1.10",
+      "metadataSha256": "e7269e6d418b5c28a5f19a9b8084dfaa2c2156e87b69b6a2c6bd9179839dfaac",
+      "packageJsonSha256": "6ddb648cd4b0dbf5c5f2b9c33cca66f49f4ec6fa02fdf958b1e21c46e7e73c98",
+      "package": {
+        "name": "@smalltailqwq/dsh-client-ui-skin-orca-link",
+        "version": "0.1.10",
+        "license": "SEE LICENSE IN LICENSE",
+        "main": "lib/index.js",
+        "exports": {
+          ".": "./lib/index.js",
+          "./client": "./lib/client.js",
+          "./skin.json": "./skin.json",
+          "./locale/*.json": "./locale/*.json",
+          "./package.json": "./package.json"
+        },
+        "peerDependencies": {
+          "@deepseek-ai/cordis": "^4.0.1",
+          "@deepseek-ai/dsh": ">=0.2.2-0 <0.2.3-0"
+        },
+        "peerDependenciesMeta": {
+          "@deepseek-ai/dsh": {
+            "optional": true
+          }
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-ui-layout"
+            ],
+            "platform": "web"
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/@smalltailqwq/dsh-client-ui-skin-orca-link/-/dsh-client-ui-skin-orca-link-0.1.10.tgz",
+        "integrity": "sha512-K9ToRas2Fc8Fx8tkyEzVtfzLsfKqpWSJTtq/ZfcsgfqSL2Ns/NP904JYQX9k0GFR6WwYoE4J/yiPfXhgduL4SA==",
+        "sha256": "f271289caf3bde52a465ba06839f0aa60c3df92b12badec489aabbd00044b051",
+        "size": 5948258,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 2154,
+          "sha256": "a4acab736872074ac4921ca4557bc23fd8d35a2155fa16c96283f381f3cf0d80"
+        },
+        {
+          "path": "package/LICENSE-ARTWORK",
+          "size": 21344,
+          "sha256": "414eb2c25352377f5ab2f9fb98bc140a79572e13f878a4ac6aecb77a367c6b28"
+        },
+        {
+          "path": "package/README.md",
+          "size": 5725,
+          "sha256": "f73108be535562467187fa677ef3e013daecd5b448a483e8b6099d8caa4519e4"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 410,
+          "sha256": "d5fe13007f2d6d1d1e008f5a8fb5f2006fce2cd62a2671da07244fc8fdf79204"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "@deepseek-ai/dsh": ">=0.2.2-0 <0.2.3-0"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    }
+  ],
+  "packs": [
+    {
+      "id": "dev.dsh-eac.agent-team-base",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "github:00080000/dsh-project-memory",
+          "version": "0.6.12"
+        },
+        {
+          "ref": "@nanmicoder/dsh-agent-teams",
+          "version": "0.1.29"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.conversation-migration",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-chat-import",
+          "version": "0.26.5"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.development",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.essentials",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.mobile-tools",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "meow-smooth",
+          "version": "0.8.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.office-base",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "dsh-univer-office",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "@changfenhuang/dsh-genui",
+          "version": "0.16.0"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.power-toolbox",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "@nagi-ovo/dsh-visualize",
+          "version": "0.1.9"
+        },
+        {
+          "ref": "github:00080000/dsh-project-memory",
+          "version": "0.6.12"
+        },
+        {
+          "ref": "@nanmicoder/dsh-agent-teams",
+          "version": "0.1.29"
+        },
+        {
+          "ref": "@liustack/modsearch",
+          "version": "5.10.12"
+        },
+        {
+          "ref": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+          "version": "0.4.2"
+        },
+        {
+          "ref": "dsh-vision-router",
+          "version": "3.2.0"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.project-memory-base",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "github:00080000/dsh-project-memory",
+          "version": "0.6.12"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.prompt-memory",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-soul-md",
+          "version": "0.12.2"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.session-tools",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.skin-bloom",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-bloom-theme",
+          "version": "0.27.0"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.skin-catppuccin",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "@nonamelego/dsh-catppuccin",
+          "version": "0.7.3"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.skin-opencode-palette",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-opencode-palette",
+          "version": "2.1.12"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.skin-wallpaper-engine",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "dsh-plugin-wallpaper-engine",
+          "version": "1.4.2"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.skin-whale-girl",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
+          "version": "0.1.9"
+        },
+        {
+          "ref": "@smalltailqwq/dsh-client-ui-skin-maid-atelier",
+          "version": "0.1.10"
+        },
+        {
+          "ref": "@smalltailqwq/dsh-client-ui-skin-orca-link",
+          "version": "0.1.10"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.suite-lite",
+      "previous": "0.1.0",
+      "version": "0.2.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "@nagi-ovo/dsh-visualize",
+          "version": "0.1.9"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.vision-base",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "dsh-vision-router",
+          "version": "3.2.0"
+        },
+        {
+          "ref": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+          "version": "0.4.2"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.web-research-base",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "@vlln/dsh-navbar",
+          "version": "0.4.0"
+        },
+        {
+          "ref": "@liustack/modsearch",
+          "version": "5.10.12"
+        },
+        {
+          "ref": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+          "version": "0.4.2"
+        }
+      ]
+    },
+    {
+      "id": "dev.dsh-eac.workbench-lite",
+      "previous": "0.2.0",
+      "version": "0.3.0",
+      "targetDsh": "0.2.2-rc.1",
+      "components": [
+        {
+          "ref": "dshmarket",
+          "version": "1.73.17"
+        },
+        {
+          "ref": "dsh-context",
+          "version": "0.83.1"
+        },
+        {
+          "ref": "dsh-session-manager",
+          "version": "0.7.5"
+        },
+        {
+          "ref": "dsh-undo-savepoint",
+          "version": "0.5.1"
+        },
+        {
+          "ref": "dsh-better-sidebar",
+          "version": "0.30.1"
+        }
+      ]
+    }
+  ],
+  "deferredPacks": [
+    {
+      "id": "dev.dsh-eac.skin-dream-skin",
+      "decision": "retain-historical",
+      "reason": "No explicit overall DSH range confirmed; no new requires.dsh inferred from component peers or local runtime."
+    },
+    {
+      "id": "dev.dsh-eac.skin-open-sea",
+      "decision": "retain-historical",
+      "reason": "No explicit overall DSH range confirmed; no new requires.dsh inferred from component peers or local runtime."
+    },
+    {
+      "id": "dev.dsh-eac.skin-endfield",
+      "decision": "retain-historical",
+      "reason": "No explicit overall DSH range confirmed; no new requires.dsh inferred from component peers or local runtime."
+    }
+  ],
+  "otherAppearanceCandidates": [
+    {
+      "name": "dsh-dream-skin",
+      "version": "11.7.0",
+      "checkedAt": "2026-11-11T06:54:57.642Z",
+      "repository": {
+        "url": "git+https://gitcode.com/LLLAAAAA/dsh-dream-skin.git",
+        "type": "git"
+      },
+      "gitHead": "50fbbcb9b73712e76adf7601c68cae4484390ab1",
+      "metadataUrl": "https://registry.npmjs.org/dsh-dream-skin/11.7.0",
+      "metadataSha256": "bd47456bf0c7ce712ad83476236b1e17b0a53f66a088076872ae8595b7902525",
+      "packageJsonSha256": "f59e10108752a3803ec22d482becd264120d0802c9fc5741b6e5513c526c0e74",
+      "package": {
+        "name": "dsh-dream-skin",
+        "version": "11.7.0",
+        "license": "MIT",
+        "main": "lib/index.js",
+        "exports": {
+          ".": {
+            "types": "./lib/types/index.d.ts",
+            "default": "./lib/index.js"
+          },
+          "./client": {
+            "types": "./lib/types/client/index.d.ts",
+            "default": "./lib/client.js"
+          },
+          "./package.json": "./package.json",
+          "./locale/en.json": "./locale/en.json",
+          "./locale/zh.json": "./locale/zh.json"
+        },
+        "engines": {
+          "node": ">=18"
+        },
+        "peerDependencies": {
+          "@deepseek-ai/cordis": "^4.0.1 || >=4.0.5-0 <5",
+          "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-store": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-settings-general": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-theme": ">=0.1.0-rc.6 <0.3.0-0",
+          "react": "^18.2.0"
+        },
+        "peerDependenciesMeta": {
+          "@deepseek-ai/cordis": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-locale": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-runtime": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-store": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-ui-settings": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-ui-settings-general": {
+            "optional": true
+          },
+          "@deepseek-ai/dsh-client-ui-theme": {
+            "optional": true
+          },
+          "react": {
+            "optional": true
+          }
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [
+              "@deepseek-ai/dsh-client-runtime",
+              "@deepseek-ai/dsh-client-locale",
+              "@deepseek-ai/dsh-client-ui-theme",
+              "@deepseek-ai/dsh-client-ui-settings",
+              "@deepseek-ai/dsh-client-ui-settings-general"
+            ],
+            "platform": "web",
+            "immediately": true
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/dsh-dream-skin/-/dsh-dream-skin-11.7.0.tgz",
+        "integrity": "sha512-CFy12+mnkXNHUVwT0fEUJ4yheh1vGt9QZaEZa+ETr2br5Ev6LAVt6AmB0dCrtLFhADSpY/WGSnY+klHfWOl5cQ==",
+        "sha256": "17329c279535c0ec1800f26c3eda8f22d09d802be731389de2561d63ff9da66f",
+        "size": 233308,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1084,
+          "sha256": "57b73211ddb23f3dc76c513962c39d0a43e1ca57fa4512910ca7dad603923c05"
+        },
+        {
+          "path": "package/README.md",
+          "size": 54579,
+          "sha256": "15b181cbc75e4f9d713f39008f93177a25b5e3933afccda76c66eaf4a7f93076"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 356,
+          "sha256": "cd64473da5428bba261dfa9709d4134711d3cb62bf319bb11bbf195fc9aaf089"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {
+          "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-store": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-settings-general": ">=0.1.0-rc.6 <0.3.0-0",
+          "@deepseek-ai/dsh-client-ui-theme": ">=0.1.0-rc.6 <0.3.0-0"
+        },
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    },
+    {
+      "name": "open-sea-skin",
+      "version": "1.2.7",
+      "checkedAt": "2026-11-11T06:55:00.692Z",
+      "repository": {
+        "url": "git+https://github.com/d-dev0101/open-sea-skin.git",
+        "type": "git"
+      },
+      "metadataUrl": "https://registry.npmjs.org/open-sea-skin/1.2.7",
+      "metadataSha256": "dc3b6c2dcb43168f4d4163c4d12dfd2036de6df1bce0fd624ed0cc8620352733",
+      "packageJsonSha256": "e4e8da6d3e2e790b57fb6b660d3356a657e3e5cd3dd51c561910548b5a213fd8",
+      "package": {
+        "name": "open-sea-skin",
+        "version": "1.2.7",
+        "license": "MIT",
+        "main": "plugin/index.js",
+        "exports": {
+          ".": "./plugin/index.js",
+          "./client": "./plugin/client.js",
+          "./package.json": "./package.json"
+        },
+        "engines": {
+          "node": ">=20"
+        },
+        "dsh": {
+          "bundle": {
+            "patch": "./cordis.patch.yml"
+          },
+          "client": {
+            "inject": [],
+            "platform": "web"
+          }
+        }
+      },
+      "artifact": {
+        "url": "https://registry.npmjs.org/open-sea-skin/-/open-sea-skin-1.2.7.tgz",
+        "integrity": "sha512-IZD4p4ABfZSoYR/DZdZtiES8+18Ws6afkvPO5gbTdaQm3XiY6MoJa6+XRzMCancdUEUKR+kqF2bDtb4n4181zQ==",
+        "sha256": "2da120caef2bd120a1ccee8d40929515339a8f0aada1124ea85084b6370ba586",
+        "size": 400829,
+        "identityVerified": true,
+        "integrityVerified": true
+      },
+      "inspectedFiles": [
+        {
+          "path": "package/LICENSE",
+          "size": 1083,
+          "sha256": "264af43df38547e2b9fd77ee9d69f266d108104324c9ca9e921369e60655fc3f"
+        },
+        {
+          "path": "package/README.en.md",
+          "size": 16006,
+          "sha256": "c669cf49fcfef606e8fbd386525ad1fe431cf42536c055bcaacc385509511771"
+        },
+        {
+          "path": "package/native-dist/README.md",
+          "size": 1895,
+          "sha256": "ea843b8fc76dd158a22e8c8dab7c960297fd3fb265d40a5804dc5e7dd6955550"
+        },
+        {
+          "path": "package/README.md",
+          "size": 16762,
+          "sha256": "6afd5c68524641b8f1fa868f62cfee6dd6bd7e72e33e28b43372e9887c48ee05"
+        },
+        {
+          "path": "package/README.zh.md",
+          "size": 16762,
+          "sha256": "6afd5c68524641b8f1fa868f62cfee6dd6bd7e72e33e28b43372e9887c48ee05"
+        },
+        {
+          "path": "package/cordis.patch.yml",
+          "size": 277,
+          "sha256": "c5ba9aa66d47616d7e3ff0873aea10c6dfe87cb57ba3ef348380afafdd39eb37"
+        }
+      ],
+      "dshPeerCheck": {
+        "runtimeVersion": "0.2.2-rc.1",
+        "policy": "@deepseek-ai/dsh-app-boot@0.2.2-rc.1 evaluatePluginCompatibility; engines.dsh first, else DSH peers; includePrerelease: true",
+        "requirements": {},
+        "mismatches": {}
+      },
+      "runtime": "not-tested"
+    }
+  ],
+  "githubAppearanceCandidate": {
+    "repository": "https://github.com/ymh0000123/dsh-theme-endfield",
+    "revision": "903f5fb59b77ca158f6e35e417bd23198d174057",
+    "packageSha256": "01401e89700f5cc304cf95be53365532c681c21e6d743842f25507ba11dbeaa9",
+    "package": {
+      "name": "dsh-theme-endfield",
+      "version": "1.2.5",
+      "license": "MIT",
+      "main": "index.js",
+      "exports": {
+        ".": "./index.js",
+        "./client": "./client.js",
+        "./package.json": "./package.json",
+        "./locale/*.json": "./locale/*.json"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@deepseek-ai/cordis": "^4.0.1"
+      },
+      "peerDependenciesMeta": {
+        "@deepseek-ai/cordis": {
+          "optional": true
+        }
+      },
+      "dsh": {
+        "bundle": {
+          "patch": "./cordis.patch.yml"
+        },
+        "client": {
+          "platform": "web",
+          "immediately": true,
+          "inject": [
+            "@deepseek-ai/dsh-client-ui-theme",
+            "@deepseek-ai/dsh-client-ui-renderer",
+            "@deepseek-ai/dsh-client-ui-settings",
+            "@deepseek-ai/dsh-client-locale",
+            "@deepseek-ai/dsh-api-session-controller"
+          ]
+        }
+      }
+    },
+    "decision": "retain-historical"
+  }
+}

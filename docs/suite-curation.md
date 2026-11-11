@@ -1,5 +1,8 @@
 # EAC/AIO 减重与分类组合
 
+以下为 2026-10-03 的选型记录。当前版本已于 2026-11-11 更新为官版 `0.2.2-rc.1` 目标，
+组件发行、包版本及升级条件请读[本次内容更新](catalog-update-20261111.md)；下方旧体积与版本保留供追溯。
+
 复核日期：2026-10-03。目标内核为官方 DSH `0.2.0-rc.2`。来源是
 [EAC/AIO v0.1.7](https://github.com/Ebony-Vinyl/EAC-Plugin-Integration-Pack/releases/tag/v0.1.7)
 的 69 个实际内嵌组件，以及各组件的公开发布源。

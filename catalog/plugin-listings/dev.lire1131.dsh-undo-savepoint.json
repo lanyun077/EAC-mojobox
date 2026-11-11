@@ -3,14 +3,14 @@
   "id": "dev.lire1131.dsh-undo-savepoint",
   "packageName": "dsh-undo-savepoint",
   "name": "撤销与回滚存档",
-  "version": "0.4.10",
+  "version": "0.5.1",
   "summary": "为插件安装、皮肤切换和设置变更创建快照，并提供撤销、重做、恢复和安全模式入口。",
   "author": "lire1131",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-undo-savepoint/0.4.10",
+    "url": "https://registry.npmjs.org/dsh-undo-savepoint/0.5.1",
     "repository": "https://github.com/lire1131/dsh-undo-savepoint",
-    "commit": "c735a33db6f53679609d3db5d37778e054ee6a0a"
+    "commit": "65dcb2fe24783f7667a252eba65c220bd7c3d2db"
   },
   "license": "MIT",
   "compatibility": {
@@ -21,12 +21,13 @@
   "limitations": [
     "会读取或写入宿主配置、插件和快照数据，下游安装前应明确备份及回滚范围。",
     "涉及 Web、GUI、CLI 救援界面，实际能力取决于宿主环境和文件权限。",
-    "宿主未安装、未运行；不把作者 README 中的兼容说明当成本项目实测。"
+    "宿主未安装、未运行；不把作者 README 中的兼容说明当成本项目实测。",
+    "包内 engines.dsh 声明为 >=0.0.1-0 || >=0.1.0-rc.2 || >=0.1.1-rc.1 || >=0.1.2-alpha.2 || >=0.1.2-rc.1 || >=0.1.5-rc.1 || >=0.1.5-rc.2 || >=0.2.0-rc.2 || >=0.2.1-0 || >=0.2.2-0；按官版规则进行静态核对，未验证实际加载和运行。"
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-undo-savepoint/-/dsh-undo-savepoint-0.4.10.tgz",
-    "sha256": "4f5893133bb99faadc9c976a596bb2d9b0b796aecec0de8dce9b13631c2938a5",
-    "size": 240396
+    "url": "https://registry.npmjs.org/dsh-undo-savepoint/-/dsh-undo-savepoint-0.5.1.tgz",
+    "sha256": "adf0d1642c75fb24fc26d23f877c791366ddda6a8a6173dc427c5219ee88475b",
+    "size": 434902
   }
 }

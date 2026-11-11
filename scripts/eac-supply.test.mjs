@@ -195,6 +195,9 @@ test('appearance export copies local previews and preserves unknown compatibilit
   t.after(() => rm(directory, { recursive: true, force: true }))
   for (const path of ['catalog/feature-packs', 'artifacts', 'policies']) await mkdir(join(directory, path), { recursive: true })
   const record = JSON.parse(await readFile(join(root, 'catalog/feature-packs/dev.dsh-eac.skin-bloom.json')))
+  // Pin the immutable historical archive; current releases can declare DSH support.
+  record.version = '0.1.0'
+  record.sha256 = digest(await readFile(join(root, 'artifacts', `${record.id}-${record.version}.dshpack`)))
   record.appearance = { kind: 'skin', loader: { id: '@example/loader', version: '^1.0.0', source: 'https://example.org/loader' },
     skinIds: ['example-skin'], conflicts: ['other-theme'], previews: [`previews/${record.id}/cover.png`] }
   await mkdir(join(directory, `catalog/previews/${record.id}`), { recursive: true })

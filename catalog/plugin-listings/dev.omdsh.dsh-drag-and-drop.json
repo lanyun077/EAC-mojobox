@@ -8,7 +8,8 @@
   "maintainedBy": "registry-maintained",
   "source": {
     "url": "https://registry.npmjs.org/dsh-drag-and-drop/0.1.6",
-    "repository": "https://github.com/omdsh-dev/dsh-drag-and-drop"
+    "repository": "https://github.com/omdsh-dev/dsh-drag-and-drop",
+    "commit": "84fd296306d3d8f1ef812db3d217e67773698890"
   },
   "license": "BSD-3-Clause",
   "compatibility": {

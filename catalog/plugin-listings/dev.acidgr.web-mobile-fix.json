@@ -20,7 +20,7 @@
   },
   "conflicts": null,
   "limitations": [
-    "作者包声明 Node >=20.0.0、Web 客户端；宽泛内核范围不等于 RC2 或所有宿主已经实测。",
+    "作者包声明 Node >=20.0.0、Web 客户端；宽泛内核范围不等于官版 0.2.2-rc.1 或所有宿主已经实测。",
     "与 meow-smooth 都修改移动端侧边栏、设置面板和输入区；属于功能重叠提示，组合尚未测试，不是已证实的硬冲突。"
   ],
   "links": [{ "label": "EAC-Pack 发现来源", "url": "https://github.com/DSH-EAC/EAC-Pack/blob/ee159871e953f52dfe95d6259678bacf5ffe3272/catalog/eac.json" }],
