@@ -3,14 +3,14 @@
   "id": "dev.bowenliang123.dsh-context",
   "packageName": "dsh-context",
   "name": "上下文洞察与管理",
-  "version": "0.62.3",
+  "version": "0.83.1",
   "summary": "提供跨会话上下文统计、组成分析、趋势面板和右侧上下文面板。",
   "author": "bowenliang123",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-context/0.62.3",
+    "url": "https://registry.npmjs.org/dsh-context/0.83.1",
     "repository": "https://github.com/bowenliang123/dsh-context",
-    "commit": "be2810288299f291640d5b8fcc4c4c11541fd3b8"
+    "commit": "a37a72cb22481cfd101fb00e390e291cb03ded8b"
   },
   "license": "Apache-2.0",
   "compatibility": {
@@ -21,12 +21,13 @@
   "limitations": [
     "需要宿主会话、设置和客户端 UI 相关能力；依赖未解析。",
     "包声明过多个 DSH 版本兼容记录，但当前信息卡协议不接受无法逐字投影的声明，因此这里保留为未知。",
-    "宿主未安装、未运行；与其他侧栏或设置面板插件的组合尚未验证。"
+    "宿主未安装、未运行；与其他侧栏或设置面板插件的组合尚未验证。",
+    "包内 engines.dsh 声明为 >=0.2.0-rc.2 || >=0.2.1-rc.2 || >=0.2.2-rc.1；按官版规则进行静态核对，未验证实际加载和运行。"
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-context/-/dsh-context-0.62.3.tgz",
-    "sha256": "774b5ffabd05479a501df2c046384d47ee0cc6fe89ea13729802ae7d9178cb6a",
-    "size": 229916
+    "url": "https://registry.npmjs.org/dsh-context/-/dsh-context-0.83.1.tgz",
+    "sha256": "0c8d061025f8c579b5e29814da351a1d9258471119c316f0ad804c4bcfa717cb",
+    "size": 332715
   }
 }

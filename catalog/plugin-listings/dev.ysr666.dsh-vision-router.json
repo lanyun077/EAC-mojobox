@@ -3,12 +3,12 @@
   "id": "dev.ysr666.dsh-vision-router",
   "packageName": "dsh-vision-router",
   "name": "视觉路由",
-  "version": "3.0.1",
+  "version": "3.2.0",
   "summary": "为文本型 DSH Agent 提供图像输入、视觉链路和图像相关工具调用。",
   "author": "ysr666",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-vision-router/3.0.1",
+    "url": "https://registry.npmjs.org/dsh-vision-router/3.2.0",
     "repository": "https://github.com/ysr666/dsh-vision-router"
   },
   "license": "MIT",
@@ -20,12 +20,14 @@
   "limitations": [
     "可能依赖视觉模型、存储域、匿名用户 ID、sharp 和 Puppeteer；依赖未解析。",
     "图像处理、浏览器和网络请求会带来额外资源及权限要求，下游宿主必须单独评估。",
-    "宿主未安装、未运行；与其他视觉或设置面板插件的组合尚未验证。"
+    "宿主未安装、未运行；与其他视觉或设置面板插件的组合尚未验证。",
+    "包内 engines.dsh 声明为 >=0.2.1-rc.5 <0.3.0-0；按官版规则进行静态核对，未验证实际加载和运行。",
+    "此版要求 Node >=24.9.0，停止支持 Node 22 和 DSH 0.2.0；旧 Profile 不自动迁移，升级前按上游执行只读 doctor --upgrade-preflight，并核对旧会话、自定义配置和回退方案。"
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-vision-router/-/dsh-vision-router-3.0.1.tgz",
-    "sha256": "89bc152d7a7ca9a658b75cdf343297959390910be7a1f80f9eaa45b6325e9d6c",
-    "size": 2187294
+    "url": "https://registry.npmjs.org/dsh-vision-router/-/dsh-vision-router-3.2.0.tgz",
+    "sha256": "e2b23ff25eb8ee2a7d14b91a0a852bebc72e49b8b5e7fc428e93d860d99f5403",
+    "size": 2273370
   }
 }

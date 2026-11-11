@@ -3,14 +3,14 @@
   "id": "dev.hkkz9522.dsh-session-manager",
   "packageName": "dsh-session-manager",
   "name": "会话管理工作流",
-  "version": "0.6.2",
+  "version": "0.7.5",
   "summary": "管理会话归档、删除、跨工作区移动、收藏、标签与备注，并支持筛选和批量操作。",
   "author": "hkkz9522",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-session-manager/0.6.2",
+    "url": "https://registry.npmjs.org/dsh-session-manager/0.7.5",
     "repository": "https://github.com/hkkz9522/dsh-session-manager",
-    "commit": "c0ab907cfbd1b696afe893b6d6bcfb66bb43a157"
+    "commit": "b5f188735bbb8b7c041b1f3d6c156c51f08615ba"
   },
   "license": "MIT",
   "compatibility": {
@@ -25,8 +25,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-session-manager/-/dsh-session-manager-0.6.2.tgz",
-    "sha256": "2ccaa0938cdea0876962981ec76d846f3dbee8cadc01ae3f4d23183f5ea83c1c",
-    "size": 111812
+    "url": "https://registry.npmjs.org/dsh-session-manager/-/dsh-session-manager-0.7.5.tgz",
+    "sha256": "d8b9050cbe0b789cfe1c9251aa539f19df7928b2449eed7e0213264fee25de21",
+    "size": 168812
   }
 }

@@ -3,14 +3,14 @@
   "id": "dev.yolk-vat-y.dsh-project-memory",
   "packageName": "@yolk_vat-y/dsh-project-memory",
   "name": "项目开发记忆",
-  "version": "0.5.14",
+  "version": "0.6.12",
   "summary": "按项目持久化任务、文件、文档和经验记录，帮助跨会话恢复开发上下文。",
   "author": "00080000",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/%40yolk_vat-y%2Fdsh-project-memory/0.5.14",
+    "url": "https://registry.npmjs.org/%40yolk_vat-y%2Fdsh-project-memory/0.6.12",
     "repository": "https://github.com/00080000/dsh-project-memory",
-    "commit": "c4c8409b16bfa5a927368bffabdabfc4f72c22af"
+    "commit": "7db33b846014cb273e322bff8462d28d36dcd241"
   },
   "license": "MIT",
   "compatibility": {
@@ -25,8 +25,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/@yolk_vat-y/dsh-project-memory/-/dsh-project-memory-0.5.14.tgz",
-    "sha256": "1fcfc8a628e41719b3bee719bfb1dc308f2657fd4565f9e8efd68764c5bca558",
-    "size": 365127
+    "url": "https://registry.npmjs.org/@yolk_vat-y/dsh-project-memory/-/dsh-project-memory-0.6.12.tgz",
+    "sha256": "f9ee7d0c7095542cb10a06adbf26f9fd608898e70566cffa0a8383bb48c0ec13",
+    "size": 563366
   }
 }

@@ -1,5 +1,8 @@
 # 插件轻量收录 v1
 
+当前目录版本更新见 [2026-11-11 官版内容更新](catalog-update-20261111.md)。本文后半的首批和
+中量收录表是固定日期记录；当前信息卡、下载摘要和限制以 `catalog/plugin-listings/` 为准。
+
 插件是作者发布的软件包；Mojobox 的 JSON 只是它的收录信息卡，不是新的运行时 Manifest。
 作者不用改代码、实现 Mojobox SDK 或重做发行格式。当前下载支持含 `package.json.dsh.bundle`
 的原始 npm `.tgz`；源码仓库、GitHub 发行等可以先作为来源收录，不能冒充已核验下载。

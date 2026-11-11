@@ -3,14 +3,14 @@
   "id": "dev.nwflower.dsh-chat-import",
   "packageName": "dsh-chat-import",
   "name": "对话记录导入",
-  "version": "0.24.0",
+  "version": "0.26.5",
   "summary": "从外部 Agent 导入会话历史，并在 DeepSeek Harness 中继续对话。",
   "author": "Nwflower",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-chat-import/0.24.0",
+    "url": "https://registry.npmjs.org/dsh-chat-import/0.26.5",
     "repository": "https://github.com/Nwflower/dsh-chat-import",
-    "commit": "f911376c3b8b117ccb0881149b181ceeec48a7f1"
+    "commit": "c6097b38346ba2e5e9fc21b765448b4ddbcf4f48"
   },
   "license": "MIT",
   "compatibility": {
@@ -25,8 +25,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-chat-import/-/dsh-chat-import-0.24.0.tgz",
-    "sha256": "485262cea00d486c022090f565c40ccab4ed1f2835b75aef1f697ff7c56b6be0",
-    "size": 1139163
+    "url": "https://registry.npmjs.org/dsh-chat-import/-/dsh-chat-import-0.26.5.tgz",
+    "sha256": "d68eedb5d1f7bc564546b55fc1f2a77695be0df693f35c781d083bedc9a06b3d",
+    "size": 1402232
   }
 }

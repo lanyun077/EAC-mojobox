@@ -8,7 +8,8 @@
   "maintainedBy": "registry-maintained",
   "source": {
     "url": "https://registry.npmjs.org/dsh-unified-market/0.4.1",
-    "repository": "https://github.com/jing-hy/dsh-unified-market"
+    "repository": "https://github.com/jing-hy/dsh-unified-market",
+    "commit": "40783b58bb13f253902a4a6124b33b4959997078"
   },
   "license": "MIT",
   "compatibility": {

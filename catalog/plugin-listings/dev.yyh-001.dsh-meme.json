@@ -3,12 +3,13 @@
   "id": "dev.yyh-001.dsh-meme",
   "packageName": "dsh-meme",
   "name": "表情包工具",
-  "version": "0.1.44",
+  "version": "0.1.80",
   "summary": "提供图库管理、搜图、学习图片与 Web/QQ 发图能力。",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-meme/0.1.44",
-    "repository": "https://github.com/yyh-001/dsh-meme"
+    "url": "https://registry.npmjs.org/dsh-meme/0.1.80",
+    "repository": "https://github.com/yyh-001/dsh-meme",
+    "commit": "48e10fedf1951d84c9eca4247f5c5bbc2ae38871"
   },
   "license": "MIT",
   "compatibility": {
@@ -22,8 +23,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-meme/-/dsh-meme-0.1.44.tgz",
-    "sha256": "511ef7b213d3cc2b627bfb5d8cc1f02d7e590f1c49e91f56c733553cf9a00705",
-    "size": 4395433
+    "url": "https://registry.npmjs.org/dsh-meme/-/dsh-meme-0.1.80.tgz",
+    "sha256": "931327ade1631d848cae807e280d117733b8b10a0e7b7f15ab08d16c76eee119",
+    "size": 3967916
   }
 }

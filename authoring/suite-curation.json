@@ -1,8 +1,8 @@
 {
-  "reviewedOn": "2026-10-03",
+  "reviewedOn": "2026-11-11",
   "source": "../candidates/integration-suites/dsh-plugin-suite-0.1.7/source.json",
-  "targetDsh": "0.2.0-rc.2",
-  "scope": "Static source and artifact review only; no installation, exemption, plugin execution or runtime evidence.",
+  "targetDsh": "0.2.2-rc.1",
+  "scope": "Original 2026-10-03 component decisions retained; selected versions and target renewed on 2026-11-11. Static artifact and compatibility review only; no installation, exemption, plugin execution or runtime evidence.",
   "sources": "curation-sources.json",
   "packs": [
     "dev.dsh-eac.essentials",

@@ -1,10 +1,10 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.workbench-lite",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "category": "function",
-  "source": "https://github.com/DSH-EAC/dsh-mojobox",
+  "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "90104ab4b4916d36144073f09dbd8f718369ec21504bf892850facc994c9df3b"
+  "sha256": "fcce6f461c3a4f4cb314ae8635013ac044b69b0bb23b532d890ce7d5a14062e2"
 }

@@ -9,8 +9,10 @@
 - `upstream-snapshot.json`：2026-10-01 核对的 26 份组件元数据，含 GitHub 星数、固定提交、
   package/README 摘要，以及 npm 版本、gitHead 和 registry 声明的 dist integrity。
 - `suite-curation.json`：2026-10-03 对 EAC/AIO 69 个组件的逐项去留记录、当前功能包与互斥策略。
-- `curation-sources.json`：69 项 registry 观察、17 个已实际核验的选中 npm 成品，以及官方 RC2
-  peer 规则来源。包含实际 SHA-256、大小、identity/integrity、package 投影与文件摘要。
+- `curation-sources.json`：69 项 registry 历史观察、17 个已实际核验的选中 npm 成品，以及官方版本规则。
+  registry 观察保留原日期；选中成品与规则已于 2026-11-11 更新到官版 `0.2.2-rc.1`。
+  包含实际 SHA-256、大小、identity/integrity、package 投影与文件摘要。
+- `catalog-update-20261111.json`：本批插件与外观组件的来源核验、整合包版本迁移和保留项。
 - `../catalog/feature-packs/<id>.json`：分类、来源、许可范围、皮肤预览和归档摘要。
 - `../artifacts/<id>-<version>.dshpack`：我们交付给 Mojobox 的正式归档。
 
@@ -22,8 +24,9 @@
 [首批收录说明](../docs/ecosystem-curation.md)。已有 Power Toolbox 的清单也已恢复到这里，
 重复打包得到原始归档摘要，不改动其发布字节。
 
-当前功能组合见 [减重与分类说明](../docs/suite-curation.md)。新增七个包为 `0.1.0`，原七个
-功能基底以稳定 ID 升级到 `0.2.0`，旧归档原始字节保留。所有当前功能包共享同一批引用版本。
+组合用途见历史[减重与分类说明](../docs/suite-curation.md)，当前版本见
+[2026-11-11 更新](../docs/catalog-update-20261111.md)：七个功能包为 `0.2.0`、七个功能基底为
+`0.3.0`，另有五个外观包更新为 `0.2.0`。稳定 ID 与旧归档字节保留，所有功能包共享同一批引用版本。
 
 ## 打包与核对
 
@@ -52,12 +55,13 @@ ZIP 时间固定、文件模式固定，只含根 `pack.json`，相同输入产�
 功能基底按场景选择，皮肤独立成包。`plugins` 写明确版本，npm 选已发布版本；GitHub 引用不能
 携带 commit，其 `version` 只是声明，固定提交只作为来源记录。不要写来源不可核验的包名。
 
-本次新功能包以 `0.2.0-rc.2` 为精确目标，表示我们的组合目标，不是运行验收。皮肤保留上游
+当前功能包以 `0.2.2-rc.1` 为精确目标，表示我们的组合目标，不是运行验收。皮肤保留上游
 依赖声明与限制，不替所有皮肤统一编造内核支持范围。未知皮肤 ID 不推断；loader 只在上游实际
 要求时声明。`conflicts` 只记录已知冲突，缺少条目不表示无冲突。
 新包和更新版本需要声明合法 `requires.dsh`，外部插件引用须为精确版本。已有 8 个未声明
 内核的皮肤 `0.1.0` 归档按真实摘要保留历史例外，仍可原样重建；更新不继承例外。
-作者确认支持范围后递增包版本、创建新归档并更新收录摘要，详见[版本声明策略](../docs/intake-version-policy.md)。
+已确认依据的五个外观包递增版本并声明精确目标；其余三个保持历史例外。
+逐项依据见本批更新说明，规则见[版本声明策略](../docs/intake-version-policy.md)。
 
 清单的 MIT 只覆盖 DSH-EAC 编写的清单与说明，不重新许可插件、壁纸、人物或游戏素材。
 安装、依赖解析、启停和运行验证仍由宿主或 loader 负责。
