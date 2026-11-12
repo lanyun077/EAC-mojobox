@@ -9,6 +9,7 @@
   <a href="#提交资源">提交资源</a> ·
   <a href="#下游接入">下游接入</a> ·
   <a href="#开发与验证">参与开发</a> ·
+  <a href="https://github.com/lanyun077/Mojobox-Installer">官版安装器</a> ·
   <a href="docs/README.md">文档索引</a>
 </p>
 
@@ -29,6 +30,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 | 提交自己的资源 | [选提交类型](#提交资源) → 准备材料 → Fork + PR → CI 与维护者审核 |
 | 推荐资源或不确定格式 | [提交来源咨询](https://github.com/lanyun077/EAC-mojobox/issues/new?template=package-submission.yml)，无需先制作完整 PR |
 | 为市场或加载器取资源 | [下游接入](#下游接入)，读取静态索引并核验原始字节 |
+| 在官版客户端安装整合包 | [Mojobox Installer](https://github.com/lanyun077/Mojobox-Installer)，查看开发预览、支持范围与安装进度 |
 | 了解项目或贡献代码 | [职责与进度](#项目边界与进度)、[开发与验证](#开发与验证)、[贡献指南](CONTRIBUTING.md) |
 
 目录支持多关键词、相关性排序、整合包类型筛选和官方用途／主题多选；搜索链接可以分享。
@@ -113,6 +115,14 @@ https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json
 
 网页[整合包目录](https://lanyun077.github.io/EAC-mojobox/#/packs)统一展示功能与外观包，
 提供原始文件、加载声明和检查范围。设计资料不再进入网站与新供货导出。
+
+面向官方 DeepSeek Harness 客户端的安装管理插件在
+[Mojobox Installer 独立仓库](https://github.com/lanyun077/Mojobox-Installer)维护。
+本仓负责网站、目录与整合包内容，安装器负责设置入口、选择安装、更新核对、失败项重试与诊断，
+官方宿主负责依赖解析和加载。安装器目前为开发预览，已验证目标为 Windows x64 官版 `0.2.2-rc.1`，
+尚未完成普通用户分发验收；具体支持范围以其 README 为准。
+安装流程问题请到[安装器 Issue](https://github.com/lanyun077/Mojobox-Installer/issues)，
+资源收录、来源与包内容问题仍在本仓反馈。安装器不表示由 DeepSeek 官方发布或背书。
 
 已有 EAC 消费方沿用 [`supply.eac/v1` 导出与交付说明](docs/eac-downstream-usage-guide.md)，
 导出范围受 [`distribution.json`](distribution.json) 与供货选择政策约束。
