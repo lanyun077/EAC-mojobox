@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.session-tools",
   "name": "DSH 会话效率包",
-  "version": "0.2.0",
-  "description": "会话整理、节点导航、上下文观测与快照恢复。支持会话标签、备注、移动和迁移等上游能力；会话写入与恢复属于主动操作，不增加压缩插件。",
+  "version": "0.2.1",
+  "description": "会话整理、上下文观测与快照恢复。支持会话标签、备注、移动和迁移等上游能力；会话写入与恢复属于主动操作，不增加压缩插件。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
@@ -19,15 +19,11 @@
       "version": "0.7.5"
     },
     {
-      "ref": "@vlln/dsh-navbar",
-      "version": "0.4.0"
-    },
-    {
       "ref": "dsh-undo-savepoint",
       "version": "0.5.1"
     }
   ],
   "conflicts": [],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。"
+  "changelog": "2026-11-13：移除已归档的 @vlln/dsh-navbar，节点导航使用官版内置能力；其余组件版本与 2026-11-11 静态来源核验保持一致。目标仍为官版 DSH 0.2.2-rc.1，未安装运行。清理依据见 docs/catalog-cleanup-20261113.md；历史归档不改写。"
 }

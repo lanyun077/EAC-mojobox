@@ -12,15 +12,11 @@
     { "type": "pack", "id": "dev.dsh-eac.session-tools", "officialTags": ["conversation"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-bloom", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-catppuccin", "officialTags": ["generic"] },
-    { "type": "pack", "id": "dev.dsh-eac.skin-dream-skin", "officialTags": ["generic"] },
-    { "type": "pack", "id": "dev.dsh-eac.skin-endfield", "officialTags": ["game", "tech"] },
-    { "type": "pack", "id": "dev.dsh-eac.skin-open-sea", "officialTags": ["nature"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-opencode-palette", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-wallpaper-engine", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-whale-girl", "officialTags": ["anime"] },
     { "type": "pack", "id": "dev.dsh-eac.suite-lite", "officialTags": ["general", "development"] },
     { "type": "pack", "id": "dev.dsh-eac.vision-base", "officialTags": ["research", "automation"] },
-    { "type": "pack", "id": "dev.dsh-eac.web-research-base", "officialTags": ["research", "automation"] },
-    { "type": "pack", "id": "dev.dsh-eac.workbench-lite", "officialTags": ["development"] }
+    { "type": "pack", "id": "dev.dsh-eac.web-research-base", "officialTags": ["research", "automation"] }
   ]
 }

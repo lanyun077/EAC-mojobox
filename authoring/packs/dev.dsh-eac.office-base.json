@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.office-base",
   "name": "DSH 文档办公包",
-  "version": "0.3.0",
-  "description": "市场、Univer Office、GenUI、文件工作区、上下文观测、会话整理、节点导航与恢复。Office 成品约 47 MiB 且需本机 Chromium/网关；不进入必备或减重版，不和 Visualize 同包。",
+  "version": "0.3.1",
+  "description": "市场、Univer Office、GenUI、文件工作区、上下文观测、会话整理与恢复。Office 成品约 47 MiB 且需本机 Chromium/网关；不进入必备或减重版，不和 Visualize 同包。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
@@ -31,10 +31,6 @@
       "version": "0.30.1"
     },
     {
-      "ref": "@vlln/dsh-navbar",
-      "version": "0.4.0"
-    },
-    {
       "ref": "dsh-univer-office",
       "version": "0.4.0"
     },
@@ -51,5 +47,5 @@
     "dsh-file-drop-eac"
   ],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。"
+  "changelog": "2026-11-13：移除已归档的 @vlln/dsh-navbar，节点导航使用官版内置能力；其余组件版本与 2026-11-11 静态来源核验保持一致。目标仍为官版 DSH 0.2.2-rc.1，未安装运行。清理依据见 docs/catalog-cleanup-20261113.md；历史归档不改写。"
 }

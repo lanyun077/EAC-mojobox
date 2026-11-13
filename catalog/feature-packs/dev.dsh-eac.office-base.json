@@ -1,10 +1,10 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.office-base",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "16dad061ff9746d2aa06d20664ea0f515f812e84f2ce34c08979fe0182c34563"
+  "sha256": "8cdbfe09a9615db16cabbceeef347ab1c12dbbe5e5ca8d34ee564ec187a037f6"
 }

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
 import { test } from 'node:test'
 
 const readJson = async path => JSON.parse(await readFile(new URL(`../${path}`, import.meta.url), 'utf8'))
@@ -45,7 +45,11 @@ test('curated packs use the reviewed identities and one version across all categ
       used.add(plugin.ref)
     }
   }
-  assert.deepEqual(used, new Set(sourceByRef.keys()))
+  for (const source of sources.components) {
+    assert.ok(used.has(source.ref) || review.decisions.some(decision =>
+      decision.action === 'exclude' && originalById.get(decision.id).name === source.name),
+    `Unused reviewed source needs an explicit exclusion: ${source.ref}`)
+  }
 })
 
 test('excluded components and exclusive implementations cannot reenter a curated combination', () => {
@@ -72,8 +76,8 @@ test('essentials remain minimal and the lighter suite is a subset of the expande
   const lite = byId.get('dev.dsh-eac.suite-lite')
   const toolbox = byId.get('dev.dsh-eac.power-toolbox')
   assert.equal(essentials.plugins.length, 4)
-  assert.equal(lite.plugins.length, 7)
-  assert.equal(toolbox.plugins.length, 12)
+  assert.equal(lite.plugins.length, 6)
+  assert.equal(toolbox.plugins.length, 11)
   for (const [smaller, larger] of [[essentials, lite], [lite, toolbox]]) {
     for (const plugin of smaller.plugins) {
       assert.ok(larger.plugins.some(item => item.ref === plugin.ref && item.version === plugin.version))
@@ -82,4 +86,24 @@ test('essentials remain minimal and the lighter suite is a subset of the expande
   assert.ok(!lite.plugins.some(item => item.ref === 'dsh-univer-office' || item.ref === 'meow-smooth' || item.ref === 'dsh-vision-router'))
   const office = byId.get('dev.dsh-eac.office-base')
   assert.ok(office.plugins.some(item => item.ref === 'dsh-univer-office'))
+})
+
+test('active authored packs match intake records, omit retired sources and offer distinct combinations', async () => {
+  const authored = await Promise.all((await readdir(new URL('../authoring/packs/', import.meta.url)))
+    .filter(file => file.endsWith('.json')).map(file => readJson(`authoring/packs/${file}`)))
+  const records = await Promise.all((await readdir(new URL('../catalog/feature-packs/', import.meta.url)))
+    .filter(file => file.endsWith('.json')).map(file => readJson(`catalog/feature-packs/${file}`)))
+  assert.deepEqual(new Set(authored.map(pack => pack.id)), new Set(records.map(record => record.id)))
+  assert.deepEqual(new Set(authored.filter(pack => records.find(record => record.id === pack.id).category === 'function')
+    .map(pack => pack.id)), new Set(review.packs))
+  const retired = new Set(['@vlln/dsh-navbar', 'dsh-dream-skin', 'open-sea-skin', 'github:ymh0000123/dsh-theme-endfield'])
+  const combinations = new Set()
+  for (const pack of authored) {
+    assert.ok(pack.plugins.every(plugin => !retired.has(plugin.ref)), `${pack.id}: retired source`)
+    const signature = JSON.stringify([pack.requires, pack.plugins.map(plugin => `${plugin.ref}@${plugin.version}`).sort()])
+    assert.ok(!combinations.has(signature), `${pack.id}: duplicate combination`)
+    combinations.add(signature)
+  }
+  const listings = await readdir(new URL('../catalog/plugin-listings/', import.meta.url))
+  assert.ok(!listings.includes('dev.vlln.dsh-navbar.json'))
 })
