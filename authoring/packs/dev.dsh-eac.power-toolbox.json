@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.power-toolbox",
   "name": "DSH Power Toolbox",
-  "version": "0.3.0",
-  "description": "十二件综合工具箱：日常减重版加项目记忆、Agent Teams、ModSearch、BrowserSkill 与 Vision Router，覆盖开发、协作、检索和视觉研究。外部浏览器、网络、模型调用及原生依赖按需配置；重型 Office 与皮肤仍单独选。",
+  "version": "0.3.1",
+  "description": "十一件综合工具箱：日常减重版加项目记忆、Agent Teams、ModSearch、BrowserSkill 与 Vision Router，覆盖开发、协作、检索和视觉研究。外部浏览器、网络、模型调用及原生依赖按需配置；重型 Office 与皮肤仍单独选。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
@@ -29,10 +29,6 @@
     {
       "ref": "dsh-better-sidebar",
       "version": "0.30.1"
-    },
-    {
-      "ref": "@vlln/dsh-navbar",
-      "version": "0.4.0"
     },
     {
       "ref": "@nagi-ovo/dsh-visualize",
@@ -70,5 +66,5 @@
     "dsh-image-paste"
   ],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。 Vision Router 3.2.0 要求 Node >=24.9.0；旧 Profile 不自动迁移，升级前按上游执行只读预检并保留旧配置。 Project Memory 的 GitHub 引用不能锁定提交；版本声明不保证未来解析字节。"
+  "changelog": "2026-11-13：移除已归档的 @vlln/dsh-navbar，节点导航使用官版内置能力；其余组件版本与 2026-11-11 静态来源核验保持一致。目标仍为官版 DSH 0.2.2-rc.1，未安装运行。清理依据见 docs/catalog-cleanup-20261113.md；历史归档不改写。"
 }

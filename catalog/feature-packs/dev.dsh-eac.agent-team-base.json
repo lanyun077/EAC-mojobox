@@ -1,10 +1,10 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.agent-team-base",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "2ef3b7da6b71f43feceb3c3620fcd0eb9dc677bbba036eaab9fb3a36387baa3f"
+  "sha256": "640b7a5b07bae5d79f5a4aedcf0f5befc847ad18779094710d5cc8df9dafa024"
 }

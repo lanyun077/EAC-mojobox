@@ -1,10 +1,10 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.vision-base",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "b2f32c89b13e533e529f0e42ab0d87d7249816942d3d3c715af5e46a4a8ba787"
+  "sha256": "bf5f59cf05a03b1dc5e2622f783c64f18b156a8c80e31d88e88e149051146ecb"
 }

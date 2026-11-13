@@ -10,7 +10,7 @@
 - [官方分类与作者标签](catalog-tags.md)：整合包用途、外观主题、投稿标注与检索边界。
 - [外部作者提交与审核](community-submissions.md)：提交材料、标签、介绍、图片、PR 与审核合并。
 - [插件轻量收录](plugin-intake.md)：最小信息卡、兼容与冲突边界、原始下载、Skill 预留。
-- [插件来源接口 v1](plugin-source-api-v1.md)：26 条插件快照、公开入口、摘要核验与下游接入。
+- [插件来源接口 v1](plugin-source-api-v1.md)：当前插件索引、公开入口、摘要核验与下游接入。
 - [整合包文件结构与最小示例](author-pack-request.md)：理解 `.dshpack` 和 `pack.json`。
 - [收录规范](intake.md)：支持范围、字段、检验结论与下载构建。
 - [版本声明策略](intake-version-policy.md)：新提交门禁、精确历史例外、迁移和 Issue 回复草稿。
@@ -32,6 +32,7 @@
 
 ## 来源与选型
 
+- [目录精简（2026-11-13）](catalog-cleanup-20261113.md)：停维护 Navbar、滞后外观包与重复组合的去留、来源和版本变化。
 - [官版内容更新（2026-11-11）](catalog-update-20261111.md)：插件与整合包新版本、官版 `0.2.2-rc.1` 静态核验、升级条件与保留项。
 - [上游更新核对（2026-11-03）](upstream-update-review-20261103.md)：官方 RC5、现有组件候选版本、版本阻断与更新条件；尚未实施资源升级。
 - [首批收录](ecosystem-curation.md)、[插件常客与候选](plugin-shortlist.md)。
