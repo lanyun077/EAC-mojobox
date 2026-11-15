@@ -277,6 +277,83 @@
           "count": 0
         }
       ]
+    },
+    {
+      "at": "2026-11-15T16:33:29.141Z",
+      "counts": [
+        {
+          "asset_id": 751583390,
+          "count": 0
+        },
+        {
+          "asset_id": 751583484,
+          "count": 0
+        },
+        {
+          "asset_id": 751583557,
+          "count": 0
+        },
+        {
+          "asset_id": 751583656,
+          "count": 0
+        },
+        {
+          "asset_id": 751583744,
+          "count": 0
+        },
+        {
+          "asset_id": 751583846,
+          "count": 0
+        },
+        {
+          "asset_id": 751583993,
+          "count": 0
+        },
+        {
+          "asset_id": 751584118,
+          "count": 0
+        },
+        {
+          "asset_id": 751584220,
+          "count": 0
+        },
+        {
+          "asset_id": 751584344,
+          "count": 0
+        },
+        {
+          "asset_id": 751584440,
+          "count": 0
+        },
+        {
+          "asset_id": 751584553,
+          "count": 0
+        },
+        {
+          "asset_id": 751584709,
+          "count": 0
+        },
+        {
+          "asset_id": 751584805,
+          "count": 0
+        },
+        {
+          "asset_id": 751585030,
+          "count": 0
+        },
+        {
+          "asset_id": 751585141,
+          "count": 0
+        },
+        {
+          "asset_id": 751585296,
+          "count": 0
+        },
+        {
+          "asset_id": 751585390,
+          "count": 0
+        }
+      ]
     }
   ]
 }
