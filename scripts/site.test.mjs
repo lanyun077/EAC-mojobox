@@ -27,7 +27,7 @@ const catalog = {
 function loadSite(base = '/', data = catalog) {
   const app = { innerHTML: '', className: '' }
   const context = vm.createContext({
-    URL, URLSearchParams, basePath: base, inputCatalog: structuredClone({ tagGroups, ...data }), location: { hash: '' },
+    URL, URLSearchParams, AbortSignal, basePath: base, inputCatalog: structuredClone({ tagGroups, ...data }), location: { hash: '' },
     createIcons() {},
     document: {
       querySelector: selector => selector === '#app' ? app : null,
@@ -507,4 +507,82 @@ test('checkbox changes add and remove official tags without losing other search 
   assert.equal(site.run('state.tag'), 'all')
   assert.equal(site.run('state.query'), 'Skin')
   assert.equal(site.run('state.category'), 'appearance')
+})
+
+test('PR submitter links preserve original author, first submission and current-version identity', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run(`contributors = { items: [{kind:'pack', resource_id:catalog.packs[0].metadata.id, version:catalog.packs[0].metadata.version,
+    first_submission:{github_user_id:12,github_login:'original-submitter',pr_number:3},
+    version_submission:{github_user_id:34,github_login:'updater',pr_number:9}}] }`)
+  const html = site.run('intakeDetail(catalog.packs[0])')
+  assert.match(html, /原作者/)
+  assert.ok(html.includes(site.run('escapeHtml(catalog.packs[0].author)')))
+  assert.match(html, /https:\/\/github.com\/original-submitter/)
+  assert.match(html, /EAC-mojobox\/pull\/9/)
+  assert.match(site.run('packRow(catalog.packs[0])'), /投稿：@original-submitter/)
+  site.run('contributors.items[0].first_submission=null; contributors.items[0].first_reason="not-collected"')
+  assert.match(site.run('packRow(catalog.packs[0])'), /本版更新：@updater/)
+  assert.match(site.run('intakeDetail(catalog.packs[0])'), /本地预览未采集/)
+  site.run("contributors.items[0].version = 'outdated'")
+  assert.doesNotMatch(site.run('intakeDetail(catalog.packs[0])'), /github.com\/updater/)
+  site.run("contributors.items[0].version = catalog.packs[0].metadata.version; contributors.items[0].first_submission = {github_user_id:12,github_login:'<img src=x>',pr_number:3}")
+  assert.doesNotMatch(site.run('intakeDetail(catalog.packs[0])'), /<img src=x>/)
+})
+
+test('tag relevance counts only selected official tags, then preserves URL and query ordering', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run(`state.tab='packs'; state.sort='tag-relevance'; state.tag='coding,agent';
+    catalog.tagGroups={packs:[{id:'coding',label:'编程',aliases:[]},{id:'agent',label:'智能体',aliases:[]}]};
+    catalog.packs=[...Array(3)].map((_,i)=>({...catalog.packs[0], metadata:{...catalog.packs[0].metadata,id:'p'+i,name:'Name '+i},
+      websiteTags:{officialTags:i===1?['coding','agent']:['coding'],customTags:['agent']}}));`)
+  assert.equal(site.run('filteredItems()[0].metadata.id'), 'p1')
+  site.run("location.hash='#/packs?sort=tag-relevance&tag=coding,agent'; applyHash()")
+  assert.equal(site.run('state.sort'), 'tag-relevance')
+  assert.match(site.run('catalogHash()'), /sort=tag-relevance/)
+  site.run("state.tag='unclassified'")
+  assert.match(site.run('rankingNotice()'), /请选择官方标签/)
+})
+
+test('static sort uses full filtered candidates and ignores outdated version timestamps', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run(`state.tab='packs'; state.sort='hot7d';
+    rankingData={items:catalog.packs.map((p,i)=>({kind:'pack',resource_id:p.metadata.id,version:p.metadata.version,downloads_7d:i+1,downloads_all:i+10,first_seen_at:i?'2026-11-13T00:00:00Z':null,version_seen_at:null}))}`)
+  assert.equal(site.run('filteredItems()[0].metadata.id'), site.run('catalog.packs[1].metadata.id'))
+  site.run("state.sort='newest'; rankingData.items[1].version='old'")
+  assert.equal(site.run('rankingItem(catalog.packs[1]).first_seen_at'), null)
+  site.run('rankingData=null')
+  assert.equal(site.run('rankingState()'), null)
+  assert.match(site.run('rankingNotice()'), /暂不可用/)
+})
+
+test('switching sort reuses static rankings without identity or click requests', async () => {
+  const site = loadSite('/EAC-mojobox/', mixedIntake)
+  site.run(`state.tab='packs'; globalThis.requests=[];
+    globalThis.fetch=async url=>{requests.push(url); return {ok:true,status:200,json:async()=>({format:'mojobox-rankings-v1',data_as_of:'2026-11-13T00:00:00Z',items:[]})}}`)
+  await site.run('loadRankings()')
+  site.run("state.sort='updated'")
+  await site.run('loadRankings()')
+  assert.equal(site.run('JSON.stringify(requests)'), '["/EAC-mojobox/generated/rankings.json"]')
+  assert.doesNotMatch(source, /csrf_token|\/session|download-click|VITE_API_ORIGIN|data-logout|GitHub 登录/)
+  const html = site.run('intakeDetail(catalog.packs[0])')
+  assert.ok(html.includes(`href="/EAC-mojobox/${mixedIntake.packs[0].archiveUrl}" download`))
+})
+
+test('missing statistics never block release downloads and plugin sort cannot imply pack download counts', async () => {
+  const site = loadSite('/EAC-mojobox/', mixedIntake)
+  site.run(`globalThis.fetch=async()=>{throw new Error('offline')}; state.tab='packs'; state.sort='hot7d';
+    catalog.packs[0].archiveUrl='https://github.com/lanyun077/EAC-mojobox/releases/download/pack-test-v1.0.0/test-1.0.0.dshpack'`)
+  await site.run('loadRankings()')
+  assert.match(site.run('rankingNotice()'), /暂不可用/)
+  assert.match(site.run('intakeDetail(catalog.packs[0])'), /href="https:\/\/github.com\/lanyun077\/EAC-mojobox\/releases\/download\//)
+  site.run("location.hash='#/plugins?sort=hotall'; applyHash(); render()")
+  assert.equal(site.run('state.sort'), 'relevance')
+  assert.doesNotMatch(site.app.innerHTML, /option value="hot7d"|option value="hotall"/)
+})
+
+test('unknown weekly counts stay unknown while stale download data carries its collection time', () => {
+  const site = loadSite('/', mixedIntake)
+  site.run(`state.tab='packs'; state.sort='hot7d'; rankingData={data_as_of:'2026-11-01T00:00:00Z',window_start:null,items:[]}`)
+  assert.match(site.run('sortSummary(catalog.packs[0])'), /数据不足/)
+  assert.match(site.run('rankingNotice()'), /更新延迟.*数据积累中.*GitHub 附件下载次数/)
 })

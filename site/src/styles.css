@@ -347,6 +347,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .card-tags { margin-top: 8px; }
 .card-tags .tag { font-size: .65rem; font-weight: 600; }
 .catalog-search-note { margin: 0 0 22px; color: var(--muted); font-size: .73rem; line-height: 1.7; }
+.card-contributor { display: block; margin-top: 8px; color: var(--muted); font-size: .72rem; }
 .catalog-toolbar .search-field { flex: 1; min-height: 46px; margin-top: 0; border-radius: 8px; }
 .catalog-filter { min-width: 160px; display: grid; gap: 5px; color: var(--muted); font-size: .68rem; font-weight: 700; }
 .catalog-filter select { width: 100%; height: 46px; margin-top: 0; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: .8rem; }

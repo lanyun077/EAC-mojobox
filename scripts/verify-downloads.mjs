@@ -5,6 +5,7 @@ import { inspectFeaturePack } from './feature-pack.mjs'
 import { verifyPreviewImages } from './preview-images.mjs'
 import { inspectPluginArtifact, pluginFilename, validatePluginListing } from './plugin-listing.mjs'
 import { verifyPluginIndex } from './plugin-index.mjs'
+import { releaseUrl } from './release-assets.mjs'
 
 export async function verifyDownloads(directory, { allowDemo = false, basePath } = {}) {
   if (basePath !== undefined) {
@@ -46,9 +47,9 @@ export async function verifyDownloads(directory, { allowDemo = false, basePath }
     if (!['function', 'appearance', 'workflow'].includes(pack.metadata.category)) throw new Error('Invalid download category')
     if (pack.metadata.category === 'appearance' && !pack.appearance) throw new Error('Appearance metadata is missing')
     const filename = `${id}-${version}.dshpack`
-    if (pack.archiveUrl !== `generated/downloads/${filename}` || pack.packUrl !== `generated/packs/${id}.json` || pack.reportUrl !== `generated/reports/${id}.json`) throw new Error('Download path mismatch')
+    if (![ `generated/downloads/${filename}`, releaseUrl(id, version) ].includes(pack.archiveUrl) || pack.packUrl !== `generated/packs/${id}.json` || pack.reportUrl !== `generated/reports/${id}.json`) throw new Error('Download path mismatch')
     if (!/^sha256:[a-f0-9]{64}$/.test(pack.archiveDigest)) throw new Error('Missing download digest')
-    const bytes = await readFile(join(directory, pack.archiveUrl))
+    const bytes = await readFile(join(directory, 'generated/downloads', filename))
     const report = await inspectFeaturePack(bytes, pack.archiveDigest.slice(7))
     if (report.manifest.id !== id || report.manifest.version !== version || report.size !== pack.archiveSize) throw new Error('Download metadata mismatch')
     const m = report.manifest

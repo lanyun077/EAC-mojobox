@@ -46,6 +46,81 @@ const levelOrder = ['Declared', 'Parsed', 'Negotiated', 'Tested', 'Observed', 'A
 const searchDefaults = { query: '', availability: 'all', category: 'all', tag: 'all', sort: 'relevance' }
 const state = { tab: 'plugins', ...searchDefaults, evidence: 'all', host: 'all', selected: null }
 let catalog
+let contributors = { items: [] }
+let rankingData = null
+let rankingLoading = false
+let rankingAttempted = false
+const remoteSorts = ['newest', 'updated', 'hot7d', 'hotall']
+const sorts = ['relevance', 'tag-relevance', ...remoteSorts, 'name']
+
+function contributorRecord(pack) {
+  return contributors.items.find(item => item.kind === 'pack' && item.resource_id === pack.metadata.id && item.version === pack.metadata.version)
+}
+
+function contributorIdentity(value) {
+  return value && Number.isSafeInteger(value.github_user_id) && value.github_user_id > 0 &&
+    /^[a-z0-9][a-z0-9-]{0,38}$/i.test(value.github_login) && Number.isSafeInteger(value.pr_number) && value.pr_number > 0
+}
+
+function contributorMissing(reason) {
+  return reason === 'not-collected' ? '本地预览未采集' : reason === 'ambiguous' ? '关联待核实' : '来源未记录'
+}
+
+function contributorDetail(pack) {
+  const record = contributorRecord(pack)
+  const renderIdentity = (value, reason) => contributorIdentity(value) ? `<a href="https://github.com/${encodeURIComponent(value.github_login)}" target="_blank" rel="noreferrer">@${escapeHtml(value.github_login)}</a> · <a href="${repositoryUrl}/pull/${value.pr_number}" target="_blank" rel="noreferrer">PR #${value.pr_number}</a>` : contributorMissing(reason)
+  const first = record?.first_submission
+  const latest = record?.version_submission
+  const same = contributorIdentity(first) && contributorIdentity(latest) && first.pr_number === latest.pr_number && first.github_user_id === latest.github_user_id
+  return `<section class="detail-section"><h3>作者与投稿</h3><dl class="facts"><div><dt>原作者</dt><dd>${escapeHtml(pack.author)}</dd></div><div><dt>${same ? '投稿与本版更新' : '首次投稿'}</dt><dd>${renderIdentity(first, record?.first_reason)}</dd></div>${same ? '' : `<div><dt>本版更新</dt><dd>${renderIdentity(latest, record?.version_reason)}</dd></div>`}</dl></section>`
+}
+
+function rankingState() {
+  return rankingData
+}
+
+function rankingItem(item) {
+  const row = rankingState()?.items.find(row => row.kind === (item.metadata ? 'pack' : 'plugin') && row.resource_id === (item.metadata?.id || item.id))
+  return row?.version === (item.metadata?.version || item.version) ? row : row ? { ...row, first_seen_at: null, version_seen_at: null } : null
+}
+
+function sortSummary(item) {
+  if (!remoteSorts.includes(state.sort)) return ''
+  const row = rankingItem(item)
+  const label = { newest: '收录时间', updated: '更新时间', hot7d: '近七日下载', hotall: '累计下载' }[state.sort]
+  const value = state.sort.startsWith('hot') ? row?.[state.sort === 'hot7d' ? 'downloads_7d' : 'downloads_all'] : row?.[state.sort === 'newest' ? 'first_seen_at' : 'version_seen_at']
+  const text = value == null ? state.sort === 'hot7d' ? '数据不足' : '未记录' : state.sort.startsWith('hot') ? value.toLocaleString('zh-CN') : new Date(value).toLocaleDateString('zh-CN')
+  return `<span class="card-contributor">${label}：${escapeHtml(text)}</span>`
+}
+
+async function loadRankings() {
+  if (rankingAttempted || catalog.demo) return
+  rankingAttempted = true
+  rankingLoading = true
+  try {
+    const response = await fetch(assetUrl('generated/rankings.json'), { credentials: 'omit', signal: AbortSignal.timeout(12000) })
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+    const data = await response.json()
+    if (data.format !== 'mojobox-rankings-v1' || (data.data_as_of !== null && !Number.isFinite(Date.parse(data.data_as_of))) || !Array.isArray(data.items) ||
+        data.items.some(item => !['pack', 'plugin'].includes(item.kind) || typeof item.resource_id !== 'string' || typeof item.version !== 'string' ||
+          ['downloads_all', 'downloads_7d'].some(key => item[key] !== null && (!Number.isSafeInteger(item[key]) || item[key] < 0)) ||
+          ['first_seen_at', 'version_seen_at'].some(key => item[key] !== null && !Number.isFinite(Date.parse(item[key]))))) throw new Error('Invalid rankings')
+    rankingData = data
+  } catch { /* Catalog browsing and downloads remain available without rankings. */ }
+  finally { rankingLoading = false; render() }
+}
+
+function rankingNotice() {
+  if (state.sort === 'tag-relevance' && !selectedTags().some(tag => tag !== 'unclassified' && Object.values(catalog.tagGroups || {}).flat().some(item => item.id === tag))) return '请选择官方标签，当前按关键词相关性排序。'
+  if (!remoteSorts.includes(state.sort)) return ''
+  const entry = rankingState()
+  if (!entry) return rankingLoading ? '正在读取排行，暂按关键词相关性排序。' : '排行数据暂不可用，当前按关键词相关性排序。'
+  if (!state.sort.startsWith('hot')) return '时间来自目录 Git 历史；未记录的时间排在末尾。'
+  if (!entry.data_as_of) return '下载数据尚未采集；未知下载量不记为零。'
+  const stale = entry.stale || Date.now() - Date.parse(entry.data_as_of) > 2 * 86400000
+  const pending = state.sort === 'hot7d' && !entry.window_start ? '七日数据积累中。' : ''
+  return `${stale ? '统计更新延迟，显示上次结果。' : ''}${pending}统计时间：${new Date(entry.data_as_of).toLocaleString('zh-CN')} · GitHub 附件下载次数，含重复下载与自动校验，不代表安装人数。`
+}
 
 const categoryLabels = {
   function: '功能包',
@@ -84,7 +159,7 @@ const escapeHtml = value => String(value ?? '')
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;')
 
-const assetUrl = path => `${base}${path}`
+const assetUrl = path => /^https:\/\/github\.com\/lanyun077\/EAC-mojobox\/releases\/download\/[^/?#]+\/[^/?#]+\.dshpack$/.test(path) ? escapeHtml(path) : `${base}${path}`
 const shortDigest = digest => digest ? `${digest.slice(0, 15)}…${digest.slice(-8)}` : '未发布'
 const evidenceStatus = record => record.revoked ? '已撤回' : record.expiresAt && Date.parse(record.expiresAt) <= Date.now() ? '已过期' : record.result === 'pass' ? '通过' : '失败'
 const highestEvidence = records => records.reduce((highest, record) => {
@@ -191,7 +266,18 @@ function filterIntakeItems(items) {
       (state.tab !== 'packs' || state.category === 'all' || item.metadata.category === state.category) &&
       (!selectedTags().length || selectedTags().some(tag => tag === 'unclassified' ? !contentTags(item).length : contentTags(item).includes(tag)))
   }).sort((a, b) => {
-    if (state.sort === 'relevance' && a.score !== b.score) return b.score - a.score
+    const mode = remoteSorts.includes(state.sort) && !rankingState() ? 'relevance' : state.sort
+    if (mode === 'tag-relevance') {
+      const tags = selectedTags().filter(tag => tag !== 'unclassified')
+      const hits = item => contentTags(item).filter(tag => tags.includes(tag)).length
+      if (hits(a.item) !== hits(b.item)) return hits(b.item) - hits(a.item)
+    }
+    if (remoteSorts.includes(mode)) {
+      const key = { newest: 'first_seen_at', updated: 'version_seen_at', hot7d: 'downloads_7d', hotall: 'downloads_all' }[mode]
+      const value = item => mode.startsWith('hot') ? rankingItem(item)?.[key] ?? -1 : Date.parse(rankingItem(item)?.[key]) || 0
+      if (value(a.item) !== value(b.item)) return value(b.item) - value(a.item)
+    }
+    if (['relevance', 'tag-relevance'].includes(mode) && a.score !== b.score) return b.score - a.score
     const aName = a.item.metadata?.name || a.item.name
     const bName = b.item.metadata?.name || b.item.name
     return aName.localeCompare(bName, 'zh-CN', { numeric: true }) ||
@@ -223,12 +309,12 @@ function renderSearchTools(items) {
     <div class="catalog-filter-row">
       ${state.tab === 'packs' && categories.length > 1 ? select('category-filter', '包类型', state.category, [['all', '全部类型'], ...categories]) : ''}
       ${state.tab === 'plugins' ? select('availability', '下载状态', state.availability, [['all', '全部插件'], ['published', '有核验归档'], ['unpublished', '仅来源收录']]) : ''}
-      ${select('sort-filter', '排序', state.sort, [['relevance', '相关性'], ['name', '名称']])}
+      ${select('sort-filter', '排序', state.sort, [['relevance', '相关性'], ...(state.tab === 'packs' ? [['tag-relevance', '标签相关性']] : []), ['newest', '最近收录'], ['updated', '最近更新'], ...(state.tab === 'packs' ? [['hot7d', '近七日下载'], ['hotall', '累计下载']] : []), ['name', '名称']])}
       <button class="command" type="button" data-reset-search>清空条件</button>
     </div>
     ${tags.length ? `<div class="official-tag-group" role="group" aria-label="官方分类"><span class="official-tag-heading">官方分类 · 可多选</span><div class="official-tag-options">${tags.map(tag => `<label class="official-tag-choice" title="${escapeHtml(tag.description)}"><input id="tag-filter-${escapeHtml(tag.id)}" type="checkbox" data-tag-filter="${escapeHtml(tag.id)}" ${chosen.includes(tag.id) ? 'checked' : ''} /><span>${escapeHtml(tag.label)}</span><small>${tag.count}</small></label>`).join('')}</div></div>` : ''}
     ${chosen.some(id => id !== 'unclassified' && !group.some(tag => tag.id === id)) ? '<p class="catalog-search-note" role="status">链接中含有不可用的分类；可清空条件后重新选择官方标签。</p>' : ''}
-  </section><p class="catalog-search-note">空格分隔多个关键词，所有关键词均需匹配；名称优先匹配。${state.tab === 'plugins' ? '支持中文名称、包名、作者与来源检索。' : '官方标签多选取并集，与关键词和其他条件取交集；作者标签仅在详情展示。'}</p>`
+  </section><p class="catalog-search-note">空格分隔多个关键词，所有关键词均需匹配；名称优先匹配。${state.tab === 'plugins' ? '支持中文名称、包名、作者与来源检索。' : '官方标签多选取并集，与关键词和其他条件取交集；作者标签仅在详情展示。'}</p>${rankingNotice() ? `<p class="catalog-search-note" role="status">${escapeHtml(rankingNotice())}</p>` : ''}`
 }
 
 function filteredItems() {
@@ -262,6 +348,7 @@ function pluginRow(plugin) {
       <button class="pack-select" data-select="${escapeHtml(plugin.id)}" type="button">
         <span class="card-topline"><span class="item-mark"><i data-lucide="box"></i></span><span class="version">v${escapeHtml(plugin.version)}</span></span>
         <strong class="card-title">${escapeHtml(plugin.name)}</strong>
+        ${sortSummary(plugin)}
         <span class="card-author">${escapeHtml(plugin.author || '作者未核实')} · ${escapeHtml(plugin.packageName)}</span>
         <span class="card-description">${escapeHtml(plugin.summary)}</span>
         <span class="card-status"><span class="badge badge-parsed">${plugin.archiveUrl ? '原始文件已核验' : '仅来源收录'}</span><span class="badge badge-warning">宿主未测试</span></span>
@@ -282,11 +369,16 @@ function pluginRow(plugin) {
 }
 
 function packRow(pack) {
+  const contribution = contributorRecord(pack)
+  const signature = contributorIdentity(contribution?.first_submission) ? `投稿：@${contribution.first_submission.github_login}` :
+    contributorIdentity(contribution?.version_submission) ? `本版更新：@${contribution.version_submission.github_login}` : `投稿：${contributorMissing(contribution?.first_reason)}`
   if (pack.format === 'eac-feature-pack-v1') return `
     <article class="pack-card ${state.selected === pack.metadata.id ? 'is-selected' : ''}">
       <button class="pack-select" data-select="${escapeHtml(pack.metadata.id)}" aria-pressed="${state.selected === pack.metadata.id}" type="button">
         <span class="card-topline"><span class="item-mark pack-mark"><i data-lucide="boxes"></i></span><span class="version">v${escapeHtml(pack.metadata.version)}</span></span>
         <strong class="card-title">${escapeHtml(pack.metadata.name)}</strong>
+        <span class="card-contributor">${escapeHtml(signature)}</span>
+        ${sortSummary(pack)}
         <span class="card-author">${escapeHtml(pack.author)} · ${escapeHtml(categoryLabels[pack.metadata.category] || '未分类')} · ${pack.components.length} 个组件</span>
         <span class="card-description">${escapeHtml(pack.metadata.description || '开发者未提供功能简介。')}</span>
         ${cardTags(pack)}
@@ -442,6 +534,7 @@ function intakeDetail(pack) {
     <div class="detail-heading"><span class="detail-mark pack-detail-mark"><i data-lucide="boxes"></i></span>
       <div><span class="eyebrow">FEATURE PACK · v${escapeHtml(metadata.version)}</span><h2>${escapeHtml(metadata.name)}</h2><p>${escapeHtml(pack.author)} · ${escapeHtml(pack.license)} · ${escapeHtml(metadata.id)}</p></div></div>
     <p class="detail-description">${escapeHtml(metadata.description || '开发者未提供功能简介。')}</p>
+    ${contributorDetail(pack)}
     <div class="detail-actions action-grid">
       <a class="command primary" href="${assetUrl(pack.archiveUrl)}" download><i data-lucide="archive"></i>下载整合包</a>
       <a class="command" href="${assetUrl(pack.packUrl)}" download><i data-lucide="file-json"></i>清单</a>
@@ -564,7 +657,7 @@ function renderIntake() {
         ${state.tab !== 'skills' ? `<nav class="guide-tabs" aria-label="本类提交规范">${[state.tab === 'plugins' ? 'plugin' : 'pack'].map(type => `<a class="command" href="#/contribute/${type}">提交${submissionTypes[type]}</a>`).join('')}</nav>${renderSearchTools({ plugins: catalog.plugins, packs }[state.tab] || [])}` : ''}
         <div class="catalog-grid ${items.length ? '' : 'is-empty'}">${items.length ? items.map(itemRow).join('') : `<div class="no-results">${state.tab === 'skills' ? '<i data-lucide="file-text"></i><strong>暂无 Skill 收录</strong><span>暂不提供 Skill 下载或安装。</span>' : emptyState(collectionSize, currentLabel)}</div>`}</div>`}
       </main>`}
-    <footer class="site-footer"><span>Mojobox · 为 DSH 生态收纳好工具</span><span>由开发者维护内容 · 安装与运行交给宿主</span></footer>`
+    <footer class="site-footer"><span>Mojobox · 为 DSH 生态收纳好工具 · <a href="${repositoryUrl}/blob/main/docs/privacy.md" target="_blank" rel="noreferrer">隐私说明</a></span><span>由开发者维护内容 · 安装与运行交给宿主</span></footer>`
   bindEvents()
   refreshIcons()
   if (focusedId) [...document.querySelectorAll('[data-select]')].find(button => button.dataset.select === focusedId)?.focus()
@@ -718,20 +811,24 @@ function applyHash() {
   if (!['plugins', 'packs'].includes(state.tab)) return
   const params = new URLSearchParams(search)
   state.query = params.get('q') || ''
-  if (['relevance', 'name'].includes(params.get('sort'))) state.sort = params.get('sort')
+  if (sorts.includes(params.get('sort')) && (state.tab === 'packs' || !['tag-relevance', 'hot7d', 'hotall'].includes(params.get('sort')))) state.sort = params.get('sort')
   if (state.tab === 'plugins' && ['published', 'unpublished'].includes(params.get('availability'))) state.availability = params.get('availability')
   if (state.tab === 'packs' && Object.hasOwn(categoryLabels, params.get('category'))) state.category = params.get('category')
   if (state.tab !== 'plugins') state.tag = params.get('tag') || 'all'
 }
 
 async function start() {
-  const response = await fetch(assetUrl('generated/catalog.json'))
+  const response = await fetch(assetUrl('generated/catalog.json'), { signal: AbortSignal.timeout(20000) })
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
   catalog = await response.json()
   if (!catalog || !Array.isArray(catalog.packs) || !Array.isArray(catalog.plugins)) throw new Error('目录数据格式错误')
   if (!location.hash) state.tab = catalog.mode === 'intake' ? 'home' : 'plugins'
   applyHash()
   render()
+  void loadRankings()
+  void fetch(assetUrl('generated/contributors.json'), { signal: AbortSignal.timeout(12000) }).then(response => response.ok ? response.json() : null).then(data => {
+    if (data?.format === 'mojobox-contributors-v1' && data.repository === 'lanyun077/EAC-mojobox' && Array.isArray(data.items)) { contributors = data; render() }
+  }).catch(() => {})
   window.addEventListener('hashchange', () => { applyHash(); render() })
 }
 

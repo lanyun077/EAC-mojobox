@@ -16,7 +16,9 @@ Bash 中为 `BASE_PATH=/EAC-mojobox/ npm run build`，检查时也设置相同�
 ## 发布要求
 
 - `check.yml` 在 PR 中校验和构建，不持有部署权限。
-- 现有 `pages.yml` 在 main 或手动触发时部署；仓库仍需实际启用 Pages。
+- 现有 `pages.yml` 在 main 或手动触发时部署 GitHub Pages；仓库仍需实际启用 Pages。
+- `MOJOBOX_STATIC_HOST=cloudflare` 时改由 `cloudflare.yml` 发布根路径生产站，旧 GitHub Pages 发布任务跳过。
+  采用现有 Workers 静态资产，域名、环境配置、Releases、排行和回退见[静态站发布说明](static-cloud-release.md)；未配置时保持原发布入口。
 - Pages 构建与检查使用 `actions/configure-pages` 返回的实际站点路径；PR 检查按仓库名称生成子路径，避免仓库改名后仍引用旧资源路径。
 - 失败构建不上传；目录与归档一起部署，不直接构建到正在服务的目录。
 - 新版本使用新版本号与归档路径。自行托管时保留仍被引用的旧下载。
@@ -26,6 +28,8 @@ Bash 中为 `BASE_PATH=/EAC-mojobox/ npm run build`，检查时也设置相同�
 ## 下载与缓存
 
 默认构建只读本地收录记录和开发者归档，检查通过后原样复制下载文件，不联网解析插件。
+正式 Cloudflare 发布额外从受信 main 工作流同步 Releases，并将整合包链接指向主仓同版本附件；
+旧本地下载路径继续保留。独立插件来源接口 v1 不改变，登录、服务器 API 和点击上报均已移除。
 `npm run verify:downloads` 独立检查最终 `dist/` 的入口资源路径及文件、下载、清单、报告和摘要，空目录合法。子路径检查必须设置与构建相同的 `BASE_PATH`，路径错误或入口资源缺失会阻止发布。
 
 `npm run build:demo` 只生成 `dist-demo/`，`npm run preview:demo` 预览演示。
