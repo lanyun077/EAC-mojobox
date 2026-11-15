@@ -1,14 +1,22 @@
 # 静态站发布、统计与回退
 
-2026-11-16。架构见[方案 V2](static-cloud-plan-v2.md)。以下流程对应本次代码改造；
-正式 GitHub／Cloudflare 工作流、真实 Token 权限和官版客户端联调须在推送后验收。
-`mojobox.cn` 已由维护者绑定到现有 `mojobox` Worker；配置完成不代表新版代码已发布。
+2026-11-16。架构见[方案 V2](static-cloud-plan-v2.md)。北京时间 2026-11-16 00:26 完成首次正式发布：
+主仓 [PR #11](https://github.com/lanyun077/EAC-mojobox/pull/11) 与安装器
+[PR #1](https://github.com/lanyun077/Mojobox-Installer/pull/1) 已合并，
+[发布任务](https://github.com/lanyun077/EAC-mojobox/actions/runs/43735255949)成功。
+正式域名为 `https://mojobox.cn`，首发内容提交为 `9458cd9605a6744d6513d4c4a0a34c2712bb4b18`；
+当前部署以正式 `generated/release.json` 为准，后续提交会更新该标记。
 
 本地验收：主仓 187 项测试通过、2 项既有跳过；安装器类型检查与 87 项测试通过。
 根路径、仓库子路径和演示构建的下载校验通过；1440、390、320 像素页面验证了搜索、
 标签筛选、时间／下载排序、URL 恢复、Release 链接，以及统计延迟／失败不阻塞浏览下载。
 工作流语法检查与 Wrangler 4.50.0 纯静态 `--dry-run` 通过。
-尚未进行真实 GitHub 写入、Cloudflare 部署、连续七日采集及官版客户端联网安装验收。
+真实 Token、18 个整合包 Release 附件、统计分支写入、Cloudflare 部署及线上字节验证已通过。
+18 个整合包均取得可核验的 GitHub 投稿／更新者；安装器实际下载代码已从正式站读取目录，
+逐包下载全部 18 个 Release 附件并核对身份和摘要，未操作宿主或用户 Profile。
+安装器 PR 与合并后 main 的 Windows／Linux CI 均通过。
+首发产物保留在该 Actions 的 artifact；旧站 149 个公开文件已备份，未随代码提交。
+七日采集和官版客户端完整安装业务尚未验收；`www.mojobox.cn` 尚未解析，当前使用根域名。
 
 ## 平台配置与首发
 
