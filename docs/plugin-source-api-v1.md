@@ -8,9 +8,9 @@ Mojobox 为下游提供一份静态、版本化的插件索引。下游读取它
 2026-11-13 撤下已归档的 Navbar；详见[目录精简](catalog-cleanup-20261113.md)。索引删除不触发自动卸载。
 实现已随 [PR #21](https://github.com/DSH-EAC/EAC-mojobox/pull/21) 合并。
 2026-10-11 复核 Pages 发布成功，索引返回 HTTP 200、格式 `plugins.mojobox.dev/v1`、26 条、`demo: false`。
-2026-10-22 仓库恢复后，当前部署入口改为
-<https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json>；
-旧站发布结果仅为历史记录，新站以实际部署与 HTTP 校验为准。下游需更新配置的完整 URL，
+2026-11-16 正式部署入口改为
+<https://mojobox.cn/generated/api/v1/plugins.json>；
+历史 GitHub Pages 入口保留旧站，不随正式站自动更新。新站以实际部署与 HTTP 校验为准。下游需更新配置的完整 URL，
 `schemaVersion`、`sourceId: dsh-eac.mojobox`、资源 ID 和原始字节不因仓库迁移而改变。
 以下仍需下游按契约实现读取和校验，不能把在线可达当成已安装或下游已接入。
 用户转述前两轮草稿可以通过，本轮不要求下游继续提供验收回执；该消息不代表下游已实现这个新入口。
