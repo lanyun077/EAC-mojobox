@@ -1,0 +1,69 @@
+name: 发布 Cloudflare 静态目录
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '41 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mojobox-static-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.repository == 'lanyun077/EAC-mojobox' && github.ref == 'refs/heads/main' && vars.MOJOBOX_STATIC_HOST == 'cloudflare'
+    permissions:
+      contents: write
+      pull-requests: read
+    environment: cloudflare-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BASE_PATH: /
+      SITE_ORIGIN: ${{ vars.MOJOBOX_SITE_ORIGIN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: 核对配置并记录实际发布版本
+        id: source
+        run: |
+          : "${CLOUDFLARE_ACCOUNT_ID:?Set CLOUDFLARE_ACCOUNT_ID}"
+          : "${CLOUDFLARE_WORKER_NAME:?Set CLOUDFLARE_WORKER_NAME}"
+          node --input-type=module -e 'const u = new URL(process.env.SITE_ORIGIN); if(u.protocol !== "https:" || u.origin !== process.env.SITE_ORIGIN) throw new Error("Expected HTTPS site origin")'
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run verify:downloads
+      - name: 发布原始整合包、记录快照并生成静态排行
+        run: node scripts/static-release.mjs dist
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MOJOBOX_SOURCE_COMMIT: ${{ steps.source.outputs.commit }}
+      - name: 保存生产产物供核对与回退
+        uses: actions/upload-artifact@v4
+        with:
+          name: mojobox-site-${{ steps.source.outputs.commit }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/
+          retention-days: 30
+          if-no-files-found: error
+      - name: 发布到现有 Workers 静态站
+        run: npx --yes wrangler@4.50.0 deploy --name "$CLOUDFLARE_WORKER_NAME"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: 核对正式域名、静态数据和下载字节
+        run: node scripts/verify-static.mjs dist

@@ -7,21 +7,25 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main' && vars.MOJOBOX_STATIC_HOST != 'cloudflare'
+    concurrency:
+      group: mojobox-static-production
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -37,6 +41,10 @@ jobs:
         run: npm run verify:downloads
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+      - name: 从已合并 PR 采集投稿者
+        run: node scripts/contributors.mjs dist/generated --github
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -15,7 +15,10 @@
 - [收录规范](intake.md)：支持范围、字段、检验结论与下载构建。
 - [版本声明策略](intake-version-policy.md)：新提交门禁、精确历史例外、迁移和 Issue 回复草稿。
 - [贡献指南](../CONTRIBUTING.md)：开发环境、修改类型和最低验证。
-- [静态部署](deployment.md)：构建、下载校验和 GitHub Pages。
+- [静态部署](deployment.md)：构建、下载校验和备用 GitHub Pages。
+- [GitHub＋Cloudflare 静态部署方案 V2](static-cloud-plan-v2.md)：Releases 下载、每日快照、排序与平台配置。
+- [静态站发布、统计与回退](static-cloud-release.md)：Workers 首发、统计口径、验证、回退及可选备份。
+- [隐私说明](privacy.md)：静态站、公开投稿信息及第三方服务的数据边界。
 
 ## 维护与边界
 

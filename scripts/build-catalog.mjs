@@ -6,6 +6,8 @@ import { inspectPreviewImages, publishPreviewImages } from './preview-images.mjs
 import { collectPluginListings, pluginFilename } from './plugin-listing.mjs'
 import { publishPluginIndex } from './plugin-index.mjs'
 import { collectWebsiteTags, tagGroups } from './catalog-tags.mjs'
+import { collectContributors } from './contributors.mjs'
+import { catalogTimes, rankings } from './download-stats.mjs'
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -77,6 +79,11 @@ export async function buildCatalog(root = rootDir, { checkOnly = false, demo = f
   const catalog = { apiVersion: 'catalog.mojobox.dev/v1alpha1', mode: 'intake', demo, plugins, skills: [], packs, tagGroups }
   await publishPluginIndex(output, pluginListings, { demo })
   await writeFile(join(output, 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n')
+  const times = !demo && root === rootDir ? await catalogTimes(root, catalog) : []
+  await writeFile(join(output, 'rankings.json'), JSON.stringify(rankings(times, [], []), null, 2) + '\n')
+  // Offline builds do not guess GitHub identities. Release CI replaces this
+  // snapshot with verified PR data after building, before uploading the site.
+  if (!demo && root === rootDir) await writeFile(join(output, 'contributors.json'), JSON.stringify(await collectContributors(root, catalog), null, 2) + '\n')
   console.log(`Validated and collected ${packs.length} developer archives.`)
   return catalog
 }

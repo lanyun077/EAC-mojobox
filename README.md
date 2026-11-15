@@ -5,7 +5,7 @@
 <p align="center">为 DSH 生态收纳插件与整合包，连接内容作者和下游市场。</p>
 
 <p align="center">
-  <a href="https://lanyun077.github.io/EAC-mojobox/">浏览目录</a> ·
+  <a href="https://mojobox.cn/">浏览目录</a> ·
   <a href="#提交资源">提交资源</a> ·
   <a href="#下游接入">下游接入</a> ·
   <a href="#开发与验证">参与开发</a> ·
@@ -26,7 +26,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 
 | 你想做什么 | 最短路径 |
 | --- | --- |
-| 找插件或整合包 | [浏览网站](https://lanyun077.github.io/EAC-mojobox/)，看用途、来源、检查范围和原始下载 |
+| 找插件或整合包 | [浏览网站](https://mojobox.cn/)，看用途、来源、检查范围和原始下载 |
 | 提交自己的资源 | [选提交类型](#提交资源) → 准备材料 → Fork + PR → CI 与维护者审核 |
 | 推荐资源或不确定格式 | [提交来源咨询](https://github.com/lanyun077/EAC-mojobox/issues/new?template=package-submission.yml)，无需先制作完整 PR |
 | 为市场或加载器取资源 | [下游接入](#下游接入)，读取静态索引并核验原始字节 |
@@ -59,7 +59,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 ## 提交资源
 
 先按交付物选择类型，不需要阅读所有协议。**正式收录通过 GitHub PR；Issue 是候选和咨询入口。**
-网页[提交指南](https://lanyun077.github.io/EAC-mojobox/#/contribute)提供相同分类。
+网页[提交指南](https://mojobox.cn/#/contribute)提供相同分类。
 
 ### 1. 选类型，找到对应材料
 
@@ -85,7 +85,7 @@ Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本�
 2. 按类型添加事实源和材料，运行下方的[验证命令](#开发与验证)，不要修改上游协议来绕过收录要求。
 3. 提交并推送到自己的 Fork，向本仓库 `main` 发起 PR，填写[模板](.github/PULL_REQUEST_TEMPLATE.md)：目的、来源、许可、限制、真实测试范围和验证结果。
 4. 等待 `check` 与维护者审核。CI 检查结构和字节；维护者核对归属、再分发许可与内容边界。
-5. 合并后由 Pages 工作流再次检查并发布。网站成功发布后下游才能取得更新；合并不等于已上线。
+5. 合并后由选定的静态发布工作流再次检查并发布。网站成功发布后下游才能取得更新；合并不等于已上线。
 
 完整操作见[作者提交与审核](docs/community-submissions.md#submit)。更新、撤回和故障处理也遵循该指南。
 
@@ -96,15 +96,15 @@ Mojobox 的插件接口是**静态 JSON 来源索引**，不需要登录或后�
 
 ### 插件市场：读取来源索引
 
-当前站点根为 `https://lanyun077.github.io/EAC-mojobox/`，插件入口：
+正式站点根为 `https://mojobox.cn/`，插件入口：
 
 ```text
-https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json
+https://mojobox.cn/generated/api/v1/plugins.json
 ```
 
 索引格式为 `plugins.mojobox.dev/v1`，同目录提供
-[索引 Schema](https://lanyun077.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-index.schema.json)
-和 [信息卡 Schema](https://lanyun077.github.io/EAC-mojobox/generated/api/v1/schemas/plugin-listing.schema.json)。
+[索引 Schema](https://mojobox.cn/generated/api/v1/schemas/plugin-index.schema.json)
+和 [信息卡 Schema](https://mojobox.cn/generated/api/v1/schemas/plugin-listing.schema.json)。
 取到索引后，下游按以下顺序处理：
 
 1. 限长读取、校验 Schema 和身份，拒绝生产源里的 `demo: true`；保留完整兼容、冲突和限制。
@@ -117,7 +117,7 @@ https://lanyun077.github.io/EAC-mojobox/generated/api/v1/plugins.json
 
 ### 整合包：按契约选择入口
 
-网页[整合包目录](https://lanyun077.github.io/EAC-mojobox/#/packs)统一展示功能与外观包，
+网页[整合包目录](https://mojobox.cn/#/packs)统一展示功能与外观包，
 提供原始文件、加载声明和检查范围。设计资料不再进入网站与新供货导出。
 
 面向官方 DeepSeek Harness 客户端的安装管理插件在
@@ -160,6 +160,11 @@ git diff --check
 网站修改还须验证根路径与仓库子路径、桌面与窄屏。详细命令、演示目录与部署步骤见
 [贡献指南](CONTRIBUTING.md)和[部署文档](docs/deployment.md)。
 
+正式站使用 Cloudflare Workers 静态资产，GitHub Releases 分发整合包，Actions 每日采集下载快照并生成排行。
+网站无需登录，不部署服务器 API 或数据库；保留搜索、筛选、时间排序、标签相关性及 GitHub 投稿者署名。
+配置、统计口径和回退见[静态站发布说明](docs/static-cloud-release.md)，数据使用见[隐私说明](docs/privacy.md)。
+发布是否完成以 Actions 结果与正式站 `generated/release.json` 为准。
+
 | 目录 | 用途 |
 | --- | --- |
 | `catalog/`、`artifacts/` | 收录事实源、作者原始归档与历史资料 |
@@ -174,8 +179,8 @@ git diff --check
 ## 项目边界与进度
 
 基础收纳、检验、目录和下载已具备真实样本；社区提交流程与插件来源接口已实现。
-当前主要推进持续收录、来源更新、审核与下游接入。动态提交、账号、排行属于后续路线，
-当前网站仍是静态目录，通过 GitHub PR 接收资源。
+当前主要推进持续收录、来源更新、审核与下游接入。网站保持静态，通过 GitHub PR 接收资源，
+发布时采集投稿者和附件下载计数；不建设网站账号或在线提交后台。七日下载榜需实际积累基线。
 
 Mojobox 不维护上游插件，不实现桌面皮肤加载器，不在构建时运行资源，也不复制宿主的
 Profile 管理、依赖解析或安装回滚。有限安装支持复用下游已有接口，不能以收录结论代替运行证据。
