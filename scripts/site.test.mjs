@@ -233,8 +233,8 @@ for (const base of ['/', '/dsh-mojobox/']) {
     const site = loadSite(base, mixedIntake)
     for (const tab of ['skins', 'packs']) {
       site.run(`location.hash = "#/${tab}/dev.example.skin"; applyHash(); render()`)
-      assert.equal(site.run('state.tab'), 'packs')
-      assert.match(site.app.innerHTML, /返回整合包列表/)
+      assert.equal(site.run('state.tab'), 'skins')
+      assert.match(site.app.innerHTML, /返回外观包列表/)
       assert.match(site.app.innerHTML, /外观加载声明/)
       assert.match(site.app.innerHTML, /ui-skin-loader/)
       assert.match(site.app.innerHTML, /maid-atelier/)
@@ -407,7 +407,7 @@ test('only approved tags and aliases enter search and official options, never au
   }
   site.run('state.query = "开发编程"')
   assert.equal(site.run('filteredItems().length'), 1)
-  site.run('catalog.packs[1].websiteTags.officialTags = ["anime"]; state.query = "动漫"')
+  site.run('state.tab = "skins"; catalog.packs[1].websiteTags.officialTags = ["anime"]; state.query = "动漫"')
   assert.equal(site.run('filteredItems().length'), 1)
   assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
   site.run('state.query = ""; catalog.packs[1].websiteTags.officialTags = []; render()')
@@ -419,56 +419,83 @@ test('only approved tags and aliases enter search and official options, never au
   assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
 })
 
-test('merged catalog counts appearance packs once and excludes retired prompt material and entry points', () => {
+test('top-level collections separate function and appearance packs without counting retired prompt material', () => {
   const site = loadSite('/', mixedIntake)
   site.run('state.tab = "home"; render()')
   assert.match(site.app.innerHTML, /<strong>2<\/strong><span>正式收录<\/span>/)
-  assert.match(site.app.innerHTML, /<strong>2<\/strong><span>整合包<\/span>/)
-  assert.doesNotMatch(site.app.innerHTML, /href="#\/skins|皮肤包|Prompt/)
+  assert.match(site.app.innerHTML, /<strong>1<\/strong><span>功能包<\/span>/)
+  assert.match(site.app.innerHTML, /<strong>1<\/strong><span>外观包<\/span>/)
+  assert.match(site.app.innerHTML, /href="#\/skins" data-tab="skins"/)
+  assert.doesNotMatch(site.app.innerHTML, /皮肤包|Prompt/)
   site.run('state.tab = "packs"; render()')
-  for (const id of ['dev.aio.function', 'dev.example.skin']) assert.ok(site.app.innerHTML.includes(`data-select="${id}"`))
+  assert.match(site.app.innerHTML, /data-select="dev.aio.function"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.example.skin"/)
   assert.doesNotMatch(site.app.innerHTML, /maid-atelier|kind-filter|skin-gallery/)
-  assert.match(site.app.innerHTML, /option value="appearance"/)
+  assert.doesNotMatch(site.app.innerHTML, /option value="appearance"/)
   assert.match(site.app.innerHTML, /data-tag-filter="development"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-tag-filter="generic"/)
+  site.run('state.tab = "skins"; render()')
+  assert.match(site.app.innerHTML, /data-select="dev.example.skin"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-select="dev.aio.function"/)
   assert.match(site.app.innerHTML, /data-tag-filter="generic"/)
+  assert.doesNotMatch(site.app.innerHTML, /data-tag-filter="development"/)
 })
 
-test('appearance packs support merged search, category and official tag filters', () => {
+test('appearance collection searches loader declarations and filters only its official themes', () => {
   const site = loadSite('/', mixedIntake)
-  site.run('state.tab = "packs"')
+  site.run('state.tab = "skins"')
   for (const query of ['Example Skin', 'dev.example.skin', 'ui-skin-loader', 'bodyAttr:theme']) {
     site.run(`state.query = ${JSON.stringify(query)}`)
     assert.equal(site.run('filteredItems().length'), 1)
     assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
   }
-  site.run('state.query = ""; state.category = "appearance"; state.tag = "generic"')
+  site.run('state.query = ""; state.tag = "generic"')
   assert.equal(site.run('filteredItems().length'), 1)
   site.run('state.tag = "development"')
   assert.equal(site.run('filteredItems().length'), 0)
   site.run('state.category = "all"; state.tag = "development,generic"')
-  assert.equal(site.run('filteredItems().length'), 2)
+  assert.equal(site.run('filteredItems().length'), 1)
   site.run('state.query = "Example Skin"')
   assert.equal(site.run('filteredItems().length'), 1)
 })
 
-test('shared pack searches retain detail back links and ignore retired kind filters', () => {
+test('workflow packs stay in the function collection and both collections retain sorting and empty states', () => {
+  const data = structuredClone(mixedIntake)
+  data.packs.push({ ...intakePack, metadata: { ...intakePack.metadata, id: 'workflow', category: 'workflow' } })
+  const site = loadSite('/', data)
+  site.run('location.hash = "#/packs?category=workflow"; applyHash(); render()')
+  assert.equal(site.run('filteredItems()[0].metadata.id'), 'workflow')
+  assert.match(site.app.innerHTML, /当前显示 \/ 共 2 项/)
+  site.run('location.hash = "#/skins?tag=generic&sort=hot7d"; applyHash(); render()')
+  assert.equal(site.run('state.sort'), 'hot7d')
+  assert.equal(site.run('filteredItems()[0].metadata.id'), 'dev.example.skin')
+  assert.match(site.app.innerHTML, /option value="tag-relevance"/)
+  assert.match(site.app.innerHTML, /option value="updated"/)
+  site.run('state.query = "not-found"; render()')
+  assert.match(site.app.innerHTML, /没有匹配项/)
+  site.run('catalog.packs = []; state.query = ""; render()')
+  assert.match(site.app.innerHTML, /暂无正式收录内容/)
+})
+
+test('old appearance searches resolve to the new collection and retain detail back links', () => {
   const site = loadSite('/EAC-mojobox/', mixedIntake)
   site.run('location.hash = "#/packs?tag=development,generic&category=appearance&q=Skin&sort=name&kind=prompt"; applyHash(); render()')
   assert.equal(site.run('filteredItems().length'), 1)
+  assert.equal(site.run('state.tab'), 'skins')
   assert.match(site.app.innerHTML, /data-tag-filter="generic" checked/)
   const hash = site.run('catalogHash()')
   assert.doesNotMatch(hash, /kind=/)
-  site.run('location.hash = catalogHash("packs", "dev.example.skin"); applyHash(); render()')
-  assert.match(site.app.innerHTML, /返回整合包列表/)
+  site.run('location.hash = catalogHash("skins", "dev.example.skin"); applyHash(); render()')
+  assert.match(site.app.innerHTML, /返回外观包列表/)
   assert.ok(site.app.innerHTML.includes(hash.replaceAll('&', '&amp;')))
-  site.run('location.hash = catalogHash("packs", null); applyHash(); render()')
+  site.run('location.hash = catalogHash("skins", null); applyHash(); render()')
   assert.equal(site.run('filteredItems().length'), 1)
 })
 
-test('retired prompt links cannot expose materials and old appearance links open merged pack details', () => {
+test('retired prompt links cannot expose materials while appearance links open their own collection', () => {
   const site = loadSite('/', mixedIntake)
   site.run('location.hash = "#/skins/dev.example.skin"; applyHash(); render()')
-  assert.equal(site.run('state.tab'), 'packs')
+  assert.equal(site.run('state.tab'), 'skins')
   assert.match(site.app.innerHTML, /外观加载声明/)
   site.run('location.hash = "#/skins/maid-atelier"; applyHash(); render()')
   assert.match(site.app.innerHTML, /未找到此整合包/)
@@ -495,18 +522,18 @@ test('merged submission guide retains appearance declarations and approved vocab
 test('checkbox changes add and remove official tags without losing other search conditions', () => {
   const site = loadSite('/', mixedIntake)
   site.run(`
-    state.tab = 'packs'; state.category = 'appearance'; state.query = 'Skin';
+    state.tab = 'skins'; state.query = 'Skin';
     globalThis.handler = null;
     globalThis.checkbox = {dataset:{tagFilter:'generic'}, checked:true, addEventListener(name,fn){handler=fn}};
     document.querySelectorAll = selector => selector === '[data-tag-filter]' ? [checkbox] : [];
     render = () => {}; bindEvents(); handler();
   `)
   assert.equal(site.run('state.tag'), 'generic')
-  assert.match(site.run('location.hash'), /category=appearance.*tag=generic/)
+  assert.match(site.run('location.hash'), /#\/skins\?q=Skin&tag=generic/)
   site.run('checkbox.checked = false; handler()')
   assert.equal(site.run('state.tag'), 'all')
   assert.equal(site.run('state.query'), 'Skin')
-  assert.equal(site.run('state.category'), 'appearance')
+  assert.equal(site.run('state.tab'), 'skins')
 })
 
 test('PR submitter links preserve original author, first submission and current-version identity', () => {
@@ -545,7 +572,7 @@ test('tag relevance counts only selected official tags, then preserves URL and q
 
 test('static sort uses full filtered candidates and ignores outdated version timestamps', () => {
   const site = loadSite('/', mixedIntake)
-  site.run(`state.tab='packs'; state.sort='hot7d';
+  site.run(`state.tab='packs'; state.sort='hot7d'; catalog.packs[1].metadata.category='workflow';
     rankingData={items:catalog.packs.map((p,i)=>({kind:'pack',resource_id:p.metadata.id,version:p.metadata.version,downloads_7d:i+1,downloads_all:i+10,first_seen_at:i?'2026-11-13T00:00:00Z':null,version_seen_at:null}))}`)
   assert.equal(site.run('filteredItems()[0].metadata.id'), site.run('catalog.packs[1].metadata.id'))
   site.run("state.sort='newest'; rankingData.items[1].version='old'")

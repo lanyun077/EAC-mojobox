@@ -1,194 +1,75 @@
 <h1 align="center">
-  <img src="docs/assets/EAC-mojobox.svg" alt="DSH Mojobox" width="808" />
+  <img src="docs/assets/EAC-mojobox.svg" alt="Mojobox" width="808" />
 </h1>
 
-<p align="center">为 DSH 生态收纳插件与整合包，连接内容作者和下游市场。</p>
+<p align="center">发现、下载和分享 DeepSeek Harness 的插件、功能包与外观包。</p>
 
 <p align="center">
-  <a href="https://mojobox.cn/">浏览目录</a> ·
+  <a href="https://mojobox.cn/">浏览网站</a> ·
+  <a href="#从这里开始">快速使用</a> ·
   <a href="#提交资源">提交资源</a> ·
-  <a href="#下游接入">下游接入</a> ·
-  <a href="#开发与验证">参与开发</a> ·
-  <a href="https://github.com/lanyun077/Mojobox-Installer">官版安装器</a> ·
-  <a href="docs/README.md">文档索引</a>
+  <a href="https://github.com/lanyun077/Mojobox-Installer">安装器</a> ·
+  <a href="docs/development.md">开发文档</a>
 </p>
-
-> 仓库已于 2026-10-22 恢复到 [lanyun077/EAC-mojobox](https://github.com/lanyun077/EAC-mojobox)。
-> 网站和插件来源请使用下方新地址；旧 Issue / PR 链接仅用于历史追溯，见[恢复与地址迁移说明](docs/repository-recovery-20261022.md)。
-
-Mojobox 把散落在 npm、GitHub 和作者仓库里的资源整理成有版本、有来源、有说明的目录，
-核对归档结构和文件摘要，展示使用边界，并提供作者原始文件下载。
-
-**上游维护内容，Mojobox 收纳与供给，下游负责安装和运行。**
-静态检验通过表示文件和记录符合收录要求，不表示插件安全、无冲突或已经在你的宿主上测试。
 
 ## 从这里开始
 
-| 你想做什么 | 最短路径 |
+1. 在 [mojobox.cn](https://mojobox.cn/) 搜索资源，按分类、标签、时间或热度筛选。
+2. 打开详情，查看介绍、预览、作者、版本与安装要求。
+3. 下载文件，或使用 [Mojobox Installer](https://github.com/lanyun077/Mojobox-Installer#安装) 在客户端中安装整合包。
+
+| 分类 | 内容 |
 | --- | --- |
-| 找插件或整合包 | [浏览网站](https://mojobox.cn/)，看用途、来源、检查范围和原始下载 |
-| 提交自己的资源 | [选提交类型](#提交资源) → 准备材料 → Fork + PR → CI 与维护者审核 |
-| 推荐资源或不确定格式 | [提交来源咨询](https://github.com/lanyun077/EAC-mojobox/issues/new?template=package-submission.yml)，无需先制作完整 PR |
-| 为市场或加载器取资源 | [下游接入](#下游接入)，读取静态索引并核验原始字节 |
-| 在官版客户端安装整合包 | [Mojobox Installer](https://github.com/lanyun077/Mojobox-Installer)，查看开发预览、支持范围与安装进度 |
-| 了解项目或贡献代码 | [职责与进度](#项目边界与进度)、[开发与验证](#开发与验证)、[贡献指南](CONTRIBUTING.md) |
+| [插件](https://mojobox.cn/#/plugins) | 单个工具、模型接入和客户端扩展 |
+| [功能包](https://mojobox.cn/#/packs) | 功能增强与工作流插件组合 |
+| [外观包](https://mojobox.cn/#/skins) | 皮肤、主题与界面外观组合 |
 
-目录支持多关键词、相关性排序、整合包类型筛选和官方用途／主题多选；搜索链接可以分享。
-作者标签仅在详情补充说明，不参与分类与标签检索。见[检索说明](docs/catalog-search.md)和[官方标签组](docs/catalog-tags.md)。
-
-## 收纳什么
-
-| 资源 | 它是什么 | 当前规模 | 收录后提供什么 |
-| --- | --- | --- | --- |
-| 独立插件 | 作者发布的一个软件包；信息卡只描述它，不改变运行时格式 | 25 条：23 个原始下载、2 个仅来源 | 精确版本、兼容/冲突/限制、来源；有许可与合格归档时提供下载 |
-| 整合包 | 功能与外观插件引用组成的薄 Feature Pack；`.dshpack` 以根 `pack.json` 声明组合 | 18 个：13 个功能、5 个外观 | 组合说明、原始归档、清单、静态检验报告；外观包保留加载声明与预览 |
-| Skill | 预留分类 | 暂不收录 | 当前没有独立 Skill 协议、下载或安装入口 |
-
-皮肤插件按普通插件收录，外观组合统一进入整合包目录。设计 Prompt 和设计思路不再独立收录；原有 10 套仅保留历史记录。
-
-数量为当前仓库快照，网站以实际部署版本为准。插件附带的 Skill 保留在作者发行里，不拆成独立资源。
-整合包的来源、选型和作者清单见 [authoring/](authoring/README.md)；历史检查结果见[验收记录](docs/plugin-catalog-acceptance-20261010.md)。
-
-2026-11-11 内容更新以官版 `0.2.2-rc.1` 为目标：19 个插件来源升级、14 个功能包和 5 个外观包
-递增版本。静态核验范围、旧配置升级条件及未更新项见[本次更新说明](docs/catalog-update-20261111.md)。
-
-2026-11-13 精简：从 9 个组合移除已归档且由官版内置能力覆盖的 Navbar，并撤下其独立入口；
-撤下版本滞后、当前内核范围未确认的 Dream Skin、Open Sea、Endfield，合并重复工作台入口。
-当前正式下载为 41 个，历史归档原样保留。来源、保留项与版本变化见[清理说明](docs/catalog-cleanup-20261113.md)。
+使用技巧见[搜索与筛选](docs/catalog-search.md)。
 
 ## 提交资源
 
-先按交付物选择类型，不需要阅读所有协议。**正式收录通过 GitHub PR；Issue 是候选和咨询入口。**
-网页[提交指南](https://mojobox.cn/#/contribute)提供相同分类。
+1. 准备资源介绍、作者、版本、许可与来源链接。
+2. 按资源类型添加文件，向本仓库提交 PR。
+3. 审核通过后，资源随网站发布展示。
 
-### 1. 选类型，找到对应材料
+| 资源 | 提交材料 | 指南 |
+| --- | --- | --- |
+| 插件 | JSON 信息卡；提供下载时附原始 `.tgz` | [插件投稿](docs/plugin-intake.md) |
+| 功能包、外观包 | `.dshpack` 文件与同 ID 收录记录 | [整合包制作](docs/author-pack-request.md) · [投稿规范](docs/intake.md) |
 
-| 类型与提交方案 | 必须交什么 | 放在哪里 | 格式与例子 |
-| --- | --- | --- | --- |
-| [独立插件](docs/community-submissions.md#plugin) | 一张轻量 JSON 信息卡；原始 npm `.tgz` 可选 | `catalog/plugin-listings/<id>.json`；下载放 `artifacts/plugins/<id>-<version>.tgz` | [最小信息卡](docs/plugin-intake.md#最少提交什么)、[Schema](schemas/plugin-listing.schema.json) |
-| [整合包（功能／外观）](docs/community-submissions.md#pack) | 薄 `.dshpack` + 同 ID 收录 JSON | `artifacts/<id>-<version>.dshpack`、`catalog/feature-packs/<id>.json` | [文件组成与最小清单](docs/author-pack-request.md)、[收录规范](docs/intake.md) |
-
-完整客户端、Profile、带内嵌代码的整套环境和其他格式先开 Issue 讨论，不转成薄包冒充已支持。
-许可不明确或下载超限的独立插件可以先收来源；新的整合包不能编造必填的宿主范围，应先作为候选讨论。
-
-### 2. 遵守共同规则
-
-- **身份与来源可追溯**：稳定 ID、精确版本、正式 HTTPS 来源；作者提交与目录代录分别标明。
-- **许可单独核对**：代码、图片、音频和截图各自说明；Mojobox 的 MIT 许可不覆盖上游资源。
-- **未知就写未知**：兼容、冲突和运行结果不能猜。新薄包须声明合法 `requires.dsh`，外部组件须精确版本；详见[版本策略](docs/intake-version-policy.md)。
-- **保留原始字节**：不重打包作者插件，不修改、删除或重命名旧归档；更新软件提交新版本、新文件和新摘要。
-- **只投递公开材料**：不提交凭据、聊天、Profile、私人路径或构建目录。标签、介绍和预览要求见[展示规范](docs/community-submissions.md#3-预览图由作者提供)。
-
-### 3. 完成一次投递
-
-1. Fork 本仓库，从最新 `main` 建立 `feat/add-<id>` 或 `fix/update-<id>` 分支。
-2. 按类型添加事实源和材料，运行下方的[验证命令](#开发与验证)，不要修改上游协议来绕过收录要求。
-3. 提交并推送到自己的 Fork，向本仓库 `main` 发起 PR，填写[模板](.github/PULL_REQUEST_TEMPLATE.md)：目的、来源、许可、限制、真实测试范围和验证结果。
-4. 等待 `check` 与维护者审核。CI 检查结构和字节；维护者核对归属、再分发许可与内容边界。
-5. 合并后由选定的静态发布工作流再次检查并发布。网站成功发布后下游才能取得更新；合并不等于已上线。
-
-完整操作见[作者提交与审核](docs/community-submissions.md#submit)。更新、撤回和故障处理也遵循该指南。
+[完整投稿步骤](docs/community-submissions.md) · [分类与标签](docs/catalog-tags.md) · [推荐资源或咨询](https://github.com/lanyun077/EAC-mojobox/issues/new?template=package-submission.yml)
 
 ## 下游接入
 
-Mojobox 的插件接口是**静态 JSON 来源索引**，不需要登录或后端端口。下游实现一次读取与映射，
-即可按需刷新目录；无需解析网页，也无需每次收录都向 Mojobox 反馈。
-
-### 插件市场：读取来源索引
-
-正式站点根为 `https://mojobox.cn/`，插件入口：
+插件索引：
 
 ```text
 https://mojobox.cn/generated/api/v1/plugins.json
 ```
 
-索引格式为 `plugins.mojobox.dev/v1`，同目录提供
-[索引 Schema](https://mojobox.cn/generated/api/v1/schemas/plugin-index.schema.json)
-和 [信息卡 Schema](https://mojobox.cn/generated/api/v1/schemas/plugin-listing.schema.json)。
-取到索引后，下游按以下顺序处理：
+功能包与外观包目录：
 
-1. 限长读取、校验 Schema 和身份，拒绝生产源里的 `demo: true`；保留完整兼容、冲突和限制。
-2. `download: null` 只展示来源。有下载时，使用 `new URL(download.url, indexUrl)` 解析地址，并核对实际大小和 SHA-256；报告同样核对。
-3. 用完整合法快照更新市场。请求或校验失败保留上次成功目录，索引移除条目不触发自动卸载。
-4. 安装资格、依赖、权限、平台和真实运行由下游宿主判断；索引不授予安装许可。
+```text
+https://mojobox.cn/generated/catalog.json
+```
 
-字段、正反例、更新语义和本地联调见[插件来源接口 v1](docs/plugin-source-api-v1.md)。`revision` 是内容指纹，
-不是发布序号或签名；当前静态站不保证旧版本下载 URL 永久存在。
-
-### 整合包：按契约选择入口
-
-网页[整合包目录](https://mojobox.cn/#/packs)统一展示功能与外观包，
-提供原始文件、加载声明和检查范围。设计资料不再进入网站与新供货导出。
-
-面向官方 DeepSeek Harness 客户端的安装管理插件在
-[Mojobox Installer 独立仓库](https://github.com/lanyun077/Mojobox-Installer)维护。
-本仓负责网站、目录与整合包内容，安装器负责设置入口、选择安装、更新核对、失败项重试与诊断，
-官方宿主负责依赖解析和加载。安装器目前为开发预览，已验证目标为 Windows x64 官版 `0.2.2-rc.1`，
-尚未完成普通用户分发验收；具体支持范围以其 README 为准。
-安装流程问题请到[安装器 Issue](https://github.com/lanyun077/Mojobox-Installer/issues)，
-资源收录、来源与包内容问题仍在本仓反馈。安装器不表示由 DeepSeek 官方发布或背书。
-
-已有 EAC 消费方沿用 [`supply.eac/v1` 导出与交付说明](docs/eac-downstream-usage-guide.md)，
-导出范围受 [`distribution.json`](distribution.json) 与供货选择政策约束。
-这是与通用插件索引并行的批次契约，已交付联调草稿；**尚未提供正式在线批次与 receipt**。
-不把网页 Catalog 当成通用稳定 API，不把新插件直接塞入缺少冲突/限制字段的旧供货格式。
+[插件接口文档](docs/plugin-source-api-v1.md)提供字段、Schema 和下载校验说明；整合包通过 `metadata.category` 区分类型。
 
 ## 开发与验证
 
-要求 Node.js 22.12 或更新的受支持版本。
+使用 Node.js 22.12 或更新的受支持版本：
 
 ```bash
 git clone https://github.com/lanyun077/EAC-mojobox.git
 cd EAC-mojobox
 npm ci
-npm test
 npm run dev
 ```
 
-`dev` 根据收录事实源生成目录并启动网站；不安装或执行目录里的插件。
+构建、测试、仓库结构和部署见[开发文档](docs/development.md)，提交代码见[贡献指南](CONTRIBUTING.md)。
 
-提交前的基本验证：
+## 反馈与许可
 
-```bash
-npm test
-npm run build
-npm run verify:downloads
-git diff --check
-```
+资源纠错或来源失效请[提交 Issue](https://github.com/lanyun077/EAC-mojobox/issues)；安装问题请到[安装器仓库](https://github.com/lanyun077/Mojobox-Installer/issues)反馈。
 
-提交到分支后运行 `npm run check:submission -- origin/main` 检查已提交的增量。
-网站修改还须验证根路径与仓库子路径、桌面与窄屏。详细命令、演示目录与部署步骤见
-[贡献指南](CONTRIBUTING.md)和[部署文档](docs/deployment.md)。
-
-正式站使用 Cloudflare Workers 静态资产，GitHub Releases 分发整合包，Actions 每日采集下载快照并生成排行。
-网站无需登录，不部署服务器 API 或数据库；保留搜索、筛选、时间排序、标签相关性及 GitHub 投稿者署名。
-配置、统计口径和回退见[静态站发布说明](docs/static-cloud-release.md)，数据使用见[隐私说明](docs/privacy.md)。
-发布是否完成以 Actions 结果与正式站 `generated/release.json` 为准。
-
-| 目录 | 用途 |
-| --- | --- |
-| `catalog/`、`artifacts/` | 收录事实源、作者原始归档与历史资料 |
-| `schemas/`、`fixtures/`、`policies/` | 契约、正反例与收录/供货政策 |
-| `scripts/` | 静态核验、目录构建、供货导出与测试 |
-| `site/` | 网站源码 |
-| `docs/` | 规范、接入、维护和项目路线 |
-
-`site/public/generated/`、`dist/`、`dist-demo/`、`.cache/`、`node_modules/` 不提交。
-历史 Pack/Lock/Evidence 链路保留维护，新收录不套用旧协议。
-
-## 项目边界与进度
-
-基础收纳、检验、目录和下载已具备真实样本；社区提交流程与插件来源接口已实现。
-当前主要推进持续收录、来源更新、审核与下游接入。网站保持静态，通过 GitHub PR 接收资源，
-发布时采集投稿者和附件下载计数；不建设网站账号或在线提交后台。七日下载榜需实际积累基线。
-
-Mojobox 不维护上游插件，不实现桌面皮肤加载器，不在构建时运行资源，也不复制宿主的
-Profile 管理、依赖解析或安装回滚。有限安装支持复用下游已有接口，不能以收录结论代替运行证据。
-
-[项目定位与路线](docs/project-positioning-and-roadmap.md) · [架构边界](docs/architecture.md) ·
-[审核与 CI 门禁](docs/maintainer-checks.md) · [全部文档](docs/README.md)
-
-## 许可与反馈
-
-项目代码采用 [MIT](LICENSE)。第三方插件、皮肤和素材保留各自许可与署名，下载前请阅读对应说明。
-资源纠错、来源失效、撤回或项目建议请[开 Issue](https://github.com/lanyun077/EAC-mojobox/issues)。
+项目代码采用 [MIT](LICENSE)。第三方插件、整合包和素材遵循各自的许可与署名。网站数据使用见[隐私说明](docs/privacy.md)。

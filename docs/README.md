@@ -1,50 +1,12 @@
-# 文档索引
+# Mojobox 文档
 
-当前主线是收纳、静态检验、展示和原始下载。内容由作者维护，安装与运行由下游宿主或 loader
-负责。历史交接、旧计划和候选阻塞不作为当前执行规范。
-
-## 提交与使用
-
-- [README 角色入口](../README.md#从这里开始)：先了解项目，再选择浏览、投递、消费或开发。
-- [目录检索](catalog-search.md)：多关键词、组合筛选、相关性排序和可分享链接。
-- [官方分类与作者标签](catalog-tags.md)：整合包用途、外观主题、投稿标注与检索边界。
-- [外部作者提交与审核](community-submissions.md)：提交材料、标签、介绍、图片、PR 与审核合并。
-- [插件轻量收录](plugin-intake.md)：最小信息卡、兼容与冲突边界、原始下载、Skill 预留。
-- [插件来源接口 v1](plugin-source-api-v1.md)：当前插件索引、公开入口、摘要核验与下游接入。
-- [整合包文件结构与最小示例](author-pack-request.md)：理解 `.dshpack` 和 `pack.json`。
-- [收录规范](intake.md)：支持范围、字段、检验结论与下载构建。
-- [版本声明策略](intake-version-policy.md)：新提交门禁、精确历史例外、迁移和 Issue 回复草稿。
-- [贡献指南](../CONTRIBUTING.md)：开发环境、修改类型和最低验证。
-- [静态部署](deployment.md)：构建、下载校验和备用 GitHub Pages。
-- [GitHub＋Cloudflare 静态部署方案 V2](static-cloud-plan-v2.md)：Releases 下载、每日快照、排序与平台配置。
-- [静态站发布、统计与回退](static-cloud-release.md)：Workers 首发、统计口径、验证、回退及可选备份。
-- [隐私说明](privacy.md)：静态站、公开投稿信息及第三方服务的数据边界。
-
-## 维护与边界
-
-- [继续开发交接（2026-11-02）](development-handoff-20261102.md)：当前基线、已完成功能、已关闭备份 PR、任务入口与下一步建议。
-- [仓库恢复与地址迁移](repository-recovery-20261022.md)：恢复范围、新仓库与网站、下游切换及历史链接边界。
-- [审核与 CI 门禁](maintainer-checks.md)：PR 检查、分支保护、人工审核与 Pages 发布的职责。
-- [项目定位与路线](project-positioning-and-roadmap.md)：长期方向和上下游职责。
-- [EAC 供货导出器](eac-supply-export.md)：本地草稿、正式批次、历史与撤回，尚未部署；用户转述两轮草稿可以通过，不再要求逐批反馈。
-- [开发代理指南](agent-guide.md)：任务模板；执行约束以 [AGENTS.md](../AGENTS.md) 为准。
-- [架构与扩展边界](architecture.md)：职责边界，历史 Pack/Lock 设计已明确标记。
-- [宿主接入核对](host-adapter.md)、[legacy Pack/Lock 格式](pack-format.md)：维护已有历史实现，不扩展为当前收录协议。
-- [框架验收记录](framework-acceptance.md)：固定日期的框架验证，不代替今天重新运行测试。
-- [插件目录与来源接口验收](plugin-catalog-acceptance-20261010.md)：本轮构建、HTTP 与桌面/窄屏检查，以及已知限制。
-
-## 来源与选型
-
-- [目录精简（2026-11-13）](catalog-cleanup-20261113.md)：停维护 Navbar、滞后外观包与重复组合的去留、来源和版本变化。
-- [官版内容更新（2026-11-11）](catalog-update-20261111.md)：插件与整合包新版本、官版 `0.2.2-rc.1` 静态核验、升级条件与保留项。
-- [上游更新核对（2026-11-03）](upstream-update-review-20261103.md)：官方 RC5、现有组件候选版本、版本阻断与更新条件；尚未实施资源升级。
-- [首批收录](ecosystem-curation.md)、[插件常客与候选](plugin-shortlist.md)。
-- [EAC/AIO 候选解析](eac-plugin-suite-analysis.md)、[减重与分类](suite-curation.md)。
-- [皮肤来源历史复核](skin-pack-source-review.md)、[Power Toolbox 首版审查](power-toolbox-review.md)。
-- [END-EAC 候选核验](candidate-audit-end-eac-v1.1.0.md)：保留固定版本的来源判断，不自动提升为正式内容。
-- [自制包事实源与打包](../authoring/README.md)：区分我们维护的组合与第三方原始整合包。
-
-## 历史资料
-
-已结束阶段的交接和旧计划统一放在 [archive/](archive/README.md)。保留原始背景和验证记录，
-不再作为新会话启动或当前验收入口。没有删除生产 Evidence、原始归档、来源快照或上游协议。
+| 你想做什么 | 文档 |
+| --- | --- |
+| 查找和下载资源 | [快速使用](../README.md#从这里开始) · [搜索与筛选](catalog-search.md) |
+| 在客户端安装整合包 | [Mojobox Installer](https://github.com/lanyun077/Mojobox-Installer#安装) |
+| 投稿插件 | [插件信息卡](plugin-intake.md) |
+| 制作和投稿整合包 | [文件结构与示例](author-pack-request.md) · [收录规范](intake.md) |
+| 了解投稿流程 | [提交与审核](community-submissions.md) · [分类与标签](catalog-tags.md) |
+| 接入目录数据 | [插件来源接口](plugin-source-api-v1.md) |
+| 修改代码和部署网站 | [开发文档](development.md) · [贡献指南](../CONTRIBUTING.md) |
+| 了解数据使用 | [隐私说明](privacy.md) |
