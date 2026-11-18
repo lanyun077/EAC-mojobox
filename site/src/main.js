@@ -124,7 +124,7 @@ function rankingNotice() {
 
 const categoryLabels = {
   function: '功能包',
-  appearance: '外观整合包',
+  appearance: '外观包',
   workflow: '工作流包'
 }
 
@@ -140,6 +140,13 @@ function contentTags(pack) {
 
 function selectedTags() {
   return state.tag === 'all' ? [] : [...new Set(state.tag.split(',').filter(Boolean))]
+}
+
+function collectionItems(tab = state.tab) {
+  if (tab === 'plugins') return catalog.plugins
+  if (tab === 'packs') return catalog.packs.filter(pack => pack.metadata.category !== 'appearance')
+  if (tab === 'skins') return catalog.packs.filter(pack => pack.metadata.category === 'appearance')
+  return []
 }
 
 function classificationDetail(pack) {
@@ -287,7 +294,7 @@ function filterIntakeItems(items) {
 
 function catalogHash(tab = state.tab, id = state.selected) {
   const params = new URLSearchParams()
-  if (catalog.mode === 'intake' && ['plugins', 'packs'].includes(tab) && tab === state.tab) {
+  if (catalog.mode === 'intake' && ['plugins', 'packs', 'skins'].includes(tab) && tab === state.tab) {
     for (const [key, fallback] of Object.entries(searchDefaults)) {
       if (state[key] !== fallback) params.set(key === 'query' ? 'q' : key, state[key])
     }
@@ -297,7 +304,7 @@ function catalogHash(tab = state.tab, id = state.selected) {
 
 function renderSearchTools(items) {
   const select = (id, label, value, options) => `<label class="catalog-filter"><span>${label}</span><select id="${id}">${options.map(([key, text]) => `<option value="${escapeHtml(key)}" ${value === key ? 'selected' : ''}>${escapeHtml(text)}</option>`).join('')}</select></label>`
-  const group = state.tab === 'packs' ? Object.values(catalog.tagGroups || {}).flat() : []
+  const group = catalog.tagGroups?.[{ packs: 'packs', skins: 'skins' }[state.tab]] || []
   const chosen = selectedTags()
   const tags = group.map(tag => ({ ...tag, count: items.filter(item => contentTags(item).includes(tag.id)).length }))
     .filter(tag => tag.count || chosen.includes(tag.id))
@@ -305,11 +312,11 @@ function renderSearchTools(items) {
   if (state.tab !== 'plugins' && (unclassified || chosen.includes('unclassified'))) tags.push({ id: 'unclassified', label: '未分类', description: '尚未标注官方分类。', count: unclassified })
   const categories = Object.entries(categoryLabels).filter(([key]) => items.some(item => item.metadata?.category === key) || state.category === key)
   return `<section class="catalog-toolbar" aria-label="目录搜索和筛选">
-    <label class="search-field"><i data-lucide="search"></i><input id="catalog-search" type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、作者、用途或组件" aria-label="搜索${{ plugins: '插件', packs: '整合包' }[state.tab]}" /></label>
+    <label class="search-field"><i data-lucide="search"></i><input id="catalog-search" type="search" value="${escapeHtml(state.query)}" placeholder="搜索名称、作者、用途或组件" aria-label="搜索${{ plugins: '插件', packs: '功能包', skins: '外观包' }[state.tab]}" /></label>
     <div class="catalog-filter-row">
       ${state.tab === 'packs' && categories.length > 1 ? select('category-filter', '包类型', state.category, [['all', '全部类型'], ...categories]) : ''}
       ${state.tab === 'plugins' ? select('availability', '下载状态', state.availability, [['all', '全部插件'], ['published', '有核验归档'], ['unpublished', '仅来源收录']]) : ''}
-      ${select('sort-filter', '排序', state.sort, [['relevance', '相关性'], ...(state.tab === 'packs' ? [['tag-relevance', '标签相关性']] : []), ['newest', '最近收录'], ['updated', '最近更新'], ...(state.tab === 'packs' ? [['hot7d', '近七日下载'], ['hotall', '累计下载']] : []), ['name', '名称']])}
+      ${select('sort-filter', '排序', state.sort, [['relevance', '相关性'], ...(['packs', 'skins'].includes(state.tab) ? [['tag-relevance', '标签相关性']] : []), ['newest', '最近收录'], ['updated', '最近更新'], ...(['packs', 'skins'].includes(state.tab) ? [['hot7d', '近七日下载'], ['hotall', '累计下载']] : []), ['name', '名称']])}
       <button class="command" type="button" data-reset-search>清空条件</button>
     </div>
     ${tags.length ? `<div class="official-tag-group" role="group" aria-label="官方分类"><span class="official-tag-heading">官方分类 · 可多选</span><div class="official-tag-options">${tags.map(tag => `<label class="official-tag-choice" title="${escapeHtml(tag.description)}"><input id="tag-filter-${escapeHtml(tag.id)}" type="checkbox" data-tag-filter="${escapeHtml(tag.id)}" ${chosen.includes(tag.id) ? 'checked' : ''} /><span>${escapeHtml(tag.label)}</span><small>${tag.count}</small></label>`).join('')}</div></div>` : ''}
@@ -320,7 +327,7 @@ function renderSearchTools(items) {
 function filteredItems() {
   const query = state.query.trim().toLowerCase()
   if (catalog.mode === 'intake') {
-    return filterIntakeItems({ plugins: catalog.plugins, packs: catalog.packs }[state.tab] || [])
+    return filterIntakeItems(collectionItems())
   }
   if (state.tab === 'plugins') {
     return catalog.plugins.filter(plugin => {
@@ -607,26 +614,26 @@ function contributePage() {
 function sourcePage() {
   return `<main class="catalog-page guide-page"><section class="catalog-intro"><div><span class="eyebrow">DOWNSTREAM SOURCE</span><h1>接入 Mojobox 来源</h1><p>为市场、宿主和加载器读取来源事实。插件入口是一份静态 JSON，无需后端端口或登录；安装与运行仍由下游决定。</p></div></section>
     <section class="guide-panel"><h2>插件来源接口 v1</h2><div class="related-links"><a class="related-link" href="${assetUrl('generated/api/v1/plugins.json')}">插件索引 · plugins.json <i data-lucide="file-json"></i></a><a class="related-link" href="${assetUrl('generated/api/v1/schemas/plugin-index.schema.json')}">索引 Schema</a><a class="related-link" href="${assetUrl('generated/api/v1/schemas/plugin-listing.schema.json')}">信息卡 Schema</a></div><ol><li>配置实际 HTTPS 索引 URL，校验 Schema、schemaVersion: plugins.mojobox.dev/v1、sourceId: dsh-eac.mojobox 与 demo: false。</li><li>完整保留 listing、兼容、冲突和 limitations。conflicts: null 是未知，[] 是未报告；runtime: not-tested、dependencies: not-resolved 不可变成“可安装”。</li><li>以实际索引 URL 解析所有相对路径：<code>new URL(file.url, indexUrl)</code>。download 与 report 为 null 时不推测下载地址。</li><li>限长读取下载和报告，核验实际响应字节的 size 与 SHA-256，再按宿主规则审核平台、依赖、权限和安装资格。</li><li>使用一次完整合法快照更新目录；网络、Schema 或摘要失败保留上一份成功快照。revision 是内容指纹，不是发布顺序或签名。</li></ol><a class="related-link" href="${repositoryUrl}/blob/main/docs/plugin-source-api-v1.md" target="_blank" rel="noreferrer">完整消费契约与示例 <i data-lucide="external-link"></i></a></section>
-    <section class="guide-panel"><h2>整合包目录</h2><p>网页目录与插件接口由同一收录事实源生成，但格式不同。功能与外观整合包统一展示，保留各自的归档、来源、依赖与加载声明。</p><div class="guide-tabs"><a class="command" href="#/packs">整合包目录</a><a class="command" href="${assetUrl('generated/catalog.json')}">网站 Catalog JSON</a></div><h3>EAC 供货：独立草稿导出</h3><p>既有 supply.eac/v1 是独立批次草稿与导出流程，不是本页提供的线上接口。新插件不会自动加入旧批次，现有导入器也不会自动读取插件来源 v1。需要下游实现一次读取或转换，并保留完整限制。</p><a class="related-link" href="${repositoryUrl}/blob/main/docs/plugin-source-api-v1.md#与现有-eac-供货的关系" target="_blank" rel="noreferrer">供货边界与接入说明</a></section></main>`
+    <section class="guide-panel"><h2>整合包目录</h2><p>网页目录与插件接口由同一收录事实源生成，但格式不同。功能包与外观包分别展示，保留各自的归档、来源、依赖与加载声明；下游从同一份 Catalog 的 metadata.category 区分两类。</p><div class="guide-tabs"><a class="command" href="#/packs">功能包目录</a><a class="command" href="#/skins">外观包目录</a><a class="command" href="${assetUrl('generated/catalog.json')}">网站 Catalog JSON</a></div><h3>EAC 供货：独立草稿导出</h3><p>既有 supply.eac/v1 是独立批次草稿与导出流程，不是本页提供的线上接口。新插件不会自动加入旧批次，现有导入器也不会自动读取插件来源 v1。需要下游实现一次读取或转换，并保留完整限制。</p><a class="related-link" href="${repositoryUrl}/blob/main/docs/plugin-source-api-v1.md#与现有-eac-供货的关系" target="_blank" rel="noreferrer">供货边界与接入说明</a></section></main>`
 }
 
 function renderIntake() {
   const focusedId = document.activeElement?.dataset?.select
   const focusedControl = document.activeElement?.id
   const packs = catalog.packs
-  if (!['home', 'packs', 'plugins', 'skills', 'contribute', 'source'].includes(state.tab)) {
+  if (!['home', 'packs', 'skins', 'plugins', 'skills', 'contribute', 'source'].includes(state.tab)) {
     state.tab = state.selected ? 'packs' : 'home'
   }
   const items = state.tab === 'home' ? [] : filteredItems()
-  const selected = state.tab === 'plugins' ? catalog.plugins.find(plugin => plugin.id === state.selected) : state.tab === 'skills' ? undefined : packs.find(pack => pack.metadata.id === state.selected)
+  const selected = collectionItems().find(item => (item.metadata?.id || item.id) === state.selected)
   const totalItems = packs.length + catalog.plugins.length
   const isDetail = Boolean(selected)
   const isMissingDetail = Boolean(state.selected) && !selected
-  const currentLabel = { packs: '整合包', plugins: '插件', skills: 'Skill' }[state.tab] || '整合包'
-  const collectionSize = { packs: packs.length, plugins: catalog.plugins.length, skills: 0 }[state.tab]
+  const currentLabel = { packs: '功能包', skins: '外观包', plugins: '插件', skills: 'Skill' }[state.tab] || '整合包'
+  const collectionSize = collectionItems().length
   const itemDetail = item => state.tab === 'plugins' ? pluginDetail(item) : intakeDetail(item)
   const itemRow = item => state.tab === 'plugins' ? pluginRow(item) : packRow(item)
-  const collectionDescription = { packs: '经过结构检查的功能与外观组合，以及开发者原始归档。', plugins: '独立插件的精确版本、发行来源、兼容声明与已知限制。', skills: '暂无收录。宿主格式与供货约定尚待确认。' }[state.tab]
+  const collectionDescription = { packs: '功能增强与工作流组合，以及开发者原始归档。', skins: '皮肤与主题组合，包含预览、加载声明和原始归档。', plugins: '独立插件的精确版本、发行来源、兼容声明与已知限制。', skills: '暂无收录。宿主格式与供货约定尚待确认。' }[state.tab]
   const emptyState = (hasCatalog, title) => hasCatalog
     ? '<i data-lucide="search"></i><strong>没有匹配项</strong><span>调整搜索条件，或清空搜索后查看全部目录。</span>'
     : `<div class="empty-illustration"><i data-lucide="boxes"></i><span></span></div><strong>暂无正式收录内容</strong><span>${title}通过收录检查后会展示在这里。</span><a class="empty-cta" href="${repositoryUrl}/blob/main/docs/${state.tab === 'plugins' ? 'plugin-intake' : 'intake'}.md" target="_blank" rel="noreferrer">查看收录规范 <i data-lucide="arrow-up-right"></i></a>`
@@ -640,21 +647,21 @@ function renderIntake() {
   app.innerHTML = `
     <header class="topbar intake-topbar">
       <a class="brand brand-link" href="#/home" data-tab="home" aria-label="返回 Mojobox 首页"><span class="brand-mark"><span></span><span></span><span></span></span><span><strong>Mojobox</strong><small>DSH 生态目录</small></span></a>
-      <nav class="topbar-nav intake-nav" aria-label="站点导航">${[['home', '首页'], ['plugins', '插件'], ['packs', '整合包'], ['skills', 'Skill'], ['source', '下游接入']].map(([tab, label]) => `<a class="topbar-link ${state.tab === tab ? 'is-active' : ''}" href="#/${tab}" data-tab="${tab}" ${state.tab === tab ? 'aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
+      <nav class="topbar-nav intake-nav" aria-label="站点导航">${[['home', '首页'], ['plugins', '插件'], ['packs', '功能包'], ['skins', '外观包'], ['skills', 'Skill'], ['source', '下游接入']].map(([tab, label]) => `<a class="topbar-link ${state.tab === tab ? 'is-active' : ''}" href="#/${tab}" data-tab="${tab}" ${state.tab === tab ? 'aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
       <div class="topbar-tools"><a class="topbar-link submit-link" href="#/contribute" data-tab="contribute" ${state.tab === 'contribute' ? 'aria-current="page"' : ''}>提交指南</a><a class="repo-link" href="${repositoryUrl}" target="_blank" rel="noreferrer"><i data-lucide="code-2"></i><span>GitHub</span></a></div>
     </header>
     ${catalog.demo ? '<p class="notice warning" role="status">测试演示：以下样本仅验证收录与下载流程，不是真实功能包，请勿用于安装。</p>' : ''}
     ${state.tab === 'contribute' ? contributePage() : state.tab === 'source' ? sourcePage() : state.tab === 'home' ? `
       <main class="home-page">
-        <section class="hero home-hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow">DSH · 开发者生态目录</span><h1 id="hero-title">把好用的工具，<br>装进一个盒子。</h1><p>发现 DSH 的插件与整合包。Mojobox 负责收纳、核对来源和提供原始下载，内容由上游开发者维护。</p><div class="hero-actions"><a class="hero-link" href="#/plugins" data-tab="plugins">浏览插件 <i data-lucide="arrow-up-right"></i></a><a class="hero-link" href="#/packs" data-tab="packs">浏览整合包 <i data-lucide="arrow-up-right"></i></a><span class="hero-note"><i data-lucide="package-check"></i>原始文件，每一份都有摘要</span></div></div><div class="hero-art" aria-hidden="true"><span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span><span class="hero-cube"><i data-lucide="boxes"></i></span></div></section>
-        <section class="home-summary"><div class="metric"><strong>${totalItems}</strong><span>${catalog.demo ? '演示样本' : '正式收录'}</span></div><div class="metric"><strong>${catalog.plugins.length}</strong><span>插件</span></div><div class="metric"><strong>${packs.length}</strong><span>整合包</span></div><span class="summary-note">收纳 · 检验 · 下载</span></section>
+        <section class="hero home-hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow">DSH · 开发者生态目录</span><h1 id="hero-title">把好用的工具，<br>装进一个盒子。</h1><p>发现 DSH 的插件与整合包。Mojobox 负责收纳、核对来源和提供原始下载，内容由上游开发者维护。</p><div class="hero-actions"><a class="hero-link" href="#/plugins" data-tab="plugins">浏览插件 <i data-lucide="arrow-up-right"></i></a><a class="hero-link" href="#/packs" data-tab="packs">浏览功能包 <i data-lucide="arrow-up-right"></i></a><span class="hero-note"><i data-lucide="package-check"></i>原始文件，每一份都有摘要</span></div></div><div class="hero-art" aria-hidden="true"><span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span><span class="hero-cube"><i data-lucide="boxes"></i></span></div></section>
+        <section class="home-summary"><div class="metric"><strong>${totalItems}</strong><span>${catalog.demo ? '演示样本' : '正式收录'}</span></div><div class="metric"><strong>${catalog.plugins.length}</strong><span>插件</span></div><div class="metric"><strong>${collectionItems('packs').length}</strong><span>功能包</span></div><div class="metric"><strong>${collectionItems('skins').length}</strong><span>外观包</span></div><span class="summary-note">收纳 · 检验 · 下载</span></section>
         <section class="home-content participation"><div class="section-heading"><div><span class="eyebrow">GET INVOLVED</span><h2>从这里参与</h2></div><p>作者提供内容，Mojobox 整理来源，下游负责安装与运行。</p></div><div class="role-grid">${[['#/plugins', '浏览资源', '找插件与整合包，核对来源与使用边界。'], ['#/contribute', '上游提交', '按类型准备最少材料，通过 Fork + PR 申请收录。'], ['#/source', '下游接入', '读取静态索引、Schema 与原始文件摘要。'], [`${repositoryUrl}/blob/main/README.md#开发与验证`, '项目开发', '在本地运行目录、校验器与静态网站。']].map(([url, title, description]) => `<a class="role-card" href="${url}"><strong>${title} <i data-lucide="arrow-up-right"></i></strong><span>${description}</span></a>`).join('')}</div></section>
-        <section class="home-content"><div class="section-heading"><div><span class="eyebrow">EXPLORE</span><h2>资源目录</h2></div></div><div class="entry-grid">${entryCard('plugins', 'box', '插件', '精确发行、兼容声明与使用边界。', catalog.plugins.length, 'entry-plugin')}${entryCard('packs', 'boxes', '整合包', '开发者提交的功能与外观插件组合。', packs.length, 'entry-pack')}${entryCard('skills', 'file-text', 'Skill', '暂无收录', 0, 'entry-skill')}</div></section>
+        <section class="home-content"><div class="section-heading"><div><span class="eyebrow">EXPLORE</span><h2>资源目录</h2></div></div><div class="entry-grid">${entryCard('plugins', 'box', '插件', '精确发行、兼容声明与使用边界。', catalog.plugins.length, 'entry-plugin')}${entryCard('packs', 'boxes', '功能包', '功能增强与工作流插件组合。', collectionItems('packs').length, 'entry-pack')}${entryCard('skins', 'box', '外观包', '皮肤、主题与界面外观组合。', collectionItems('skins').length, 'entry-pack')}${entryCard('skills', 'file-text', 'Skill', '暂无收录', 0, 'entry-skill')}</div></section>
         <section class="principles"><div><span class="eyebrow">MOJOBOX ROLE</span><h2>让上游内容更容易被找到</h2></div><div class="principle-list"><div><i data-lucide="archive"></i><span><strong>收纳</strong><small>保存开发者提供的原始归档和资料。</small></span></div><div><i data-lucide="shield-check"></i><span><strong>检验</strong><small>检查结构、摘要和来源记录，不替作者维护内容。</small></span></div><div><i data-lucide="download"></i><span><strong>供给</strong><small>为宿主、加载器和下游工具提供可靠下载来源。</small></span></div></div></section>
       </main>` : `
       <main class="catalog-page ${isDetail || isMissingDetail ? 'is-detail' : ''}" aria-label="${currentLabel}目录">
-        ${isDetail || isMissingDetail ? `<section class="detail-page"><a class="back-link" href="${escapeHtml(catalogHash(state.tab, null))}" data-tab="${state.tab}"><i data-lucide="arrow-up-right"></i>返回${currentLabel}列表</a><div class="detail-page-body" id="detail">${isDetail ? itemDetail(selected) : `<div class="detail-empty"><i data-lucide="box"></i><h2>未找到此${currentLabel}</h2><p>${state.tab === 'packs' ? '未找到此整合包。' : ''}当前暂无正式收录的此条目，请返回列表选择其他项目。</p></div>`}</div></section>` : `<section class="catalog-intro"><div><span class="eyebrow">${{ packs: 'FEATURE COLLECTION', plugins: 'PLUGIN COLLECTION', skills: 'SKILL COLLECTION' }[state.tab]}</span><h1>${currentLabel}</h1><p>${collectionDescription}</p></div><div class="catalog-count" role="status" aria-live="polite"><strong>${items.length}</strong><span>当前显示 / 共 ${collectionSize} 项</span></div></section>
-        ${state.tab !== 'skills' ? `<nav class="guide-tabs" aria-label="本类提交规范">${[state.tab === 'plugins' ? 'plugin' : 'pack'].map(type => `<a class="command" href="#/contribute/${type}">提交${submissionTypes[type]}</a>`).join('')}</nav>${renderSearchTools({ plugins: catalog.plugins, packs }[state.tab] || [])}` : ''}
+        ${isDetail || isMissingDetail ? `<section class="detail-page"><a class="back-link" href="${escapeHtml(catalogHash(state.tab, null))}" data-tab="${state.tab}"><i data-lucide="arrow-up-right"></i>返回${currentLabel}列表</a><div class="detail-page-body" id="detail">${isDetail ? itemDetail(selected) : `<div class="detail-empty"><i data-lucide="box"></i><h2>未找到此${currentLabel}</h2><p>${['packs', 'skins'].includes(state.tab) ? '未找到此整合包。' : ''}当前暂无正式收录的此条目，请返回列表选择其他项目。</p></div>`}</div></section>` : `<section class="catalog-intro"><div><span class="eyebrow">${{ packs: 'FEATURE COLLECTION', skins: 'APPEARANCE COLLECTION', plugins: 'PLUGIN COLLECTION', skills: 'SKILL COLLECTION' }[state.tab]}</span><h1>${currentLabel}</h1><p>${collectionDescription}</p></div><div class="catalog-count" role="status" aria-live="polite"><strong>${items.length}</strong><span>当前显示 / 共 ${collectionSize} 项</span></div></section>
+        ${state.tab !== 'skills' ? `<nav class="guide-tabs" aria-label="本类提交规范">${[state.tab === 'plugins' ? 'plugin' : 'pack'].map(type => `<a class="command" href="#/contribute/${type}">提交${submissionTypes[type]}</a>`).join('')}</nav>${renderSearchTools(collectionItems())}` : ''}
         <div class="catalog-grid ${items.length ? '' : 'is-empty'}">${items.length ? items.map(itemRow).join('') : `<div class="no-results">${state.tab === 'skills' ? '<i data-lucide="file-text"></i><strong>暂无 Skill 收录</strong><span>暂不提供 Skill 下载或安装。</span>' : emptyState(collectionSize, currentLabel)}</div>`}</div>`}
       </main>`}
     <footer class="site-footer"><span>Mojobox · 为 DSH 生态收纳好工具 · <a href="${repositoryUrl}/blob/main/docs/privacy.md" target="_blank" rel="noreferrer">隐私说明</a></span><span>由开发者维护内容 · 安装与运行交给宿主</span></footer>`
@@ -803,17 +810,22 @@ function applyHash() {
   const path = separator === -1 ? location.hash : location.hash.slice(0, separator)
   const search = separator === -1 ? '' : location.hash.slice(separator + 1)
   const [, tab, encodedId] = path.match(/^#\/(home|plugins|packs|skins|skills|contribute|source)(?:\/(.+))?$/) || []
-  if (tab) state.tab = tab === 'skins' ? 'packs' : tab
+  if (tab) state.tab = tab
   try { state.selected = encodedId ? decodeURIComponent(encodedId) : null }
   catch { state.selected = null }
   if (catalog.mode !== 'intake') return
   Object.assign(state, searchDefaults)
-  if (!['plugins', 'packs'].includes(state.tab)) return
+  if (!['plugins', 'packs', 'skins'].includes(state.tab)) return
   const params = new URLSearchParams(search)
+  if (['packs', 'skins'].includes(state.tab)) {
+    const selected = catalog.packs.find(pack => pack.metadata.id === state.selected)
+    if (selected) state.tab = selected.metadata.category === 'appearance' ? 'skins' : 'packs'
+    else if (state.tab === 'packs' && params.get('category') === 'appearance') state.tab = 'skins'
+  }
   state.query = params.get('q') || ''
-  if (sorts.includes(params.get('sort')) && (state.tab === 'packs' || !['tag-relevance', 'hot7d', 'hotall'].includes(params.get('sort')))) state.sort = params.get('sort')
+  if (sorts.includes(params.get('sort')) && (state.tab !== 'plugins' || !['tag-relevance', 'hot7d', 'hotall'].includes(params.get('sort')))) state.sort = params.get('sort')
   if (state.tab === 'plugins' && ['published', 'unpublished'].includes(params.get('availability'))) state.availability = params.get('availability')
-  if (state.tab === 'packs' && Object.hasOwn(categoryLabels, params.get('category'))) state.category = params.get('category')
+  if (state.tab === 'packs' && ['function', 'workflow'].includes(params.get('category'))) state.category = params.get('category')
   if (state.tab !== 'plugins') state.tag = params.get('tag') || 'all'
 }
 

@@ -6,9 +6,10 @@ Mojobox 用少量、宽泛的官方标签组织目录，用作者标签补充特
 ## 1. 先选资源类型，再选标签
 
 功能与工作流整合包使用「用途」组；外观整合包使用「主题」组。
-两组在统一整合包页面合并展示为「官方分类」；`skins` 只保留为词表内部组名，不是独立资源目录。
+网站与安装器市场并列提供「功能包」与「外观包」顶级分类：前者包含 `function`、`workflow`，后者只包含 `appearance`。
+网站 `#/packs` 使用 `packs` 用途词表，`#/skins` 使用 `skins` 主题词表，两类分别计数、筛选和排序。
 现有收录记录的 `category: function / workflow / appearance` 仍表示资源类型，不改成下列标签。
-独立插件这次仍沿用现有检索，不向严格校验的插件信息卡或下游 v1 接口新增分类字段；Skill 不收录。
+独立插件使用插件目录检索；本节词表适用于整合包。
 
 官方词表的事实源是 [`policies/catalog-tags.json`](../policies/catalog-tags.json)，
 由 [`schemas/catalog-tag-groups.schema.json`](../schemas/catalog-tag-groups.schema.json) 校验。
