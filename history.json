@@ -662,6 +662,83 @@
           "count": 7
         }
       ]
+    },
+    {
+      "at": "2026-11-19T12:10:47.371Z",
+      "counts": [
+        {
+          "asset_id": 751583390,
+          "count": 9
+        },
+        {
+          "asset_id": 751583484,
+          "count": 9
+        },
+        {
+          "asset_id": 751583557,
+          "count": 9
+        },
+        {
+          "asset_id": 751583656,
+          "count": 9
+        },
+        {
+          "asset_id": 751583744,
+          "count": 9
+        },
+        {
+          "asset_id": 751583846,
+          "count": 9
+        },
+        {
+          "asset_id": 751583993,
+          "count": 9
+        },
+        {
+          "asset_id": 751584118,
+          "count": 9
+        },
+        {
+          "asset_id": 751584220,
+          "count": 9
+        },
+        {
+          "asset_id": 751584344,
+          "count": 11
+        },
+        {
+          "asset_id": 751584440,
+          "count": 9
+        },
+        {
+          "asset_id": 751584553,
+          "count": 9
+        },
+        {
+          "asset_id": 751584709,
+          "count": 9
+        },
+        {
+          "asset_id": 751584805,
+          "count": 9
+        },
+        {
+          "asset_id": 751585030,
+          "count": 9
+        },
+        {
+          "asset_id": 751585141,
+          "count": 8
+        },
+        {
+          "asset_id": 751585296,
+          "count": 8
+        },
+        {
+          "asset_id": 751585390,
+          "count": 8
+        }
+      ]
     }
   ]
 }
