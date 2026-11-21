@@ -2,22 +2,22 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.skin-whale-girl",
   "name": "鲸鱼娘皮肤系列",
-  "version": "0.2.0",
-  "description": "鲸鱼娘系列管理器、深海女仆工坊和虎鲸链路的原版插件组合。由原版管理器选择皮肤；不与 EAC 公约化同名皮肤混装。代码与美术许可分开。",
+  "version": "0.3.0",
+  "description": "包含鲸鱼娘皮肤管理器、深海女仆工坊和虎鲸链路两套皮肤。支持在设置页切换皮肤，并按皮肤提供的选项调整立绘、颜色、显示时段与界面装饰。",
   "author": "DSH-EAC",
   "license": "MIT",
   "plugins": [
     {
       "ref": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
-      "version": "0.1.9"
+      "version": "0.1.10"
     },
     {
       "ref": "@smalltailqwq/dsh-client-ui-skin-maid-atelier",
-      "version": "0.1.10"
+      "version": "0.1.11"
     },
     {
       "ref": "@smalltailqwq/dsh-client-ui-skin-orca-link",
-      "version": "0.1.10"
+      "version": "0.1.11"
     }
   ],
   "conflicts": [
@@ -26,8 +26,8 @@
     "@dsh-external/dsh-client-ui-skin-deep-whale-day-night"
   ],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。",
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   }
 }

@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.mobile-tools",
-  "version": "0.2.1",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "3c55b6356fee4f9546e747f7219461d5c02f90931f3c22853a9b180d8cf5537f"
+  "sha256": "49bddd5a8f7459a2a17bafea1470dfb7aedc8dd35c4cd5a0b0d0ea48780334b4",
+  "introduction": "包含 Meow Smooth、会话管理和快照恢复。提供手机端布局、输入交互与通知设置，支持整理会话、维护标签与备注、保存配置快照，适合在移动浏览器中持续处理对话。\n\n包含组件：Meow Smooth 移动体验 0.8.1、Session Manager 会话管理 0.7.11、Undo Savepoint 快照恢复 0.5.1。"
 }

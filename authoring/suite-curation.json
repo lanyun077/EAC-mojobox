@@ -1,23 +1,25 @@
 {
-  "reviewedOn": "2026-11-13",
+  "reviewedOn": "2026-11-21",
   "source": "../candidates/integration-suites/dsh-plugin-suite-0.1.7/source.json",
-  "targetDsh": "0.2.2-rc.1",
-  "scope": "Selected versions and target retain the 2026-11-11 artifact review. On 2026-11-13, exclude archived Navbar and consolidate the duplicate workbench. Maintenance and version observations: docs/catalog-cleanup-20261113.md. No installation or runtime evidence.",
+  "targetDsh": "0.2.2-rc.5",
+  "scope": "Selected versions, six functional scenarios and target renewed on 2026-11-21. Retain the 2026-11-13 exclusions of archived Navbar and retired appearance entries. Static artifact and compatibility review; no installation or runtime evidence.",
   "sources": "curation-sources.json",
   "packs": [
-    "dev.dsh-eac.essentials",
-    "dev.dsh-eac.suite-lite",
-    "dev.dsh-eac.session-tools",
-    "dev.dsh-eac.development",
-    "dev.dsh-eac.prompt-memory",
-    "dev.dsh-eac.mobile-tools",
     "dev.dsh-eac.conversation-migration",
-    "dev.dsh-eac.project-memory-base",
-    "dev.dsh-eac.agent-team-base",
-    "dev.dsh-eac.web-research-base",
+    "dev.dsh-eac.mobile-tools",
     "dev.dsh-eac.office-base",
-    "dev.dsh-eac.vision-base",
-    "dev.dsh-eac.power-toolbox"
+    "dev.dsh-eac.power-toolbox",
+    "dev.dsh-eac.prompt-memory",
+    "dev.dsh-eac.suite-lite"
+  ],
+  "retiredPacks": [
+    {"id":"dev.dsh-eac.agent-team-base","version":"0.3.2","replacement":"dev.dsh-eac.power-toolbox"},
+    {"id":"dev.dsh-eac.development","version":"0.2.1","replacement":"dev.dsh-eac.suite-lite"},
+    {"id":"dev.dsh-eac.essentials","version":"0.2.0","replacement":"dev.dsh-eac.suite-lite"},
+    {"id":"dev.dsh-eac.project-memory-base","version":"0.3.1","replacement":"dev.dsh-eac.power-toolbox"},
+    {"id":"dev.dsh-eac.session-tools","version":"0.2.1","replacement":"dev.dsh-eac.suite-lite"},
+    {"id":"dev.dsh-eac.vision-base","version":"0.3.1","replacement":"dev.dsh-eac.power-toolbox"},
+    {"id":"dev.dsh-eac.web-research-base","version":"0.3.1","replacement":"dev.dsh-eac.power-toolbox"}
   ],
   "exclusiveGroups": [
     {
@@ -37,7 +39,7 @@
       "reason": "同一包只选一种交互可视化工具；功能重叠，不宣称已证实运行冲突。"
     },
     {
-      "refs": ["dsh-soul-md", "github:00080000/dsh-project-memory"],
+      "refs": ["dsh-soul-md", "@yolk_vat-y/dsh-project-memory"],
       "reason": "人设记忆与项目检索记忆分开组合；双重注入需另行设计，不宣称已证实运行冲突。"
     },
     {

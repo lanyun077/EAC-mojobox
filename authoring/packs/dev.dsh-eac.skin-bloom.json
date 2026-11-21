@@ -2,20 +2,20 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.skin-bloom",
   "name": "Bloom 中国风主题",
-  "version": "0.2.0",
-  "description": "10 套中国风命名配色、OKLCH 调色和明暗主题。轻量配色型外观基底；不把上游的对比度测试声明当成本仓库的验证结果。",
+  "version": "0.3.0",
+  "description": "提供十五套中国风莫兰迪配色、明暗主题与 OKLCH 调色，支持液态、磨砂和哑光三种玻璃材质，以及星空背景和主题联动动效，打造柔和清晰的对话工作区。",
   "author": "DSH-EAC",
   "license": "MIT",
   "plugins": [
     {
       "ref": "dsh-bloom-theme",
-      "version": "0.27.0"
+      "version": "0.28.0"
     }
   ],
   "conflicts": [],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。",
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   }
 }

@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.prompt-memory",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "fe0f1d6dc84c66994b50555ef2041c6db79280e14d627c6c0fa049ae23acd6c2"
+  "sha256": "9c2bd3cf037affe8963ec5fc4670a0f6613230772a191702a08f34b586afc3fa",
+  "introduction": "包含 Soul MD、上下文面板和快照恢复。支持管理人设卡、维护常驻文件记忆、查看上下文占用，并保存和恢复配置快照，适合持续对话与个性化助手。\n\n包含组件：Soul MD 人设与记忆 0.12.5、Context 上下文面板 0.87.0、Undo Savepoint 快照恢复 0.5.1。"
 }

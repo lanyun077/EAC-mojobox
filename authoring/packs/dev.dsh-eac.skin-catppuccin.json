@@ -2,20 +2,20 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.skin-catppuccin",
   "name": "Catppuccin 四色主题",
-  "version": "0.2.0",
-  "description": "Latte、Frappé、Macchiato、Mocha 四种主题与可选玻璃效果。引用 npm 稳定版 0.5.8；仓库 beta 的桌面和 0.2.0 声明不作为稳定版实测证据。",
+  "version": "0.3.0",
+  "description": "提供 Latte、Frappé、Macchiato、Mocha 四种 Catppuccin 配色与可切换的磨砂玻璃效果，统一调整对话区、侧栏和控件的视觉风格，适合长时间阅读与编程。",
   "author": "DSH-EAC",
   "license": "MIT",
   "plugins": [
     {
       "ref": "@nonamelego/dsh-catppuccin",
-      "version": "0.7.3"
+      "version": "0.7.5"
     }
   ],
   "conflicts": [],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。",
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   }
 }

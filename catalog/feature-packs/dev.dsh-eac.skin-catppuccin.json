@@ -1,17 +1,18 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.skin-catppuccin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "category": "appearance",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "1863fb20f30a4c5c2abd5b6bd43d3f39b9959575c431ca47e62c82bd58492188",
+  "sha256": "923e744483aff039a1a1ba7fd0e1f30bed7cd6c2973b9da50e4e008ecc6727f4",
   "appearance": {
     "kind": "theme",
     "previews": [
       "https://raw.githubusercontent.com/NoNameLeGo/dsh-catppuccin-theme/8a030735ae092d75d4349a72dca3aed462f77f12/assets/previews/combined.png"
     ],
-    "notes": "采用上游主题注册与独立插件入口，不声明 EAC loader 依赖。npm 稳定版与仓库 beta 分开记录；预览来自固定仓库提交。Mojobox 未复现作者兼容声明；主题 token 与玻璃样式叠加未验证。 预览沿用历史版本，仅示意外观，未代表本版实测。"
-  }
+    "notes": "四色主题与磨砂玻璃效果，支持主题切换。插件许可与署名见上游发行。"
+  },
+  "introduction": "提供 Latte、Frappé、Macchiato、Mocha 四种 Catppuccin 配色与可切换的磨砂玻璃效果，统一调整对话区、侧栏和控件的视觉风格，适合长时间阅读与编程。\n\n包含组件：@nonamelego/dsh-catppuccin 0.7.5。"
 }

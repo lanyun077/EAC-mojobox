@@ -2,21 +2,21 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.prompt-memory",
   "name": "DSH 人设与常驻记忆包",
-  "version": "0.2.0",
-  "description": "Soul MD 人设卡、常驻文件记忆与上下文观测、快照恢复。独立于 Project Memory 的项目索引方向，不叠加多个提示词覆盖器。人设与记忆内容由用户和插件管理，本薄包不携带预写人设。",
+  "version": "0.4.0",
+  "description": "包含 Soul MD、上下文面板和快照恢复。支持管理人设卡、维护常驻文件记忆、查看上下文占用，并保存和恢复配置快照，适合持续对话与个性化助手。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   },
   "plugins": [
     {
       "ref": "dsh-soul-md",
-      "version": "0.12.2"
+      "version": "0.12.5"
     },
     {
       "ref": "dsh-context",
-      "version": "0.83.1"
+      "version": "0.87.0"
     },
     {
       "ref": "dsh-undo-savepoint",
@@ -27,5 +27,5 @@
     "@yolk_vat-y/dsh-project-memory"
   ],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。"
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。"
 }

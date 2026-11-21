@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.office-base",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "8cdbfe09a9615db16cabbceeef347ab1c12dbbe5e5ca8d34ee564ec187a037f6"
+  "sha256": "14b23a686459193a69d8ba270a8a9b1a5a71eb1880555a6cd1ea9a72a8a6f09a",
+  "introduction": "集成 Univer Office、GenUI、插件市场、文件工作区、上下文面板、会话管理与快照恢复。支持创建和编辑表格、文档、演示文稿，处理 Excel、Word 和 PowerPoint 文件，生成交互页面，并在会话中预览与审阅办公成果。\n\n包含组件：DSH Market 1.75.0、Context 上下文面板 0.87.0、Session Manager 会话管理 0.7.11、Undo Savepoint 快照恢复 0.5.1、Better Sidebar 开发侧栏 0.32.1、Univer Office 办公套件 0.5.1、GenUI 交互页面 0.16.0。"
 }

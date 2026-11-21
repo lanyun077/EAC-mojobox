@@ -2,25 +2,25 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.power-toolbox",
   "name": "DSH Power Toolbox",
-  "version": "0.3.1",
-  "description": "十一件综合工具箱：日常减重版加项目记忆、Agent Teams、ModSearch、BrowserSkill 与 Vision Router，覆盖开发、协作、检索和视觉研究。外部浏览器、网络、模型调用及原生依赖按需配置；重型 Office 与皮肤仍单独选。",
+  "version": "0.4.0",
+  "description": "集成插件市场、上下文面板、会话管理、快照恢复、开发侧栏、交互可视化、项目记忆、Agent Teams、ModSearch、BrowserSkill 和 Vision Router 十一项工具。支持代码开发、项目资料检索、多智能体协作、联网搜索、浏览器操作和图像分析。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   },
   "plugins": [
     {
       "ref": "dshmarket",
-      "version": "1.73.17"
+      "version": "1.75.0"
     },
     {
       "ref": "dsh-context",
-      "version": "0.83.1"
+      "version": "0.87.0"
     },
     {
       "ref": "dsh-session-manager",
-      "version": "0.7.5"
+      "version": "0.7.11"
     },
     {
       "ref": "dsh-undo-savepoint",
@@ -28,31 +28,31 @@
     },
     {
       "ref": "dsh-better-sidebar",
-      "version": "0.30.1"
+      "version": "0.32.1"
     },
     {
       "ref": "@nagi-ovo/dsh-visualize",
-      "version": "0.1.9"
+      "version": "0.1.10"
     },
     {
-      "ref": "github:00080000/dsh-project-memory",
-      "version": "0.6.12"
+      "ref": "@yolk_vat-y/dsh-project-memory",
+      "version": "0.7.1"
     },
     {
       "ref": "@nanmicoder/dsh-agent-teams",
-      "version": "0.1.29"
+      "version": "0.1.31"
     },
     {
       "ref": "@liustack/modsearch",
-      "version": "5.10.12"
+      "version": "5.10.14"
     },
     {
       "ref": "@wxg-prc-cpg/browser-skill-dsh-plugin",
-      "version": "0.4.2"
+      "version": "0.5.0"
     },
     {
       "ref": "dsh-vision-router",
-      "version": "3.2.0"
+      "version": "3.4.0"
     }
   ],
   "conflicts": [
@@ -66,5 +66,5 @@
     "dsh-image-paste"
   ],
   "overrides": [],
-  "changelog": "2026-11-13：移除已归档的 @vlln/dsh-navbar，节点导航使用官版内置能力；其余组件版本与 2026-11-11 静态来源核验保持一致。目标仍为官版 DSH 0.2.2-rc.1，未安装运行。清理依据见 docs/catalog-cleanup-20261113.md；历史归档不改写。"
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。"
 }

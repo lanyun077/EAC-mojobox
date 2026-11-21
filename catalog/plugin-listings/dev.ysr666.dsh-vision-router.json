@@ -3,12 +3,12 @@
   "id": "dev.ysr666.dsh-vision-router",
   "packageName": "dsh-vision-router",
   "name": "视觉路由",
-  "version": "3.2.0",
+  "version": "3.4.0",
   "summary": "为文本型 DSH Agent 提供图像输入、视觉链路和图像相关工具调用。",
   "author": "ysr666",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-vision-router/3.2.0",
+    "url": "https://registry.npmjs.org/dsh-vision-router/3.4.0",
     "repository": "https://github.com/ysr666/dsh-vision-router"
   },
   "license": "MIT",
@@ -26,8 +26,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-vision-router/-/dsh-vision-router-3.2.0.tgz",
-    "sha256": "e2b23ff25eb8ee2a7d14b91a0a852bebc72e49b8b5e7fc428e93d860d99f5403",
-    "size": 2273370
+    "url": "https://registry.npmjs.org/dsh-vision-router/-/dsh-vision-router-3.4.0.tgz",
+    "sha256": "43186be721836d78bee9a07932eb7b4e4add322c0015486ac7624b2ef6943871",
+    "size": 2381049
   }
 }

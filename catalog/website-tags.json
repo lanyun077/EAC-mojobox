@@ -1,22 +1,15 @@
 {
   "entries": [
-    { "type": "pack", "id": "dev.dsh-eac.agent-team-base", "officialTags": ["conversation", "development"] },
     { "type": "pack", "id": "dev.dsh-eac.conversation-migration", "officialTags": ["conversation"] },
-    { "type": "pack", "id": "dev.dsh-eac.development", "officialTags": ["development"] },
-    { "type": "pack", "id": "dev.dsh-eac.essentials", "officialTags": ["general"] },
     { "type": "pack", "id": "dev.dsh-eac.mobile-tools", "officialTags": ["general", "conversation"] },
     { "type": "pack", "id": "dev.dsh-eac.office-base", "officialTags": ["office"] },
-    { "type": "pack", "id": "dev.dsh-eac.power-toolbox", "officialTags": ["general", "development", "research"] },
-    { "type": "pack", "id": "dev.dsh-eac.project-memory-base", "officialTags": ["development", "conversation"] },
+    { "type": "pack", "id": "dev.dsh-eac.power-toolbox", "officialTags": ["development", "research", "automation"] },
     { "type": "pack", "id": "dev.dsh-eac.prompt-memory", "officialTags": ["conversation"] },
-    { "type": "pack", "id": "dev.dsh-eac.session-tools", "officialTags": ["conversation"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-bloom", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-catppuccin", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-opencode-palette", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-wallpaper-engine", "officialTags": ["generic"] },
     { "type": "pack", "id": "dev.dsh-eac.skin-whale-girl", "officialTags": ["anime"] },
-    { "type": "pack", "id": "dev.dsh-eac.suite-lite", "officialTags": ["general", "development"] },
-    { "type": "pack", "id": "dev.dsh-eac.vision-base", "officialTags": ["research", "automation"] },
-    { "type": "pack", "id": "dev.dsh-eac.web-research-base", "officialTags": ["research", "automation"] }
+    { "type": "pack", "id": "dev.dsh-eac.suite-lite", "officialTags": ["general", "development", "conversation"] }
   ]
 }
