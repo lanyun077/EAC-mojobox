@@ -14,6 +14,8 @@
 
 ## 从这里开始
 
+![Mojobox 功能包目录，支持搜索、标签筛选和排序](docs/assets/website-showcase.webp)
+
 1. 在 [mojobox.cn](https://mojobox.cn/) 搜索资源，按分类、标签、时间或热度筛选。
 2. 打开详情，查看介绍、预览、作者、版本与安装要求。
 3. 下载文件，或使用 [Mojobox Installer](https://github.com/lanyun077/Mojobox-Installer#安装) 在客户端中安装整合包。
