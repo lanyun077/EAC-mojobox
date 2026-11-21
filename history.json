@@ -198,6 +198,127 @@
       "size": 927,
       "sha256": "c0d71b88a87eab27411b2391e48467970b7a1f0a19d432d8a05aacedf01a8217",
       "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.web-research-base-v0.3.1/dev.dsh-eac.web-research-base-0.3.1.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.conversation-migration",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.conversation-migration-v0.4.0",
+      "release_id": 453673759,
+      "asset_id": 775503719,
+      "filename": "dev.dsh-eac.conversation-migration-0.4.0.dshpack",
+      "size": 684,
+      "sha256": "7628f6d912436cb18cee21f8c88f8bcc5e1c464a39313a1afed1a0841d8cb260",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.conversation-migration-v0.4.0/dev.dsh-eac.conversation-migration-0.4.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.mobile-tools",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.mobile-tools-v0.4.0",
+      "release_id": 453673782,
+      "asset_id": 775503829,
+      "filename": "dev.dsh-eac.mobile-tools-0.4.0.dshpack",
+      "size": 721,
+      "sha256": "49bddd5a8f7459a2a17bafea1470dfb7aedc8dd35c4cd5a0b0d0ea48780334b4",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.mobile-tools-v0.4.0/dev.dsh-eac.mobile-tools-0.4.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.office-base",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.office-base-v0.4.0",
+      "release_id": 453673801,
+      "asset_id": 775503923,
+      "filename": "dev.dsh-eac.office-base-0.4.0.dshpack",
+      "size": 856,
+      "sha256": "14b23a686459193a69d8ba270a8a9b1a5a71eb1880555a6cd1ea9a72a8a6f09a",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.office-base-v0.4.0/dev.dsh-eac.office-base-0.4.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.power-toolbox",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.power-toolbox-v0.4.0",
+      "release_id": 453673824,
+      "asset_id": 775504031,
+      "filename": "dev.dsh-eac.power-toolbox-0.4.0.dshpack",
+      "size": 1009,
+      "sha256": "021d8befcda6081d7e3220e58d357d610154929dda8001f90d4fcbfd574638de",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.power-toolbox-v0.4.0/dev.dsh-eac.power-toolbox-0.4.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.prompt-memory",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.prompt-memory-v0.4.0",
+      "release_id": 453673847,
+      "asset_id": 775504097,
+      "filename": "dev.dsh-eac.prompt-memory-0.4.0.dshpack",
+      "size": 697,
+      "sha256": "9c2bd3cf037affe8963ec5fc4670a0f6613230772a191702a08f34b586afc3fa",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.prompt-memory-v0.4.0/dev.dsh-eac.prompt-memory-0.4.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.skin-bloom",
+      "version": "0.3.0",
+      "tag": "pack-dev.dsh-eac.skin-bloom-v0.3.0",
+      "release_id": 453673880,
+      "asset_id": 775504232,
+      "filename": "dev.dsh-eac.skin-bloom-0.3.0.dshpack",
+      "size": 651,
+      "sha256": "5220815fc6020a596530803bdbec1d59b92c58a55e7eec9c3e8bba8807274eb8",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.skin-bloom-v0.3.0/dev.dsh-eac.skin-bloom-0.3.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.skin-catppuccin",
+      "version": "0.3.0",
+      "tag": "pack-dev.dsh-eac.skin-catppuccin-v0.3.0",
+      "release_id": 453673904,
+      "asset_id": 775504333,
+      "filename": "dev.dsh-eac.skin-catppuccin-0.3.0.dshpack",
+      "size": 643,
+      "sha256": "923e744483aff039a1a1ba7fd0e1f30bed7cd6c2973b9da50e4e008ecc6727f4",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.skin-catppuccin-v0.3.0/dev.dsh-eac.skin-catppuccin-0.3.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.skin-opencode-palette",
+      "version": "0.3.0",
+      "tag": "pack-dev.dsh-eac.skin-opencode-palette-v0.3.0",
+      "release_id": 453673931,
+      "asset_id": 775504458,
+      "filename": "dev.dsh-eac.skin-opencode-palette-0.3.0.dshpack",
+      "size": 619,
+      "sha256": "c37a0fa0037d0fba10bcbb850dec5638d77b60de588df1bf3b281818b914940e",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.skin-opencode-palette-v0.3.0/dev.dsh-eac.skin-opencode-palette-0.3.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.skin-wallpaper-engine",
+      "version": "0.3.0",
+      "tag": "pack-dev.dsh-eac.skin-wallpaper-engine-v0.3.0",
+      "release_id": 453673963,
+      "asset_id": 775504561,
+      "filename": "dev.dsh-eac.skin-wallpaper-engine-0.3.0.dshpack",
+      "size": 652,
+      "sha256": "94e8df66803afe051fa3a9884aba2e1891524d34c60cd6d4e2ba64610f9a76c2",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.skin-wallpaper-engine-v0.3.0/dev.dsh-eac.skin-wallpaper-engine-0.3.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.skin-whale-girl",
+      "version": "0.3.0",
+      "tag": "pack-dev.dsh-eac.skin-whale-girl-v0.3.0",
+      "release_id": 453673981,
+      "asset_id": 775504673,
+      "filename": "dev.dsh-eac.skin-whale-girl-0.3.0.dshpack",
+      "size": 731,
+      "sha256": "580a750d88dc7734b0aecd969e0dbfca6d52629b1a44ee1c505555991bce7b28",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.skin-whale-girl-v0.3.0/dev.dsh-eac.skin-whale-girl-0.3.0.dshpack"
+    },
+    {
+      "resource_id": "dev.dsh-eac.suite-lite",
+      "version": "0.4.0",
+      "tag": "pack-dev.dsh-eac.suite-lite-v0.4.0",
+      "release_id": 453674004,
+      "asset_id": 775504778,
+      "filename": "dev.dsh-eac.suite-lite-0.4.0.dshpack",
+      "size": 836,
+      "sha256": "f7b9d7bdb3d04c0c6d4b1bb20d78445b467e8ca5d76a8c0e9c4e390500d68d9a",
+      "url": "https://github.com/lanyun077/EAC-mojobox/releases/download/pack-dev.dsh-eac.suite-lite-v0.4.0/dev.dsh-eac.suite-lite-0.4.0.dshpack"
     }
   ],
   "snapshots": [
@@ -895,79 +1016,123 @@
       ]
     },
     {
-      "at": "2026-11-21T11:57:11.110Z",
+      "at": "2026-11-21T12:24:17.656Z",
       "counts": [
         {
           "asset_id": 751583390,
-          "count": 13
+          "count": 17
         },
         {
           "asset_id": 751583484,
-          "count": 12
-        },
-        {
-          "asset_id": 751583557,
-          "count": 13
-        },
-        {
-          "asset_id": 751583656,
-          "count": 12
-        },
-        {
-          "asset_id": 751583744,
-          "count": 12
-        },
-        {
-          "asset_id": 751583846,
-          "count": 12
-        },
-        {
-          "asset_id": 751583993,
-          "count": 12
-        },
-        {
-          "asset_id": 751584118,
-          "count": 12
-        },
-        {
-          "asset_id": 751584220,
-          "count": 12
-        },
-        {
-          "asset_id": 751584344,
           "count": 16
         },
         {
+          "asset_id": 751583557,
+          "count": 17
+        },
+        {
+          "asset_id": 751583656,
+          "count": 16
+        },
+        {
+          "asset_id": 751583744,
+          "count": 16
+        },
+        {
+          "asset_id": 751583846,
+          "count": 16
+        },
+        {
+          "asset_id": 751583993,
+          "count": 16
+        },
+        {
+          "asset_id": 751584118,
+          "count": 16
+        },
+        {
+          "asset_id": 751584220,
+          "count": 16
+        },
+        {
+          "asset_id": 751584344,
+          "count": 20
+        },
+        {
           "asset_id": 751584440,
-          "count": 12
+          "count": 16
         },
         {
           "asset_id": 751584553,
-          "count": 12
+          "count": 16
         },
         {
           "asset_id": 751584709,
-          "count": 12
+          "count": 16
         },
         {
           "asset_id": 751584805,
-          "count": 12
+          "count": 16
         },
         {
           "asset_id": 751585030,
-          "count": 12
+          "count": 16
         },
         {
           "asset_id": 751585141,
-          "count": 11
+          "count": 15
         },
         {
           "asset_id": 751585296,
-          "count": 11
+          "count": 15
         },
         {
           "asset_id": 751585390,
-          "count": 11
+          "count": 15
+        },
+        {
+          "asset_id": 775503719,
+          "count": 0
+        },
+        {
+          "asset_id": 775503829,
+          "count": 0
+        },
+        {
+          "asset_id": 775503923,
+          "count": 0
+        },
+        {
+          "asset_id": 775504031,
+          "count": 0
+        },
+        {
+          "asset_id": 775504097,
+          "count": 0
+        },
+        {
+          "asset_id": 775504232,
+          "count": 0
+        },
+        {
+          "asset_id": 775504333,
+          "count": 0
+        },
+        {
+          "asset_id": 775504458,
+          "count": 0
+        },
+        {
+          "asset_id": 775504561,
+          "count": 0
+        },
+        {
+          "asset_id": 775504673,
+          "count": 0
+        },
+        {
+          "asset_id": 775504778,
+          "count": 0
         }
       ]
     }
