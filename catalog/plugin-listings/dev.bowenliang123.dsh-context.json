@@ -3,14 +3,14 @@
   "id": "dev.bowenliang123.dsh-context",
   "packageName": "dsh-context",
   "name": "上下文洞察与管理",
-  "version": "0.83.1",
+  "version": "0.87.0",
   "summary": "提供跨会话上下文统计、组成分析、趋势面板和右侧上下文面板。",
   "author": "bowenliang123",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-context/0.83.1",
+    "url": "https://registry.npmjs.org/dsh-context/0.87.0",
     "repository": "https://github.com/bowenliang123/dsh-context",
-    "commit": "a37a72cb22481cfd101fb00e390e291cb03ded8b"
+    "commit": "d6aff61857ae59c51c872d58ee66a4b46ed03ba7"
   },
   "license": "Apache-2.0",
   "compatibility": {
@@ -26,8 +26,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-context/-/dsh-context-0.83.1.tgz",
-    "sha256": "0c8d061025f8c579b5e29814da351a1d9258471119c316f0ad804c4bcfa717cb",
-    "size": 332715
+    "url": "https://registry.npmjs.org/dsh-context/-/dsh-context-0.87.0.tgz",
+    "sha256": "e348b86bfee38d28ce4ead9918d7e065f4690bb1d3f8806714f1a296d0d51ce0",
+    "size": 431922
   }
 }

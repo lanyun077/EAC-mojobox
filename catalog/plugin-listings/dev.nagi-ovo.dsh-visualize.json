@@ -3,14 +3,14 @@
   "id": "dev.nagi-ovo.dsh-visualize",
   "packageName": "@nagi-ovo/dsh-visualize",
   "name": "交互式可视化输出",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "summary": "把模型的 visualize 调用渲染为对话内的图表、模拟器、比较面板和交互式界面。",
   "author": "Nagi-ovo",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/%40nagi-ovo%2Fdsh-visualize/0.1.9",
+    "url": "https://registry.npmjs.org/%40nagi-ovo%2Fdsh-visualize/0.1.10",
     "repository": "https://github.com/Nagi-ovo/dsh-visualize",
-    "commit": "55308663584bdb30fd75f97788a3a01fca7fe2be"
+    "commit": "6a713a74795fc3043eaad86acf49ac23211ac238"
   },
   "license": "BSD-3-Clause",
   "compatibility": {
@@ -25,8 +25,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/@nagi-ovo/dsh-visualize/-/dsh-visualize-0.1.9.tgz",
-    "sha256": "19c8634213cb62cce8a70e6f0f543b89a99581ed79afe70f36faaa794bfc0165",
-    "size": 1168494
+    "url": "https://registry.npmjs.org/@nagi-ovo/dsh-visualize/-/dsh-visualize-0.1.10.tgz",
+    "sha256": "48c79d06dc72bf89fe0ce0009d3eada38207a5fdd13604217e39d0a503760e55",
+    "size": 1171121
   }
 }

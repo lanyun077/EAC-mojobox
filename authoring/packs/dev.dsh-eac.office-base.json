@@ -2,25 +2,25 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.office-base",
   "name": "DSH 文档办公包",
-  "version": "0.3.1",
-  "description": "市场、Univer Office、GenUI、文件工作区、上下文观测、会话整理与恢复。Office 成品约 47 MiB 且需本机 Chromium/网关；不进入必备或减重版，不和 Visualize 同包。",
+  "version": "0.4.0",
+  "description": "集成 Univer Office、GenUI、插件市场、文件工作区、上下文面板、会话管理与快照恢复。支持创建和编辑表格、文档、演示文稿，处理 Excel、Word 和 PowerPoint 文件，生成交互页面，并在会话中预览与审阅办公成果。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   },
   "plugins": [
     {
       "ref": "dshmarket",
-      "version": "1.73.17"
+      "version": "1.75.0"
     },
     {
       "ref": "dsh-context",
-      "version": "0.83.1"
+      "version": "0.87.0"
     },
     {
       "ref": "dsh-session-manager",
-      "version": "0.7.5"
+      "version": "0.7.11"
     },
     {
       "ref": "dsh-undo-savepoint",
@@ -28,11 +28,11 @@
     },
     {
       "ref": "dsh-better-sidebar",
-      "version": "0.30.1"
+      "version": "0.32.1"
     },
     {
       "ref": "dsh-univer-office",
-      "version": "0.4.0"
+      "version": "0.5.1"
     },
     {
       "ref": "@changfenhuang/dsh-genui",
@@ -47,5 +47,5 @@
     "dsh-file-drop-eac"
   ],
   "overrides": [],
-  "changelog": "2026-11-13：移除已归档的 @vlln/dsh-navbar，节点导航使用官版内置能力；其余组件版本与 2026-11-11 静态来源核验保持一致。目标仍为官版 DSH 0.2.2-rc.1，未安装运行。清理依据见 docs/catalog-cleanup-20261113.md；历史归档不改写。"
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。"
 }

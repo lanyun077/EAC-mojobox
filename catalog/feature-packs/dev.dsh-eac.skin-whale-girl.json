@@ -1,17 +1,17 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.skin-whale-girl",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "category": "appearance",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "877226634647d349af3d5b764f1d1eee3c395a73ea5d0b70b5357d7cc12cc44b",
+  "sha256": "580a750d88dc7734b0aecd969e0dbfca6d52629b1a44ee1c505555991bce7b28",
   "appearance": {
     "kind": "ui-skin",
     "loader": {
       "id": "@smalltailqwq/dsh-client-ui-skin-deep-whale-manager",
-      "version": "0.1.9",
+      "version": "0.1.10",
       "source": "https://github.com/Small-tailqwq/dsh-deep-whale"
     },
     "skinIds": [
@@ -27,6 +27,7 @@
       "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/42ecc2a587c4276e6b65a01933505a42d7f31584/maid-atelier/preview/light.webp",
       "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/42ecc2a587c4276e6b65a01933505a42d7f31584/orca-link/preview/dark.png"
     ],
-    "notes": "DSH-EAC 编写的引用清单，上游插件与美术归 Small-tailqwq 及相应权利人。代码 MIT；皮肤美术 CC BY-NC-SA 4.0、禁止商用，署名见上游 NOTICE。原版管理器路线，不额外依赖 EAC loader。与公约化女仆、昼夜工坊存在同名标记风险；同类全局样式的运行冲突由宿主核验。 预览沿用历史版本，仅示意外观，未代表本版实测。"
-  }
+    "notes": "管理器提供皮肤切换与个性化设置。代码许可：MIT；皮肤美术许可：CC BY-NC-SA 4.0，按上游 NOTICE 署名及许可条款使用。"
+  },
+  "introduction": "包含鲸鱼娘皮肤管理器、深海女仆工坊和虎鲸链路两套皮肤。支持在设置页切换皮肤，并按皮肤提供的选项调整立绘、颜色、显示时段与界面装饰。\n\n包含组件：@smalltailqwq/dsh-client-ui-skin-deep-whale-manager 0.1.10、@smalltailqwq/dsh-client-ui-skin-maid-atelier 0.1.11、@smalltailqwq/dsh-client-ui-skin-orca-link 0.1.11。"
 }

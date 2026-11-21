@@ -2,24 +2,24 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.skin-wallpaper-engine",
   "name": "Wallpaper Engine 壁纸与玻璃界面",
-  "version": "0.2.0",
-  "description": "引用 Wallpaper Engine 背景插件与其要求的 Better Sidebar。使用用户本机壁纸；支持范围和素材许可见上游，不包含壁纸、引擎应用或本机路径。",
+  "version": "0.3.0",
+  "description": "包含 Wallpaper Engine 背景插件与 Better Sidebar，支持将本机壁纸融入对话工作区，搭配玻璃界面、文件浏览、编辑与预览，定制桌面背景和侧栏外观。",
   "author": "DSH-EAC",
   "license": "MIT",
   "plugins": [
     {
       "ref": "dsh-better-sidebar",
-      "version": "0.30.1"
+      "version": "0.32.1"
     },
     {
       "ref": "dsh-plugin-wallpaper-engine",
-      "version": "1.4.2"
+      "version": "1.4.3"
     }
   ],
   "conflicts": [],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。",
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   }
 }

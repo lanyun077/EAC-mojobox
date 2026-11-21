@@ -3,11 +3,11 @@
   "id": "dev.elysia395.dsh-wallpaper-engine",
   "packageName": "dsh-plugin-wallpaper-engine",
   "name": "Wallpaper Engine 背景",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "summary": "在 DSH Web 界面渲染本地 Wallpaper Engine 场景、网页与视频背景。",
   "maintainedBy": "registry-maintained",
   "source": {
-    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.4.2",
+    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/1.4.3",
     "repository": "https://github.com/elysia395/dsh-wallpaper-engine"
   },
   "license": "MIT",
@@ -23,8 +23,8 @@
   ],
   "artifact": {
     "format": "npm-tgz",
-    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.4.2.tgz",
-    "sha256": "dde0b02039dc84dbb9b333ae07f3580ec3d00580a2aba7bbaf297456fc1fcd02",
-    "size": 4499719
+    "url": "https://registry.npmjs.org/dsh-plugin-wallpaper-engine/-/dsh-plugin-wallpaper-engine-1.4.3.tgz",
+    "sha256": "2479519816332376540ff70a3e0deec5b4fdfd4ce9a2220bb57794c788f7b526",
+    "size": 4556598
   }
 }

@@ -2,21 +2,21 @@
   "formatVersion": 1,
   "id": "dev.dsh-eac.conversation-migration",
   "name": "DSH 对话迁移包",
-  "version": "0.2.0",
-  "description": "Chat Import、会话整理与快照恢复的专项组合。用于导入和管理历史会话，导入会创建本地数据；不是整个 Profile、插件环境或配置迁移。恢复范围以各插件和宿主支持为准。",
+  "version": "0.4.0",
+  "description": "包含 Chat Import、会话管理和快照恢复。支持导入历史对话、整理会话标签与备注、迁移会话所属工作区，以及保存配置快照，方便汇集和继续使用已有对话。",
   "author": "DSH-EAC",
   "license": "MIT",
   "requires": {
-    "dsh": "0.2.2-rc.1"
+    "dsh": "0.2.2-rc.5"
   },
   "plugins": [
     {
       "ref": "dsh-chat-import",
-      "version": "0.26.5"
+      "version": "0.26.8"
     },
     {
       "ref": "dsh-session-manager",
-      "version": "0.7.5"
+      "version": "0.7.11"
     },
     {
       "ref": "dsh-undo-savepoint",
@@ -25,5 +25,5 @@
   ],
   "conflicts": [],
   "overrides": [],
-  "changelog": "2026-11-11：更新公开组件发行，以官版 DSH 0.2.2-rc.1 为本组合的精确选型目标；已核验原始 npm 身份、integrity、SHA-256 和官方静态版本规则，未安装运行。保留既有组合与互斥策略；MIT 仅覆盖自编清单。完整来源、许可和升级条件见 docs/catalog-update-20261111.md。"
+  "changelog": "2026-11-21：更新插件精确发行与官版 0.2.2-rc.5 目标，完善组件及用途说明。"
 }

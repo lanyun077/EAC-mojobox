@@ -10,3 +10,5 @@
 | 接入目录数据 | [插件来源接口](plugin-source-api-v1.md) |
 | 修改代码和部署网站 | [开发文档](development.md) · [贡献指南](../CONTRIBUTING.md) |
 | 了解数据使用 | [隐私说明](privacy.md) |
+
+最新内容：[整合包更新与精简（2026-11-21）](catalog-update-20261121.md)，包含 11 个包的组件版本与用途。

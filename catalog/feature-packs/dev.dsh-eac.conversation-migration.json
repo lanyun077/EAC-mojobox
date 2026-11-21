@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.conversation-migration",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "77b7d59db178b555f4509c2749ed7c0dfe325dcbd4686e4b4829cfe89a8b1670"
+  "sha256": "7628f6d912436cb18cee21f8c88f8bcc5e1c464a39313a1afed1a0841d8cb260",
+  "introduction": "包含 Chat Import、会话管理和快照恢复。支持导入历史对话、整理会话标签与备注、迁移会话所属工作区，以及保存配置快照，方便汇集和继续使用已有对话。\n\n包含组件：Chat Import 对话导入 0.26.8、Session Manager 会话管理 0.7.11、Undo Savepoint 快照恢复 0.5.1。"
 }

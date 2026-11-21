@@ -70,7 +70,7 @@ export async function inspectFeaturePack(bytes, expectedDigest) {
     if (manifest['x-eac'] && (manifest['x-eac'].status !== 'publishable' || manifest['x-eac'].conflictsPending)) throw new Error('Draft or unresolved conflicts cannot be admitted')
     const refs = new Set()
     for (const { ref, version } of manifest.plugins) {
-      if (!/^(?:builtin:[A-Za-z0-9][A-Za-z0-9._-]*|github:[A-Za-z0-9][A-Za-z0-9._-]*\/[A-Za-z0-9][A-Za-z0-9._-]*|(?:@[a-z0-9-]+\/)?[a-z0-9][a-z0-9._-]*)$/.test(ref)) throw new Error(`Unsupported plugin reference: ${ref}`)
+      if (!/^(?:builtin:[A-Za-z0-9][A-Za-z0-9._-]*|github:[A-Za-z0-9][A-Za-z0-9._-]*\/[A-Za-z0-9][A-Za-z0-9._-]*|(?:@[a-z0-9_-]+\/)?[a-z0-9][a-z0-9._-]*)$/.test(ref)) throw new Error(`Unsupported plugin reference: ${ref}`)
       if (refs.has(ref)) throw new Error(`Duplicate plugin reference: ${ref}`)
       refs.add(ref)
       if (!ref.startsWith('builtin:') || version !== undefined) {

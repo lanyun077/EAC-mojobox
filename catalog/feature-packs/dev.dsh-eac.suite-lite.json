@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.suite-lite",
-  "version": "0.2.1",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "fc92a626d16421981678b7674a05c621886e01b9b18897cb343dc34275f61402"
+  "sha256": "f7b9d7bdb3d04c0c6d4b1bb20d78445b467e8ca5d76a8c0e9c4e390500d68d9a",
+  "introduction": "包含插件市场、上下文面板、会话管理、快照恢复、文件开发侧栏和交互可视化六项工具。支持查找插件、整理会话、编辑文件、查看 Git 与 AI 改动、定位长对话和展示交互结果，适合日常对话与开发。\n\n包含组件：DSH Market 1.75.0、Context 上下文面板 0.87.0、Session Manager 会话管理 0.7.11、Undo Savepoint 快照恢复 0.5.1、Better Sidebar 开发侧栏 0.32.1、Visualize 交互可视化 0.1.10。"
 }

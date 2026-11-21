@@ -45,11 +45,7 @@ test('curated packs use the reviewed identities and one version across all categ
       used.add(plugin.ref)
     }
   }
-  for (const source of sources.components) {
-    assert.ok(used.has(source.ref) || review.decisions.some(decision =>
-      decision.action === 'exclude' && originalById.get(decision.id).name === source.name),
-    `Unused reviewed source needs an explicit exclusion: ${source.ref}`)
-  }
+  assert.deepEqual(used, new Set(sourceByRef.keys()))
 })
 
 test('excluded components and exclusive implementations cannot reenter a curated combination', () => {
@@ -70,22 +66,50 @@ test('excluded components and exclusive implementations cannot reenter a curated
   }
 })
 
-test('essentials remain minimal and the lighter suite is a subset of the expanded toolbox', () => {
+test('six distinct functional scenarios retain the daily suite and expanded toolbox', () => {
   const byId = new Map(packs.map(pack => [pack.id, pack]))
-  const essentials = byId.get('dev.dsh-eac.essentials')
   const lite = byId.get('dev.dsh-eac.suite-lite')
   const toolbox = byId.get('dev.dsh-eac.power-toolbox')
-  assert.equal(essentials.plugins.length, 4)
+  assert.deepEqual(new Set(byId.keys()), new Set([
+    'dev.dsh-eac.suite-lite', 'dev.dsh-eac.power-toolbox', 'dev.dsh-eac.office-base',
+    'dev.dsh-eac.prompt-memory', 'dev.dsh-eac.mobile-tools', 'dev.dsh-eac.conversation-migration'
+  ]))
   assert.equal(lite.plugins.length, 6)
   assert.equal(toolbox.plugins.length, 11)
-  for (const [smaller, larger] of [[essentials, lite], [lite, toolbox]]) {
-    for (const plugin of smaller.plugins) {
-      assert.ok(larger.plugins.some(item => item.ref === plugin.ref && item.version === plugin.version))
-    }
+  for (const plugin of lite.plugins) {
+    assert.ok(toolbox.plugins.some(item => item.ref === plugin.ref && item.version === plugin.version))
   }
   assert.ok(!lite.plugins.some(item => item.ref === 'dsh-univer-office' || item.ref === 'meow-smooth' || item.ref === 'dsh-vision-router'))
   const office = byId.get('dev.dsh-eac.office-base')
   assert.ok(office.plugins.some(item => item.ref === 'dsh-univer-office'))
+})
+
+test('active authoring and catalog agree while retired packs retain their original records', async () => {
+  const files = async path => (await readdir(new URL(`../${path}`, import.meta.url))).filter(name => name.endsWith('.json'))
+  const active = await files('authoring/packs')
+  assert.deepEqual(new Set(active), new Set(await files('catalog/feature-packs')))
+  assert.equal(active.length, 11)
+  const update = await readJson('authoring/catalog-update-20261121.json')
+  const sourceByRef = new Map(update.components.map(source => [source.ref, source]))
+  for (const file of active) {
+    const pack = await readJson(`authoring/packs/${file}`)
+    const record = await readJson(`catalog/feature-packs/${file}`)
+    assert.equal(pack.requires.dsh, review.targetDsh)
+    for (const plugin of pack.plugins) assert.equal(plugin.version, sourceByRef.get(plugin.ref)?.version)
+    for (const description of [pack.description, record.introduction, record.appearance?.notes].filter(Boolean)) {
+      assert.doesNotMatch(description, /不(?:含|包含|提供|支持|与|和|跟|涉及|代表|属于|负责)|无关|不能|并非|不是|未(?:测试|实测|验证|验收)/)
+    }
+  }
+  assert.equal(review.retiredPacks.length, 7)
+  for (const retired of review.retiredPacks) {
+    assert.ok(!active.includes(`${retired.id}.json`))
+    assert.ok(active.includes(`${retired.replacement}.json`))
+    const manifest = await readJson(`authoring/archive/20261121/packs/${retired.id}.json`)
+    const record = await readJson(`authoring/archive/20261121/records/${retired.id}.json`)
+    assert.equal(manifest.id, retired.id)
+    assert.equal(manifest.version, retired.version)
+    assert.equal(record.version, retired.version)
+  }
 })
 
 test('active authored packs match intake records, omit retired sources and offer distinct combinations', async () => {

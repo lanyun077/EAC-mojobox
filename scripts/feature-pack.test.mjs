@@ -30,6 +30,14 @@ async function archive(value = manifest, extras = []) {
 const recordFor = bytes => ({ format: 'eac-feature-pack-v1', id: manifest.id, version: manifest.version,
   category: 'function', source: 'https://example.org/test-only-release', author: manifest.author, license: manifest.license, sha256: digest(bytes) })
 
+test('npm scope underscores are valid without allowing URLs, aliases or path references', async () => {
+  const valid = { ...manifest, plugins: [{ ref: '@yolk_vat-y/dsh-project-memory', version: '0.6.12' }] }
+  assert.equal((await inspectFeaturePack(await archive(valid))).manifest.plugins[0].ref, valid.plugins[0].ref)
+  for (const ref of ['@scope/../pkg', '@scope/pkg/extra', 'file:pkg', 'https://example.org/pkg', '@scope/pkg;cmd', '@scope/pkg@1.0.0']) {
+    await assert.rejects(inspectFeaturePack(await archive({ ...valid, plugins: [{ ref, version: '1.0.0' }] })), /Unsupported plugin reference/)
+  }
+})
+
 test('valid thin archive is checked offline without claiming resolved sources or runtime success', async t => {
   t.mock.method(globalThis, 'fetch', () => { throw new Error('No network allowed') })
   const bytes = await archive()

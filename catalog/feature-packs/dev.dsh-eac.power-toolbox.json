@@ -1,10 +1,11 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.power-toolbox",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "category": "function",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "caaf3718f14ee16ad493023a30f44b9d8055e80de284e121ede80b7f132df899"
+  "sha256": "021d8befcda6081d7e3220e58d357d610154929dda8001f90d4fcbfd574638de",
+  "introduction": "集成插件市场、上下文面板、会话管理、快照恢复、开发侧栏、交互可视化、项目记忆、Agent Teams、ModSearch、BrowserSkill 和 Vision Router 十一项工具。支持代码开发、项目资料检索、多智能体协作、联网搜索、浏览器操作和图像分析。\n\n包含组件：DSH Market 1.75.0、Context 上下文面板 0.87.0、Session Manager 会话管理 0.7.11、Undo Savepoint 快照恢复 0.5.1、Better Sidebar 开发侧栏 0.32.1、Visualize 交互可视化 0.1.10、Project Memory 项目记忆 0.7.1、Agent Teams 多智能体协作 0.1.31、ModSearch 联网检索 5.10.14、BrowserSkill 浏览器操作 0.5.0、Vision Router 图像分析 3.4.0。"
 }

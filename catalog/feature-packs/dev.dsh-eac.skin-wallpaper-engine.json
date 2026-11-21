@@ -1,17 +1,18 @@
 {
   "format": "eac-feature-pack-v1",
   "id": "dev.dsh-eac.skin-wallpaper-engine",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "category": "appearance",
   "source": "https://github.com/lanyun077/EAC-mojobox",
   "author": "DSH-EAC",
   "license": "MIT",
-  "sha256": "7b15e729abcbbe0deb16670294fa9a0f9cd05d4c748dba9bdb7347673649f7cc",
+  "sha256": "94e8df66803afe051fa3a9884aba2e1891524d34c60cd6d4e2ba64610f9a76c2",
   "appearance": {
     "kind": "appearance",
     "previews": [
       "https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/5ba2acff8bbc5ab3b9fb64ca7f37d0052c5a7ce7/docs/images/main-interface.gif"
     ],
-    "notes": "上游要求先更新 DSH 内核与 Better Sidebar，声明 DSH >=0.1.5-rc.1、桌面 >=2.0.7、侧栏 >=0.19.0。本包含侧栏引用；壁纸与可选媒体工具由用户提供。自带插件入口，不声明 EAC loader 依赖；全局玻璃/背景样式与其他外观插件的组合未验证。 预览沿用历史版本，仅示意外观，未代表本版实测。"
-  }
+    "notes": "桌面壁纸与玻璃界面，配套 Better Sidebar 文件工作区。使用本机 Wallpaper Engine 与用户选择的壁纸；素材按各自许可使用。"
+  },
+  "introduction": "包含 Wallpaper Engine 背景插件与 Better Sidebar，支持将本机壁纸融入对话工作区，搭配玻璃界面、文件浏览、编辑与预览，定制桌面背景和侧栏外观。\n\n包含组件：Better Sidebar 开发侧栏 0.32.1、dsh-plugin-wallpaper-engine 1.4.3。"
 }
