@@ -1498,6 +1498,127 @@
           "count": 5
         }
       ]
+    },
+    {
+      "at": "2026-11-25T13:31:11.012Z",
+      "counts": [
+        {
+          "asset_id": 751583390,
+          "count": 17
+        },
+        {
+          "asset_id": 751583484,
+          "count": 16
+        },
+        {
+          "asset_id": 751583557,
+          "count": 17
+        },
+        {
+          "asset_id": 751583656,
+          "count": 16
+        },
+        {
+          "asset_id": 751583744,
+          "count": 16
+        },
+        {
+          "asset_id": 751583846,
+          "count": 16
+        },
+        {
+          "asset_id": 751583993,
+          "count": 16
+        },
+        {
+          "asset_id": 751584118,
+          "count": 16
+        },
+        {
+          "asset_id": 751584220,
+          "count": 16
+        },
+        {
+          "asset_id": 751584344,
+          "count": 20
+        },
+        {
+          "asset_id": 751584440,
+          "count": 16
+        },
+        {
+          "asset_id": 751584553,
+          "count": 16
+        },
+        {
+          "asset_id": 751584709,
+          "count": 16
+        },
+        {
+          "asset_id": 751584805,
+          "count": 16
+        },
+        {
+          "asset_id": 751585030,
+          "count": 16
+        },
+        {
+          "asset_id": 751585141,
+          "count": 15
+        },
+        {
+          "asset_id": 751585296,
+          "count": 15
+        },
+        {
+          "asset_id": 751585390,
+          "count": 15
+        },
+        {
+          "asset_id": 775503719,
+          "count": 6
+        },
+        {
+          "asset_id": 775503829,
+          "count": 6
+        },
+        {
+          "asset_id": 775503923,
+          "count": 6
+        },
+        {
+          "asset_id": 775504031,
+          "count": 6
+        },
+        {
+          "asset_id": 775504097,
+          "count": 6
+        },
+        {
+          "asset_id": 775504232,
+          "count": 6
+        },
+        {
+          "asset_id": 775504333,
+          "count": 6
+        },
+        {
+          "asset_id": 775504458,
+          "count": 6
+        },
+        {
+          "asset_id": 775504561,
+          "count": 6
+        },
+        {
+          "asset_id": 775504673,
+          "count": 7
+        },
+        {
+          "asset_id": 775504778,
+          "count": 6
+        }
+      ]
     }
   ]
 }
